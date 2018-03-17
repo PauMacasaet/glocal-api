@@ -16,3 +16,19 @@ knex migrate:make create-[tablename]
 
 knex seed:make 01_[tablename]
 knex seed:run
+
+setting up heroku app
+    heroku login
+
+    heroku create stickers-api-pau
+
+    git push heroku master
+
+    heroku open
+
+adding DB
+    heroku addons:create heroku-postgresql
+    cloud db = heroku pg:psql
+
+    heroku run knex migrate:latest
+    heroku run knex seed:run
