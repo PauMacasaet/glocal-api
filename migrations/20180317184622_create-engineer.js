@@ -15,7 +15,7 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('client', (table) => {
       table.varchar('accountName', 50).unique().primary().notNull();
-      table.text('contact_details', Array).notNull();
+      table.specificType('contact_details', 'text[]').notNull();
       table.varchar('company_address', 100).notNull();
       table.varchar('accountManager', 50).notNull();
     })
