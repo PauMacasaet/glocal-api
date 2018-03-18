@@ -13,6 +13,8 @@ const isLead = require('./routes/engineer/isLead');
 
 const principal = require('./routes/vendor/vendor');
 
+const accountName = require('./routes/client/accountname');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -27,6 +29,8 @@ app.use('/name', name);
 app.use('/isLead', isLead);
 
 app.use('/vendor', principal);
+
+app.use('/client', accountName);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
