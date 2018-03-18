@@ -13,7 +13,7 @@ module.exports = {
     update(accountName, client) {
         return knex('client').where('accountName', accountName).update(client);
     },
-    delete(client) {
+    delete(accountName) {
         return knex('client').where('accountName', accountName).del();
     }
 }

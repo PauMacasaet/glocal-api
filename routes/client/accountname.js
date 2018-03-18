@@ -14,7 +14,7 @@ function validClient(client) {
     const hasContact = typeof client.contact_details == 'array' && client.contact_details.trim() != '';
     const hasAddress = typeof client.company_address == 'string' && client.company_address.trim() != '';
     const hasManager = typeof client.accountManager == 'string' && client.accountManager.trim() != '';
-    return hasAccoutname && hasContact && hasAddress && hasManager;
+    return hasAccoutname && hasAddress && hasManager;
 }
 
 router.get('/', (req, res) => {
