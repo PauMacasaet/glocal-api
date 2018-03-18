@@ -63,29 +63,29 @@ exports.up = function(knex, Promise) {
       table.varchar('case_status', 50).notNull();
     }),
 
-    knex.schema.createTable('activities', (table) => {
-      table.integer('trackingNo').references('glocalId').inTable('case_monitoring').notNull().onUpdate('cascade');
-      table.increments('activityNo');
-      table.timestamp('timeIn').notNull();
-      table.timestamp('timeOuts').notNull();
-      table.varchar('productName', 50).references('productName').inTable('products').notNull().onUpdate('cascade');
-      table.varchar('client', 50).notNull();
-      table.varchar('contactCustomer', 50).references('personName').inTable('contact_person').notNull();
-      table.varchar('addres', 50).notNull();
-      table.varchar('typeOfActivity', 50).notNull();
-      table.varchar('purposeOfVisit', 50).notNull();
-      table.varchar('activityPerformed', 250).notNull();
-      table.varchar('nextActivity', 250).notNull();
-      table.varchar('recommendations');
-      table.integer('engid').references('engId').inTable('engineer').notNull();
-      table.varchar('engineerName', 50);
-    })
+    // knex.schema.createTable('activities', (table) => {
+    //   table.integer('trackingNo').references('glocalId').inTable('case_monitoring').notNull().onUpdate('cascade');
+    //   table.increments('activityNo');
+    //   table.timestamp('timeIn').notNull();
+    //   table.timestamp('timeOuts').notNull();
+    //   table.varchar('productName', 50).references('productName').inTable('products').notNull().onUpdate('cascade');
+    //   table.varchar('client', 50).notNull();
+    //   table.varchar('contactCustomer', 50).references('personName').inTable('contact_person').notNull();
+    //   table.varchar('addres', 50).notNull();
+    //   table.varchar('typeOfActivity', 50).notNull();
+    //   table.varchar('purposeOfVisit', 50).notNull();
+    //   table.varchar('activityPerformed', 250).notNull();
+    //   table.varchar('nextActivity', 250).notNull();
+    //   table.varchar('recommendations');
+    //   table.integer('engid').references('engId').inTable('engineer').notNull();
+    //   table.varchar('engineerName', 50);
+    // })
   ]);
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('activities'),
+    //knex.schema.dropTable('activities'),
     knex.schema.dropTable('case_monitoring'),
     knex.schema.dropTable('contact_person'),
     knex.schema.dropTable('license'),
