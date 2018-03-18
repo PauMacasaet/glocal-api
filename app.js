@@ -15,6 +15,9 @@ const principal = require('./routes/vendor/vendor');
 
 const accountName = require('./routes/client/accountname');
 
+const productName = require('./routes/products/productName');
+const productVendor = require('./routes/products/productVendor');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -31,6 +34,9 @@ app.use('/isLead', isLead);
 app.use('/vendor', principal);
 
 app.use('/client', accountName);
+
+app.use('/products', productName);
+app.use('/productvendor', productVendor);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
