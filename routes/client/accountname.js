@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     queries.getAll().then(clients => {
         res.json(clients);
         console.log('GETTING ALL CLIENTS');
-    })
+    });
 });
 
 router.get('/:accountName', isValidClient, (req, res) => {

@@ -14,9 +14,13 @@ const isLead = require('./routes/engineer/isLead');
 const principal = require('./routes/vendor/vendor');
 
 const accountName = require('./routes/client/accountname');
+const accountManager = require('./routes/client/accountmanager');
 
 const productName = require('./routes/products/productName');
 const productVendor = require('./routes/products/productVendor');
+
+const contactPerson = require('./routes/contact person/contactp');
+const contactClient = require('./routes/contact person/contactc');
 
 const license = require('./routes/license/license');
 const on_site = require('./routes/license/onsite');
@@ -38,9 +42,13 @@ app.use('/isLead', isLead);
 app.use('/vendor', principal);
 
 app.use('/client', accountName);
+app.use('/accountmanager', accountManager);
 
 app.use('/products', productName);
 app.use('/productvendor', productVendor);
+
+app.use('/contactp', contactPerson);
+app.use('/contactc', contactClient);
 
 app.use('/license', license);
 app.use('/onsite', on_site);

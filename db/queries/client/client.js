@@ -8,7 +8,7 @@ module.exports = {
         return knex('client').where('accountName', accountName);
     }, 
     create(client) {
-        return knex('client').insert('client', '*');
+        return knex('client').insert(client, '*');
     },
     update(accountName, client) {
         return knex('client').where('accountName', accountName).update(client);
