@@ -7,12 +7,17 @@ exports.up = function(knex, Promise) {
       table.varchar('firstName', 50).notNull();
       table.varchar('lastName', 50).notNull();
       table.boolean('isLead').notNull();
+    }),
+
+    knex.schema.createTable('vendor', (table) => {
+      table.varchar('principal').unique().primary().notNull();
     })
   ]);
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
+    knex.schema.dropTable('vendor'),
     knex.schema.dropTable('engineer')
   ]);
 };
