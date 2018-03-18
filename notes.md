@@ -13,6 +13,7 @@ knex migrate:make create-[tablename]
 	table.increments().primary().notNull; for ID
 
     knex migrate:latest
+    knex migrate:rollback for reset
 
 knex seed:make 01_[tablename]
 knex seed:run

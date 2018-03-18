@@ -11,6 +11,8 @@ const department = require('./routes/engineer/department');
 const name = require('./routes/engineer/name');
 const isLead = require('./routes/engineer/isLead');
 
+const principal = require('./routes/vendor/vendor');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -23,6 +25,8 @@ app.use('/engineer', engId);
 app.use('/department', department);
 app.use('/name', name);
 app.use('/isLead', isLead);
+
+app.use('/vendor', principal);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
