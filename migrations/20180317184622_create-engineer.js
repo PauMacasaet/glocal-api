@@ -37,6 +37,7 @@ exports.up = function(knex, Promise) {
       table.date('support_date_start').notNull();
       table.date('support_date_end').notNull();
       table.integer('man_days').notNull();
+      table.integer('remaining_man_days').notNull();
       table.boolean('quarterly_hc').notNull();
       table.varchar('remarks', 200);
     }),
