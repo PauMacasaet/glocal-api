@@ -11,10 +11,10 @@ function isValidClient(req, res, next) {
 
 function validClient(client) {
     const hasAccoutname = typeof client.accountName == 'string' && client.accountName.trim() != '';
-    const hasContact = typeof client.contact_details == 'array' && client.contact_details.trim() != '';
+    const hasContact = typeof client.contact_details == 'string' && client.contact_details.trim() != '';
     const hasAddress = typeof client.company_address == 'string' && client.company_address.trim() != '';
     const hasManager = typeof client.accountManager == 'string' && client.accountManager.trim() != '';
-    return hasAccoutname && hasAddress && hasManager;
+    return hasAccoutname && hasContact && hasAddress && hasManager;
 }
 
 router.get('/', (req, res) => {

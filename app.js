@@ -18,6 +18,10 @@ const accountName = require('./routes/client/accountname');
 const productName = require('./routes/products/productName');
 const productVendor = require('./routes/products/productVendor');
 
+const license = require('./routes/license/license');
+const on_site = require('./routes/license/onsite');
+const clientLicense = require('./routes/license/vendor');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -37,6 +41,10 @@ app.use('/client', accountName);
 
 app.use('/products', productName);
 app.use('/productvendor', productVendor);
+
+app.use('/license', license);
+app.use('/onsite', on_site);
+app.use('/clientlicense', clientLicense);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
