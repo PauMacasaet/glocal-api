@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
     }),
 
     knex.schema.createTable('vendor', (table) => {
-      table.varchar('principal').unique().primary().notNull();
+      table.varchar('principal', 50).unique().primary().notNull();
     })
   ]);
 };
