@@ -18,6 +18,11 @@ exports.up = function(knex, Promise) {
       table.specificType('contact_details', 'text[]').notNull();
       table.varchar('company_address', 100).notNull();
       table.varchar('accountManager', 50).notNull();
+    }),
+
+    knex.schema.createTable('products', (table) => {
+      table.varchar('productName', 50).unique().primary().notNull();
+      table.varchar('vendor', 50).references('principal').inTable('vendor').notNull().onUpdate('cascade');
     })
   ]);
 };
@@ -25,6 +30,7 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return Promise.all([
     knex.schema.dropTable('client'),
+    knex.schema.dropTable('products'),
     knex.schema.dropTable('vendor'),
     knex.schema.dropTable('engineer')
   ]);
