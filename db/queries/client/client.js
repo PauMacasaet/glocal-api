@@ -2,7 +2,7 @@ const knex = require('../../knex'); // the connection
 
 module.exports = {
     getAll() {
-        return knex('client');
+        return knex.select('accountName', 'contact_details[1] AS Customer_Name', 'contact_details[2] AS Email', 'contact_details[3] AS Contact_Number', 'company_address', 'accountManager AS Assigned_AM').from('client');
     },
     getOne(accountName) {
         return knex('client').where('accountName', accountName);

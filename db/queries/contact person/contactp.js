@@ -2,10 +2,10 @@ const knex = require('../../knex'); // the connection
 
 module.exports = {
     getAll() {
-        return knex('contact_person');
+        return knex.select('client', 'personName AS Contact_Person').from('contact_person');
     },
     getOne(personName) {
-        return knex('contact_person').where('personName', personName);
+        return knex.select('client', 'personName AS Contact_Person').from('contact_person').where('personName', personName);
     }, 
     create(contact_person) {
         return knex('contact_person').insert(contact_person, '*');

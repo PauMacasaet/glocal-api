@@ -2,9 +2,9 @@ const knex = require('../../knex'); // the connection
 
 module.exports = {
     getAll() {
-        return knex('contact_person');
+        return knex.select('client', 'personName AS Contact_Person').from('contact_person');
     },
     getOne(client) {
-        return knex('contact_person').where('client', client);
+        return knex.select('client', 'personName AS Contact_Person').from('contact_person').where('client', client);
     }
 }
