@@ -1,4 +1,4 @@
-const vendors = require('../vendors');
+const vendors = require('../inserts/vendors');
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries

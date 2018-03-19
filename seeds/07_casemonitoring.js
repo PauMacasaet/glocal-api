@@ -1,4 +1,4 @@
-const cases = require('../cases');
+const cases = require('../inserts/cases');
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries

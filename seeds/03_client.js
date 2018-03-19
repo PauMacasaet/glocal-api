@@ -1,4 +1,5 @@
-const clients = require('../clients');
+const clients = require('../inserts/clients');
+
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('client').del()

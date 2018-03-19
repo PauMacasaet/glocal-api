@@ -1,4 +1,5 @@
-const activities = require('../activities');
+const activities = require('../inserts/activities');
+
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('activities').del()

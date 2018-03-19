@@ -1,4 +1,4 @@
-const licenses = require('../licenses');
+const licenses = require('../inserts/licenses');
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries

@@ -1,4 +1,4 @@
-const products = require('../products');
+const products = require('../inserts/products');
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
