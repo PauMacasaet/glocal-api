@@ -3,6 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 
@@ -61,8 +62,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
 
 // USE THESE ROUTES
+
+//engineer
 app.use('/engineer', engId);
 app.use('/department', department);
 app.use('/name', name);
@@ -70,19 +74,24 @@ app.use('/isLead', isLead);
 
 app.use('/vendor', principal);
 
+//client
 app.use('/client', accountName);
 app.use('/accountManager', accountManager);
 
+//products
 app.use('/products', productName);
 app.use('/productVendor', productVendor);
 
+//contact_person
 app.use('/contactp', contactPerson);
 app.use('/contactc', contactClient);
 
+//license
 app.use('/license', license);
 app.use('/onSite', on_site);
 app.use('/clientLicense', clientLicense);
 
+//case_monitoring
 app.use('/glocalId', glocalid);
 app.use('/vendorCaseId', vendorcaseid);
 app.use('/dateCreated', datecreated);
@@ -96,6 +105,7 @@ app.use('/assignedAccountManager', assignedAM);
 app.use('/assignedSystemsEngineer', assignedSE);
 app.use('/caseStatus', caseStatus);
 
+//activities
 app.use('/activityNo', activityNo);
 app.use('/timeIn', timeIn);
 app.use('/timeOut', timeOuts);
@@ -109,6 +119,7 @@ app.use('/engineerName', engineerName);
 app.use('/engid', activityEngId);
 app.use('/lastUpdate', lastUpdate);
 
+//stats
 app.use('/totalCases', totalCases);
 
 // catch 404 and forward to error handler
