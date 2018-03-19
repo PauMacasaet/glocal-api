@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+// ROUTE VARIABLES
 const engId = require('./routes/engineer/engId');
 const department = require('./routes/engineer/department');
 const name = require('./routes/engineer/name');
@@ -47,6 +48,12 @@ const addres = require('./routes/activities/addres');
 const typeOfActivity = require('./routes/activities/typeOfActivity');
 const purpose = require('./routes/activities/purposeOfVisit');
 const activityPerformed = require('./routes/activities/activityPerformed');
+const recommendations = require('./routes/activities/recommendations');
+const engineerName = require('./routes/activities/engineerName');
+const activityEngId = require('./routes/activities/engid');
+const lastUpdate = require('./routes/activities/lastUpdate');
+
+const totalCases = require('./routes/stats/totalCases');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -55,7 +62,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// use routes
+// USE THESE ROUTES
 app.use('/engineer', engId);
 app.use('/department', department);
 app.use('/name', name);
@@ -97,6 +104,12 @@ app.use('/address', addres);
 app.use('/typeOfActivity', typeOfActivity);
 app.use('/purposeOfVisit', purpose);
 app.use('/activityPerformed', activityPerformed);
+app.use('/recommendations', recommendations);
+app.use('/engineerName', engineerName);
+app.use('/engid', activityEngId);
+app.use('/lastUpdate', lastUpdate);
+
+app.use('/totalCases', totalCases);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
