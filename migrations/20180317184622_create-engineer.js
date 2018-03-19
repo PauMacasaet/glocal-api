@@ -60,6 +60,7 @@ exports.up = function(knex, Promise) {
       table.varchar('productName', 50).references('productName').inTable('products').notNull().onUpdate('cascade');
       table.varchar('systemsEngineerLead', 50);
       table.varchar('assignedAccountManager', 50);
+      table.specificType('assignedSystemsEngineer', 'text[]').notNull();
       table.varchar('leads', 50).notNull();
       table.varchar('case_status', 50).notNull();
     }),
