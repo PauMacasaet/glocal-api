@@ -39,6 +39,15 @@ const assignedAM = require('./routes/case monitoring/assignedAccountManager');
 const assignedSE = require('./routes/case monitoring/assignedSystemsEngineer');
 const caseStatus = require('./routes/case monitoring/case_status');
 
+const activityNo = require('./routes/activities/activityNo');
+const timeIn = require('./routes/activities/timeIn');
+const timeOuts = require('./routes/activities/timeOuts');
+const activityClient = require('./routes/activities/client');
+const addres = require('./routes/activities/addres');
+const typeOfActivity = require('./routes/activities/typeOfActivity');
+const purpose = require('./routes/activities/purposeOfVisit');
+const activityPerformed = require('./routes/activities/activityPerformed');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -55,30 +64,39 @@ app.use('/isLead', isLead);
 app.use('/vendor', principal);
 
 app.use('/client', accountName);
-app.use('/accountmanager', accountManager);
+app.use('/accountManager', accountManager);
 
 app.use('/products', productName);
-app.use('/productvendor', productVendor);
+app.use('/productVendor', productVendor);
 
 app.use('/contactp', contactPerson);
 app.use('/contactc', contactClient);
 
 app.use('/license', license);
-app.use('/onsite', on_site);
-app.use('/clientlicense', clientLicense);
+app.use('/onSite', on_site);
+app.use('/clientLicense', clientLicense);
 
-app.use('/glocalid', glocalid);
-app.use('/vendorcaseid', vendorcaseid);
-app.use('/datecreated', datecreated);
-app.use('/dateraised', dateraised);
-app.use('/casetitle', casetitle);
-app.use('/casedesc', casedesc);
+app.use('/glocalId', glocalid);
+app.use('/vendorCaseId', vendorcaseid);
+app.use('/dateCreated', datecreated);
+app.use('/dateRaised', dateraised);
+app.use('/caseTitle', casetitle);
+app.use('/caseDesc', casedesc);
 app.use('/severity', severity);
 app.use('/customerName', customerName);
 app.use('/systemsEngineerLead', seLead);
 app.use('/assignedAccountManager', assignedAM);
 app.use('/assignedSystemsEngineer', assignedSE);
 app.use('/caseStatus', caseStatus);
+
+app.use('/activityNo', activityNo);
+app.use('/timeIn', timeIn);
+app.use('/timeOut', timeOuts);
+app.use('/activityClient', activityClient);
+app.use('/address', addres);
+app.use('/typeOfActivity', typeOfActivity);
+app.use('/purposeOfVisit', purpose);
+app.use('/activityPerformed', activityPerformed);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
