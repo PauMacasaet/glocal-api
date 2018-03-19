@@ -31,6 +31,13 @@ const vendorcaseid = require('./routes/case monitoring/vendorCaseId');
 const datecreated = require('./routes/case monitoring/dateCreated');
 const dateraised = require('./routes/case monitoring/dateRaised');
 const casetitle = require('./routes/case monitoring/caseTitle');
+const casedesc = require('./routes/case monitoring/caseDesc');
+const severity = require('./routes/case monitoring/severity');
+const customerName = require('./routes/case monitoring/customerName');
+const seLead = require('./routes/case monitoring/systemsEngineerLead');
+const assignedAM = require('./routes/case monitoring/assignedAccountManager');
+const assignedSE = require('./routes/case monitoring/assignedSystemsEngineer');
+const caseStatus = require('./routes/case monitoring/case_status');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -65,6 +72,13 @@ app.use('/vendorcaseid', vendorcaseid);
 app.use('/datecreated', datecreated);
 app.use('/dateraised', dateraised);
 app.use('/casetitle', casetitle);
+app.use('/casedesc', casedesc);
+app.use('/severity', severity);
+app.use('/customerName', customerName);
+app.use('/systemsEngineerLead', seLead);
+app.use('/assignedAccountManager', assignedAM);
+app.use('/assignedSystemsEngineer', assignedSE);
+app.use('/caseStatus', caseStatus);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
