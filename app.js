@@ -26,6 +26,12 @@ const license = require('./routes/license/license');
 const on_site = require('./routes/license/onsite');
 const clientLicense = require('./routes/license/vendor');
 
+const glocalid = require('./routes/case monitoring/glocalId');
+const vendorcaseid = require('./routes/case monitoring/vendorCaseId');
+const datecreated = require('./routes/case monitoring/dateCreated');
+const dateraised = require('./routes/case monitoring/dateRaised');
+const casetitle = require('./routes/case monitoring/caseTitle');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -37,7 +43,7 @@ app.use(cookieParser());
 app.use('/engineer', engId);
 app.use('/department', department);
 app.use('/name', name);
-app.use('/isLead', isLead);
+app.use('/isLead', isLead); 
 
 app.use('/vendor', principal);
 
@@ -53,6 +59,12 @@ app.use('/contactc', contactClient);
 app.use('/license', license);
 app.use('/onsite', on_site);
 app.use('/clientlicense', clientLicense);
+
+app.use('/glocalid', glocalid);
+app.use('/vendorcaseid', vendorcaseid);
+app.use('/datecreated', datecreated);
+app.use('/dateraised', dateraised);
+app.use('/casetitle', casetitle);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
