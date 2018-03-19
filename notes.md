@@ -5,6 +5,10 @@ createdb
 
 npm install --save knex pg
 
+npm install --save-dev nodemon
+
+npm run dev
+
 knex init
 	fix knexfile
 

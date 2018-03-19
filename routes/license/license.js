@@ -3,10 +3,16 @@ const express = require('express');
 const router = express.Router();
 
 const queries = require('../../db/queries/license/license');
+const query2 = require('../../db/queries/license/license2');
 
 function isValidProduct(req, res, next) {
     if (req.params.productName) return next();
     next(new Error('Invalid License'));
+}
+
+function isValidId(req, res, next) {
+    if (req.params.licenseId) return next();
+    next(new Error('Invalid License ID'));
 }
 
 function validLicense(license) {
@@ -33,7 +39,18 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:productName', isValidProduct, (req, res) => {
+router.get('/:licenseId', isValidId, (req, res) => {
+    query2.getOne(req.params.licenseId).then(license => {
+        if(license) {
+            res.json(license);
+            console.log('Getting List by License ID');
+        } else {
+            next();
+        }
+    });
+});
+
+router.get('/product/:productName', isValidProduct, (req, res) => {
     queries.getOne(req.params.productName).then(license => {
         if(license) {
             res.json(license);
