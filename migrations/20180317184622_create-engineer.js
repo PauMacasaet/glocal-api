@@ -39,7 +39,7 @@ exports.up = function(knex, Promise) {
       table.integer('man_days').notNull();
       table.integer('remaining_man_days').notNull();
       table.boolean('quarterly_hc').notNull();
-      table.varchar('remarks', 200);
+      table.varchar('remarks', 2000);
     }),
 
     knex.schema.createTable('contact_person', (table) => {
@@ -75,9 +75,9 @@ exports.up = function(knex, Promise) {
       table.varchar('addres', 50).notNull();
       table.varchar('typeOfActivity', 50).notNull();
       table.varchar('purposeOfVisit', 50).notNull();
-      table.varchar('activityPerformed', 250).notNull();
-      table.varchar('nextActivity', 250).notNull();
-      table.varchar('recommendations');
+      table.varchar('activityPerformed', 2000).notNull();
+      table.varchar('nextActivity', 2000).notNull();
+      table.varchar('recommendations', 2000);
       table.integer('engid').references('engId').inTable('engineer').notNull();
       table.varchar('engineerName', 50);
     })
