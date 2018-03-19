@@ -11,7 +11,7 @@ function isValidClient(req, res, next) {
 
 function validClient(client) {
     const hasAccoutname = typeof client.accountName == 'string' && client.accountName.trim() != '';
-    const hasContact = typeof client.contact_details == 'string' && client.contact_details.trim() != '';
+    const hasContact = Array.isArray(client.contact_details); 
     const hasAddress = typeof client.company_address == 'string' && client.company_address.trim() != '';
     const hasManager = typeof client.accountManager == 'string' && client.accountManager.trim() != '';
     return hasAccoutname && hasContact && hasAddress && hasManager;
