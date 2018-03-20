@@ -1,8 +1,8 @@
 const express = require('express');
-
 const router = express.Router();
 
 const queries = require('../../db/queries/case monitoring/glocalid');
+
 
 function isValidId(req, res, next) {
     if (req.params.glocalId) return next();
@@ -30,7 +30,15 @@ router.get('/', (req, res) => {
     queries.getAll().then(cases => {
         res.json(cases);
         console.log('GETTING ALL CASES');
-    })
+    });
+});
+
+router.get('/search', (req, res) => {
+    res.json(req.query.q);
+});
+
+router.get('/filter', (req,res) => {
+    res.json(req.query);
 });
 
 router.get('/:glocalId', isValidId, (req, res) => {
