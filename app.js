@@ -12,6 +12,7 @@ const engId = require('./routes/engineer/engId');
 const department = require('./routes/engineer/department');
 const name = require('./routes/engineer/name');
 const isLead = require('./routes/engineer/isLead');
+const engActivities = require('./routes/engineer/engactivities');
 
 const principal = require('./routes/vendor/vendor');
 
@@ -72,6 +73,7 @@ app.use('/engineer', engId);
 app.use('/department', department);
 app.use('/name', name);
 app.use('/isLead', isLead); 
+app.use('/engActivities', engActivities);
 
 app.use('/vendor', principal);
 

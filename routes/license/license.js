@@ -11,7 +11,7 @@ function isValidProduct(req, res, next) {
 }
 
 function isValidId(req, res, next) {
-    if (req.params.licenseId) return next();
+    if (!isNaN(req.params.licenseId)) return next();
     next(new Error('Invalid License ID'));
 }
 

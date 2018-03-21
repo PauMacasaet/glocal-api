@@ -3,7 +3,6 @@ const router = express.Router();
 
 const queries = require('../../db/queries/case monitoring/glocalid');
 
-
 function isValidId(req, res, next) {
     if (req.params.glocalId) return next();
     next(new Error('Invalid ID'));
@@ -33,10 +32,12 @@ router.get('/', (req, res) => {
     });
 });
 
+// customer, caseTitle, caseDescription, productName
 router.get('/search', (req, res) => {
     res.json(req.query.q);
 });
 
+// customer, case_status, leads, severity, vendor, productName, dateRaised
 router.get('/filter', (req,res) => {
     res.json(req.query);
 });
