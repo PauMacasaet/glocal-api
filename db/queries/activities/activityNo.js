@@ -4,12 +4,12 @@ module.exports = {
     getAll() {
         return knex('activities')
         .join('engineer', 'engineer.engId', '=', 'activities.engid')
-        .select('activities.engid', 'activities.productName', 'activities.typeOfActivity', 'activities.purposeOfVisit', 'activities.activityPerformed', 'activities.nextActivity', 'activities.recommendations', 'activity.timeIn', 'activity.timeOuts', 'engineer.firstName', 'engineer.lastName');
+        .select('activities.engid', 'activities.productName', 'activities.typeOfActivity', 'activities.purposeOfVisit', 'activities.activityPerformed', 'activities.nextActivity', 'activities.recommendations', 'activities.timeIn', 'activities.timeOuts', 'engineer.firstName', 'engineer.lastName');
     },
     getOne(activityNo) {
         return knex('activities')
         .join('engineer', 'engineer.engId', '=', 'activities.engid')
-        .select('activities.engid', 'activities.productName', 'activities.typeOfActivity', 'activities.purposeOfVisit', 'activities.activityPerformed', 'activities.nextActivity', 'activities.recommendations', 'activity.timeIn', 'activity.timeOuts', 'engineer.firstName', 'engineer.lastName')
+        .select('activities.engid', 'activities.productName', 'activities.typeOfActivity', 'activities.purposeOfVisit', 'activities.activityPerformed', 'activities.nextActivity', 'activities.recommendations', 'activities.timeIn', 'activities.timeOuts', 'engineer.firstName', 'engineer.lastName')
         .where('activityNo', activityNo);
     },
     create(activity) {

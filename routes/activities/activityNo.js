@@ -5,7 +5,7 @@ const router = express.Router();
 const queries = require('../../db/queries/activities/activityNo');
 
 function isValidActivityNo(req, res, next) {
-    if (req.params.activityNo) return next();
+    if (!isNaN(req.params.activityNo)) return next();
     next(new Error('Invalid Activity No'));
 }
 

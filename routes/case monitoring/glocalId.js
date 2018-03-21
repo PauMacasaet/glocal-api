@@ -3,6 +3,7 @@ const router = express.Router();
 
 const queries = require('../../db/queries/case monitoring/glocalid');
 const searchQuery = require('../../db/queries/case monitoring/search');
+const filterQuery = require('../../db/queries/case monitoring/filter');
 
 function isValidId(req, res, next) {
     if (req.params.glocalId) return next();
@@ -38,15 +39,39 @@ router.get('/search', (req, res) => {
         res.json(case_mon);
         console.log('Searching');
     });
-    //res.json(req.query.q);
 });
 
-// customer, case_status, leads, severity, vendor, productName, dateRaised
+// filters: customer, case_status, assignedSystemEngineers, severity, vendor, productName, dateRaised
+// FIELDS TO SHOW: glocalId, customer, case_status, assignedSystemsEngineer, severity, caseTitle, productName, dateRaised
 router.get('/filter', (req,res) => {
-    res.json(req.query);
+    const x = filterQuery.getOne(req.query.filter);
+
+    if (req.query.customer) {
+        x.where('customer', req.query.customer);
+    } else if (req.query.case_status) {
+        x.where('case_status', req.query.case_status);
+    } else if (req.query.assignedSystemsEngineer) {
+        x.where('assignedSystemsEngineer', req.query.assignedSystemsEngineer);
+    } else if (req.query.severity) {
+        x.where('severity', req.query.severity);
+    } else if (req.query.vendor) {
+        x.where('vendor', req.query.vendor);
+    } else if (req.query.productName) {
+        x.where('productName', req.query.productName);
+    } else if (req.query.dateRaised) {
+        x.where('dateRaised', req.query.dateRaised);
+    } 
+
+    x.then(filters => {
+        res.json(filters);
+        console.log('Filtering');
+    })
+    .then(null, err => {
+        res.status(500).send(err);
+    });
 });
 
-router.get('/:glocalId', isValidId, (req, res) => {
+router.get('/:glocalId', isValidId, (req, res, next) => {
     queries.getOne(req.params.glocalId).then(case_mon => {
         if(case_mon) {
             res.json(case_mon);

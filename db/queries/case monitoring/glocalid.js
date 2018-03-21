@@ -2,7 +2,7 @@ const knex = require('../../knex'); // the connection
 
 module.exports = {
     getAll() {
-        return knex.select('glocalId', 'vendorCaseId', 'dateIdCreated', 'assignedAccountManager', 'assignedSystemsEngineer', 'leads', 'case_status', 'caseDescription', 'caseTitle', 'customer', 'dateRaised', 'productName', 'severity', 'systemsEngineerLead', 'vendor').from('case_monitoring').orderBy('glocalId', 'asc');
+        return knex.select('glocalId', 'vendorCaseId', 'dateIdCreated', 'assignedAccountManager', 'assignedSystemsEngineer', 'case_status', 'caseDescription', 'caseTitle', 'customer', 'dateRaised', 'productName', 'severity', 'systemsEngineerLead', 'vendor').from('case_monitoring').orderBy('glocalId', 'asc');
     },
     getOne(glocalId) {
         return knex('case_monitoring').where('glocalId', glocalId);
