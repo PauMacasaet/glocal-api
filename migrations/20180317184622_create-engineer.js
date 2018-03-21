@@ -61,7 +61,6 @@ exports.up = function(knex, Promise) {
       table.varchar('systemsEngineerLead', 50);
       table.varchar('assignedAccountManager', 50);
       table.specificType('assignedSystemsEngineer', 'text[]').notNull();
-      table.varchar('leads', 50).notNull();
       table.varchar('case_status', 50).notNull();
     }),
 
@@ -80,7 +79,6 @@ exports.up = function(knex, Promise) {
       table.varchar('nextActivity', 2000).notNull();
       table.varchar('recommendations', 2000);
       table.integer('engid').references('engId').inTable('engineer').notNull();
-      table.varchar('engineerName', 50);
     })
   ]);
 };

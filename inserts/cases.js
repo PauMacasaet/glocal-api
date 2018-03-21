@@ -12,7 +12,6 @@ module.exports = [
         systemsEngineerLead: 'Jefferson',
         assignedAccountManager: 'Mei',
         assignedSystemsEngineer: ['Isaiah Solomon', 'Aaron Hernandez'],
-        leads: 'John Jenkins',
         case_status: 'Ongoing'
     },
     {
@@ -28,7 +27,6 @@ module.exports = [
         systemsEngineerLead: 'Jeffrey',
         assignedAccountManager: 'Maan',
         assignedSystemsEngineer: ['Isaiah Solomon'],
-        leads: 'Aaron Hernandez',
         case_status: 'Resolved'
     },
     {
@@ -44,7 +42,6 @@ module.exports = [
         systemsEngineerLead: 'Jefferson',
         assignedAccountManager: 'Mei',
         assignedSystemsEngineer: ['Isaiah Solomon'],
-        leads: 'Aaron Hernandez',
         case_status: 'Ongoing'
     },
     {
@@ -60,7 +57,6 @@ module.exports = [
         systemsEngineerLead: 'Oliver',
         assignedAccountManager: 'Maan',
         assignedSystemsEngineer: ['Aaron Hernandez'],
-        leads: 'Isaiah Solomon',
         case_status: 'Pending (Glo-cal)'
     },
     {
@@ -76,7 +72,6 @@ module.exports = [
         systemsEngineerLead: 'Jeffrey',
         assignedAccountManager: 'Mei',
         assignedSystemsEngineer: ['John Jenkins'],
-        leads: 'Aaron Hernandez',
         case_status: 'Pending (Client)'
     },
     {
@@ -92,7 +87,6 @@ module.exports = [
         systemsEngineerLead: 'Jeffrey',
         assignedAccountManager: 'Mei',
         assignedSystemsEngineer: ['Aaron Hernandez'],
-        leads: 'John Jenkins',
         case_status: 'Pending (Client)'
     },
 ];
