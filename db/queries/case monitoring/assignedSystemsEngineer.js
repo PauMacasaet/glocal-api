@@ -5,6 +5,8 @@ module.exports = {
         return knex('case_monitoring');
     },
     getOne(assignedSystemsEngineer) {
-        return knex.select('assignedSystemsEngineer').from('case_monitoring').where('assignedSystemsEngineer', assignedSystemsEngineer);
+        return knex.select('assignedSystemsEngineer')
+        .from('case_monitoring')
+        .where('assignedSystemsEngineer', assignedSystemsEngineer);
     }
 }

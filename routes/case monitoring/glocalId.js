@@ -21,9 +21,8 @@ function validCase(case_mon) {
     const hasSELead = typeof case_mon.systemsEngineerLead == 'string';
     const hasAccountManager = typeof case_mon.assignedAccountManager == 'string';
     const hasSE = Array.isArray(case_mon.assignedSystemsEngineer);
-    const hasLeads = typeof case_mon.leads == 'string' && case_mon.leads.trim() != ''; 
     const hasStatus = typeof case_mon.case_status == 'string' && case_mon.case_status.trim() != '';
-    return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasAccountManager && hasSE && hasLeads && hasStatus;
+    return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasAccountManager && hasSE && hasStatus;
 }
 
 router.get('/', (req, res) => {

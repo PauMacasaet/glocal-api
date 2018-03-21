@@ -5,6 +5,7 @@ module.exports = {
         return knex('case_monitoring');
     },
     getOne(dateIdCreated) {
-        return knex('case_monitoring').where('dateIdCreated', dateIdCreated);
+        return knex('case_monitoring')
+        .where('dateIdCreated', dateIdCreated);
     }
 }

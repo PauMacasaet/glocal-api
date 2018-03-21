@@ -52,7 +52,6 @@ const typeOfActivity = require('./routes/activities/typeOfActivity');
 const purpose = require('./routes/activities/purposeOfVisit');
 const activityPerformed = require('./routes/activities/activityPerformed');
 const recommendations = require('./routes/activities/recommendations');
-const engineerName = require('./routes/activities/engineerName');
 const activityEngId = require('./routes/activities/engid');
 const lastUpdate = require('./routes/activities/lastUpdate');
 
@@ -119,7 +118,6 @@ app.use('/typeOfActivity', typeOfActivity);
 app.use('/purposeOfVisit', purpose);
 app.use('/activityPerformed', activityPerformed);
 app.use('/recommendations', recommendations);
-app.use('/engineerName', engineerName);
 app.use('/engid', activityEngId);
 app.use('/lastUpdate', lastUpdate);
 
