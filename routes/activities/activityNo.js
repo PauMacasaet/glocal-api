@@ -21,8 +21,8 @@ function validActivity(activity) {
     const hasPurpose = typeof activity.purposeOfVisit == 'string' && activity.purposeOfVisit.trim() != '';
     const hasPerformed = typeof activity.activityPerformed == 'string' && activity.activityPerformed.trim() != '';
     const hasNextActivity = typeof activity.nextActivity == 'string' && activity.nextActivity.trim() != '';
-    const hasEngid = !isNaN(activity.engid);
-    return hasTrackingNo && hasTimeIn && hasTimeOut && hasProductName && hasClient && hasContact && hasAddres && hasType && hasPurpose && hasPerformed && hasNextActivity && hasEngid;
+    const hasEngineer = Array.isArray(activity.assignedSystemsEngineer);
+    return hasTrackingNo && hasTimeIn && hasTimeOut && hasProductName && hasClient && hasContact && hasAddres && hasType && hasPurpose && hasPerformed && hasNextActivity && hasEngineer;
 }
 
 router.get('/', (req, res) => {
