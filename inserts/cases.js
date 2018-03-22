@@ -11,7 +11,7 @@ module.exports = [
         productName: 'Multi-Cloud',
         systemsEngineerLead: 'Jefferson',
         assignedAccountManager: 'Mei',
-        assignedSystemsEngineer: ['Isaiah Solomon', 'Aaron Hernandez'],
+        assignedSystemsEngineer: [['Isaiah Solomon'], ['Aaron Hernandez']],
         case_status: 'Ongoing'
     },
     {
@@ -26,7 +26,7 @@ module.exports = [
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jeffrey',
         assignedAccountManager: 'Maan',
-        assignedSystemsEngineer: ['Isaiah Solomon'],
+        assignedSystemsEngineer: [['Isaiah Solomon']],
         case_status: 'Resolved'
     },
     {
@@ -41,7 +41,7 @@ module.exports = [
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jefferson',
         assignedAccountManager: 'Mei',
-        assignedSystemsEngineer: ['Isaiah Solomon'],
+        assignedSystemsEngineer: [['Isaiah Solomon']],
         case_status: 'Ongoing'
     },
     {
@@ -56,7 +56,7 @@ module.exports = [
         productName: 'Multi-Cloud',
         systemsEngineerLead: 'Oliver',
         assignedAccountManager: 'Maan',
-        assignedSystemsEngineer: ['Aaron Hernandez'],
+        assignedSystemsEngineer: [['Aaron Hernandez']],
         case_status: 'Pending (Glo-cal)'
     },
     {
@@ -71,7 +71,7 @@ module.exports = [
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jeffrey',
         assignedAccountManager: 'Mei',
-        assignedSystemsEngineer: ['John Jenkins'],
+        assignedSystemsEngineer: [['John Jenkins']],
         case_status: 'Pending (Client)'
     },
     {
@@ -86,7 +86,7 @@ module.exports = [
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jeffrey',
         assignedAccountManager: 'Mei',
-        assignedSystemsEngineer: ['Aaron Hernandez'],
+        assignedSystemsEngineer: [['Aaron Hernandez']],
         case_status: 'Pending (Client)'
     },
 ];
