@@ -12,7 +12,6 @@ const engId = require('./routes/engineer/engId');
 const department = require('./routes/engineer/department');
 const name = require('./routes/engineer/name');
 const isLead = require('./routes/engineer/isLead');
-const engActivities = require('./routes/engineer/engactivities');
 
 const principal = require('./routes/vendor/vendor');
 
@@ -54,6 +53,7 @@ const activityPerformed = require('./routes/activities/activityPerformed');
 const recommendations = require('./routes/activities/recommendations');
 const activityEngId = require('./routes/activities/engid');
 const lastUpdate = require('./routes/activities/lastUpdate');
+const engActivities = require('./routes/activities/engactivities');
 
 const totalCases = require('./routes/stats/totalCases');
 
@@ -72,7 +72,6 @@ app.use('/engineer', engId);
 app.use('/department', department);
 app.use('/name', name);
 app.use('/isLead', isLead); 
-app.use('/engActivities', engActivities);
 
 app.use('/vendor', principal);
 
@@ -120,6 +119,7 @@ app.use('/activityPerformed', activityPerformed);
 app.use('/recommendations', recommendations);
 app.use('/engid', activityEngId);
 app.use('/lastUpdate', lastUpdate);
+app.use('/engActivities', engActivities);
 
 //stats
 app.use('/totalCases', totalCases);

@@ -12,7 +12,7 @@ module.exports = [
         activityPerformed:'checked if modules are up to date', 
         nextActivity: 'install updates', 
         recommendations:'no recommendations', 
-        engid: 001 
+        assignedSystemsEngineer: ['Isaiah Solomon', 'Aaron Hernandez'] 
     },
     {
         trackingNo: 001,
@@ -27,6 +27,6 @@ module.exports = [
         activityPerformed: 'check version of software', 
         nextActivity: 'install updates', 
         recommendations: 'no recommendations', 
-        engid: 002 
+        assignedSystemsEngineer: ['John Jenkins']
     }
 ];

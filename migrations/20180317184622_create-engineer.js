@@ -78,7 +78,7 @@ exports.up = function(knex, Promise) {
       table.varchar('activityPerformed', 2000).notNull();
       table.varchar('nextActivity', 2000).notNull();
       table.varchar('recommendations', 2000);
-      table.integer('engid').references('engId').inTable('engineer').notNull();
+      table.specificType('assignedSystemsEngineer', 'text[]').notNull();
     })
   ]);
 };
