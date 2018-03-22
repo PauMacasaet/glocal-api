@@ -4,7 +4,8 @@ module.exports = {
     getAll() {
         return knex('case_monitoring')
         .join('client', 'client.accountName', '=', 'case_monitoring.customer')
-        .select('case_monitoring.glocalId', 'case_monitoring.vendorCaseId', 'case_monitoring.dateIdCreated', 'client.accountManager', 'case_monitoring.case_status', 'case_monitoring.caseDescription', 'case_monitoring.caseTitle', 'case_monitoring.customer', 'case_monitoring.dateRaised', 'case_monitoring.productName', 'case_monitoring.severity', 'case_monitoring.systemsEngineerLead', 'case_monitoring.vendor')
+        .leftJoin('activities', 'activities.trackingNo', '=', 'case_monitoring.glocalId')
+        .select('case_monitoring.glocalId', 'activities.assignedSystemsEngineer', 'case_monitoring.vendorCaseId', 'case_monitoring.dateIdCreated', 'client.accountManager', 'case_monitoring.case_status', 'case_monitoring.caseDescription', 'case_monitoring.caseTitle', 'case_monitoring.customer', 'case_monitoring.dateRaised', 'case_monitoring.productName', 'case_monitoring.severity', 'case_monitoring.systemsEngineerLead', 'case_monitoring.vendor')
         .orderBy('glocalId', 'asc');
     },
     getOne(glocalId) {
