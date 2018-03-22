@@ -59,7 +59,6 @@ exports.up = function(knex, Promise) {
       table.varchar('customer', 50).references('accountName').inTable('client').notNull().onUpdate('cascade');
       table.varchar('productName', 50).references('productName').inTable('products').notNull().onUpdate('cascade');
       table.varchar('systemsEngineerLead', 50);
-      table.varchar('assignedAccountManager', 50);
       table.specificType('assignedSystemsEngineer', 'text[]').notNull();
       table.varchar('case_status', 50).notNull();
     }),
