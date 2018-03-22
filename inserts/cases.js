@@ -10,7 +10,6 @@ module.exports = [
         customer: 'Unionbank',
         productName: 'Multi-Cloud',
         systemsEngineerLead: 'Jefferson',
-        assignedSystemsEngineer: [['Isaiah Solomon'], ['Aaron Hernandez']],
         case_status: 'Ongoing'
     },
     {
@@ -24,7 +23,6 @@ module.exports = [
         customer: 'BPI',
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jeffrey',
-        assignedSystemsEngineer: [['Isaiah Solomon']],
         case_status: 'Resolved'
     },
     {
@@ -38,7 +36,6 @@ module.exports = [
         customer: 'BPI',
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jefferson',
-        assignedSystemsEngineer: [['Isaiah Solomon']],
         case_status: 'Ongoing'
     },
     {
@@ -52,7 +49,6 @@ module.exports = [
         customer: 'Unionbank',
         productName: 'Multi-Cloud',
         systemsEngineerLead: 'Oliver',
-        assignedSystemsEngineer: [['Aaron Hernandez']],
         case_status: 'Pending (Glo-cal)'
     },
     {
@@ -66,7 +62,6 @@ module.exports = [
         customer: 'BPI',
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jeffrey',
-        assignedSystemsEngineer: [['John Jenkins']],
         case_status: 'Pending (Client)'
     },
     {
@@ -80,7 +75,6 @@ module.exports = [
         customer: 'BPI',
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jeffrey',
-        assignedSystemsEngineer: [['Aaron Hernandez']],
         case_status: 'Pending (Client)'
     },
 ];

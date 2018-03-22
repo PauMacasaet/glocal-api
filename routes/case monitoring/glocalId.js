@@ -20,9 +20,8 @@ function validCase(case_mon) {
     const hasCustomer = typeof case_mon.customer == 'string' && case_mon.customer.trim() != '';
     const hasProductName = typeof case_mon.productName == 'string' && case_mon.productName.trim() != '';
     const hasSELead = typeof case_mon.systemsEngineerLead == 'string';
-    const hasSE = Array.isArray(case_mon.assignedSystemsEngineer);
     const hasStatus = typeof case_mon.case_status == 'string' && case_mon.case_status.trim() != '';
-    return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasSE && hasStatus;
+    return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
 }
 
 router.get('/', (req, res) => {

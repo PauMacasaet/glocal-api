@@ -38,7 +38,7 @@ const severity = require('./routes/case monitoring/severity');
 const customerName = require('./routes/case monitoring/customerName');
 const seLead = require('./routes/case monitoring/systemsEngineerLead');
 //const assignedAM = require('./routes/case monitoring/assignedAccountManager');
-const assignedSE = require('./routes/case monitoring/assignedSystemsEngineer');
+//const assignedSE = require('./routes/case monitoring/assignedSystemsEngineer');
 const caseStatus = require('./routes/case monitoring/case_status');
 const nextId = require('./routes/case monitoring/nextId');
 
@@ -103,7 +103,7 @@ app.use('/severity', severity);
 app.use('/customerName', customerName);
 app.use('/systemsEngineerLead', seLead);
 //app.use('/assignedAccountManager', assignedAM);
-app.use('/assignedSystemsEngineer', assignedSE);
+//app.use('/assignedSystemsEngineer', assignedSE);
 app.use('/caseStatus', caseStatus);
 app.use('/nextId', nextId);
 
