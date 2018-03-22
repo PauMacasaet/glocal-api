@@ -3,7 +3,7 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getOne(filter) {
         return knex
-        .select('glocalId', 'customer', 'case_status', 'assignedSystemsEngineer', 'severity', 'caseTitle', 'productName', 'dateRaised')
+        .select('glocalId', 'customer', 'case_status', 'severity', 'caseTitle', 'productName', 'dateRaised')
         .from('case_monitoring');
         //.where('customer', filter);
         // .orWhere('case_status', filter)
