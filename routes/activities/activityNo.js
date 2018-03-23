@@ -15,14 +15,13 @@ function validActivity(activity) {
     const hasTimeOut = typeof activity.timeOuts == 'string' && activity.timeOuts.trim() != '';
     const hasProductName = typeof activity.productName == 'string' && activity.productName.trim() != '';
     const hasClient = typeof activity.client == 'string' && activity.client.trim() != '';
-    const hasContact = typeof activity.contactCustomer == 'string' && activity.contactCustomer.trim() != '';
     const hasAddres = typeof activity.addres == 'string' && activity.addres.trim() != '';
     const hasType = typeof activity.typeOfActivity == 'string' && activity.typeOfActivity.trim() != '';
     const hasPurpose = typeof activity.purposeOfVisit == 'string' && activity.purposeOfVisit.trim() != '';
     const hasPerformed = typeof activity.activityPerformed == 'string' && activity.activityPerformed.trim() != '';
     const hasNextActivity = typeof activity.nextActivity == 'string' && activity.nextActivity.trim() != '';
     const hasEngineer = Array.isArray(activity.assignedSystemsEngineer);
-    return hasTrackingNo && hasTimeIn && hasTimeOut && hasProductName && hasClient && hasContact && hasAddres && hasType && hasPurpose && hasPerformed && hasNextActivity && hasEngineer;
+    return hasTrackingNo && hasTimeIn && hasTimeOut && hasProductName && hasClient && hasAddres && hasType && hasPurpose && hasPerformed && hasNextActivity && hasEngineer;
 }
 
 router.get('/', (req, res) => {

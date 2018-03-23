@@ -69,7 +69,6 @@ exports.up = function(knex, Promise) {
       table.timestamp('timeOuts').notNull();
       table.varchar('productName', 50).references('productName').inTable('products').notNull().onUpdate('cascade');
       table.varchar('client', 50).notNull();
-      table.varchar('contactCustomer', 50).references('personName').inTable('contact_person').notNull();
       table.varchar('addres', 50).notNull();
       table.varchar('typeOfActivity', 50).notNull();
       table.varchar('purposeOfVisit', 50).notNull();
