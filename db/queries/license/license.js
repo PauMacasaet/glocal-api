@@ -1,5 +1,5 @@
 const knex = require('../../knex'); // the connection
-
+// isActive = Boolean
 module.exports = {
     getAll() {
         return knex('license')

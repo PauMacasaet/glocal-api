@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = [ 
     {
         date_start: '05/01/2018',
         date_end: '05/01/2019',
