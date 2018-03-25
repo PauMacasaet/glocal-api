@@ -5,6 +5,9 @@ module.exports = {
         return knex('license');
     },
     getOne(on_site) {
-        return knex.select('client', 'particulars', 'vendor', 'productName', 'quarterly_hc', 'remarks').from('license').where('on_site', on_site);
+        return knex
+        .select('licenseId', 'client', 'particulars', 'vendor', 'productName', 'quarterly_hc', 'remarks')
+        .from('license')
+        .where('on_site', on_site);
     }
 }
