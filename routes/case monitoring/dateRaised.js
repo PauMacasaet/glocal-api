@@ -10,20 +10,24 @@ function isValidRaise(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(cases => {
-        res.json(cases);
-        console.log('GETTING ALL CASES');
+    queries
+        .getAll()
+        .then(cases => {
+            res.json(cases);
+            console.log('GETTING ALL CASES');
     })
 });
 
 router.get('/:dateRaised', isValidRaise, (req, res) => {
-    queries.getOne(req.params.dateRaised).then(case_mon => {
-        if(case_mon) {
-            res.json(case_mon);
-            console.log('Getting List by DateRaised');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.dateRaised)
+        .then(case_mon => {
+            if(case_mon) {
+                res.json(case_mon);
+                console.log('Getting List by DateRaised');
+            } else {
+                next();
+            }
     });
 });
 

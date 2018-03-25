@@ -33,9 +33,11 @@ router.get('/', (req, res) => {
 
 // customer, caseTitle, caseDescription, productName
 router.get('/search', (req, res) => {
-    searchQuery.getOne(req.query.q).then(case_mon => {
-        res.json(case_mon);
-        console.log('Searching');
+    searchQuery
+        .getOne(req.query.q)
+        .then(case_mon => {
+            res.json(case_mon);
+            console.log('Searching');
     });
 });
 
@@ -70,23 +72,27 @@ router.get('/filter', (req,res) => {
 });
 
 router.get('/:glocalId', isValidId, (req, res, next) => {
-    queries.getOne(req.params.glocalId).then(case_mon => {
-        if(case_mon) {
-            res.json(case_mon);
-            console.log('Getting List by GlocalID');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.glocalId)
+        .then(case_mon => {
+            if(case_mon) {
+                res.json(case_mon);
+                console.log('Getting List by GlocalID');
+            } else {
+                next();
+            }
     });
 });
 
 router.post('/', (req, res, next) => {
     if(validCase(req.body)) {
-        queries.create(req.body).then(case_mon => {
+        queries
+            .create(req.body)
+            .then(case_mon => {
             res.json({
-                'create case_monitoring': 'case_monitoring created'
+                case_mon,
+                message: 'case_monitoring created'
             }); //malabo error
-            res.json(case_mon[0]);
         });
     } else {
         next(new Error('Invalid Case'));
@@ -94,21 +100,23 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:glocalId', (req, res, next) => {
-    queries.update(req.params.glocalId, req.body).then(case_mon => {
+    queries
+        .update(req.params.glocalId, req.body)
+        .then(case_mon => {
         res.json({
-            'update case_monitoring': 'case_monitoring updated'
+            case_mon,
+            message: 'case_monitoring updated'
         });
-        res.json(case_mon[0]);
     });
 });
 
 router.delete('/:glocalId', isValidId, (req, res, next) => {
-    queries.delete(req.params.glocalId).then(() => {
+    queries
+        .delete(req.params.glocalId)
+        .then(() => {
         res.json({
-            'delete case_monitoring': 'case_monitoring deleted'
-        });
-        res.json({
-            deleted: true
+            deleted: true,
+            message: 'case_monitoring deleted'
         });
     });
 });

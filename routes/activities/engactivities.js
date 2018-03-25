@@ -10,20 +10,24 @@ function isValidEngId(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(engineers => {
-        res.json(engineers);
-        console.log('GETTING ALL ENGINEER ACTIVITIES');
+    queries
+        .getAll()
+        .then(engineers => {
+            res.json(engineers);
+            console.log('GETTING ALL ENGINEER ACTIVITIES');
     });
 });
 
 router.get('/:assignedSystemsEngineer', isValidEngId, (req, res) => {
-    queries.getOne(req.params.assignedSystemsEngineer).then(engineer => {
-        if(engineer) {
-            res.json(engineer);
-            console.log('Getting Activities By Assigned Engineer');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.assignedSystemsEngineer)
+        .then(engineer => {
+            if(engineer) {
+                res.json(engineer);
+                console.log('Getting Activities By Assigned Engineer');
+            } else {
+                next();
+            }
     });
 });
 

@@ -10,20 +10,24 @@ function isValidPurpose(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(activities => {
-        res.json(activities);
-        console.log('GETTING ALL ACTIVITIES');
-    })
+    queries
+        .getAll()
+        .then(activities => {
+            res.json(activities);
+            console.log('GETTING ALL ACTIVITIES');
+    });
 });
 
 router.get('/:purposeOfVisit', isValidPurpose, (req, res) => {
-    queries.getOne(req.params.purposeOfVisit).then(activity => {
-        if(activity) {
-            res.json(activity);
-            console.log('Getting List by Purpose Of Visit');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.purposeOfVisit)
+        .then(activity => {
+            if(activity) {
+                res.json(activity);
+                console.log('Getting List by Purpose Of Visit');
+            } else {
+                next();
+            }
     });
 });
 

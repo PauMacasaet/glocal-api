@@ -10,20 +10,24 @@ function isValidSELead(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(cases => {
-        res.json(cases);
-        console.log('GETTING ALL CASES');
-    })
+    queries
+        .getAll()
+        .then(cases => {
+            res.json(cases);
+            console.log('GETTING ALL CASES');
+    });
 });
 
 router.get('/:systemsEngineerLead', isValidSELead, (req, res) => {
-    queries.getOne(req.params.systemsEngineerLead).then(case_mon => {
-        if(case_mon) {
-            res.json(case_mon);
-            console.log('Getting List by SystemsEngineerLead');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.systemsEngineerLead)
+        .then(case_mon => {
+            if(case_mon) {
+                res.json(case_mon);
+                console.log('Getting List by SystemsEngineerLead');
+            } else {
+                next();
+            }
     });
 });
 

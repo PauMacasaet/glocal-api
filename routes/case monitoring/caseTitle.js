@@ -10,20 +10,24 @@ function isValidTitle(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(cases => {
-        res.json(cases);
-        console.log('GETTING ALL CASES');
+    queries
+        .getAll()
+        .then(cases => {
+            res.json(cases);
+            console.log('GETTING ALL CASES');
     })
 });
 
 router.get('/:caseTitle', isValidTitle, (req, res) => {
-    queries.getOne(req.params.caseTitle).then(case_mon => {
-        if(case_mon) {
-            res.json(case_mon);
-            console.log('Getting List by CaseTitle');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.caseTitle)
+        .then(case_mon => {
+            if(case_mon) {
+                res.json(case_mon);
+                console.log('Getting List by CaseTitle');
+            } else {
+                next();
+            }
     });
 });
 

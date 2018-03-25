@@ -10,20 +10,24 @@ function isValidActPerformed(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(activities => {
-        res.json(activities);
-        console.log('GETTING ALL ACTIVITIES');
-    })
+    queries
+        .getAll()
+        .then(activities => {
+            res.json(activities);
+            console.log('GETTING ALL ACTIVITIES');
+    });
 });
 
 router.get('/:activityPerformed', isValidActPerformed, (req, res) => {
-    queries.getOne(req.params.activityPerformed).then(activity => {
-        if(activity) {
-            res.json(activity);
-            console.log('Getting List by Activity Performed');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.activityPerformed)
+        .then(activity => {
+            if(activity) {
+                res.json(activity);
+                console.log('Getting List by Activity Performed');
+            } else {
+                next();
+            }
     });
 });
 

@@ -10,20 +10,24 @@ function isValidTypeActivity(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(activities => {
-        res.json(activities);
-        console.log('GETTING ALL ACTIVITIES');
+    queries
+        .getAll()
+        .then(activities => {
+            res.json(activities);
+            console.log('GETTING ALL ACTIVITIES');
     })
 });
 
 router.get('/:typeOfActivity', isValidTypeActivity, (req, res) => {
-    queries.getOne(req.params.typeOfActivity).then(activity => {
-        if(activity) {
-            res.json(activity);
-            console.log('Getting List by Activity Type');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.typeOfActivity)
+        .then(activity => {
+            if(activity) {
+                res.json(activity);
+                console.log('Getting List by Activity Type');
+            } else {
+                next();
+            }
     });
 });
 

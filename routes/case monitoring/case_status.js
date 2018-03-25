@@ -10,20 +10,24 @@ function isValidStatus(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(cases => {
-        res.json(cases);
-        console.log('GETTING ALL CASES');
+    queries
+        .getAll()
+        .then(cases => {
+            res.json(cases);
+            console.log('GETTING ALL CASES');
     })
 });
 
 router.get('/:case_status', isValidStatus, (req, res) => {
-    queries.getOne(req.params.case_status).then(case_mon => {
-        if(case_mon) {
-            res.json(case_mon);
-            console.log('Getting List by Case Status');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.case_status)
+        .then(case_mon => {
+            if(case_mon) {
+                res.json(case_mon);
+                console.log('Getting List by Case Status');
+            } else {
+                next();
+            }
     });
 });
 

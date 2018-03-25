@@ -25,30 +25,36 @@ function validActivity(activity) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(activities => {
-        res.json(activities);
-        console.log('GETTING ALL ACTIVITIES');
-    })
+    queries
+        .getAll()
+        .then(activities => {
+            res.json(activities);
+            console.log('GETTING ALL ACTIVITIES');
+    });
 });
 
 router.get('/:activityNo', isValidActivityNo, (req, res) => {
-    queries.getOne(req.params.activityNo).then(activity => {
-        if(activity) {
-            res.json(activity);
-            console.log('Getting List by Activity No');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.activityNo)
+        .then(activity => {
+            if(activity) {
+                res.json(activity);
+                console.log('Getting List by Activity No');
+            } else {
+                next();
+            }
     });
 });
 
 router.post('/', (req, res, next) => {
     if(validActivity(req.body)) {
-        queries.create(req.body).then(activity => {
-            res.json({
-                'Create Activity': 'Activity Created'
-            }); //malabo error
-            res.json(activity[0]);
+        queries
+            .create(req.body)
+            .then(activity => {
+                res.json({
+                    activity,
+                    message: 'Activity Created'
+                });
         });
     } else {
         next(new Error('Invalid Activity'));
@@ -56,22 +62,24 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:activityNo', (req, res, next) => {
-    queries.update(req.params.activityNo, req.body).then(activity => {
-        res.json({
-            'Update Activity': 'Activity Updated'
-        });
-        res.json(activity[0]);
+    queries
+        .update(req.params.activityNo, req.body)
+        .then(activity => {
+            res.json({
+                activity,
+                message: 'Activity Updated'
+            });
     });
 });
 
 router.delete('/:activityNo', isValidActivityNo, (req, res, next) => {
-    queries.delete(req.params.activityNo).then(() => {
-        res.json({
-            'Delete Activity': 'Activity Deleted'
-        });
-        res.json({
-            deleted: true
-        });
+    queries
+        .delete(req.params.activityNo)
+        .then(() => {
+            res.json({
+                deleted: true,
+                message: 'Activity Deleted'
+            });
     });
 });
 

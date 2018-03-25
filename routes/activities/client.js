@@ -10,20 +10,24 @@ function isValidClient(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(activities => {
-        res.json(activities);
-        console.log('GETTING ALL ACTIVITIES');
-    })
+    queries
+        .getAll()
+        .then(activities => {
+            res.json(activities);
+            console.log('GETTING ALL ACTIVITIES');
+    });
 });
 
 router.get('/:client', isValidClient, (req, res) => {
-    queries.getOne(req.params.client).then(activity => {
-        if(activity) {
-            res.json(activity);
-            console.log('Getting List by Client');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.client)
+        .then(activity => {
+            if(activity) {
+                res.json(activity);
+                console.log('Getting List by Client');
+            } else {
+                next();
+            }
     });
 });
 
