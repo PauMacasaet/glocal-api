@@ -10,20 +10,24 @@ function isValidName(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(engineers => {
-        res.json(engineers);
-        console.log('GETTING ALL ENGINEERS')
+    queries
+        .getAll()
+        .then(engineers => {
+            res.json(engineers);
+            console.log('GETTING ALL ENGINEERS')
     })
 });
 
 router.get('/:lastName', isValidName, (req, res) => {
-    queries.getOne(req.params.lastName).then(engineer => {
-        if(engineer) {
-            res.json(engineer);
-            console.log('Getting Engineers by Name');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.lastName)
+        .then(engineer => {
+            if(engineer) {
+                res.json(engineer);
+                console.log('Getting Engineers by Name');
+            } else {
+                next();
+            }
     });
 });
 

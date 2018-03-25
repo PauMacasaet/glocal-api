@@ -10,20 +10,24 @@ function isValidVendor(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(products => {
-        res.json(products);
-        console.log('GETTING ALL PRODUCTS')
-    })
+    queries
+        .getAll()
+        .then(products => {
+            res.json(products);
+            console.log('GETTING ALL PRODUCTS')
+    });
 });
 
 router.get('/:vendor', isValidVendor, (req, res) => {
-    queries.getOne(req.params.vendor).then(product => {
-        if(product) {
-            res.json(product);
-            console.log('Getting Products by Vendor');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.vendor)
+        .then(product => {
+            if(product) {
+                res.json(product);
+                console.log('Getting Products by Vendor');
+            } else {
+                next();
+            }
     });
 });
 

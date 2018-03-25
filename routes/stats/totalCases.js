@@ -10,20 +10,24 @@ function isValidStatus(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(stats => {
-        res.json(stats);
-        console.log('GETTING ALL STATUSES');
+    queries
+        .getAll()
+        .then(stats => {
+            res.json(stats);
+            console.log('GETTING ALL STATUSES');
     })
 });
 
 router.get('/:case_status', isValidStatus, (req, res) => {
-    queries.getOne(req.params.case_status).then(status => {
-        if(status) {
-            res.json(status);
-            console.log('Getting Vendors by Principal');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.case_status)
+        .then(status => {
+            if(status) {
+                res.json(status);
+                console.log('Getting Vendors by Principal');
+            } else {
+                next();
+            }
     });
 });
 

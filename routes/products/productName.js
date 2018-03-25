@@ -16,30 +16,36 @@ function validProduct(product) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(products => {
-        res.json(products);
-        console.log('GETTING ALL PRODUCTS');
-    })
+    queries
+        .getAll()
+        .then(products => {
+            res.json(products);
+            console.log('GETTING ALL PRODUCTS');
+    });
 });
 
 router.get('/:productName', isValidProduct, (req, res) => {
-    queries.getOne(req.params.productName).then(product => {
-        if(product) {
-            res.json(product);
-            console.log('Getting Products by Name');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.productName)
+            .then(product => {
+            if(product) {
+                res.json(product);
+                console.log('Getting Products by Name');
+            } else {
+                next();
+            }
     });
 });
 
 router.post('/', (req, res, next) => {
     if(validProduct(req.body)) {
-        queries.create(req.body).then(product => {
-            res.json({
-                'create product': 'product created'
-            }); //malabo error
-            res.json(product[0]);
+        queries
+            .create(req.body)
+            .then(product => {
+                res.json({
+                    product,
+                    message: 'product created'
+                }); //malabo error
         });
     } else {
         next(new Error('Invalid Product'));
@@ -47,22 +53,24 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:productName', (req, res, next) => {
-    queries.update(req.params.productName, req.body).then(product => {
-        res.json({
-            'update product': 'product updated'
-        });
-        res.json(product[0]);
+    queries
+        .update(req.params.productName, req.body)
+        .then(product => {
+            res.json({
+                product,
+                message: 'product updated'
+            });
     });
 });
 
 router.delete('/:productName', isValidProduct, (req, res, next) => {
-    queries.delete(req.params.productName).then(() => {
-        res.json({
-            'delete product': 'product deleted'
-        });
-        res.json({
-            deleted: true
-        });
+    queries
+        .delete(req.params.productName)
+        .then(() => {
+            res.json({
+                deleted: true,
+                message: 'product deleted'
+            });
     });
 });
 

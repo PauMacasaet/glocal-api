@@ -18,30 +18,36 @@ function validEngineer(engineer) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(engineers => {
-        res.json(engineers);
-        console.log('GETTING ALL ENGINEERS');
-    })
+    queries
+        .getAll()
+        .then(engineers => {
+            res.json(engineers);
+            console.log('GETTING ALL ENGINEERS');
+    });
 });
 
 router.get('/:engId', isValidEngId, (req, res) => {
-    queries.getOne(req.params.engId).then(engineer => {
-        if(engineer) {
-            res.json(engineer);
-            console.log('Getting Engineers by ID');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.engId)
+        .then(engineer => {
+            if(engineer) {
+                res.json(engineer);
+                console.log('Getting Engineers by ID');
+            } else {
+                next();
+            }
     });
 });
 
 router.post('/', (req, res, next) => {
     if(validEngineer(req.body)) {
-        queries.create(req.body).then(engineer => {
-            res.json({
-                'create engineer': 'engineer created'
-            }); //malabo error
-            res.json(engineer[0]);
+        queries
+            .create(req.body)
+            .then(engineer => {
+                res.json({
+                    engineer,
+                    message: 'engineer created'
+                }); //malabo error
         });
     } else {
         next(new Error('Invalid Engineer'));
@@ -49,21 +55,21 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:engId', (req, res, next) => {
-    queries.update(req.params.engId, req.body).then(engineer => {
-        res.json({
-            'update engineer': 'engineer updated'
-        });
-        res.json(engineer[0]);
+    queries
+        .update(req.params.engId, req.body)
+        .then(engineer => {
+            res.json({
+                engineer,
+                message: 'engineer updated'
+            });
     });
 });
 
 router.delete('/:engId', isValidEngId, (req, res, next) => {
     queries.delete(req.params.engId).then(() => {
         res.json({
-            'delete engineer': 'engineer deleted'
-        });
-        res.json({
-            deleted: true
+            deleted,
+            message: 'engineer deleted'
         });
     });
 });

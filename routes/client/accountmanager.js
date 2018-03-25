@@ -10,20 +10,24 @@ function isValidManager(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(clients => {
-        res.json(clients);
-        console.log('GETTING ALL CLIENTS');
-    })
+    queries
+        .getAll()
+        .then(clients => {
+            res.json(clients);
+            console.log('GETTING ALL CLIENTS');
+    });
 });
 
 router.get('/:accountManager', isValidManager, (req, res) => {
-    queries.getOne(req.params.accountManager).then(client => {
-        if(client) {
-            res.json(client);
-            console.log('Getting Clients by Accountmanager');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.accountManager)
+        .then(client => {
+            if(client) {
+                res.json(client);
+                console.log('Getting Clients by Accountmanager');
+            } else {
+                next();
+            }
     });
 });
 

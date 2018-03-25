@@ -15,30 +15,36 @@ function validVendor(vendor) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(vendors => {
-        res.json(vendors);
-        console.log('GETTING ALL ENGINEERS');
-    })
+    queries
+        .getAll()
+        .then(vendors => {
+            res.json(vendors);
+            console.log('GETTING ALL ENGINEERS');
+    });
 });
 
 router.get('/:principal', isValidVendor, (req, res) => {
-    queries.getOne(req.params.principal).then(vendor => {
-        if(vendor) {
-            res.json(vendor);
-            console.log('Getting Vendors by Principal');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.principal)
+        .then(vendor => {
+            if(vendor) {
+                res.json(vendor);
+                console.log('Getting Vendors by Principal');
+            } else {
+                next();
+            }
     });
 });
 
 router.post('/', (req, res, next) => {
     if(validVendor(req.body)) {
-        queries.create(req.body).then(vendor => {
-            res.json({
-                'create vendor': 'vendor created'
-            }); //malabo error
-            res.json(vendor[0]);
+        queries
+            .create(req.body)
+            .then(vendor => {
+                res.json({
+                    vendor,
+                    message: 'vendor created'
+                }); //malabo error
         });
     } else {
         next(new Error('Invalid Vendor'));
@@ -46,22 +52,24 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:principal', (req, res, next) => {
-    queries.update(req.params.principal, req.body).then(vendor => {
-        res.json({
-            'update vendor': 'vendor updated'
-        });
-        res.json(vendor[0]);
+    queries
+        .update(req.params.principal, req.body)
+        .then(vendor => {
+            res.json({
+                vendor,
+                message: 'vendor updated'
+            });
     });
 });
 
 router.delete('/:principal', isValidVendor, (req, res, next) => {
-    queries.delete(req.params.principal).then(() => {
-        res.json({
-            'delete vendor': 'vendor deleted'
-        });
-        res.json({
-            deleted: true
-        });
+    queries
+        .delete(req.params.principal)
+        .then(() => {
+            res.json({
+                deleted: true,
+                message: 'vendor deleted'
+            });
     });
 });
 

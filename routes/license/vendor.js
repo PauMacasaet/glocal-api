@@ -10,20 +10,24 @@ function isValidClient(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(licenses => {
-        res.json(licenses);
-        console.log('GETTING ALL LICENSES');
+    queries
+        .getAll()
+        .then(licenses => {
+            res.json(licenses);
+            console.log('GETTING ALL LICENSES');
     })
 });
 
 router.get('/:client', isValidClient, (req, res) => {
-    queries.getOne(req.params.client).then(license => {
-        if(license) {
-            res.json(license);
-            console.log('Getting List by Client License');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.client)
+        .then(license => {
+            if(license) {
+                res.json(license);
+                console.log('Getting List by Client License');
+            } else {
+                next();
+            }
     });
 });
 

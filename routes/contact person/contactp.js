@@ -16,30 +16,36 @@ function validContact(contact) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(contacts => {
-        res.json(contacts);
-        console.log('GETTING ALL CONTACTS');
+    queries
+        .getAll()
+        .then(contacts => {
+            res.json(contacts);
+            console.log('GETTING ALL CONTACTS');
     });    
 });
 
 router.get('/:personName', isValidContact, (req, res) => {
-    queries.getOne(req.params.personName).then(contact => {
-        if(contact) {
-            res.json(contact);
-            console.log('Getting Contacts by Personname');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.personName)
+        .then(contact => {
+            if(contact) {
+                res.json(contact);
+                console.log('Getting Contacts by Personname');
+            } else {
+                next();
+            }
     });
 });
 
 router.post('/', (req, res, next) => {
     if(validContact(req.body)) {
-        queries.create(req.body).then(contact => {
-            res.json({
-                'create contact': 'contact created'
-            }); //malabo error
-            res.json(contact[0]);
+        queries
+            .create(req.body)
+            .then(contact => {
+                res.json({
+                    contact,
+                    message: 'contact created'
+                }); //malabo error
         });
     } else {
         next(new Error('Invalid Contact'));
@@ -47,22 +53,24 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:personName', (req, res, next) => {
-    queries.update(req.params.personName, req.body).then(contact => {
-        res.json({
-            'update contact': 'contact updated'
-        });
-        res.json(contact[0]);
+    queries
+        .update(req.params.personName, req.body)
+        .then(contact => {
+            res.json({
+                contact,
+                message: 'contact updated'
+            });
     });
 });
 
 router.delete('/:personName', isValidContact, (req, res, next) => {
-    queries.delete(req.params.personName).then(() => {
-        res.json({
-            'delete contact': 'contact deleted'
-        });
-        res.json({
-            deleted: true
-        });
+    queries
+        .delete(req.params.personName)
+        .then(() => {
+            res.json({
+                deleted: true,
+                message: 'contact deleted'
+            });
     });
 });
 

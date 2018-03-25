@@ -10,20 +10,24 @@ function isValidLead(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(engineers => {
-        res.json(engineers);
-        console.log('GETTING ALL ENGINEERS')
-    })
+    queries
+        .getAll()
+        .then(engineers => {
+            res.json(engineers);
+            console.log('GETTING ALL ENGINEERS')
+    });
 });
 
 router.get('/:isLead', isValidLead, (req, res) => {
-    queries.getOne(req.params.isLead).then(engineer => {
-        if(engineer) {
-            res.json(engineer);
-            console.log('Getting Engineers by SE Lead');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.isLead)
+        .then(engineer => {
+            if(engineer) {
+                res.json(engineer);
+                console.log('Getting Engineers by SE Lead');
+            } else {
+                next();
+            }
     });
 });
 

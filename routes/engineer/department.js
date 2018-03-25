@@ -10,20 +10,24 @@ function isValidDepartment(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(engineers => {
-        res.json(engineers);
-        console.log('GETTING ALL ENGINEERS')
-    })
+    queries
+        .getAll()
+        .then(engineers => {
+            res.json(engineers);
+            console.log('GETTING ALL ENGINEERS')
+    });
 });
 
 router.get('/:department', isValidDepartment, (req, res) => {
-    queries.getOne(req.params.department).then(engineer => {
-        if(engineer) {
-            res.json(engineer);
-            console.log('Getting Engineers by Department');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.department)
+        .then(engineer => {
+            if(engineer) {
+                res.json(engineer);
+                console.log('Getting Engineers by Department');
+            } else {
+                next();
+            }
     });
 });
 

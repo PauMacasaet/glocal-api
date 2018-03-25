@@ -10,20 +10,24 @@ function isValidSupport(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(licenses => {
-        res.json(licenses);
-        console.log('GETTING ALL LICENSES');
-    })
+    queries
+        .getAll()
+        .then(licenses => {
+            res.json(licenses);
+            console.log('GETTING ALL LICENSES');
+    });
 });
 
 router.get('/:on_site', isValidSupport, (req, res) => {
-    queries.getOne(req.params.on_site).then(license => {
-        if(license) {
-            res.json(license);
-            console.log('Getting List by Support Level');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.on_site)
+        .then(license => {
+            if(license) {
+                res.json(license);
+                console.log('Getting List by Support Level');
+            } else {
+                next();
+            }
     });
 });
 

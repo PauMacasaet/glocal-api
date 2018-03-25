@@ -33,41 +33,49 @@ function validLicense(license) {
 }
 
 router.get('/', (req, res) => {
-    queries.getAll().then(licenses => {
-        res.json(licenses);
-        console.log('GETTING ALL LICENSES');
+    queries
+        .getAll()
+        .then(licenses => {
+            res.json(licenses);
+            console.log('GETTING ALL LICENSES');
     })
 });
 
 router.get('/:licenseId', isValidId, (req, res) => {
-    query2.getOne(req.params.licenseId).then(license => {
-        if(license) {
-            res.json(license);
-            console.log('Getting List by License ID');
-        } else {
-            next();
-        }
+    query2
+        .getOne(req.params.licenseId)
+        .then(license => {
+            if(license) {
+                res.json(license);
+                console.log('Getting List by License ID');
+            } else {
+                next();
+            }
     });
 });
 
 router.get('/product/:productName', isValidProduct, (req, res) => {
-    queries.getOne(req.params.productName).then(license => {
-        if(license) {
-            res.json(license);
-            console.log('Getting List by Product License');
-        } else {
-            next();
-        }
+    queries
+        .getOne(req.params.productName)
+        .then(license => {
+            if(license) {
+                res.json(license);
+                console.log('Getting List by Product License');
+            } else {
+                next();
+            }
     });
 });
 
 router.post('/', (req, res, next) => {
     if(validLicense(req.body)) {
-        queries.create(req.body).then(license => {
-            res.json({
-                'create license': 'license created'
-            }); //malabo error
-            res.json(license[0]);
+        queries
+            .create(req.body)
+            .then(license => {
+                res.json({
+                    license,
+                    message: 'license created'
+                }); //malabo error
         });
     } else {
         next(new Error('Invalid License'));
@@ -75,22 +83,24 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:productName', (req, res, next) => {
-    queries.update(req.params.productName, req.body).then(license => {
-        res.json({
-            'update license': 'license updated'
-        });
-        res.json(license[0]);
+    queries
+        .update(req.params.productName, req.body)
+        .then(license => {
+            res.json({
+                license,
+                message: 'license updated'
+            });
     });
 });
 
 router.delete('/:productName', isValidProduct, (req, res, next) => {
-    queries.delete(req.params.productName).then(() => {
-        res.json({
-            'delete license': 'license deleted'
-        });
-        res.json({
-            deleted: true
-        });
+    queries
+        .delete(req.params.productName)
+        .then(() => {
+            res.json({
+                deleted: true,
+                message: 'license deleted'
+            });
     });
 });
 
