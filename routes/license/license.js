@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:licenseId', isValidId, (req, res) => {
+router.get('/:licenseId', isValidId, (req, res, next) => {
     query2
         .getOne(req.params.licenseId)
         .then(license => {
@@ -54,7 +54,7 @@ router.get('/:licenseId', isValidId, (req, res) => {
     });
 });
 
-router.get('/product/:productName', isValidProduct, (req, res) => {
+router.get('/product/:productName', isValidProduct, (req, res, next) => {
     queries
         .getOne(req.params.productName)
         .then(license => {
