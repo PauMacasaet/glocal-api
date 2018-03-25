@@ -82,9 +82,9 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:productName', (req, res, next) => {
+router.put('/:licenseId', (req, res, next) => {
     queries
-        .update(req.params.productName, req.body)
+        .update(req.params.licenseId, req.body)
         .then(license => {
             res.json({
                 license,
@@ -93,9 +93,9 @@ router.put('/:productName', (req, res, next) => {
     });
 });
 
-router.delete('/:productName', isValidProduct, (req, res, next) => {
+router.delete('/:licenseId', isValidId, (req, res, next) => {
     queries
-        .delete(req.params.productName)
+        .delete(req.params.licenseId)
         .then(() => {
             res.json({
                 deleted: true,
