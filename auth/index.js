@@ -5,30 +5,6 @@ const router = express.Router();
 const User = require('../db/queries/login/user');
 // route paths are prepended 
 
-router.get('/', (req, res) => {
-    User
-        .getAll()
-        .then(users => {
-            res.json(users);
-            console.log('GETTING ALL USERS');
-        });
-});
-
-router.get('/:id', (req, res) => {
-    if (!isNaN(req.params.id)) {
-      User.getOne(req.params.id).then(user => {
-        if (user) {
-          delete user.password;
-          res.json(user);
-        } else {
-          resError(res, 404, "User Not Found");
-        }
-      });
-    } else {
-      resError(res, 500, "Invalid ID");
-    }
-});
-
 function validUser(user) {
     const hasUserName = typeof user.username == 'string' 
         && user.username.trim() != '';
@@ -79,6 +55,7 @@ router.post('/signup', (req, res, next) => {
                             User
                                 .create(user)
                                 .then(id => {
+                                    setUserCookie(req, res, id);
                                     res.json({
                                         id,
                                         message: 'check'
@@ -96,6 +73,15 @@ router.post('/signup', (req, res, next) => {
     }
 });
 
+function setUserIdCookie (req, res, id) {
+    const isSecure = req.app.get('env') != 'development';
+    res.cookie('user_id', id, {
+        httpOnly: true,
+        secure: isSecure,
+        signed: true
+    });
+}
+
 router.post('/login', (req, res, next) => {
     if(validLogin(req.body)) {
         // check to see if in db
@@ -112,12 +98,8 @@ router.post('/login', (req, res, next) => {
                             if(result) {
                                 //setting the set-cookie header
                                 const isSecure = req.app.get('env') != 'development';
-                                res.cookie('user_id', user.id, {
-                                    httpOnly: true,
-                                    secure: isSecure,
-                                    signed: true
-                                });
                                 res.json({
+                                    id: user.id,
                                     message: 'Logged in'
                                 });
                             } else {
@@ -132,6 +114,13 @@ router.post('/login', (req, res, next) => {
     } else {
         next(new Error('Invalid Login'));
     }
+});
+
+router.get('/logout', (req, res) => {
+    res.clearCookie('user_id');
+    res.json({
+        message: 'logged out'
+    });
 });
 
 module.exports = router;
