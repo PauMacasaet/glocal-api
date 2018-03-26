@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:licenseId', isValidId, (req, res, next) => {
-    query2
+    queries
         .getOne(req.params.licenseId)
         .then(license => {
             if(license) {
