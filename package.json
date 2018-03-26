@@ -2,9 +2,6 @@
   "name": "carbon-api",
   "version": "1.0.0",
   "private": true,
-  "engines": {
-    "node": "8.9.x"
-  },
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon"
