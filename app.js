@@ -58,15 +58,20 @@ const tracking = require('./routes/activities/glocal');
 
 const totalCases = require('./routes/stats/totalCases');
 
+const user = require('./auth/index');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('secret'));
 app.use(cors());
 
 // USE THESE ROUTES
+
+//users
+app.use('/auth', user);
 
 //engineer
 app.use('/engineer', engId);

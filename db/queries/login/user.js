@@ -1,15 +1,27 @@
 const knex = require('../../knex');
 
 module.exports = {
+  getAll () {
+    return knex('users');
+  },
   getOne (id) {
-    return knex('user').where('id', id).first();
+    return knex('users')
+      .where('id', id)
+      .first();
+  },
+  getOneByContact (contactNumber) {
+    return knex('users')
+      .where('contactNumber', contactNumber);
   },
   getOneByEmail (email) {
-    return knex('user').where('email', email).first();
+    return knex('user')
+      .where('email', email).first();
   },
   create (user) {
-    return knex('user').insert(user, 'id').then(ids => {
-      return ids[0];
+    return knex('users')
+      .insert(user, 'id')
+      .then(ids => {
+        return ids[0];
     });
   }
 }

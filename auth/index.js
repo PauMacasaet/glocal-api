@@ -2,23 +2,47 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 
-const User = require('../db/user');
+const User = require('../db/queries/login/user');
 // route paths are prepended 
 
 router.get('/', (req, res) => {
-    res.json({
-        message: 'signup/login page'
-    });
+    User
+        .getAll()
+        .then(users => {
+            res.json(users);
+            console.log('GETTING ALL USERS');
+        });
+});
+
+router.get('/:id', (req, res) => {
+    if (!isNaN(req.params.id)) {
+      User.getOne(req.params.id).then(user => {
+        if (user) {
+          delete user.password;
+          res.json(user);
+        } else {
+          resError(res, 404, "User Not Found");
+        }
+      });
+    } else {
+      resError(res, 500, "Invalid ID");
+    }
 });
 
 function validUser(user) {
-    const validEmail = typeof user.email == 'string' 
+    const hasUserName = typeof user.username == 'string' 
+        && user.username.trim() != '';
+    const hasEmail = typeof user.email == 'string' 
         && user.email.trim() != '';
-    const validPassword = typeof user.password == 'string' 
+    const hasPassword = typeof user.password == 'string' 
         && user.password.trim() != ''
         && user.password.trim().length >= 6;
+    const hasNumber = typeof user.contactNumber == 'string'
+        && user.contactNumber.trim() != '';
+    const hasPosition = typeof user.position == 'string'
+        && user.position.trim() != '';
     
-    return validEmail && validPassword;
+    return hasUserName && hasEmail && hasPassword && hasNumber && hasPosition;
 }
 
 router.post('/signup', (req, res, next) => {
@@ -35,9 +59,12 @@ router.post('/signup', (req, res, next) => {
                         .then((hash) => {
                             // Store hash in your password DB.
                             const user = {
+                                username: req.body.username,
                                 email: req.body.email,
                                 password: hash,
-                                created_at: new Date()
+                                contactNumber: req.body.contactNumber,
+                                created_at: new Date(),
+                                position: req.body.position
                             };
 
                             User
