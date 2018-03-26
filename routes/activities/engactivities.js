@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:assignedSystemsEngineer', isValidEngId, (req, res) => {
+router.get('/:assignedSystemsEngineer', isValidEngId, (req, res, next) => {
     queries
         .getOne(req.params.assignedSystemsEngineer)
         .then(engineer => {
