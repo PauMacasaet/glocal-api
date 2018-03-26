@@ -55,7 +55,7 @@ router.get('/:licenseId', isValidId, (req, res, next) => {
 });
 
 router.get('/product/:productName', isValidProduct, (req, res, next) => {
-    queries
+    query2
         .getOne(req.params.productName)
         .then(license => {
             if(license) {
