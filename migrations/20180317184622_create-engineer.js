@@ -76,6 +76,20 @@ exports.up = function(knex, Promise) {
       table.varchar('nextActivity', 2000).notNull();
       table.varchar('recommendations', 2000);
       table.specificType('assignedSystemsEngineer', 'text[]').notNull();
+    }),
+
+    knex.schema.createTable('users', (table) => {
+      table.increments();
+      table.varchar('username', 50).unique().notNull();
+      table.varchar('email', 50).unique().notNull();
+      table.text('password').notNull();
+      table.varchar('contactNumber', 50).notNull();
+      table.datetime('dateCreated').notNull();
+      table.enu('position', ['Director', 
+                      'Sales Manager', 
+                      'Technical Manager', 
+                      'System Engineer', 
+                      'Account Manager']);
     })
   ]);
 };
