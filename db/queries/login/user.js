@@ -14,8 +14,9 @@ module.exports = {
       .where('contactNumber', contactNumber);
   },
   getOneByEmail (email) {
-    return knex('user')
-      .where('email', email).first();
+    return knex('users')
+      .where('email', email)
+      .first();
   },
   create (user) {
     return knex('users')

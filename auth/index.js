@@ -45,12 +45,21 @@ function validUser(user) {
     return hasUserName && hasEmail && hasPassword && hasNumber && hasPosition;
 }
 
+function validLogin(user) {
+    const hasEmail = typeof user.email == 'string' 
+        && user.email.trim() != '';
+    const hasPassword = typeof user.password == 'string' 
+        && user.password.trim() != ''
+        && user.password.trim().length >= 6;
+    return hasEmail && hasPassword;
+}
+
 router.post('/signup', (req, res, next) => {
     if(validUser(req.body)) {
         User
             .getOneByEmail(req.body.email)
             .then(user => {
-                console.log('user', user);
+                console.log('users', user);
                 //if user not found
                 if(!user) {
                     //unique email
@@ -63,7 +72,7 @@ router.post('/signup', (req, res, next) => {
                                 email: req.body.email,
                                 password: hash,
                                 contactNumber: req.body.contactNumber,
-                                created_at: new Date(),
+                                dateCreated: new Date(),
                                 position: req.body.position
                             };
 
@@ -88,12 +97,12 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-    if(validUser(req.body)) {
+    if(validLogin(req.body)) {
         // check to see if in db
         User
             .getOneByEmail(req.body.email)
             .then(user => {
-                console.log('user', user);
+                console.log('users', user);
                 if(user) {
                     //compare password with hash password
                     bcrypt
