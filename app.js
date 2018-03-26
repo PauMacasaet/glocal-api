@@ -69,7 +69,7 @@ app.use(cors());
 // USE THESE ROUTES
 
 //users
-//app.use('/auth', user);
+app.use('/auth', user);
 
 //engineer
 app.use('/engineer', engId);
