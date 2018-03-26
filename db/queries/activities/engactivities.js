@@ -4,11 +4,11 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getAll() {
         return knex('activities')
-        .select('activityNo', 'productName', 'client', 'contactCustomer', 'typeOfActivity', 'purposeOfVisit', 'activityPerformed', 'nextActivity', 'recommendations', 'assignedSystemsEngineer AS Engineers');
+        .select('activityNo', 'productName', 'client', 'typeOfActivity', 'purposeOfVisit', 'activityPerformed', 'nextActivity', 'recommendations', 'assignedSystemsEngineer AS Engineers');
     },
     getOne(name) {
         return knex('activities')
-        .select('activityNo', 'productName', 'client', 'contactCustomer', 'typeOfActivity', 'purposeOfVisit', 'activityPerformed', 'nextActivity', 'recommendations', 'assignedSystemsEngineer AS Engineers')
+        .select('activityNo', 'productName', 'client', 'typeOfActivity', 'purposeOfVisit', 'activityPerformed', 'nextActivity', 'recommendations', 'assignedSystemsEngineer AS Engineers')
         .where('assignedSystemsEngineer', '@>', name);
     }
 }
