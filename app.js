@@ -56,7 +56,7 @@ const tracking = require('./routes/activities/glocal');
 
 const totalCases = require('./routes/stats/totalCases');
 
-const user = require('./auth/index');
+//const user = require('./auth/index');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
