@@ -75,7 +75,7 @@ exports.up = function(knex, Promise) {
       table.varchar('activityPerformed', 2000).notNull();
       table.varchar('nextActivity', 2000).notNull();
       table.varchar('recommendations', 2000);
-      table.specificType('assignedSystemsEngineer', '[]').notNull();
+      table.specificType('assignedSystemsEngineer', knex.raw('text[]')).notNull();
     }),
 
     knex.schema.createTable('users', (table) => {
