@@ -9,7 +9,7 @@ module.exports = [
         vendor: 'Veritas',
         customer: 'Unionbank',
         productName: 'Multi-Cloud',
-        systemsEngineerLead: 'Jefferson',
+        systemsEngineerLead: 'Jefferson Ong',
         case_status: 'Ongoing'
     },
     {
@@ -22,7 +22,7 @@ module.exports = [
         vendor: 'Symantec',
         customer: 'BPI',
         productName: 'Secure Web Gateway',
-        systemsEngineerLead: 'Jeffrey',
+        systemsEngineerLead: 'Jeffrey Jonas',
         case_status: 'Resolved'
     },
     {
@@ -35,7 +35,7 @@ module.exports = [
         vendor: 'Veritas',
         customer: 'BPI',
         productName: 'Secure Web Gateway',
-        systemsEngineerLead: 'Jefferson',
+        systemsEngineerLead: 'Jefferson Ong',
         case_status: 'Ongoing'
     },
     {
@@ -48,7 +48,7 @@ module.exports = [
         vendor: 'Symantec',
         customer: 'Unionbank',
         productName: 'Multi-Cloud',
-        systemsEngineerLead: 'Oliver',
+        systemsEngineerLead: 'Oliver de los Santos',
         case_status: 'Pending (Glo-cal)'
     },
     {
@@ -61,7 +61,7 @@ module.exports = [
         vendor: 'Veritas',
         customer: 'BPI',
         productName: 'Secure Web Gateway',
-        systemsEngineerLead: 'Jeffrey',
+        systemsEngineerLead: 'Jeffrey Jonas',
         case_status: 'Pending (Client)'
     },
     {
@@ -74,7 +74,7 @@ module.exports = [
         vendor: 'Veritas',
         customer: 'BPI',
         productName: 'Secure Web Gateway',
-        systemsEngineerLead: 'Jeffrey',
+        systemsEngineerLead: 'Jeffrey Jonas',
         case_status: 'Pending (Client)'
     },
 ];

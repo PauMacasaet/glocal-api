@@ -6,6 +6,11 @@ const Activity = require('../db/queries/activities/activityPerformed');
 
 const authMiddleware = require('../auth/middleware');
 
+function isValidName(req, res, next) {
+  if (req.params.fullName) return next();
+  next(new Error('Invalid Name'));
+}
+
 router.get('/', (req, res) => {
     User
         .getAll()
@@ -28,6 +33,19 @@ router.get('/:id', authMiddleware.allowAccess, (req, res) => {
   } else {
     resError(res, 500, "Invalid ID");
   }
+});
+
+router.get('/name/:fullName', isValidName, (req, res) => {
+  User
+    .getOneByName(req.params.fullName)
+    .then(user => {
+        if(user) {
+            res.json(user);
+            console.log('Getting user by fullname');
+        } else {
+            next();
+        }
+  });
 });
 
 

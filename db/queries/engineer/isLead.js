@@ -1,10 +1,22 @@
 const knex = require('../../knex'); // the connection
 
 module.exports = {
-    getAll() {
-        return knex('engineer').orderBy('engId', 'asc');
-    },
-    getOne(isLead) {
-        return knex('engineer').where('isLead', isLead);
-    }
+    getAll(position) {
+        return knex('user')
+            .join(
+                'case_monitoring', 
+                'user.fullName',
+                '=', 'case_monitoring.systemsEngineerLead'
+            )
+            .select(
+                'case_monitoring.glocalId',
+                'user.fullName',
+                'user.email',
+                'user.contactNumber',
+                'case_monitoring.caseTitle',
+                'case_monitoring.caseDescription',
+                'case_monitoring.case_status'
+            )
+            .where('user.position', position);
+        }
 }

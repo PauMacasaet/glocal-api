@@ -9,6 +9,10 @@ module.exports = {
       .where('userid', id)
       .first();
   },
+  getOneByName(name) {
+    return knex('user')
+      .where('fullName', name);
+  },
   getOneByContact (contactNumber) {
     return knex('user')
       .where('contactNumber', contactNumber);

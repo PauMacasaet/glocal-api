@@ -12,9 +12,8 @@ const user = require('./routes/user');
 const auth = require('./auth/index');
 
 // ROUTE VARIABLES
-const engId = require('./routes/engineer/engId');
-const department = require('./routes/engineer/department');
-const name = require('./routes/engineer/name');
+//const userid = require('./routes/engineer/userid');
+const position = require('./routes/engineer/position');
 const isLead = require('./routes/engineer/isLead');
 
 const principal = require('./routes/vendor/vendor');
@@ -78,9 +77,8 @@ app.use('/auth', auth);
 app.use('/user',  user);
 //authMiddleWare.ensureLoggedIn,
 //engineer
-app.use('/engineer', engId);
-app.use('/department', department);
-app.use('/name', name);
+//app.use('/userid', userid);
+app.use('/position', position);
 app.use('/isLead', isLead); 
 
 app.use('/vendor', principal);
