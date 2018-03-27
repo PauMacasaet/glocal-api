@@ -3,8 +3,16 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getAll() {
         return knex('case_monitoring')
-        .join('client', 'client.accountName', '=', 'case_monitoring.customer')
-        .leftJoin('activities', 'activities.trackingNo', '=', 'case_monitoring.glocalId')
+        .join(
+            'client', 
+            'client.accountName', 
+            '=', 'case_monitoring.customer'
+        )
+        .leftJoin(
+            'activities', 
+            'activities.trackingNo', 
+            '=', 'case_monitoring.glocalId'
+        )
         .select( 
             'case_monitoring.glocalId',
             'activities.assignedSystemsEngineer',
@@ -21,12 +29,7 @@ module.exports = {
             'case_monitoring.systemsEngineerLead', 
             'case_monitoring.vendor', 
             'activities.timeOuts AS date_last_updated',
-            
-            // knex.raw('array_to_string(array_agg(??.??))', 
-            //     ['activities', 'assignedSystemsEngineer']
-            // )
         )
-        //.groupBy('case_monitoring.glocalId')
         .orderBy('glocalId', 'asc');
     },
     getOne(glocalId) {

@@ -3,7 +3,16 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getOne(search) {
         return knex('case_monitoring')
-        .join('client', 'client.accountName', '=', 'case_monitoring.customer')
+        .join(
+            'client', 
+            'client.accountName', 
+            '=', 'case_monitoring.customer'
+        )
+        .leftJoin(
+            'activities', 
+            'activities.trackingNo', 
+            '=', 'case_monitoring.glocalId'
+        )
         .select(
             'case_monitoring.glocalId', 
             'case_monitoring.vendorCaseId', 
@@ -20,10 +29,10 @@ module.exports = {
             'case_monitoring.vendor', 
             'activities.timeOuts AS date_last_updated'
         )
-        .where('customer', 'like', `%${search}%`)
-        .orWhere('caseTitle', 'like', `%${search}%`)
-        .orWhere('caseDescription', 'like', `%${search}%`)
-        .orWhere('productName', 'like', `%${search}%`)
-        .orderBy('glocalId', 'asc');
+        .where('case_monitoring.customer', 'like', `%${search}%`)
+        .orWhere('case_monitoring.caseTitle', 'like', `%${search}%`)
+        .orWhere('case_monitoring.caseDescription', 'like', `%${search}%`)
+        .orWhere('case_monitoring.productName', 'like', `%${search}%`)
+        .orderBy('case_monitoring.glocalId', 'asc');
     }
 }
