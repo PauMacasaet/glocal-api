@@ -7,6 +7,23 @@ module.exports = [
         contactNumber: '09876543212',
         dateCreated: new Date(),
         position: 'System Engineer'
+    },
+    {
+        fullName: 'Mei Wang',
+        username: 'mei',
+        email: 'mei@mail.com',
+        password: 'meiwang',
+        contactNumber: '09876543212',
+        dateCreated: new Date(),
+        position: 'Account Manager'
+    },
+    {
+        fullName: 'Mara Mondragon',
+        username: 'mara',
+        email: 'mara@mail.com',
+        password: 'mondragon',
+        contactNumber: '09876543212',
+        dateCreated: new Date(),
+        position: 'Account Manager'
     }
-    
 ];

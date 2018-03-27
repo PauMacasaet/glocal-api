@@ -6,7 +6,7 @@ module.exports = [
         productName: 'Multi-Cloud', 
         client: 'Unionbank', 
         addres: 'unionbank', 
-        typeOfActivity: 'OnSite', 
+        typeOfActivity: 'Onsite', 
         purposeOfVisit: 'troubleshoot', 
         activityPerformed:'checked if modules are up to date', 
         nextActivity: 'install updates', 
