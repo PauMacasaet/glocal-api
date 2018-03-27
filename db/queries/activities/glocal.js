@@ -9,8 +9,8 @@ module.exports = {
             '=', 'contact_person.client'
         )
         .select(
-            'activities.trackingNo AS glocalId', 
             'activities.activityNo', 
+            'activities.trackingNo AS glocalId', 
             'activities.productName', 
             'contact_person.client', 
             'contact_person.personName', 
@@ -23,14 +23,18 @@ module.exports = {
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer'
         )
-        .orderBy('activities.trackingNo', 'asc');
+        .orderBy('activities.activityNo', 'asc');
     },
-    getOne(trackingNo) {
+    getOne(tracking) {
         return knex('activities')
-        .join('contact_person', 'activities.client', '=', 'contact_person.client')
+        .join(
+            'contact_person', 
+            'activities.client', 
+            '=', 'contact_person.client'
+        )
         .select(
-            'activities.trackingNo AS glocalId', 
             'activities.activityNo', 
+            'activities.trackingNo AS glocalId', 
             'activities.productName', 
             'contact_person.client', 
             'contact_person.personName', 
@@ -43,7 +47,7 @@ module.exports = {
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer'
         )
-        .where('activities.trackingNo', trackingNo)
-        .orderBy('activities.trackingNo', 'asc');
+        .where('activities.trackingNo', tracking)
+        .orderBy('activities.activityNo', 'asc');
     }
 }

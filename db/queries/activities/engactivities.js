@@ -4,31 +4,63 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getAll() {
         return knex('activities')
-        .select(
-            'assignedSystemsEngineer AS Engineers', 
-            'activityNo', 
-            'productName', 
-            'client', 
-            'typeOfActivity', 
-            'purposeOfVisit', 
-            'activityPerformed', 
-            'nextActivity', 
-            'recommendations'
+        .join(
+            'contact_person', 
+            'activities.client', 
+            '=', 'contact_person.client'
         )
-        .groupBy('assignedSystemsEngineer', 'activityNo');
+        .select( 
+            'activities.activityNo', 
+            'activities.trackingNo AS glocalId',
+            'activities.productName', 
+            'contact_person.client',
+            'contact_person.personName', 
+            'activities.typeOfActivity', 
+            'activities.purposeOfVisit', 
+            'activities.activityPerformed', 
+            'activities.nextActivity', 
+            'activities.recommendations',
+            'activities.timeIn',
+            'activities.timeOuts',
+            'activities.assignedSystemsEngineer AS Engineers'
+        )
+        .groupBy(
+            'activities.assignedSystemsEngineer', 
+            'activities.activityNo', 
+            'contact_person.client',
+            'contact_person.personName'
+        )
+        .orderBy('activities.activityNo');
     },
     getOne(name) {
         return knex('activities')
+        .join(
+            'contact_person', 
+            'activities.client', 
+            '=', 'contact_person.client'
+        )
         .select(
-            'assignedSystemsEngineer AS Engineers', 
-            'activityNo', 'productName', 
-            'client', 
-            'typeOfActivity', 
-            'purposeOfVisit', 
-            'activityPerformed', 
-            'nextActivity', 
-            'recommendations')
-        .groupBy('assignedSystemsEngineer', 'activityNo')
-        .where('assignedSystemsEngineer', '@>', name);
+            'activities.activityNo', 
+            'activities.trackingNo AS glocalId',
+            'activities.productName', 
+            'contact_person.client',
+            'contact_person.personName', 
+            'activities.typeOfActivity', 
+            'activities.purposeOfVisit', 
+            'activities.activityPerformed', 
+            'activities.nextActivity', 
+            'activities.recommendations',
+            'activities.timeIn',
+            'activities.timeOuts',
+            'activities.assignedSystemsEngineer AS Engineers'
+        )
+        .groupBy(
+            'activities.assignedSystemsEngineer', 
+            'activities.activityNo',
+            'contact_person.client',
+            'contact_person.personName'
+        )
+        .where('activities.assignedSystemsEngineer', '@>', name)
+        .orderBy('activities.activityNo');
     }
 }

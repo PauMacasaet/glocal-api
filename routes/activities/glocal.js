@@ -5,7 +5,7 @@ const router = express.Router();
 const queries = require('../../db/queries/activities/glocal');
 
 function isValidTrackingNo(req, res, next) {
-    if (!isNaN(req.params.engid)) return next();
+    if (!isNaN(req.params.trackingNo)) return next();
     next(new Error('Invalid Tracking No'));
 }
 
