@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const router = express.Router();
@@ -32,6 +33,15 @@ function validLogin(user) {
     return hasEmail && hasPassword;
 }
 
+function setUserIdCookie (req, res, id) {
+    const isSecure = req.app.get('env') != 'development';
+    res.cookie('user_id', id, {
+        httpOnly: true,
+        secure: isSecure,
+        signed: true
+    });
+}
+
 router.post('/signup', (req, res, next) => {
     if(validUser(req.body)) {
         User
@@ -42,29 +52,26 @@ router.post('/signup', (req, res, next) => {
                 if(!user) {
                     //unique email
                     //hash password
-                    bcrypt.hash(req.body.password, 10)
-                        .then((hash) => {
-                            // Store hash in your password DB.
-                            const user = {
-                                fullName: req.body.fullName,
-                                username: req.body.username,
-                                email: req.body.email,
-                                password: hash,
-                                contactNumber: req.body.contactNumber,
-                                dateCreated: new Date(),
-                                position: req.body.position
-                            };
-
-                            User
-                                .create(user)
-                                .then(id => {
-                                    setUserCookie(req, res, id);
-                                    res.json({
-                                        id,
-                                        message: 'check'
-                                    });
+                    bcrypt.hash(req.body.password, 10, null, function(hash) {
+                        const user = { 
+                            fullName: req.body.fullName,
+                            username: req.body.username,
+                            email: req.body.email,
+                            password: hash,
+                            contactNumber: req.body.contactNumber,
+                            dateCreated: new Date(),
+                            position: req.body.position
+                        };
+                        User
+                            .create(user)
+                            .then(id => {
+                                setUserIdCookie(req, res, id);
+                                res.json({
+                                    id,
+                                    message: 'check'
                                 });
-                            // redirect
+                            });
+                                // redirect
                         }); 
                 } else {
                     // email in use
@@ -76,15 +83,6 @@ router.post('/signup', (req, res, next) => {
     }
 });
 
-function setUserIdCookie (req, res, id) {
-    const isSecure = req.app.get('env') != 'development';
-    res.cookie('user_id', id, {
-        httpOnly: true,
-        secure: isSecure,
-        signed: true
-    });
-}
-
 router.post('/login', (req, res, next) => {
     if(validLogin(req.body)) {
         // check to see if in db
@@ -93,21 +91,17 @@ router.post('/login', (req, res, next) => {
             .then(user => {
                 console.log('user', user);
                 if(user) {
-                    //compare password with hash password
-                    bcrypt
-                        .compare(req.body.password, user.password)
-                        .then((result) => {
-                        // is passwords matched
-                            if(result) {
-                                //setting the set-cookie header
-                                const isSecure = req.app.get('env') != 'development';
-                                res.json({
-                                    id: user.id,
-                                    message: 'Logged in'
-                                });
-                            } else {
-                                next(new Error('Invalid Login'));
-                            }
+                    bcrypt.compare(req.body.password, user.password, function(result, next) {
+                        if(result) {
+                            //setting the set-cookie header
+                            setUserIdCookie(req, res, user.id);
+                            res.json({
+                                id: user.id,
+                                message: 'Logged in'
+                            });
+                        } else {
+                            next(new Error('Invalid Login'));
+                        }
                     });
                     
                 } else {
