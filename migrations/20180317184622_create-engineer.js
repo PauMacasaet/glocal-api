@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('user', (table) => {
       table.increments('userid').primary();
-      table.varchar('fullName', 50).notNull();
+      table.varchar('fullName', 50).unique().notNull();
       table.varchar('username', 50).unique().notNull();
       table.varchar('email', 50).unique().notNull();
       table.text('password').notNull();
