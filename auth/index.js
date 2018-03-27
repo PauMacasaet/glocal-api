@@ -37,7 +37,7 @@ router.post('/signup', (req, res, next) => {
         User
             .getOneByEmail(req.body.email)
             .then(user => {
-                console.log('users', user);
+                console.log('user', user);
                 //if user not found
                 if(!user) {
                     //unique email
@@ -91,7 +91,7 @@ router.post('/login', (req, res, next) => {
         User
             .getOneByEmail(req.body.email)
             .then(user => {
-                console.log('users', user);
+                console.log('user', user);
                 if(user) {
                     //compare password with hash password
                     bcrypt

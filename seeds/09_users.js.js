@@ -2,9 +2,9 @@ const users = require('../inserts/users');
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('users').del()
+  return knex('user').del()
     .then(function () {
       // Inserts seed entries
-      return knex('users').insert(users);
+      return knex('user').insert(users);
     });
 };
