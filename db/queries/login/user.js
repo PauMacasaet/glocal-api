@@ -6,7 +6,7 @@ module.exports = {
   },
   getOne (id) {
     return knex('user')
-      .where('id', id)
+      .where('userid', id)
       .first();
   },
   getOneByContact (contactNumber) {
@@ -20,7 +20,7 @@ module.exports = {
   },
   create (user) {
     return knex('user')
-      .insert(user, 'id')
+      .insert(user, 'userid')
       .then(ids => {
         return ids[0];
     });

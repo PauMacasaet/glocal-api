@@ -1,12 +1,22 @@
 
 exports.up = function(knex, Promise) {
   return Promise.all([
-    knex.schema.createTable('engineer', (table) => {
-      table.increments('engId').primary().notNull();
-      table.varchar('department', 50).notNull();
-      table.varchar('firstName', 50).notNull();
-      table.varchar('lastName', 50).notNull();
-      table.boolean('isLead').notNull();
+    knex.schema.createTable('user', (table) => {
+      table.increments('userid').primary();
+      table.varchar('fullName', 50).notNull();
+      table.varchar('username', 50).unique().notNull();
+      table.varchar('email', 50).unique().notNull();
+      table.text('password').notNull();
+      table.varchar('contactNumber', 50).notNull();
+      table.datetime('dateCreated').notNull();
+      table.enu('position', 
+        [
+        'Director', 
+        'Sales Manager', 
+        'Technical Manager', 
+        'System Engineer', 
+        'Account Manager']
+      ).notNull();
     }),
 
     knex.schema.createTable('vendor', (table) => {
@@ -17,7 +27,7 @@ exports.up = function(knex, Promise) {
       table.varchar('accountName', 50).unique().primary().notNull();
       table.specificType('contact_details', 'text[]').notNull();
       table.varchar('company_address', 100).notNull();
-      table.varchar('accountManager', 50).notNull();
+      table.varchar('accountManager', 50).references('fullName').inTable('user').notNull();
     }),
 
     knex.schema.createTable('products', (table) => {
@@ -70,30 +80,12 @@ exports.up = function(knex, Promise) {
       table.varchar('productName', 50).references('productName').inTable('products').notNull().onUpdate('cascade');
       table.varchar('client', 50).notNull();
       table.varchar('addres', 50).notNull();
-      table.varchar('typeOfActivity', 50).notNull();
+      table.enu('typeOfActivity', ['Onsite', 'Implementation', 'Remote', 'POC']).notNull();
       table.varchar('purposeOfVisit', 50).notNull();
       table.varchar('activityPerformed', 2000).notNull();
       table.varchar('nextActivity', 2000).notNull();
       table.varchar('recommendations', 2000);
       table.specificType('assignedSystemsEngineer', knex.raw('text[]')).notNull();
-    }),
-
-    knex.schema.createTable('user', (table) => {
-      table.increments();
-      table.varchar('fullName', 50).notNull();
-      table.varchar('username', 50).unique().notNull();
-      table.varchar('email', 50).unique().notNull();
-      table.text('password').notNull();
-      table.varchar('contactNumber', 50).notNull();
-      table.datetime('dateCreated').notNull();
-      table.enu('position', 
-        [
-        'Director', 
-        'Sales Manager', 
-        'Technical Manager', 
-        'System Engineer', 
-        'Account Manager']
-      );
     })
   ]);
 };
