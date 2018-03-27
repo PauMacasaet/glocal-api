@@ -78,7 +78,7 @@ exports.up = function(knex, Promise) {
       table.specificType('assignedSystemsEngineer', knex.raw('text[]')).notNull();
     }),
 
-    knex.schema.createTable('users', (table) => {
+    knex.schema.createTable('user', (table) => {
       table.increments();
       table.varchar('fullName', 50).notNull();
       table.varchar('username', 50).unique().notNull();
@@ -100,7 +100,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('users'),
+    knex.schema.dropTable('user'),
     knex.schema.dropTable('activities'),
     knex.schema.dropTable('case_monitoring'),
     knex.schema.dropTable('contact_person'),
