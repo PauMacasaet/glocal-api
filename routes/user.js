@@ -30,13 +30,15 @@ router.get('/:id', authMiddleware.allowAccess, (req, res) => {
   }
 });
 
+
+//not yet done
 router.get('/:id/activityPerformed', authMiddleware.allowAccess, (req,res)=>{
-  if (!isNaN(req.params.id)) {
-    Activity.getByUser(req.params.id).then(activities => {
+  if (!isNaN(req.params.assignedSystemsEngineer)) {
+    Activity.getByUser(req.params.assignedSystemsEngineer).then(activities => {
       res.json(activities);
     });
   } else {
-    resError(res, 500, "Invalid ID");
+    resError(res, 500, "Invalid User");
   }
 })
 

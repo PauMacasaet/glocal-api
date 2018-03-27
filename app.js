@@ -7,9 +7,9 @@ const cors = require('cors');
 
 const app = express();
 
-const authMiddleWare = require('./auth/middleware');
+//const authMiddleWare = require('./auth/middleware');
 //const user = require('./routes/user');
-const auth = require('./auth/index');
+//const auth = require('./auth/index');
 
 // ROUTE VARIABLES
 const engId = require('./routes/engineer/engId');
@@ -74,7 +74,7 @@ app.use(cors({
 // USE THESE ROUTES
 
 //users
-app.use('/auth', auth);
+//app.use('/auth', auth);
 //app.use('/user', authMiddleWare.ensureLoggedIn, user);
 
 //engineer

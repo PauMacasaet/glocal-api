@@ -80,6 +80,7 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('users', (table) => {
       table.increments();
+      table.varchar('fullName', 50).notNull();
       table.varchar('username', 50).unique().notNull();
       table.varchar('email', 50).unique().notNull();
       table.text('password').notNull();

@@ -7,7 +7,17 @@ module.exports = {
     },
     getOne(engid) {
         return knex
-        .select('trackingNo', 'engid', 'productName', 'typeOfActivity', 'purposeOfVisit', 'activityPerformed', 'nextActivity', 'recommendations', 'engineerName as engineerSurname')
+        .select(
+            'trackingNo', 
+            'engid', 
+            'productName', 
+            'typeOfActivity', 
+            'purposeOfVisit', 
+            'activityPerformed', 
+            'nextActivity', 
+            'recommendations', 
+            'engineerName as engineerSurname'
+        )
         .from('activities')
         .where('engid', engid);
     }

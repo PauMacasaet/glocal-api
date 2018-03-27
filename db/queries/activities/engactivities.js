@@ -4,12 +4,30 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getAll() {
         return knex('activities')
-        .select('assignedSystemsEngineer AS Engineers', 'activityNo', 'productName', 'client', 'typeOfActivity', 'purposeOfVisit', 'activityPerformed', 'nextActivity', 'recommendations')
+        .select(
+            'assignedSystemsEngineer AS Engineers', 
+            'activityNo', 
+            'productName', 
+            'client', 
+            'typeOfActivity', 
+            'purposeOfVisit', 
+            'activityPerformed', 
+            'nextActivity', 
+            'recommendations'
+        )
         .groupBy('assignedSystemsEngineer', 'activityNo');
     },
     getOne(name) {
         return knex('activities')
-        .select('assignedSystemsEngineer AS Engineers', 'activityNo', 'productName', 'client', 'typeOfActivity', 'purposeOfVisit', 'activityPerformed', 'nextActivity', 'recommendations')
+        .select(
+            'assignedSystemsEngineer AS Engineers', 
+            'activityNo', 'productName', 
+            'client', 
+            'typeOfActivity', 
+            'purposeOfVisit', 
+            'activityPerformed', 
+            'nextActivity', 
+            'recommendations')
         .groupBy('assignedSystemsEngineer', 'activityNo')
         .where('assignedSystemsEngineer', '@>', name);
     }
