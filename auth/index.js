@@ -1,11 +1,13 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const router = express.Router();
 
 const User = require('../db/queries/login/user');
 // route paths are prepended 
 
 function validUser(user) {
+    const hasFullname = typeof user.fullName == 'string'
+        && user.fullName.trim() != '';
     const hasUserName = typeof user.username == 'string' 
         && user.username.trim() != '';
     const hasEmail = typeof user.email == 'string' 
@@ -18,7 +20,7 @@ function validUser(user) {
     const hasPosition = typeof user.position == 'string'
         && user.position.trim() != '';
     
-    return hasUserName && hasEmail && hasPassword && hasNumber && hasPosition;
+    return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition;
 }
 
 function validLogin(user) {
@@ -44,6 +46,7 @@ router.post('/signup', (req, res, next) => {
                         .then((hash) => {
                             // Store hash in your password DB.
                             const user = {
+                                fullName: req.body.fullName,
                                 username: req.body.username,
                                 email: req.body.email,
                                 password: hash,

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../db/queries/login');
+const User = require('../db/queries/login/user');
 const Activity = require('../db/queries/activities/activityPerformed');
 
 const authMiddleware = require('../auth/middleware');
@@ -32,10 +32,12 @@ router.get('/:id', authMiddleware.allowAccess, (req, res) => {
 
 
 //not yet done
-router.get('/:id/activityPerformed', authMiddleware.allowAccess, (req,res)=>{
-  if (!isNaN(req.params.assignedSystemsEngineer)) {
-    Activity.getByUser(req.params.assignedSystemsEngineer).then(activities => {
-      res.json(activities);
+router.get('/:assignedSystemsEngineer/activityPerformed', authMiddleware.allowAccess, (req,res)=>{
+  if ((req.params.assignedSystemsEngineer)) {
+    Activity
+      .getByUser(req.params.assignedSystemsEngineer)
+      .then(activities => {
+        res.json(activities);
     });
   } else {
     resError(res, 500, "Invalid User");

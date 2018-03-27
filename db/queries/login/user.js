@@ -18,9 +18,9 @@ module.exports = {
       .where('email', email)
       .first();
   },
-  create (user) {
+  create (users) {
     return knex('users')
-      .insert(user, 'id')
+      .insert(users, 'id')
       .then(ids => {
         return ids[0];
     });

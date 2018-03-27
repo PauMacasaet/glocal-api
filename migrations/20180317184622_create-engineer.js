@@ -86,11 +86,14 @@ exports.up = function(knex, Promise) {
       table.text('password').notNull();
       table.varchar('contactNumber', 50).notNull();
       table.datetime('dateCreated').notNull();
-      table.enu('position', ['Director', 
-                      'Sales Manager', 
-                      'Technical Manager', 
-                      'System Engineer', 
-                      'Account Manager']);
+      table.enu('position', 
+        [
+        'Director', 
+        'Sales Manager', 
+        'Technical Manager', 
+        'System Engineer', 
+        'Account Manager']
+      );
     })
   ]);
 };
