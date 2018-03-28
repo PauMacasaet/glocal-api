@@ -52,7 +52,7 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:productName', (req, res, next) => {
+router.put('/:productName', (req, res, next, err) => {
     queries
         .update(req.params.productName, req.body)
         .then(product => {
