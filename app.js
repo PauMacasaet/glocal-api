@@ -72,7 +72,7 @@ app.use(cors({
 
 //authentication
 app.use('/auth', auth);
-// /signup, /login
+// /signup, /login, /:userid for update
 
 //users
 app.use('/user',  user); 
