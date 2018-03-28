@@ -70,6 +70,8 @@ router.put('/:activityNo', (req, res, next) => {
                 message: 'Activity Updated'
             });
     });
+    if (err) return next(new Error('Invalid Update'));
+
 });
 
 router.delete('/:activityNo', isValidActivityNo, (req, res, next) => {
