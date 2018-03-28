@@ -1,3 +1,13 @@
+User post and put 
+{
+    "fullName": "Avery Si",
+    "username": "averysi",
+    "email": "avery@mail.com",
+    "password": "siavery",
+    "contactNumber": "09999999999",
+    "position": "Account Manager"
+}
+
 Activities post and put
 {
         "trackingNo": 8,
@@ -62,5 +72,16 @@ license post and put
 	"remaining_man_days":"355",
 	"quarterly_hc":false,
 	"remarks":"no remarks"
+}
+
+vendor post and put 
+{
+    "principal": "new vendor"
+}
+
+products post and put
+{
+    "productName": "some new product",
+    "Vendor": "Symantec"
 }
 
