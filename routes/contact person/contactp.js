@@ -52,16 +52,19 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:personName', (req, res, next, err) => {
-    queries
-        .update(req.params.personName, req.body)
-        .then(contact => {
-            res.json({
-                contact,
-                message: 'contact updated'
-            });
-    });
-    if (err) return next(new Error('Invalid Update'));
+router.put('/:personName', isValidContact, (req, res, next) => {
+    if(validContact(req.body)) {
+        queries
+            .update(req.params.personName, req.body)
+            .then(contact => {
+                res.json({
+                    contact,
+                    message: 'contact updated'
+                });
+        });
+    } else {
+        next(new Error('Invalid Update'));
+    }
 });
 
 router.delete('/:personName', isValidContact, (req, res, next) => {

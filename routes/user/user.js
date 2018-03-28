@@ -11,6 +11,29 @@ function isValidName(req, res, next) {
   next(new Error('Invalid Name'));
 }
 
+function isValidUserId(req, res, next) {
+  if(!isNan(req.params.userid)) return next();
+  next(new Error('Invalid User ID'));
+}
+
+function validUser(user) {
+  const hasFullname = typeof user.fullName == 'string'
+      && user.fullName.trim() != '';
+  const hasUserName = typeof user.username == 'string' 
+      && user.username.trim() != '';
+  const hasEmail = typeof user.email == 'string' 
+      && user.email.trim() != '';
+  const hasPassword = typeof user.password == 'string' 
+      && user.password.trim() != ''
+      && user.password.trim().length >= 6;
+  const hasNumber = typeof user.contactNumber == 'string'
+      && user.contactNumber.trim() != '';
+  const hasPosition = typeof user.position == 'string'
+      && user.position.trim() != '';
+  
+  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition;
+}
+
 router.get('/', (req, res) => {
     User
         .getAll()
@@ -67,16 +90,20 @@ router.get('/:assignedSystemsEngineer/engActivities', authMiddleware.allowActivi
   }
 });
 
-router.put('/:userid', (req, res, next, err) => {
-  User
-      .update(req.params.userid, req.body)
-      .then(user => {
-          res.json({
-              user,
-              message: 'Account Updated'
-          });
-      });
-  if (err) return next(new Error('Invalid Update'));
+router.put('/:userid', isValidUserId, (req, res, next) => {
+  if(validUser(req.body)) {
+    User
+        .update(req.params.userid, req.body)
+        .then(user => {
+            res.json({
+                user,
+                message: 'Account Updated'
+            });
+    });
+  } else {
+    next(new Error('Invalid Update'));
+  }
+    
 });
 
 function resError(res, statusCode, message) {

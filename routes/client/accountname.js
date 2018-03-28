@@ -54,16 +54,19 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:accountName', (req, res, next, err) => {
-    queries
-        .update(req.params.accountName, req.body)
-        .then(client => {
-            res.json({
-                client,
-                message: 'client updated'
-            });
-    });
-    if (err) return next(new Error('Invalid Update'));
+router.put('/:accountName', isValidClient, (req, res, next, err) => {
+    if(validClient(req.body)) {
+        queries
+            .update(req.params.accountName, req.body)
+            .then(client => {
+                res.json({
+                    client,
+                    message: 'client updated'
+                });
+        });
+    } else {
+        next(new Error('Invalid Update'));
+    }
 });
 
 router.delete('/:accountName', isValidClient, (req, res, next) => {

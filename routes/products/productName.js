@@ -52,16 +52,19 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:productName', (req, res, next, err) => {
-    queries
-        .update(req.params.productName, req.body)
-        .then(product => {
-            res.json({
-                product,
-                message: 'product updated'
-            });
-    });
-    if (err) return next(new Error('Invalid Update'));
+router.put('/:productName', isValidProduct, (req, res, next) => {
+    if(validProduct(req.body)) {
+        queries
+            .update(req.params.productName, req.body)
+            .then(product => {
+                res.json({
+                    product,
+                    message: 'product updated'
+                });
+        });
+    } else {
+        next(new Error('Invalid Update'));
+    }
 });
 
 router.delete('/:productName', isValidProduct, (req, res, next) => {

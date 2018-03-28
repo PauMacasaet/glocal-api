@@ -99,16 +99,19 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:glocalId', (req, res, next, err) => {
-    queries
-        .update(req.params.glocalId, req.body)
-        .then(case_mon => {
-        res.json({
-            case_mon,
-            message: 'case_monitoring updated'
+router.put('/:glocalId', isValidId, (req, res, next) => {
+    if(validCase(req.body)) {
+        queries
+            .update(req.params.glocalId, req.body)
+            .then(case_mon => {
+                res.json({
+                    case_mon,
+                    message: 'Case Monitoring updated'
+                });
         });
-    });
-    if (err) return next(new Error('Invalid Update'));
+    } else {
+        next(new Error('Invalid Update'));
+    }
 });
 
 router.delete('/:glocalId', isValidId, (req, res, next) => {
