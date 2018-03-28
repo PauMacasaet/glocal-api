@@ -30,4 +30,14 @@ case monitoring post and put
 	"customer":"BPI",
 	"productName":"Multi-Cloud",
 	"systemsEngineerLead":"Jefferson Ong",
+    "case_status": "Ongoing"
 }
+
+client post and put 
+{
+    "accountName": "Landbank",
+    "contact_details": [["Mareeah Koochenera"],["marreah@gmail.com"],["09178456789"]],
+    "company_address": "Landbank address",
+    "accountManager": "Mei Wang" 
+}
+

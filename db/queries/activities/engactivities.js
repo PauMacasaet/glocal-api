@@ -23,7 +23,7 @@ module.exports = {
             'activities.recommendations',
             'activities.timeIn',
             'activities.timeOuts',
-            'activities.assignedSystemsEngineer AS Engineers'
+            'activities.assignedSystemsEngineer'
         )
         .groupBy(
             'activities.assignedSystemsEngineer', 
@@ -54,7 +54,7 @@ module.exports = {
             'activities.recommendations',
             'activities.timeIn',
             'activities.timeOuts',
-            'activities.assignedSystemsEngineer AS Engineers'
+            'activities.assignedSystemsEngineer'
         )
         .groupBy(
             'activities.assignedSystemsEngineer', 
