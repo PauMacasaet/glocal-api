@@ -61,6 +61,7 @@ router.put('/:productName', (req, res, next) => {
                 message: 'product updated'
             });
     });
+    if (err) return next(new Error('Invalid Update'));
 });
 
 router.delete('/:productName', isValidProduct, (req, res, next) => {
