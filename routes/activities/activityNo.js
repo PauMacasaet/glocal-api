@@ -62,15 +62,18 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:activityNo', (req, res, next, err) => {
-    queries
-        .update(req.params.activityNo, req.body)
-        .then(activity => {
-            res.json({
-                activity,
-                message: 'Activity Updated'
-            });
-    });
-    if (err) return next(new Error('Invalid Update'));
+    if (err){
+        return next(new Error('Invalid Update'));
+    } else {
+        queries
+            .update(req.params.activityNo, req.body)
+            .then(activity => {
+                res.json({
+                    activity,
+                    message: 'Activity Updated'
+                });
+        });
+    }
 
 });
 
