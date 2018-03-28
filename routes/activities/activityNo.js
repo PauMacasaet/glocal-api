@@ -61,7 +61,7 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:activityNo', (req, res, next) => {
+router.put('/:activityNo', (req, res, next, err) => {
     queries
         .update(req.params.activityNo, req.body)
         .then(activity => {
