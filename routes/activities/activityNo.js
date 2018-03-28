@@ -66,7 +66,10 @@ router.put('/:activityNo', isValidActivityNo, (req, res, next) => {
         queries
             .update(req.params.activityNo, req.body)
             .then(activity => {
-                res.json(activity[0]);
+                res.json({
+                    activity,
+                    message: 'Activity Updated'
+                });
         });
     } else {
         next(new Error('Invalid Update'));
