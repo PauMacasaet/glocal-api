@@ -54,6 +54,7 @@ const recommendations = require('./routes/activities/recommendations');
 const lastUpdate = require('./routes/activities/lastUpdate');
 const engActivities = require('./routes/activities/engactivities');
 const tracking = require('./routes/activities/glocal');
+const assignedSystemsEngineer = require('./routes/activities/assignedSE');
 
 const totalCases = require('./routes/stats/totalCases');
 
@@ -157,6 +158,8 @@ app.use('/engActivities', engActivities);
 // /:assignedSystemsEngineer
 app.use('/tracking', tracking);
 // /:trackingNo
+app.use('/assignedSystemsEngineer', assignedSystemsEngineer);
+// /:assignedSystemsEngineer
 
 //stats
 app.use('/totalCases', totalCases);

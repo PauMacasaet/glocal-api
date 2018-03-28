@@ -21,17 +21,7 @@ router.get('/', (req, res) => {
 });
 
 // authMiddleware.allowActivityAccess, 
-router.get('/:assignedSystemsEngineer', (req, res, next) => {
-    // if (req.params.assignedSystemsEngineer) {
-    //     queries
-    //     .getOne(req.params.assignedSystemsEngineer)
-    //     .then(engineer => {
-    //         res.json(engineer);
-    //         console.log('Getting Activities By Assigned Engineer');
-    //     });
-    // } else {
-    //     resError(res, 500, 'Invalid User');
-    // }
+router.get('/:assignedSystemsEngineer', isValidEngineer, (req, res, next) => {
 
     if (req.params.assignedSystemsEngineer) {
         queries
