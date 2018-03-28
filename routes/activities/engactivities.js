@@ -3,8 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 const queries = require('../../db/queries/activities/engactivities');
+const authMiddleware = require('../../auth/middleware');
 
-function isValidEngId(req, res, next) {
+
+function isValidEngineer(req, res, next) {
     if(req.params.assignedSystemsEngineer) return next();
     next(new Error('Invalid Engineer'));
 }
@@ -18,17 +20,33 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:assignedSystemsEngineer', isValidEngId, (req, res, next) => {
-    queries
-        .getOne(req.params.assignedSystemsEngineer)
-        .then(engineer => {
-            if(engineer) {
-                res.json(engineer);
-                console.log('Getting Activities By Assigned Engineer');
+// authMiddleware.allowActivityAccess, 
+router.get('/:assignedSystemsEngineer', authMiddleware.allowActivityAccess, (req, res, next) => {
+    // if (req.params.assignedSystemsEngineer) {
+    //     queries
+    //     .getOne(req.params.assignedSystemsEngineer)
+    //     .then(engineer => {
+    //         res.json(engineer);
+    //         console.log('Getting Activities By Assigned Engineer');
+    //     });
+    // } else {
+    //     resError(res, 500, 'Invalid User');
+    // }
+
+    if (req.params.assignedSystemsEngineer) {
+        queries
+          .getOne(req.params.assignedSystemsEngineer)
+          .then(user => {
+            if (user) {
+              delete user.password;
+              res.json(user);
             } else {
-                next();
+              next(new Error('User Not Found'));
             }
-    });
+        });
+    } else {
+        next(new Error("Invalid User"));
+    }
 });
 
 module.exports = router;

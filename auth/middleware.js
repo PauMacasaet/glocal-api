@@ -16,7 +16,17 @@ function allowAccess (req, res, next) {
     }
 }
 
+function allowActivityAccess (req, res, next) {
+    if(req.signedCookies.engName == req.params.assignedSystemsEngineer) {
+        next();
+    } else {
+        res.status(401);
+        next(new Error('Un-Authorized User'));
+    }
+}
+
 module.exports = {
     ensureLoggedIn,
-    allowAccess
+    allowAccess,
+    allowActivityAccess
 };

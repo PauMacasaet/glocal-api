@@ -64,7 +64,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('secret'));
 app.use(cors({
-  origin: 'http://localhost:8001',
+  origin: 'http://localhost:8000',
   credentials: true
 }));
 
@@ -72,6 +72,7 @@ app.use(cors({
 
 //authentication
 app.use('/auth', auth);
+// /signup, /login
 
 //users
 app.use('/user',  user); 

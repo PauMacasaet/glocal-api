@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../../db/queries/user/user');
-const Activity = require('../../db/queries/activities/activityPerformed');
+const Activity = require('../../db/queries/activities/engactivities');
 
 const authMiddleware = require('../../auth/middleware');
 
@@ -50,12 +50,17 @@ router.get('/name/:fullName', isValidName, (req, res) => {
 
 
 //not yet done
-router.get('/:assignedSystemsEngineer/activityPerformed', authMiddleware.allowAccess, (req,res)=>{
+router.get('/:assignedSystemsEngineer/engActivities', authMiddleware.allowActivityAccess, (req,res) =>{
   if (req.params.assignedSystemsEngineer) {
     Activity
-      .getByUser(req.params.assignedSystemsEngineer)
-      .then(activities => {
-        res.json(activities);
+      .getOne(req.params.assignedSystemsEngineer)
+      .then(user => {
+        if (user) {
+          delete user.password;
+          res.json(user);
+        } else {
+          resError(res, 404, 'User Not Found');
+        }
     });
   } else {
     resError(res, 500, "Invalid User");
