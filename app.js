@@ -76,7 +76,7 @@ app.use('/auth', auth);
 // /signup, /login, /:userid for update
 
 //users
-app.use('/user',  user); 
+app.use('/user', authMiddleWare.ensureLoggedIn,  user); 
 //authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName
 app.use('/position', position); 
 // /systemEngineer, /systemEngineer/:fullName, /manager, /manager/:fullName
