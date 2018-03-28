@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:fullName', isValidLead, (req, res) => {
-    User
+    queries
       .getOne('System Engineer', req.params.fullName)
       .then(user => {
           if(user) {
