@@ -19,10 +19,10 @@ router.get('/', (req, res) => {
             console.log('GETTING ALL USERS');
         });
 });
-
-router.get('/:id', authMiddleware.allowAccess, (req, res) => {
-  if (!isNaN(req.params.id)) {
-    User.getOne(req.params.id).then(user => {
+//, authMiddleware.allowAccess
+router.get('/:userid', authMiddleware.allowAccess, (req, res) => {
+  if (!isNaN(req.params.userid)) {
+    User.getOne(req.params.userid).then(user => {
       if (user) {
         delete user.password;
         res.json(user);

@@ -10,7 +10,8 @@ function isValidVendor(req, res, next) {
 }
 
 function validVendor(vendor) {
-    const hasPrincipal = typeof vendor.principal == 'string' && vendor.principal.trim() != '';
+    const hasPrincipal = typeof vendor.principal == 'string' 
+        && vendor.principal.trim() != '';
     return hasPrincipal;
 }
 

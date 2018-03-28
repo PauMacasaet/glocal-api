@@ -7,6 +7,11 @@ module.exports = {
     getEngineer(engineer) {
         return knex('user').where('position', engineer);
     },
+    getOneEngineer(engineer, name) {
+        return knex('user')
+            .where('position', engineer)
+            .andWhere('fullName', name);
+    },
     getAM(manager) {
         return knex('user')
         .join('client', 'client.accountManager', '=', 'user.fullName')

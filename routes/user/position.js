@@ -26,6 +26,19 @@ router.get('/systemEngineer', (req, res, next) => {
     });
 });
 
+router.get('/systemEngineer/:fullName', (req, res, next) => {
+    queries
+        .getOneEngineer('System Engineer', req.params.fullName)
+        .then(engineer => {
+            if(engineer) {
+                res.json(engineer);
+                console.log('Getting System Engineer Individually');
+            } else {
+                next();
+            }
+    });
+});
+
 router.get('/manager', (req, res, next) => {
     queries
         .getAM('Account Manager')

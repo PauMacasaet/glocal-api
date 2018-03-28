@@ -5,7 +5,7 @@ const router = express.Router();
 const queries = require('../../db/queries/user/isLead');
 
 function isValidLead(req, res, next) {
-    if (req.params.isLead) return next();
+    if (req.params.fullName) return next();
     next(new Error('Invalid SE LEAD'));
 }
 
@@ -17,5 +17,18 @@ router.get('/', (req, res) => {
             console.log('GETTING ALL SE Leads');
     });
 });
+
+router.get('/:fullName', isValidLead, (req, res) => {
+    User
+      .getOne('System Engineer', req.params.fullName)
+      .then(user => {
+          if(user) {
+              res.json(user);
+              console.log('Getting user by fullname');
+          } else {
+              next();
+          }
+    });
+  });
 
 module.exports = router;

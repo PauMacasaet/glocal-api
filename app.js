@@ -19,7 +19,6 @@ const isLead = require('./routes/user/isLead');
 const principal = require('./routes/vendor/vendor');
 
 const accountName = require('./routes/client/accountname');
-const accountManager = require('./routes/client/accountmanager');
 
 const productName = require('./routes/products/productName');
 const productVendor = require('./routes/products/productVendor');
@@ -52,7 +51,6 @@ const typeOfActivity = require('./routes/activities/typeOfActivity');
 const purpose = require('./routes/activities/purposeOfVisit');
 const activityPerformed = require('./routes/activities/activityPerformed');
 const recommendations = require('./routes/activities/recommendations');
-const activityEngId = require('./routes/activities/engid');
 const lastUpdate = require('./routes/activities/lastUpdate');
 const engActivities = require('./routes/activities/engactivities');
 const tracking = require('./routes/activities/glocal');
@@ -76,59 +74,92 @@ app.use(cors({
 app.use('/auth', auth);
 
 //users
-app.use('/user',  user); //authMiddleWare.ensureLoggedIn,
-app.use('/position', position);
+app.use('/user',  user); 
+//authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName
+app.use('/position', position); 
+// /systemEngineer, /systemEngineer/:fullName, /manager, /manager/:fullName
 app.use('/isLead', isLead); 
+// /:fullName
 
+//vendor
 app.use('/vendor', principal);
+// /:principal
 
 //client
 app.use('/client', accountName);
-app.use('/accountManager', accountManager);
+// /:accountName
 
 //products
 app.use('/products', productName);
+// /:productName
 app.use('/productVendor', productVendor);
+// /:vendor
 
 //contact_person
 app.use('/contactp', contactPerson);
+// /:personName
 app.use('/contactc', contactClient);
+// /:client
 
 //license
 app.use('/license', license);
+// /:licenseId, /product/:productName
 app.use('/onSite', on_site);
+// /:on_site
 app.use('/clientLicense', clientLicense);
+// /:client
 
 //case_monitoring
 app.use('/glocalId', glocalid);
+// /search?q=BPI for example, /filter?[fieldname]=[fieldvalue], /glocalId
 app.use('/vendorCaseId', vendorcaseid);
+// /:vendorCaseId
 app.use('/dateCreated', datecreated);
+// /:dateCreated
 app.use('/dateRaised', dateraised);
+// /:dateCreated
 app.use('/caseTitle', casetitle);
+// /:caseTitle
 app.use('/caseDesc', casedesc);
+// /:caseDescription
 app.use('/severity', severity);
+// /:severity
 app.use('/customerName', customerName);
+// /:customer
 app.use('/systemsEngineerLead', seLead);
+// /:systemsEngineerLead
 app.use('/caseStatus', caseStatus);
+// /:caseStatus
 app.use('/nextId', nextId);
 
 //activities
 app.use('/activityNo', activityNo);
+// /:activityNo
 app.use('/timeIn', timeIn);
+// /:timeIn
 app.use('/timeOut', timeOuts);
+// /:timeOuts
 app.use('/activityClient', activityClient);
+// /:client
 app.use('/address', addres);
+// /:addres
 app.use('/typeOfActivity', typeOfActivity);
+// /:typeOfActivity
 app.use('/purposeOfVisit', purpose);
+// /:purposeOfVisit
 app.use('/activityPerformed', activityPerformed);
+// /:activityPerformed
 app.use('/recommendations', recommendations);
-app.use('/engid', activityEngId);
+// /:recommendations
 app.use('/lastUpdate', lastUpdate);
 app.use('/engActivities', engActivities);
+// /:assignedSystemsEngineer
 app.use('/tracking', tracking);
+// /:trackingNo
 
 //stats
 app.use('/totalCases', totalCases);
+// /:case_status
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
