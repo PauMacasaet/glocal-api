@@ -67,6 +67,18 @@ router.get('/:assignedSystemsEngineer/engActivities', authMiddleware.allowActivi
   }
 });
 
+router.put('/:userid', (req, res, next, err) => {
+  User
+      .update(req.params.userid, req.body)
+      .then(user => {
+          res.json({
+              user,
+              message: 'Account Updated'
+          });
+      });
+  if (err) return next(new Error('Invalid Update'));
+});
+
 function resError(res, statusCode, message) {
   res.status(statusCode);
   res.json({message});

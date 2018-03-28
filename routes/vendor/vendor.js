@@ -52,7 +52,7 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:principal', (req, res, next) => {
+router.put('/:principal', (req, res, next, err) => {
     queries
         .update(req.params.principal, req.body)
         .then(vendor => {
@@ -61,6 +61,7 @@ router.put('/:principal', (req, res, next) => {
                 message: 'vendor updated'
             });
     });
+    if (err) return next(new Error('Invalid Update'));
 });
 
 router.delete('/:principal', isValidVendor, (req, res, next) => {

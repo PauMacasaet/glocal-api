@@ -82,7 +82,7 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:licenseId', (req, res, next) => {
+router.put('/:licenseId', (req, res, next, err) => {
     queries
         .update(req.params.licenseId, req.body)
         .then(license => {
@@ -91,6 +91,7 @@ router.put('/:licenseId', (req, res, next) => {
                 message: 'license updated'
             });
     });
+    if (err) return next(new Error('Invalid Update'));
 });
 
 router.delete('/:licenseId', isValidId, (req, res, next) => {

@@ -99,7 +99,7 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:glocalId', (req, res, next) => {
+router.put('/:glocalId', (req, res, next, err) => {
     queries
         .update(req.params.glocalId, req.body)
         .then(case_mon => {
@@ -108,6 +108,7 @@ router.put('/:glocalId', (req, res, next) => {
             message: 'case_monitoring updated'
         });
     });
+    if (err) return next(new Error('Invalid Update'));
 });
 
 router.delete('/:glocalId', isValidId, (req, res, next) => {

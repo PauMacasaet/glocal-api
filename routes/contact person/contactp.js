@@ -52,7 +52,7 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:personName', (req, res, next) => {
+router.put('/:personName', (req, res, next, err) => {
     queries
         .update(req.params.personName, req.body)
         .then(contact => {
@@ -61,6 +61,7 @@ router.put('/:personName', (req, res, next) => {
                 message: 'contact updated'
             });
     });
+    if (err) return next(new Error('Invalid Update'));
 });
 
 router.delete('/:personName', isValidContact, (req, res, next) => {
