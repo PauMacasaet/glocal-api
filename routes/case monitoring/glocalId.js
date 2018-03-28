@@ -50,8 +50,8 @@ router.get('/filter', (req,res) => {
         x.where('customer', req.query.customer);
     } else if (req.query.case_status) {
         x.where('case_status', req.query.case_status);
-    // } else if (req.query.assignedSystemsEngineer) {
-    //     x.where('assignedSystemsEngineer', req.query.assignedSystemsEngineer);
+    } else if (req.query.assignedSystemsEngineer) {
+        x.where('activities.assignedSystemsEngineer', req.query.assignedSystemsEngineer);
     } else if (req.query.severity) {
         x.where('severity', req.query.severity);
     } else if (req.query.vendor) {
