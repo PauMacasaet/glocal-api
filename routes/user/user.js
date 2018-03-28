@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../db/queries/login/user');
-const Activity = require('../db/queries/activities/activityPerformed');
+const User = require('../../db/queries/user/user');
+const Activity = require('../../db/queries/activities/activityPerformed');
 
-const authMiddleware = require('../auth/middleware');
+const authMiddleware = require('../../auth/middleware');
 
 function isValidName(req, res, next) {
   if (req.params.fullName) return next();
@@ -51,7 +51,7 @@ router.get('/name/:fullName', isValidName, (req, res) => {
 
 //not yet done
 router.get('/:assignedSystemsEngineer/activityPerformed', authMiddleware.allowAccess, (req,res)=>{
-  if ((req.params.assignedSystemsEngineer)) {
+  if (req.params.assignedSystemsEngineer) {
     Activity
       .getByUser(req.params.assignedSystemsEngineer)
       .then(activities => {
@@ -60,7 +60,7 @@ router.get('/:assignedSystemsEngineer/activityPerformed', authMiddleware.allowAc
   } else {
     resError(res, 500, "Invalid User");
   }
-})
+});
 
 function resError(res, statusCode, message) {
   res.status(statusCode);

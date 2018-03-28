@@ -3,7 +3,7 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const router = express.Router();
 
-const User = require('../db/queries/login/user');
+const User = require('../db/queries/user/user');
 // route paths are prepended 
 
 function validUser(user) {
@@ -68,7 +68,7 @@ router.post('/signup', (req, res, next) => {
                                 setUserIdCookie(req, res, id);
                                 res.json({
                                     id,
-                                    message: 'check'
+                                    message: 'User created'
                                 });
                             });
                                 // redirect

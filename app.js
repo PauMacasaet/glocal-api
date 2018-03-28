@@ -8,13 +8,13 @@ const cors = require('cors');
 const app = express();
 
 const authMiddleWare = require('./auth/middleware');
-const user = require('./routes/user');
+
 const auth = require('./auth/index');
 
 // ROUTE VARIABLES
-//const userid = require('./routes/engineer/userid');
-const position = require('./routes/engineer/position');
-const isLead = require('./routes/engineer/isLead');
+const user = require('./routes/user/user');
+const position = require('./routes/user/position');
+const isLead = require('./routes/user/isLead');
 
 const principal = require('./routes/vendor/vendor');
 
@@ -72,12 +72,11 @@ app.use(cors({
 
 // USE THESE ROUTES
 
-//users
+//authentication
 app.use('/auth', auth);
-app.use('/user',  user);
-//authMiddleWare.ensureLoggedIn,
-//engineer
-//app.use('/userid', userid);
+
+//users
+app.use('/user',  user); //authMiddleWare.ensureLoggedIn,
 app.use('/position', position);
 app.use('/isLead', isLead); 
 

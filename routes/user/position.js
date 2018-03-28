@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const queries = require('../../db/queries/engineer/position');
+const queries = require('../../db/queries/user/position');
 
 router.get('/', (req, res) => {
     queries
@@ -28,11 +28,24 @@ router.get('/systemEngineer', (req, res, next) => {
 
 router.get('/manager', (req, res, next) => {
     queries
-        .getEngineer('Account Manager')
+        .getAM('Account Manager')
         .then(manager => {
             if(manager) {
                 res.json(manager);
                 console.log('Getting Managers');
+            } else {
+                next();
+            }
+    });
+});
+
+router.get('/manager/:fullName', (req, res, next) => {
+    queries
+        .getOneAM('Account Manager', req.params.fullName)
+        .then(manager => {
+            if(manager) {
+                res.json(manager);
+                console.log('Getting Manager Individually');
             } else {
                 next();
             }

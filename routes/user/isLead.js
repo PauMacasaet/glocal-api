@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const queries = require('../../db/queries/engineer/isLead');
+const queries = require('../../db/queries/user/isLead');
 
 function isValidLead(req, res, next) {
     if (req.params.isLead) return next();
