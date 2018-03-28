@@ -106,6 +106,17 @@ router.put('/:userid', isValidUserId, (req, res, next) => {
     
 });
 
+router.delete('/:userid', isValidUserId, (req, res, next) => {
+  User
+      .delete(req.params.userid)
+      .then(() => {
+      res.json({
+          deleted: true,
+          message: 'Account deleted'
+      });
+  });
+});
+
 function resError(res, statusCode, message) {
   res.status(statusCode);
   res.json({message});
