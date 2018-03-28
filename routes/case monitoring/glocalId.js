@@ -46,6 +46,25 @@ router.get('/search', (req, res) => {
 router.get('/filter', (req,res) => {
     const x = filterQuery.getOne(req.query.filter);
 
+    // const keys = [
+    //     'customer', 
+    //     'case_status', 
+    //     'assignedSystemsEngineer', 
+    //     'severity',
+    //     'vendor', 
+    //     'productName', 
+    //     'dateRaised' 
+    // ];
+    // const fields = [];
+
+    // keys.forEach(key => {
+    //     if (req.body[key]) fields.push(key);
+    // });
+
+    // fields.forEach(field => {
+    //     x.where(`${field}`, req.query.field);
+    // });
+
     if (req.query.customer) {
         x.where('customer', req.query.customer);
     } else if (req.query.case_status) {
@@ -61,7 +80,6 @@ router.get('/filter', (req,res) => {
     } else if (req.query.dateRaised) {
         x.where('dateRaised', req.query.dateRaised);
     } 
-
     x.then(filters => {
         res.json(filters);
         console.log('Filtering');
@@ -69,6 +87,7 @@ router.get('/filter', (req,res) => {
     .then(null, err => {
         res.status(500).send(err);
     });
+    
 });
 
 // router.get('/filter', (req, res, next) => {

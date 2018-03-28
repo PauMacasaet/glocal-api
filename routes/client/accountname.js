@@ -54,7 +54,7 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:accountName', isValidClient, (req, res, next, err) => {
+router.put('/:accountName', isValidClient, (req, res, next) => {
     if(validClient(req.body)) {
         queries
             .update(req.params.accountName, req.body)
