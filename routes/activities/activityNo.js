@@ -61,19 +61,21 @@ router.post('/', (req, res, next) => {
     }
 });
 
-router.put('/:activityNo', (req, res, next, err) => {
-    if (err){
-        return next(new Error('Invalid Update'));
-    } else {
+router.put('/:activityNo', isValidActivityNo, (req, res, next) => {
+    if(validActivity(req.body)) {
         queries
             .update(req.params.activityNo, req.body)
             .then(activity => {
                 res.json({
                     activity,
                     message: 'Activity Updated'
-                });
+            });
         });
+    } else {
+        next(new Error('Invalid Update'));
     }
+    
+    //if (err) return next(new Error('Invalid Update'));
 
 });
 
