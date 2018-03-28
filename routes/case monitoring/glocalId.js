@@ -71,6 +71,34 @@ router.get('/filter', (req,res) => {
     });
 });
 
+// router.get('/filter', (req, res, next) => {
+//     const keys = [
+//         'customer', 
+//         'case_status', 
+//         'assignedSystemsEngineer', 
+//         'severity',
+//         'vendor', 
+//         'productName', 
+//         'dateRaised' 
+//     ];
+//     const fields = [];
+
+//     keys.forEach(key => {
+//         if (req.body[key]) fields.push(key);
+//     });
+
+//     fields.forEach((field) => {
+//         filterQuery.getOne(req.query.field).then(filters => {
+//             if (filters) {
+//                 res.json(filters);
+//                 console.log('Getting filtered results');
+//             } else {
+//                 next(new Error('Not found'));
+//             }
+//         });
+//     });
+// });
+
 router.get('/:glocalId', isValidId, (req, res, next) => {
     queries
         .getOne(req.params.glocalId)

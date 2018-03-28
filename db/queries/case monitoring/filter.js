@@ -20,6 +20,8 @@ module.exports = {
             'case_monitoring.dateRaised', 
             'activities.timeOuts AS date_last_updated'
         )
+        //.where(`${filter}`, req.query.filter)
+        //.groupBy('case_monitoring.glocalId')
         .orderBy('glocalId', 'asc');
     }
 }
