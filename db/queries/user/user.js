@@ -28,5 +28,10 @@ module.exports = {
       .then(ids => {
         return ids[0];
     });
+  },
+  update(userid, user) {
+    return knex('user')
+      .where('userid', userid)
+      .update(user);
   }
 }

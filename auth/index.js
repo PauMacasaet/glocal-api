@@ -120,4 +120,15 @@ router.get('/logout', (req, res) => {
     });
 });
 
+router.put('/:userid', (req, res, next) => {
+    User
+        .update(req.params.userid, req.body)
+        .then(user => {
+            res.json({
+                user,
+                message: 'Account Updated'
+            });
+        });
+});
+
 module.exports = router;
