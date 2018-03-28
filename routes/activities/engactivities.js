@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 // authMiddleware.allowActivityAccess, 
-router.get('/:assignedSystemsEngineer', authMiddleware.allowActivityAccess, (req, res, next) => {
+router.get('/:assignedSystemsEngineer', (req, res, next) => {
     // if (req.params.assignedSystemsEngineer) {
     //     queries
     //     .getOne(req.params.assignedSystemsEngineer)
