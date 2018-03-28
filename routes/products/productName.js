@@ -53,7 +53,6 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:productName', (req, res, next, err) => {
-    if (err) return next(new Error('Invalid Update'));
     queries
         .update(req.params.productName, req.body)
         .then(product => {
@@ -62,7 +61,7 @@ router.put('/:productName', (req, res, next, err) => {
                 message: 'product updated'
             });
     });
-    
+    if (err) return next(new Error('Invalid Update'));
 });
 
 router.delete('/:productName', isValidProduct, (req, res, next) => {
