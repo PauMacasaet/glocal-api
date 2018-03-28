@@ -35,9 +35,32 @@ case monitoring post and put
 
 client post and put 
 {
-    "accountName": "Landbank",
+    "accountName": "BPI",
     "contact_details": [["Mareeah Koochenera"],["marreah@gmail.com"],["09178456789"]],
     "company_address": "Landbank address",
     "accountManager": "Mei Wang" 
+}
+
+contact_person post and put 
+{
+    "client": "BPI",
+    "personName": "first last"
+}
+
+license post and put 
+{
+	"date_start":"03/08/18",
+	"date_end":"05/01/19",
+	"vendor":"Symantec",
+	"productName":"Secure Web Gateway",
+	"client":"BPI",
+	"particulars":"nothing",
+	"on_site":"8x5",
+	"support_date_start":"03/15/18",
+	"support_date_end":"05/01/19",
+	"man_days":"365",
+	"remaining_man_days":"355",
+	"quarterly_hc":false,
+	"remarks":"no remarks"
 }
 
