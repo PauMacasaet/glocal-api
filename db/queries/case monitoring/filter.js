@@ -27,7 +27,7 @@ module.exports = {
             knexQuery.where('case_monitoring.case_status', query.case_status);
         }
         if (query.assignedSystemsEngineer) {
-            knexQuery.where('activities.assignedSystemsEngineer', query.assignedSystemsEngineer);
+            knexQuery.where('activities.assignedSystemsEngineer', '@>', query.assignedSystemsEngineer);
         }
         if (query.severity) {
             knexQuery.where('case_monitoring.severity', query.severity);
