@@ -43,33 +43,6 @@ router.get('/search', (req, res) => {
 
 // filters: customer, case_status, assignedSystemEngineers, severity, vendor, productName, dateRaised
 // FIELDS TO SHOW: glocalId, customer, case_status, assignedSystemsEngineer, severity, caseTitle, productName, dateRaised
-// router.get('/filter', (req,res) => {
-//     const x = filterQuery.getOne(req.query.filter);
-
-//     if (req.query.customer) {
-//         x.where('customer', req.query.customer);
-//     } else if (req.query.case_status) {
-//         x.where('case_status', req.query.case_status);
-//     } else if (req.query.assignedSystemsEngineer) {
-//         x.where('activities.assignedSystemsEngineer', req.query.assignedSystemsEngineer);
-//     } else if (req.query.severity) {
-//         x.where('severity', req.query.severity);
-//     } else if (req.query.vendor) {
-//         x.where('vendor', req.query.vendor);
-//     } else if (req.query.productName) {
-//         x.where('productName', req.query.productName);
-//     } else if (req.query.dateRaised) {
-//         x.where('dateRaised', req.query.dateRaised);
-//     } 
-//     x.then(filters => {
-//         res.json(filters);
-//         console.log('Filtering');
-//     })
-//     .then(null, err => {
-//         res.status(500).send(err);
-//     });
-    
-// });
 
 router.get('/filter', (req, res) => {
     const { customer, 
