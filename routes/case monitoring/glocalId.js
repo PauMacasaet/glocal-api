@@ -43,80 +43,52 @@ router.get('/search', (req, res) => {
 
 // filters: customer, case_status, assignedSystemEngineers, severity, vendor, productName, dateRaised
 // FIELDS TO SHOW: glocalId, customer, case_status, assignedSystemsEngineer, severity, caseTitle, productName, dateRaised
-router.get('/filter', (req,res) => {
-    const x = filterQuery.getOne(req.query.filter);
+// router.get('/filter', (req,res) => {
+//     const x = filterQuery.getOne(req.query.filter);
 
-    // const keys = [
-    //     'customer', 
-    //     'case_status', 
-    //     'assignedSystemsEngineer', 
-    //     'severity',
-    //     'vendor', 
-    //     'productName', 
-    //     'dateRaised' 
-    // ];
-    // const fields = [];
-
-    // keys.forEach(key => {
-    //     if (req.body[key]) fields.push(key);
-    // });
-
-    // fields.forEach(field => {
-    //     x.where(`${field}`, req.query.field);
-    // });
-
-    if (req.query.customer) {
-        x.where('customer', req.query.customer);
-    } else if (req.query.case_status) {
-        x.where('case_status', req.query.case_status);
-    } else if (req.query.assignedSystemsEngineer) {
-        x.where('activities.assignedSystemsEngineer', req.query.assignedSystemsEngineer);
-    } else if (req.query.severity) {
-        x.where('severity', req.query.severity);
-    } else if (req.query.vendor) {
-        x.where('vendor', req.query.vendor);
-    } else if (req.query.productName) {
-        x.where('productName', req.query.productName);
-    } else if (req.query.dateRaised) {
-        x.where('dateRaised', req.query.dateRaised);
-    } 
-    x.then(filters => {
-        res.json(filters);
-        console.log('Filtering');
-    })
-    .then(null, err => {
-        res.status(500).send(err);
-    });
+//     if (req.query.customer) {
+//         x.where('customer', req.query.customer);
+//     } else if (req.query.case_status) {
+//         x.where('case_status', req.query.case_status);
+//     } else if (req.query.assignedSystemsEngineer) {
+//         x.where('activities.assignedSystemsEngineer', req.query.assignedSystemsEngineer);
+//     } else if (req.query.severity) {
+//         x.where('severity', req.query.severity);
+//     } else if (req.query.vendor) {
+//         x.where('vendor', req.query.vendor);
+//     } else if (req.query.productName) {
+//         x.where('productName', req.query.productName);
+//     } else if (req.query.dateRaised) {
+//         x.where('dateRaised', req.query.dateRaised);
+//     } 
+//     x.then(filters => {
+//         res.json(filters);
+//         console.log('Filtering');
+//     })
+//     .then(null, err => {
+//         res.status(500).send(err);
+//     });
     
-});
-
-// router.get('/filter', (req, res, next) => {
-//     const keys = [
-//         'customer', 
-//         'case_status', 
-//         'assignedSystemsEngineer', 
-//         'severity',
-//         'vendor', 
-//         'productName', 
-//         'dateRaised' 
-//     ];
-//     const fields = [];
-
-//     keys.forEach(key => {
-//         if (req.body[key]) fields.push(key);
-//     });
-
-//     fields.forEach((field) => {
-//         filterQuery.getOne(req.query.field).then(filters => {
-//             if (filters) {
-//                 res.json(filters);
-//                 console.log('Getting filtered results');
-//             } else {
-//                 next(new Error('Not found'));
-//             }
-//         });
-//     });
 // });
+
+router.get('/filter', (req, res) => {
+    const { customer, 
+        case_status, 
+        assignedSystemsEngineer, 
+        severity, 
+        vendor, 
+        productName, 
+        dateRaised } = req.query;
+    filterQuery.getFilter({ customer, 
+        case_status, 
+        assignedSystemsEngineer, 
+        severity, 
+        vendor, 
+        productName, 
+        dateRaised }).then(filters => {
+            res.json(filters);
+        });
+});
 
 router.get('/:glocalId', isValidId, (req, res, next) => {
     queries
