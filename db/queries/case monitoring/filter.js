@@ -3,7 +3,7 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getFilter(query) {
         const knexQuery = knex('case_monitoring')
-            .rightJoin(
+            .leftJoin(
                 'activities', 
                 'case_monitoring.glocalId',
                 '=', 'activities.trackingNo'
