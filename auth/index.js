@@ -36,7 +36,7 @@ function validLogin(user) {
 function setUserIdCookie (req, res, id) {
     const isSecure = req.app.get('env') != 'development';
     res.cookie('user_id', id, {
-        httpOnly: true,
+        //httpOnly: true,
         secure: isSecure,
         signed: true
     });
