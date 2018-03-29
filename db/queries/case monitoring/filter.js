@@ -5,8 +5,8 @@ module.exports = {
         const knexQuery = knex('case_monitoring')
             .leftJoin(
                 'activities', 
-                'activities.trackingNo', 
-                '=', 'case_monitoring.glocalId'
+                'case_monitoring.glocalId',
+                '=', 'activities.trackingNo'
             )
             .select(
                 'case_monitoring.glocalId', 
