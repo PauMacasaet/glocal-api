@@ -11,7 +11,7 @@ module.exports = {
         return knex('products').insert(product, '*');
     },
     update(productName, product) {
-        return knex('products').where('productName', productName).update(product);
+        return knex('products').where('productName', productName).update(product, '*');
     }, 
     delete(productName) {
         return knex('products').where('productName', productName).del();

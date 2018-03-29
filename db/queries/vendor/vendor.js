@@ -11,7 +11,7 @@ module.exports = {
         return knex('vendor').insert(vendor, '*');
     },
     update(principal, vendor) {
-        return knex('vendor').where('principal', principal).update(vendor);
+        return knex('vendor').where('principal', principal).update(vendor, '*');
     }, 
     delete(principal) {
         return knex('vendor').where('principal', principal).del();

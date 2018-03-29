@@ -32,7 +32,7 @@ module.exports = {
   update(userid, user) {
     return knex('user')
       .where('userid', userid)
-      .update(user);
+      .update(user, '*');
   },
   delete(userid) {
     return knex('user')

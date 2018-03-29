@@ -56,7 +56,7 @@ module.exports = {
         return knex('activities').insert(activity, '*');
     },
     update(activityNo, activity) {
-        return knex('activities').where('activityNo', activityNo).update(activity);
+        return knex('activities').where('activityNo', activityNo).update(activity, '*');
     }, 
     delete(activityNo) {
         return knex('activities').where('activityNo', activityNo).del();
