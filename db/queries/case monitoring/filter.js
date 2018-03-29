@@ -36,7 +36,7 @@ module.exports = {
             knexQuery.where('case_monitoring.vendor', query.vendor);
         }
         if (query.productName) {
-            knexQuery.where('activities.productName', query.productName);
+            knexQuery.where('case_monitoring.productName', query.productName);
         }
         if (query.dateRaised) {
             knexQuery.where('case_monitoring.dateRaised', query.dateRaised);
