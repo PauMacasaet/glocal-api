@@ -3,7 +3,11 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getAll() {
         return knex('license')
-        .join('client', 'client.accountName', '=', 'license.client')
+        .join(
+            'client', 
+            'client.accountName', 
+            '=', 'license.client'
+        )
         .select(
             'license.licenseId', 
             'license.client', 
@@ -23,32 +27,9 @@ module.exports = {
         )
         .orderBy('license.licenseId', 'asc');
     },
-    getOne(licenseId) {
-        return knex('license')
-        .join('client', 'client.accountName', '=', 'license.client')
-        .select(
-            'license.licenseId', 
-            'license.client', 
-            'license.vendor', 
-            'license.productName', 
-            'license.date_start', 
-            'license.date_end', 
-            'license.particulars', 
-            'client.accountManager AS assignedAM', 
-            'license.man_days', 
-            'license.remaining_man_days',
-            'license.on_site',
-            'license.support_date_start',
-            'license.support_date_end',
-            'license.quarterly_hc',
-            'license.remarks'
-        )
-        .where('license.licenseId', licenseId)
-        .first();
-    },
     sortLicense(query) {
         const knexQuery = knex('license')
-            .join(
+            .leftJoin(
                 'client', 
                 'client.accountName', 
                 '=', 'license.client'
@@ -73,6 +54,8 @@ module.exports = {
 
         if (query.client) {
             knexQuery.orderBy('license.client', query.client);
+        } else if (query.licenseId ){
+            knexQuery.orderBy('license.licenseId', query.licenseId);
         } else if (query.vendor) {
             knexQuery.orderBy('license.vendor', query.vendor);
         } else if (query.productName) {
@@ -88,6 +71,29 @@ module.exports = {
         }
 
         return knexQuery;
+    },
+    getOne(licenseId) {
+        return knex('license')
+        .join('client', 'client.accountName', '=', 'license.client')
+        .select(
+            'license.licenseId', 
+            'license.client', 
+            'license.vendor', 
+            'license.productName', 
+            'license.date_start', 
+            'license.date_end', 
+            'license.particulars', 
+            'client.accountManager AS assignedAM', 
+            'license.man_days', 
+            'license.remaining_man_days',
+            'license.on_site',
+            'license.support_date_start',
+            'license.support_date_end',
+            'license.quarterly_hc',
+            'license.remarks'
+        )
+        .where('license.licenseId', licenseId)
+        .first();
     },
     create(license) {
         return knex('license').insert(license, '*');

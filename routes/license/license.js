@@ -41,22 +41,10 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:licenseId', isValidId, (req, res, next) => {
-    queries
-        .getOne(req.params.licenseId)
-        .then(license => {
-            if(license) {
-                res.json(license);
-                console.log('Getting List by License ID');
-            } else {
-                next();
-            }
-    });
-});
-
 router.get('/sort', (req, res, next) => {
     const { 
         client,
+        licenseId,
         vendor, 
         productName, 
         date_start, 
@@ -66,6 +54,7 @@ router.get('/sort', (req, res, next) => {
     } = req.query;
     queries.sortLicense({ 
         client,
+        licenseId,
         vendor, 
         productName, 
         date_start, 
@@ -76,6 +65,19 @@ router.get('/sort', (req, res, next) => {
             if (sorts) {
                 res.json(sorts);
                 console.log('Sorting');
+            } else {
+                next();
+            }
+    });
+});
+
+router.get('/:licenseId', isValidId, (req, res, next) => {
+    queries
+        .getOne(req.params.licenseId)
+        .then(license => {
+            if(license) {
+                res.json(license);
+                console.log('Getting List by License ID');
             } else {
                 next();
             }
