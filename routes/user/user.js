@@ -39,6 +39,7 @@ router.get('/', (req, res) => {
         .getAll()
         .then(users => {
             res.json(users);
+            //res.cookie(users);
             console.log('GETTING ALL USERS');
         });
 });

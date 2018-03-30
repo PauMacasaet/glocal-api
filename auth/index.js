@@ -68,6 +68,7 @@ router.post('/signup', (req, res, next) => {
                                 setUserIdCookie(req, res, id);
                                 res.json({
                                     id,
+                                    hash,
                                     message: 'User created'
                                 });
                             });
@@ -91,10 +92,16 @@ router.post('/login', (req, res, next) => {
             .then(user => {
                 console.log('user', user);
                 if(user) {
+                    //conmpare password with hashed password
                     bcrypt.compare(req.body.password, user.password, function(result, next) {
                         if(result) {
                             //setting the set-cookie header
-                            setUserIdCookie(req, res, user.id);
+                            setUserIdCookie(req, res, user.userid);
+                            // res.cookie('user_id', user.userid, {
+                            //     httpOnly: true,
+                            //     secure: true,
+                            //     signed: true
+                            // }); 
                             res.json({
                                 id: user.id,
                                 message: 'Logged in'

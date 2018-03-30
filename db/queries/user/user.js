@@ -24,7 +24,7 @@ module.exports = {
   },
   create (user) {
     return knex('user')
-      .insert(user, 'userid')
+      .insert(user, 'userid') // try '*'
       .then(ids => {
         return ids[0];
     });
