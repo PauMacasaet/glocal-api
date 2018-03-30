@@ -19,7 +19,7 @@ module.exports = {
                 'case_monitoring.productName', 
                 'case_monitoring.dateRaised', 
                 'activities.timeOuts AS date_last_updated'
-            )
+            );
         if (query.customer) {
             knexQuery.where('case_monitoring.customer', query.customer);
         }

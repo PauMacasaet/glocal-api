@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const knex = require('../../db/knex');
 
 const queries = require('../../db/queries/case monitoring/glocalid');
 const searchQuery = require('../../db/queries/case monitoring/search');
@@ -25,9 +26,19 @@ function validCase(case_mon) {
 }
 
 router.get('/', (req, res) => {
+
     queries.getAll().then(cases => {
         res.json(cases);
         console.log('GETTING ALL CASES');
+    });
+});
+
+router.get('/sort', (req, res) => {
+    queries
+        .sortCase(req.query.col, req.query.order)
+        .then(case_mon => {
+            res.json(case_mon);
+            console.log('Sorting');
     });
 });
 
@@ -60,6 +71,7 @@ router.get('/filter', (req, res) => {
         productName, 
         dateRaised }).then(filters => {
             res.json(filters);
+            console.log('Filtering');
         });
 });
 
