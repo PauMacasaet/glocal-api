@@ -1,11 +1,11 @@
-const bcrypt = require('bcrypt-nodejs');
+
 
 module.exports = [
     {
         fullName: 'Aaron Hernandez',
         username: 'userA',
         email: 'a@mail.com',
-        password: bcrypt.hashSync('ahumanbeing'),
+        password: 'ahumanbeing',
         contactNumber: '09876543212',
         dateCreated: new Date(),
         position: 'System Engineer'
@@ -14,7 +14,7 @@ module.exports = [
         fullName: 'Mei Wang',
         username: 'mei',
         email: 'mei@mail.com',
-        password: bcrypt.hashSync('meiwang'),
+        password: 'meiwang',
         contactNumber: '09876543212',
         dateCreated: new Date(),
         position: 'Account Manager'
@@ -23,7 +23,7 @@ module.exports = [
         fullName: 'Mara Mondragon',
         username: 'mara',
         email: 'mara@mail.com',
-        password: bcrypt.hashSync('mondragon'),
+        password: 'mondragon',
         contactNumber: '09876543212',
         dateCreated: new Date(),
         position: 'Account Manager'
@@ -32,7 +32,7 @@ module.exports = [
         fullName: 'Jefferson Ong',
         username: 'JOng',
         email: 'jong@mail.com',
-        password: bcrypt.hashSync('jefferson'),
+        password: 'jefferson',
         contactNumber: '09876543212',
         dateCreated: new Date(),
         position: 'System Engineer'
@@ -41,7 +41,7 @@ module.exports = [
         fullName: 'Jeffrey Jonas',
         username: 'jjonas',
         email: 'jonas@mail.com',
-        password: bcrypt.hashSync('jjonas'),
+        password: 'jjonas',
         contactNumber: '09876543212',
         dateCreated: new Date(),
         position: 'System Engineer'
