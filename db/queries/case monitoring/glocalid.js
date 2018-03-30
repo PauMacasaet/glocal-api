@@ -31,7 +31,7 @@ module.exports = {
             'activities.timeOuts AS date_last_updated',
         )
         .limit(5)
-        .offset(knex.count('*'))
+        .offset(10)
         .orderBy('glocalId', 'asc');
     },
     getOne(glocalId) {
