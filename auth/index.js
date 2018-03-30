@@ -37,6 +37,15 @@ function setUserIdCookie (req, res, id) {
     const isSecure = req.app.get('env') != 'development';
     res.cookie('user_id', id, {
         httpOnly: true,
+        secure: false,
+        signed: true
+    });
+}
+
+function setPositionCookie (req, res, position) {
+    const isSecure = req.app.get('env') != 'development';
+    res.cookie('user_pos', position, {
+        httpOnly: true,
         secure: isSecure,
         signed: true
     });

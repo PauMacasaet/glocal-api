@@ -53,6 +53,14 @@ module.exports = {
         .orderBy('activities.activityNo', 'asc');
     },
     create(activity) {
+        //let sr_num = 0;
+//        const temp = knex('activities').insert(activity, '*');
+        // if (activity.typeOfActivity == 'Remote') {
+        //     sr_num += 1;
+        // } else {
+
+        // }
+//        return temp;
         return knex('activities').insert(activity, '*');
     },
     update(activityNo, activity) {
