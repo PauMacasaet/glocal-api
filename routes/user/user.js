@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
         });
 });
 //, authMiddleware.allowAccess
-router.get('/:userid', (req, res) => {
+router.get('/:userid', authMiddleware.allowAccess, (req, res) => {
   if (!isNaN(req.params.userid)) {
     User.getOne(req.params.userid).then(user => {
       if (user) {

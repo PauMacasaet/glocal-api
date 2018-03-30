@@ -99,7 +99,7 @@ router.post('/login', (req, res, next) => {
                             setUserIdCookie(req, res, user.userid);
                             // res.cookie('user_id', user.userid, {
                             //     httpOnly: true,
-                            //     secure: true,
+                            //     secure: req.app.get('env') != 'development',
                             //     signed: true
                             // }); 
                             res.json({
