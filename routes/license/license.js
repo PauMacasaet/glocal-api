@@ -54,6 +54,34 @@ router.get('/:licenseId', isValidId, (req, res, next) => {
     });
 });
 
+router.get('/sort', (req, res, next) => {
+    const { 
+        client,
+        vendor, 
+        productName, 
+        date_start, 
+        date_end, 
+        particulars, 
+        accountManager
+    } = req.query;
+    queries.sortLicense({ 
+        client,
+        vendor, 
+        productName, 
+        date_start, 
+        date_end, 
+        particulars, 
+        accountManager
+    }).then(sorts => {
+            if (sorts) {
+                res.json(sorts);
+                console.log('Sorting');
+            } else {
+                next();
+            }
+    });
+})
+
 router.get('/product/:productName', isValidProduct, (req, res, next) => {
     query2
         .getOne(req.params.productName)
