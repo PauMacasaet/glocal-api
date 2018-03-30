@@ -25,37 +25,68 @@ function validCase(case_mon) {
     return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
 }
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
 
     queries.getAll().then(cases => {
-        res.json(cases);
-        console.log('GETTING ALL CASES');
+        if (cases) {
+            res.json(cases);
+            console.log('GETTING ALL CASES');
+        } else {
+            next();
+        }
     });
 });
 
-router.get('/sort', (req, res) => {
-    queries
-        .sortCase(req.query.col, req.query.order)
-        .then(case_mon => {
-            res.json(case_mon);
-            console.log('Sorting');
+router.get('/sort', (req, res, next) => {
+    const { 
+        glocalId,
+        customer, 
+        case_status, 
+        assignedSystemsEngineer, 
+        severity, 
+        caseTitle, 
+        productName, 
+        timeOuts,
+        dateRaised 
+    } = req.query;
+    queries.sortCase({ 
+        glocalId,
+        customer, 
+        case_status, 
+        assignedSystemsEngineer, 
+        severity, 
+        caseTitle, 
+        productName, 
+        timeOuts,
+        dateRaised 
+    }).then(sorts => {
+            if (sorts) {
+                res.json(sorts);
+                console.log('Sorting');
+            } else {
+                next();
+            }
     });
 });
 
 // customer, caseTitle, caseDescription, productName
-router.get('/search', (req, res) => {
+router.get('/search', (req, res, next) => {
     searchQuery
         .getOne(req.query.q)
         .then(case_mon => {
-            res.json(case_mon);
-            console.log('Searching');
+            if(case_mon) {
+                res.json(case_mon);
+                console.log('Searching');
+            } else {
+                next();
+            }
     });
 });
 
 // filters: customer, case_status, assignedSystemEngineers, severity, vendor, productName, dateRaised
 // FIELDS TO SHOW: glocalId, customer, case_status, assignedSystemsEngineer, severity, caseTitle, productName, dateRaised
 
-router.get('/filter', (req, res) => {
+router.get('/filter', (req, res, next) => {
     const { customer, 
         case_status, 
         assignedSystemsEngineer, 
@@ -70,8 +101,13 @@ router.get('/filter', (req, res) => {
         vendor, 
         productName, 
         dateRaised }).then(filters => {
-            res.json(filters);
-            console.log('Filtering');
+            if (filters) {
+                res.json(filters);
+                console.log('Filtering');
+            } else {
+                next();
+            }
+            
         });
 });
 
