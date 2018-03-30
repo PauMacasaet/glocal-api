@@ -30,8 +30,7 @@ module.exports = {
             'case_monitoring.vendor', 
             'activities.timeOuts AS date_last_updated',
         )
-        .limit(5)
-        .offset(knex.count('*'))
+        .offset(4)
         .orderBy('glocalId', 'asc');
     },
     getOne(glocalId) {
