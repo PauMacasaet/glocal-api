@@ -26,6 +26,26 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/sort', (req, res, next) => {
+    const { 
+        accountName,
+        company_address, 
+        accountManager
+    } = req.query;
+    queries.sortClient({ 
+        accountName,
+        company_address, 
+        accountManager
+    }).then(sorts => {
+            if (sorts) {
+                res.json(sorts);
+                console.log('Sorting');
+            } else {
+                next();
+            }
+    });
+});
+
 router.get('/:accountName', isValidClient, (req, res) => {
     queries
         .getOne(req.params.accountName)

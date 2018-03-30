@@ -80,7 +80,7 @@ router.get('/sort', (req, res, next) => {
                 next();
             }
     });
-})
+});
 
 router.get('/product/:productName', isValidProduct, (req, res, next) => {
     query2
