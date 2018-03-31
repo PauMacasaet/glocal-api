@@ -1,7 +1,7 @@
 const knex = require('../../knex'); // the connection
 
 module.exports = {
-    getAll(query) {
+    getAll(query, order) {
         const knexQuery = knex('case_monitoring')
         .join(
             'client', 
@@ -30,6 +30,8 @@ module.exports = {
             'case_monitoring.vendor', 
             'activities.timeOuts AS date_last_updated',
         );
+        
+        // SEARCH AND FILTER
         if (query.q) {
             knexQuery.where('case_monitoring.customer', 'like', `%${query.q}%`)
                 .orWhere('case_monitoring.caseTitle', 'like', `%${query.q}%`)
@@ -58,32 +60,29 @@ module.exports = {
             knexQuery.where('case_monitoring.dateRaised', query.dateRaised);
         }
 
+        // SORT
+        if (query.order_id) {
+            knexQuery.orderBy('case_monitoring.glocalId', query.order_id);
+        } else if (query.order_customer) {
+            knexQuery.orderBy('case_monitoring.customer', query.order_customer);
+        } else if (query.order_status) {
+            knexQuery.orderBy('case_monitoring.case_status', query.order_status);
+        } else if (query.order_se) {
+            knexQuery.orderBy('activities.assignedSystemsEngineer', query.order_se);
+        } else if (query.order_severity) {
+            knexQuery.orderBy('case_monitoring.severity', query.order_severity);
+        } else if (query.order_title) {
+            knexQuery.orderBy('case_monitoring.case_title', query.order_title);
+        } else if (query.order_product) {
+            knexQuery.orderBy('case_monitoring.productName', query.order_product);
+        } else if (query.order_update) {
+            knexQuery.orderBy('activities.timeOuts', query.order_update);
+        } else if (query.order_raised) {
+            knexQuery.orderBy('case_monitoring.dateRaised', query.order_raised);
+        }
+
+
         return knexQuery;
-    },
-    getOne(glocalId) {
-        return knex('case_monitoring')
-        .join('client', 'client.accountName', '=', 'case_monitoring.customer')
-        .leftJoin('activities', 'activities.trackingNo', '=', 'case_monitoring.glocalId')
-        .distinct('case_monitoring.glocalId')
-        .select(
-            'case_monitoring.glocalId',
-            'activities.assignedSystemsEngineer', 
-            'case_monitoring.vendorCaseId', 
-            'case_monitoring.dateIdCreated', 
-            'client.accountManager', 
-            'case_monitoring.case_status', 
-            'case_monitoring.caseDescription', 
-            'case_monitoring.caseTitle', 
-            'case_monitoring.customer', 
-            'case_monitoring.dateRaised', 
-            'case_monitoring.productName', 
-            'case_monitoring.severity', 
-            'case_monitoring.systemsEngineerLead', 
-            'case_monitoring.vendor', 
-            'activities.timeOuts AS date_last_updated'
-        )
-        //.groupBy('case_monitoring.glocalId', 'activities.assignedSystemsEngineer', 'client.accountManager')
-        .where('glocalId', glocalId);
     },
     sortCase(query) {
         const knexQuery = knex('case_monitoring')
@@ -136,6 +135,31 @@ module.exports = {
         }
 
         return knexQuery;
+    },
+    getOne(glocalId) {
+        return knex('case_monitoring')
+        .join('client', 'client.accountName', '=', 'case_monitoring.customer')
+        .leftJoin('activities', 'activities.trackingNo', '=', 'case_monitoring.glocalId')
+        .distinct('case_monitoring.glocalId')
+        .select(
+            'case_monitoring.glocalId',
+            'activities.assignedSystemsEngineer', 
+            'case_monitoring.vendorCaseId', 
+            'case_monitoring.dateIdCreated', 
+            'client.accountManager', 
+            'case_monitoring.case_status', 
+            'case_monitoring.caseDescription', 
+            'case_monitoring.caseTitle', 
+            'case_monitoring.customer', 
+            'case_monitoring.dateRaised', 
+            'case_monitoring.productName', 
+            'case_monitoring.severity', 
+            'case_monitoring.systemsEngineerLead', 
+            'case_monitoring.vendor', 
+            'activities.timeOuts AS date_last_updated'
+        )
+        //.groupBy('case_monitoring.glocalId', 'activities.assignedSystemsEngineer', 'client.accountManager')
+        .where('glocalId', glocalId);
     },
     create(case_mon) {
         return knex('case_monitoring').insert(case_mon, '*');

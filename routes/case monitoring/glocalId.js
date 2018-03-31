@@ -24,7 +24,19 @@ function validCase(case_mon) {
 }
 
 router.get('/', (req, res, next) => {
-    const { q,
+    const { 
+        //SORT
+        order_id,
+        order_customer, 
+        order_status,
+        order_se,
+        order_severity,
+        order_title,
+        order_product,
+        order_update,
+        order_raised,
+        // search and filters
+        q,
         customer, 
         case_status, 
         assignedSystemsEngineer, 
@@ -32,7 +44,19 @@ router.get('/', (req, res, next) => {
         vendor, 
         productName, 
         dateRaised } = req.query;
-    queries.getAll({ q,
+    queries.getAll({ 
+        //SORT
+        order_id,
+        order_customer, 
+        order_status,
+        order_se,
+        order_severity,
+        order_title,
+        order_product,
+        order_update,
+        order_raised,
+        // search and filters
+        q,
         customer, 
         case_status, 
         assignedSystemsEngineer, 
