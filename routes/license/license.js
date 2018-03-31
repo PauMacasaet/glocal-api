@@ -46,7 +46,7 @@ router.get('/', (req, res, next) => {
         order_manager,
 
         //SEARCH
-        q
+        q // client, vendor, productName, particukars, accountManager
     } = req.query;
     queries
         .getAll({

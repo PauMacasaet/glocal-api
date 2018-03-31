@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
         order_manager,
 
         //SEARCH
-        q
+        q //accountName, accountManager
     } = req.query;
     queries
         .getAll({
