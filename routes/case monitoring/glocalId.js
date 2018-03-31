@@ -25,7 +25,9 @@ function validCase(case_mon) {
 
 router.get('/', (req, res, next) => {
     const { 
-        //SORT
+        //SORT  
+        // /glocalId?order_id=(asc or desc)&q=text   OR 
+        // /glocalId?order_id=(asc or desc)?customer=BPI
         order_id,
         order_customer, 
         order_status,
@@ -35,8 +37,10 @@ router.get('/', (req, res, next) => {
         order_product,
         order_update,
         order_raised,
-        // search and filters
+        // search
         q,
+
+        //filters
         customer, 
         case_status, 
         assignedSystemsEngineer, 

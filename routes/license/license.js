@@ -34,7 +34,8 @@ function validLicense(license) {
 
 router.get('/', (req, res, next) => {
     const {
-        //SORT
+        //SORT  
+        // /license?order_client=asc&q=text
         order_client,
         order_id,
         order_vendor,
