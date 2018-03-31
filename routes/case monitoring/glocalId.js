@@ -3,8 +3,6 @@ const router = express.Router();
 const knex = require('../../db/knex');
 
 const queries = require('../../db/queries/case monitoring/glocalid');
-const searchQuery = require('../../db/queries/case monitoring/search');
-const filterQuery = require('../../db/queries/case monitoring/filter');
 
 function isValidId(req, res, next) {
     if (req.params.glocalId) return next();
@@ -26,8 +24,22 @@ function validCase(case_mon) {
 }
 
 router.get('/', (req, res, next) => {
-
-    queries.getAll().then(cases => {
+    const { q,
+        customer, 
+        case_status, 
+        assignedSystemsEngineer, 
+        severity, 
+        vendor, 
+        productName, 
+        dateRaised } = req.query;
+    queries.getAll({ q,
+        customer, 
+        case_status, 
+        assignedSystemsEngineer, 
+        severity, 
+        vendor, 
+        productName, 
+        dateRaised }).then(cases => {
         if (cases) {
             res.json(cases);
             console.log('GETTING ALL CASES');
@@ -67,48 +79,6 @@ router.get('/sort', (req, res, next) => {
                 next();
             }
     });
-});
-
-// customer, caseTitle, caseDescription, productName
-router.get('/search', (req, res, next) => {
-    searchQuery
-        .getOne(req.query.q)
-        .then(case_mon => {
-            if(case_mon) {
-                res.json(case_mon);
-                console.log('Searching');
-            } else {
-                next();
-            }
-    });
-});
-
-// filters: customer, case_status, assignedSystemEngineers, severity, vendor, productName, dateRaised
-// FIELDS TO SHOW: glocalId, customer, case_status, assignedSystemsEngineer, severity, caseTitle, productName, dateRaised
-
-router.get('/filter', (req, res, next) => {
-    const { customer, 
-        case_status, 
-        assignedSystemsEngineer, 
-        severity, 
-        vendor, 
-        productName, 
-        dateRaised } = req.query;
-    filterQuery.getFilter({ customer, 
-        case_status, 
-        assignedSystemsEngineer, 
-        severity, 
-        vendor, 
-        productName, 
-        dateRaised }).then(filters => {
-            if (filters) {
-                res.json(filters);
-                console.log('Filtering');
-            } else {
-                next();
-            }
-            
-        });
 });
 
 router.get('/:glocalId', isValidId, (req, res, next) => {
