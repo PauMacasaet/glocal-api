@@ -17,34 +17,35 @@ function validClient(client) {
     return hasAccoutname && hasContact && hasAddress && hasManager;
 }
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
+    const {
+        //SORT
+        order_client,
+        order_address,
+        order_manager,
+
+        //SEARCH
+        q
+    } = req.query;
     queries
-        .getAll()
-        .then(clients => {
-            res.json(clients);
-            console.log('GETTING ALL CLIENTS');
+        .getAll({
+            //SORT
+            order_client,
+            order_address,
+            order_manager,
+    
+            //SEARCH
+            q
+        }).then(clients => {
+            if (clients) {
+                res.json(clients);
+                console.log('GETTING ALL CLIENTS');
+            } else {
+                next();
+            }        
     });
 });
 
-router.get('/sort', (req, res, next) => {
-    const { 
-        accountName,
-        company_address, 
-        accountManager
-    } = req.query;
-    queries.sortClient({ 
-        accountName,
-        company_address, 
-        accountManager
-    }).then(sorts => {
-            if (sorts) {
-                res.json(sorts);
-                console.log('Sorting');
-            } else {
-                next();
-            }
-    });
-});
 
 router.get('/:accountName', isValidClient, (req, res) => {
     queries

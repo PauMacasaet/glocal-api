@@ -73,38 +73,6 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/sort', (req, res, next) => {
-    const { 
-        glocalId,
-        customer, 
-        case_status, 
-        assignedSystemsEngineer, 
-        severity, 
-        caseTitle, 
-        productName, 
-        timeOuts,
-        dateRaised 
-    } = req.query;
-    queries.sortCase({ 
-        glocalId,
-        customer, 
-        case_status, 
-        assignedSystemsEngineer, 
-        severity, 
-        caseTitle, 
-        productName, 
-        timeOuts,
-        dateRaised 
-    }).then(sorts => {
-            if (sorts) {
-                res.json(sorts);
-                console.log('Sorting');
-            } else {
-                next();
-            }
-    });
-});
-
 router.get('/:glocalId', isValidId, (req, res, next) => {
     queries
         .getOne(req.params.glocalId)

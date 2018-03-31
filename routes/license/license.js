@@ -32,42 +32,43 @@ function validLicense(license) {
     return hasDateStart && hasDateEnd && hasVendor && hasProductname && hasClient && hasParticulars && hasSupport && hasSupportStart && hasSupportEnd && hasManDays && hasRemManDays && hasHC && hasRemarks;
 }
 
-router.get('/', (req, res) => {
-    queries
-        .getAll()
-        .then(licenses => {
-            res.json(licenses);
-            console.log('GETTING ALL LICENSES');
-    })
-});
+router.get('/', (req, res, next) => {
+    const {
+        //SORT
+        order_client,
+        order_id,
+        order_vendor,
+        order_product,
+        order_start,
+        order_end,
+        order_particulars,
+        order_manager,
 
-router.get('/sort', (req, res, next) => {
-    const { 
-        client,
-        licenseId,
-        vendor, 
-        productName, 
-        date_start, 
-        date_end, 
-        particulars, 
-        accountManager
+        //SEARCH
+        q
     } = req.query;
-    queries.sortLicense({ 
-        client,
-        licenseId,
-        vendor, 
-        productName, 
-        date_start, 
-        date_end, 
-        particulars, 
-        accountManager
-    }).then(sorts => {
-            if (sorts) {
-                res.json(sorts);
-                console.log('Sorting');
+    queries
+        .getAll({
+            //SORT
+            order_client,
+            order_id,
+            order_vendor,
+            order_product,
+            order_start,
+            order_end,
+            order_particulars,
+            order_manager,
+    
+            //SEARCH
+            q
+        })
+        .then(licenses => {
+            if (licenses) {
+                res.json(licenses);
+                console.log('GETTING ALL LICENSES');
             } else {
                 next();
-            }
+            }     
     });
 });
 

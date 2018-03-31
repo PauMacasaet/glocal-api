@@ -1,8 +1,8 @@
 const knex = require('../../knex'); // the connection
 // isActive = Boolean
 module.exports = {
-    getAll() {
-        return knex('license')
+    getAll(query) {
+        const knexQuery = knex('license')
         .join(
             'client', 
             'client.accountName', 
@@ -24,50 +24,34 @@ module.exports = {
             'license.support_date_end',
             'license.quarterly_hc',
             'license.remarks'
-        )
-        .orderBy('license.licenseId', 'asc');
-    },
-    sortLicense(query) {
-        const knexQuery = knex('license')
-            .leftJoin(
-                'client', 
-                'client.accountName', 
-                '=', 'license.client'
-            )
-            .select(
-                'license.licenseId', 
-                'license.client', 
-                'license.vendor', 
-                'license.productName', 
-                'license.date_start', 
-                'license.date_end', 
-                'license.particulars', 
-                'client.accountManager AS assignedAM', 
-                'license.man_days', 
-                'license.remaining_man_days',
-                'license.on_site',
-                'license.support_date_start',
-                'license.support_date_end',
-                'license.quarterly_hc',
-                'license.remarks'
-            );
+        );
 
-        if (query.client) {
-            knexQuery.orderBy('license.client', query.client);
-        } else if (query.licenseId ){
-            knexQuery.orderBy('license.licenseId', query.licenseId);
-        } else if (query.vendor) {
-            knexQuery.orderBy('license.vendor', query.vendor);
-        } else if (query.productName) {
-            knexQuery.orderBy('license.productName', query.productName);
-        } else if (query.date_start) {
-            knexQuery.orderBy('license.date_start', query.date_start);
-        } else if (query.date_end) {
-            knexQuery.orderBy('license.date_end', query.date_end);
-        } else if (query.particulars) {
-            knexQuery.orderBy('license.particulars', query.particulars);
-        } else if (query.accountManager) {
-            knexQuery.orderBy('client.accountManager', query.accountManager);
+        //SEARCH
+        if (query.q) {
+            knexQuery.where('license.client', 'like', `%${query.q}%`)
+                .orWhere('license.vendor', 'like', `%${query.q}%`)
+                .orWhere('license.productName', 'like', `%${query.q}%`)
+                .orWhere('license.particulars', 'like', `%${query.q}%`)
+                .orWhere('client.accountManager', 'like', `%${query.q}%`);
+        }
+
+        // SORT
+        if (query.order_client) {
+            knexQuery.orderBy('license.client', query.order_client);
+        } else if (query.order_id ){
+            knexQuery.orderBy('license.licenseId', query.order_id);
+        } else if (query.order_vendor) {
+            knexQuery.orderBy('license.vendor', query.order_vendor);
+        } else if (query.order_product) {
+            knexQuery.orderBy('license.productName', query.order_product);
+        } else if (query.order_start) {
+            knexQuery.orderBy('license.date_start', query.order_start);
+        } else if (query.order_end) {
+            knexQuery.orderBy('license.date_end', query.order_end);
+        } else if (query.order_particulars) {
+            knexQuery.orderBy('license.particulars', query.order_particulars);
+        } else if (query.order_manager) {
+            knexQuery.orderBy('client.accountManager', query.order_manager);
         }
 
         return knexQuery;
