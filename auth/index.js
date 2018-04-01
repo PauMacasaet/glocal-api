@@ -112,7 +112,7 @@ router.post('/login', (req, res, next) => {
                             //     signed: true
                             // }); 
                             res.json({
-                                id: user.id,
+                                id: user.userid,
                                 message: 'Logged in'
                             });
                         } else {

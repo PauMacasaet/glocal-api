@@ -25,8 +25,18 @@ function allowActivityAccess (req, res, next) {
     }
 }
 
+function allowPositionAsccess (req, res, next) {
+    if(req.signedCookies.user_pos == req.params.position) {
+        next();
+    } else {
+        res.status(401);
+        next(new Error('Un-authorized Position'));
+    } 
+}
+
 module.exports = {
     ensureLoggedIn,
     allowAccess,
-    allowActivityAccess
+    allowActivityAccess,
+    allowPositionAsccess
 };
