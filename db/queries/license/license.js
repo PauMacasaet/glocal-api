@@ -37,21 +37,21 @@ module.exports = {
 
         // SORT
         if (query.order_client) {
-            knexQuery.orderBy('license.client', query.order_client);
+            knexQuery.orderBy('client', query.order_client);
         } else if (query.order_id ){
-            knexQuery.orderBy('license.licenseId', query.order_id);
+            knexQuery.orderBy('licenseId', query.order_id);
         } else if (query.order_vendor) {
-            knexQuery.orderBy('license.vendor', query.order_vendor);
+            knexQuery.orderBy('vendor', query.order_vendor);
         } else if (query.order_product) {
-            knexQuery.orderBy('license.productName', query.order_product);
+            knexQuery.orderBy('productName', query.order_product);
         } else if (query.order_start) {
-            knexQuery.orderBy('license.date_start', query.order_start);
+            knexQuery.orderBy('date_start', query.order_start);
         } else if (query.order_end) {
-            knexQuery.orderBy('license.date_end', query.order_end);
+            knexQuery.orderBy('date_end', query.order_end);
         } else if (query.order_particulars) {
-            knexQuery.orderBy('license.particulars', query.order_particulars);
+            knexQuery.orderBy('particulars', query.order_particulars);
         } else if (query.order_manager) {
-            knexQuery.orderBy('client.accountManager', query.order_manager);
+            knexQuery.orderBy('accountManager', query.order_manager);
         }
 
         return knexQuery;
