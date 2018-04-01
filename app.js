@@ -72,97 +72,173 @@ app.use(cors({
 // USE THESE ROUTES
 
 //authentication
-app.use('/auth', auth);
+app.use('/auth', 
+  auth);
 // /signup, /login, /:userid for update
 
 //users
-app.use('/user', authMiddleWare.ensureLoggedIn, user); 
+app.use('/user', 
+  authMiddleWare.ensureLoggedIn, 
+  user); 
 //authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName
-app.use('/position', position); 
+app.use('/position', 
+  authMiddleWare.ensureLoggedIn,
+  position); 
 // /systemEngineer, /systemEngineer/:fullName, /manager, /manager/:fullName
-app.use('/isLead', isLead); 
+app.use('/isLead',
+  authMiddleWare.ensureLoggedIn,
+  isLead); 
 // /:fullName
 
 //vendor
-app.use('/vendor', principal);
+app.use('/vendor', 
+  authMiddleWare.ensureLoggedIn,
+  principal);
 // /:principal
 
 //client
-app.use('/client', accountName);
+app.use('/client', 
+  authMiddleWare.ensureLoggedIn,
+  accountName);
 // /:accountName
 
 //products
-app.use('/products', productName);
+app.use('/products', 
+  authMiddleWare.ensureLoggedIn,
+  productName);
 // /:productName
-app.use('/productVendor', productVendor);
+app.use('/productVendor', 
+  authMiddleWare.ensureLoggedIn,
+  productVendor);
 // /:vendor
 
 //contact_person
-app.use('/contactp', contactPerson);
+app.use('/contactp', 
+  authMiddleWare.ensureLoggedIn,
+  contactPerson);
 // /:personName
-app.use('/contactc', contactClient);
+app.use('/contactc',
+  authMiddleWare.ensureLoggedIn, 
+  contactClient);
 // /:client
 
 //license
-app.use('/license', license);
+app.use('/license', 
+  authMiddleWare.ensureLoggedIn,
+  license);
 // /:licenseId, /product/:productName
-app.use('/onSite', on_site);
+app.use('/onSite', 
+  authMiddleWare.ensureLoggedIn,
+  on_site);
 // /:on_site
-app.use('/clientLicense', clientLicense);
+app.use('/clientLicense', 
+  authMiddleWare.ensureLoggedIn,
+  clientLicense);
 // /:client
 
 //case_monitoring
-app.use('/glocalId', glocalid);
+app.use('/glocalId', 
+  authMiddleWare.ensureLoggedIn,  
+  glocalid);
 // /search?q=BPI for example, /filter?[fieldname]=[fieldvalue], /glocalId
-app.use('/vendorCaseId', vendorcaseid);
+app.use('/vendorCaseId', 
+  authMiddleWare.ensureLoggedIn,
+  vendorcaseid);
 // /:vendorCaseId
-app.use('/dateCreated', datecreated);
+app.use('/dateCreated', 
+  authMiddleWare.ensureLoggedIn,
+  datecreated);
 // /:dateCreated
-app.use('/dateRaised', dateraised);
+app.use('/dateRaised', 
+  authMiddleWare.ensureLoggedIn,
+  dateraised);
 // /:dateCreated
-app.use('/caseTitle', casetitle);
+app.use('/caseTitle', 
+  authMiddleWare.ensureLoggedIn,
+  casetitle);
 // /:caseTitle
-app.use('/caseDesc', casedesc);
+app.use('/caseDesc', 
+  authMiddleWare.ensureLoggedIn,
+  casedesc);
 // /:caseDescription
-app.use('/severity', severity);
+app.use('/severity', 
+  authMiddleWare.ensureLoggedIn,
+  severity);
 // /:severity
-app.use('/customerName', customerName);
+app.use('/customerName', 
+  authMiddleWare.ensureLoggedIn,
+  customerName);
 // /:customer
-app.use('/systemsEngineerLead', seLead);
+app.use('/systemsEngineerLead', 
+  authMiddleWare.ensureLoggedIn,
+  seLead);
 // /:systemsEngineerLead
-app.use('/caseStatus', caseStatus);
+app.use('/caseStatus', 
+  authMiddleWare.ensureLoggedIn,
+  caseStatus);
 // /:caseStatus
-app.use('/nextId', nextId);
+app.use('/nextId', 
+  authMiddleWare.ensureLoggedIn,
+  nextId);
 
 //activities
-app.use('/activityNo', activityNo);
+app.use('/activityNo', 
+  authMiddleWare.ensureLoggedIn,
+  activityNo);
 // /:activityNo
-app.use('/timeIn', timeIn);
+app.use('/timeIn', 
+  authMiddleWare.ensureLoggedIn,
+  timeIn);
 // /:timeIn
-app.use('/timeOut', timeOuts);
+app.use('/timeOut', 
+  authMiddleWare.ensureLoggedIn,
+  timeOuts);
 // /:timeOuts
-app.use('/activityClient', activityClient);
+app.use('/activityClient', 
+  authMiddleWare.ensureLoggedIn,
+  activityClient);
 // /:client
-app.use('/address', addres);
+app.use('/address', 
+  authMiddleWare.ensureLoggedIn,
+  addres);
 // /:addres
-app.use('/typeOfActivity', typeOfActivity);
+app.use('/typeOfActivity', 
+  authMiddleWare.ensureLoggedIn,
+  typeOfActivity);
 // /:typeOfActivity
-app.use('/purposeOfVisit', purpose);
+app.use('/purposeOfVisit', 
+  authMiddleWare.ensureLoggedIn,
+  purpose);
 // /:purposeOfVisit
-app.use('/activityPerformed', activityPerformed);
+app.use('/activityPerformed', 
+  authMiddleWare.ensureLoggedIn,
+  activityPerformed);
 // /:activityPerformed
-app.use('/recommendations', recommendations);
+app.use('/recommendations', 
+  authMiddleWare.ensureLoggedIn,
+  recommendations);
 // /:recommendations
-app.use('/lastUpdate', lastUpdate);
-app.use('/engActivities', engActivities);
+app.use('/lastUpdate', 
+  authMiddleWare.ensureLoggedIn,
+  lastUpdate);
+
+app.use('/engActivities', 
+  authMiddleWare.ensureLoggedIn,
+  engActivities);
 // /:assignedSystemsEngineer
-app.use('/tracking', tracking);
+app.use('/tracking', 
+  authMiddleWare.ensureLoggedIn,
+  tracking);
 // /:trackingNo
-app.use('/assignedSystemsEngineer', assignedSystemsEngineer);
+app.use('/assignedSystemsEngineer', 
+  authMiddleWare.ensureLoggedIn,
+  assignedSystemsEngineer);
 // /:assignedSystemsEngineer
 
 //stats
-app.use('/totalCases', totalCases);
+app.use('/totalCases', 
+  authMiddleWare.ensureLoggedIn,
+  totalCases);
 // /:case_status
 
 // catch 404 and forward to error handler

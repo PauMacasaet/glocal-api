@@ -42,9 +42,41 @@ function setUserIdCookie (req, res, id) {
     });
 }
 
-function setPositionCookie (req, res, position) {
+function setPositionCookie (req, res, pos) {
     const isSecure = req.app.get('env') != 'development';
-    res.cookie('user_pos', position, {
+    const jsonValue = JSON.stringify({
+        user_pos: pos.position
+    });
+
+    res.cookie('user_pos', jsonValue, {
+        httpOnly: true,
+        secure: isSecure,
+        signed: true
+    });
+}
+
+function setFullnameCookie (req, res, name) {
+    const isSecure = req.app.get('env') != 'development';
+    const jsonValue = JSON.stringify({
+        user_name: name.fullName
+    });
+
+    res.cookie('user_name', jsonValue, {
+        httpOnly: true,
+        secure: isSecure,
+        signed: true
+    });
+}
+
+function createCookie(req, res, user) {
+    const isSecure = req.app.get('env') != 'development';
+    const jsonValue = JSON.stringify({
+        user_id: user.userid,
+        user_fullname: user.fullName,
+        user_pos: user.position
+    });
+
+    res.cookie('userCookie', jsonValue, {
         httpOnly: true,
         secure: isSecure,
         signed: true
@@ -73,10 +105,13 @@ router.post('/signup', (req, res, next) => {
                         };
                         User
                             .create(user)
-                            .then(id => {
-                                setUserIdCookie(req, res, id);
+                            .then((account) => {
+                                setUserIdCookie (req, res, account);
+                                setPositionCookie (req, res, account);
+                                //setFullnameCookie (req, res, account);
+                                //createCookie(req, res, account);
                                 res.json({
-                                    id,
+                                    account,
                                     hash,
                                     message: 'User created'
                                 });
@@ -105,14 +140,15 @@ router.post('/login', (req, res, next) => {
                     bcrypt.compare(req.body.password, user.password, function(result, next) {
                         if(result) {
                             //setting the set-cookie header
+                            
                             setUserIdCookie(req, res, user.userid);
-                            // res.cookie('user_id', user.userid, {
-                            //     httpOnly: true,
-                            //     secure: req.app.get('env') != 'development',
-                            //     signed: true
-                            // }); 
+                            setPositionCookie(req, res, user.position);
+                            //setFullnameCookie(req, res, user.fullName);
+                            
                             res.json({
                                 id: user.userid,
+                                fullName: user.fullName,
+                                position: user.position,
                                 message: 'Logged in'
                             });
                         } else {
@@ -130,7 +166,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/logout', (req, res) => {
-    res.clearCookie('user_id');
+    res.clearCookie(['user_id']);
     res.json({
         message: 'logged out'
     });

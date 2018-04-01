@@ -44,7 +44,8 @@ router.get('/', (req, res) => {
         });
 });
 //, authMiddleware.allowAccess
-router.get('/:userid', authMiddleware.allowAccess, (req, res) => {
+//compare id of url to id of cookie
+router.get('/:userid', authMiddleware.allowIDAccess, (req, res) => {
   if (!isNaN(req.params.userid)) {
     User.getOne(req.params.userid).then(user => {
       if (user) {
@@ -67,15 +68,15 @@ router.get('/name/:fullName', isValidName, (req, res) => {
             res.json(user);
             console.log('Getting user by fullname');
         } else {
-            next();
+            resError(res, 404, 'User Not Found');
         }
   });
 });
 
 
-//not yet done
-router.get('/:assignedSystemsEngineer/engActivities', authMiddleware.allowActivityAccess, (req,res) =>{
-  if (req.params.assignedSystemsEngineer) {
+//NOT WORKING
+router.get('/:fullName/engActivities', authMiddleware.allowActivityAccess, (req,res) =>{
+  if (req.params.fullName) {
     Activity
       .getOne(req.params.assignedSystemsEngineer)
       .then(user => {

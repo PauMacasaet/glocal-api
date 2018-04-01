@@ -7,8 +7,9 @@ function ensureLoggedIn (req, res, next) {
     }
 }
 
-function allowAccess (req, res, next) {
-    if(req.signedCookies.user_id == req.params.userid) {
+function allowIDAccess (req, res, next) {
+    const obj = req.signedCookies.user_id;
+    if(obj == req.params.userid) {
         next();
     } else {
         res.status(401);
@@ -17,7 +18,7 @@ function allowAccess (req, res, next) {
 }
 
 function allowActivityAccess (req, res, next) {
-    if(req.signedCookies.engName == req.params.assignedSystemsEngineer) {
+    if(req.signedCookies.user_name == req.params.fullName) {
         next();
     } else {
         res.status(401);
@@ -30,13 +31,13 @@ function allowPositionAsccess (req, res, next) {
         next();
     } else {
         res.status(401);
-        next(new Error('Un-authorized Position'));
+        next(new Error('ACCESS DENIED PAKYU KA'));
     } 
 }
 
 module.exports = {
     ensureLoggedIn,
-    allowAccess,
+    allowIDAccess,
     allowActivityAccess,
     allowPositionAsccess
 };
