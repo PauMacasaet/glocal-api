@@ -166,7 +166,7 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/logout', (req, res) => {
-    res.clearCookie(['user_id']);
+    res.clearCookie(['user_id', 'user_pos']);
     res.json({
         message: 'logged out'
     });

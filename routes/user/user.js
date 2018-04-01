@@ -12,7 +12,7 @@ function isValidName(req, res, next) {
 }
 
 function isValidUserId(req, res, next) {
-  if(!isNan(req.params.userid)) return next();
+  if(!isNaN(req.params.userid)) return next();
   next(new Error('Invalid User ID'));
 }
 

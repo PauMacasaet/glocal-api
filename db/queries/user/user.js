@@ -23,10 +23,11 @@ module.exports = {
       .first();
   },
   create (user) {
-    return knex('user')
-      .insert(user, 'userid') // try '*'
-      .then(ids => {
-        return ids[0];
+    const knexQuery = knex('user')
+      .insert(user, 'userid'); // try '*'
+      
+    return knexQuery.then(ids => {
+      return ids[0];
     });
   },
   update(userid, user) {
