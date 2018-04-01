@@ -73,25 +73,6 @@ router.get('/name/:fullName', isValidName, (req, res) => {
   });
 });
 
-
-//NOT WORKING
-router.get('/:fullName/engActivities', authMiddleware.allowActivityAccess, (req,res) =>{
-  if (req.params.fullName) {
-    Activity
-      .getOne(req.params.assignedSystemsEngineer)
-      .then(user => {
-        if (user) {
-          delete user.password;
-          res.json(user);
-        } else {
-          resError(res, 404, 'User Not Found');
-        }
-    });
-  } else {
-    resError(res, 500, "Invalid User");
-  }
-});
-
 router.put('/:userid', isValidUserId, (req, res, next) => {
   if(validUser(req.body)) {
     User

@@ -55,34 +55,6 @@ function setPositionCookie (req, res, pos) {
     });
 }
 
-function setFullnameCookie (req, res, name) {
-    const isSecure = req.app.get('env') != 'development';
-    const jsonValue = JSON.stringify({
-        user_name: name.fullName
-    });
-
-    res.cookie('user_name', jsonValue, {
-        httpOnly: true,
-        secure: isSecure,
-        signed: true
-    });
-}
-
-function createCookie(req, res, user) {
-    const isSecure = req.app.get('env') != 'development';
-    const jsonValue = JSON.stringify({
-        user_id: user.userid,
-        user_fullname: user.fullName,
-        user_pos: user.position
-    });
-
-    res.cookie('userCookie', jsonValue, {
-        httpOnly: true,
-        secure: isSecure,
-        signed: true
-    });
-}
-
 router.post('/signup', (req, res, next) => {
     if(validUser(req.body)) {
         User
