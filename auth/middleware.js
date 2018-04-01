@@ -3,7 +3,7 @@ function ensureLoggedIn (req, res, next) {
         next();
     } else {
         res.status(401);
-        next(new Error('Un-Authorized'));
+        next(new Error('Access Denied'));
     }
 }
 
@@ -31,7 +31,7 @@ function allowPositionAsccess (req, res, next) {
         next();
     } else {
         res.status(401);
-        next(new Error('ACCESS DENIED PAKYU KA'));
+        next(new Error('Access Denied'));
     } 
 }
 
