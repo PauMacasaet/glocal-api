@@ -26,7 +26,7 @@ router.get('/:addres', isValidAddress, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Address');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

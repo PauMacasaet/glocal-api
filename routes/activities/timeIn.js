@@ -26,7 +26,7 @@ router.get('/:timeIn', isValidTimeIn, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Time In');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

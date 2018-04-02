@@ -26,7 +26,7 @@ router.get('/:typeOfActivity', isValidTypeActivity, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Activity Type');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

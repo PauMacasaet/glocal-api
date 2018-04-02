@@ -26,7 +26,7 @@ router.get('/:assignedSystemsEngineer', isValidSE, (req, res) => {
                 res.json(case_mon);
                 console.log('Getting List by AssignedSystemsEngineer');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

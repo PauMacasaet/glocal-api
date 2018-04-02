@@ -26,7 +26,7 @@ router.get('/:timeOuts', isValidTimeOut, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Time Out');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

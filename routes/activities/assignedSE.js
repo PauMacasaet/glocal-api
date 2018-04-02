@@ -26,7 +26,7 @@ router.get('/:assignedSystemsEngineer', isValidEngineer, (req, res, next) => {
                 res.json(activity);
                 console.log('Getting List by Engineer Name');
             } else {
-                next(new Error('Engineer not found'));
+                next(new Error(404));
             }
     });
 });

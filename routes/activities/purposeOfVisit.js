@@ -26,7 +26,7 @@ router.get('/:purposeOfVisit', isValidPurpose, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Purpose Of Visit');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

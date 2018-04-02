@@ -31,7 +31,7 @@ router.get('/:assignedSystemsEngineer', isValidEngineer, (req, res, next) => {
               delete user.password;
               res.json(user);
             } else {
-              next(new Error('User Not Found'));
+              next(new Error(404));
             }
         });
     } else {

@@ -26,7 +26,7 @@ router.get('/:assignedAccountManager', isValidAcctManager, (req, res) => {
                 res.json(case_mon);
                 console.log('Getting List by AssignedAccountManager');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

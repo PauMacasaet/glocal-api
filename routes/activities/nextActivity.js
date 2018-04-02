@@ -26,7 +26,7 @@ router.get('/:nextActivity', isValidNextActivity, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Next Activity');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

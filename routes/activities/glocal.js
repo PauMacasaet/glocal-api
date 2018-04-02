@@ -26,7 +26,7 @@ router.get('/:trackingNo', isValidTrackingNo, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by TrackingNo');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

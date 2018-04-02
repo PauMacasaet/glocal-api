@@ -41,7 +41,7 @@ router.get('/:activityNo', isValidActivityNo, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Activity No');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

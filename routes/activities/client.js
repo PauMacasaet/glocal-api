@@ -26,7 +26,7 @@ router.get('/:client', isValidClient, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Client');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

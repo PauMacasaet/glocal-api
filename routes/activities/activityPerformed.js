@@ -26,7 +26,7 @@ router.get('/:activityPerformed', isValidActPerformed, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Activity Performed');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

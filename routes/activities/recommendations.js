@@ -26,7 +26,7 @@ router.get('/:recommendations', isValidRecommendation, (req, res) => {
                 res.json(activity);
                 console.log('Getting List by Recommendations');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });
