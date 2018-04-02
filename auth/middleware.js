@@ -1,5 +1,5 @@
 function ensureLoggedIn (req, res, next) {
-    if(req.signedCookies.user_id && req.signedCookies.user_pos) {
+    if(req.signedCookies.user_id) {
         next();
     } else {
         res.status(401);
