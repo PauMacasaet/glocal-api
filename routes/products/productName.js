@@ -32,7 +32,7 @@ router.get('/:productName', isValidProduct, (req, res) => {
                 res.json(product);
                 console.log('Getting Products by Name');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

@@ -26,7 +26,7 @@ router.get('/:client', isValidClient, (req, res) => {
                 res.json(license);
                 console.log('Getting List by Client License');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

@@ -32,7 +32,7 @@ router.get('/:personName', isValidContact, (req, res) => {
                 res.json(contact);
                 console.log('Getting Contacts by Personname');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

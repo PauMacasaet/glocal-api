@@ -26,7 +26,7 @@ router.get('/:client', isValidClient, (req, res) => {
                 res.json(contact);
                 console.log('Getting Contacts by Client');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

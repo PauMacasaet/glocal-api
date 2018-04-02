@@ -26,7 +26,7 @@ router.get('/:on_site', isValidSupport, (req, res) => {
                 res.json(license);
                 console.log('Getting List by Support Level');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

@@ -26,7 +26,7 @@ router.get('/:caseTitle', isValidTitle, (req, res) => {
                 res.json(case_mon);
                 console.log('Getting List by CaseTitle');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

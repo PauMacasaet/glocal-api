@@ -26,7 +26,7 @@ router.get('/:caseDescription', isValidDesc, (req, res) => {
                 res.json(case_mon);
                 console.log('Getting List by CaseDescription');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

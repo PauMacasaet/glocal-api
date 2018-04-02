@@ -56,7 +56,7 @@ router.get('/:accountName', isValidClient, (req, res) => {
                 res.json(client);
                 console.log('Getting Clients by Accountname');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

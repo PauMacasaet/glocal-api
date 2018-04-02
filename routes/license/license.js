@@ -81,7 +81,7 @@ router.get('/:licenseId', isValidId, (req, res, next) => {
                 res.json(license);
                 console.log('Getting List by License ID');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

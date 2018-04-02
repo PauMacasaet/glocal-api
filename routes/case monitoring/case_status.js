@@ -26,7 +26,7 @@ router.get('/:case_status', isValidStatus, (req, res) => {
                 res.json(case_mon);
                 console.log('Getting List by Case Status');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

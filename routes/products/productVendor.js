@@ -26,7 +26,7 @@ router.get('/:vendor', isValidVendor, (req, res) => {
                 res.json(product);
                 console.log('Getting Products by Vendor');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

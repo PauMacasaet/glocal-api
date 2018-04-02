@@ -24,7 +24,7 @@ router.get('/:vendorCaseId', isValidVendorId, (req, res) => {
                 res.json(case_mon);
                 console.log('Getting List by VendorCaseID');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

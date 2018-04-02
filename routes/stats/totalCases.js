@@ -26,7 +26,7 @@ router.get('/:case_status', isValidStatus, (req, res) => {
                 res.json(status);
                 console.log('Getting Vendors by Principal');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

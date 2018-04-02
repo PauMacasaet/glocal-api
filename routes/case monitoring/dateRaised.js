@@ -26,7 +26,7 @@ router.get('/:dateRaised', isValidRaise, (req, res) => {
                 res.json(case_mon);
                 console.log('Getting List by DateRaised');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

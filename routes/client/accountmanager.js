@@ -26,7 +26,7 @@ router.get('/:accountManager', isValidManager, (req, res) => {
                 res.json(client);
                 console.log('Getting Clients by Accountmanager');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

@@ -26,7 +26,7 @@ router.get('/:customer', isValidCustomerN, (req, res) => {
                 res.json(case_mon);
                 console.log('Getting List by Customer');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });

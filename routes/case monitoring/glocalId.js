@@ -85,7 +85,7 @@ router.get('/:glocalId', isValidId, (req, res, next) => {
                 res.json(case_mon);
                 console.log('Getting List by GlocalID');
             } else {
-                next();
+                next(new Error(404));
             }
     });
 });
