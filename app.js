@@ -138,7 +138,7 @@ app.use('/clientLicense',
 
 //case_monitoring
 app.use('/glocalId', 
-  authMiddleWare.ensureLoggedIn,  
+  //authMiddleWare.ensureLoggedIn,  
   glocalid);
 // /search?q=BPI for example, /filter?[fieldname]=[fieldvalue], /glocalId
 app.use('/vendorCaseId', 
