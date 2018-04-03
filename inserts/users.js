@@ -2,6 +2,15 @@
 
 module.exports = [
     {
+        fullName: 'Sonny Pascasio',
+        username: 'sonnyP',
+        email: 'sonny@mail.com',
+        password: 'sonnyp',
+        contactNumber: '09876543212',
+        dateCreated: new Date(),
+        position: 'Director'
+    },
+    {
         fullName: 'Aaron Hernandez',
         username: 'userA',
         email: 'a@mail.com',
