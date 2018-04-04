@@ -86,7 +86,7 @@ module.exports = {
 
         const items = 5;
         const page = 3;
-        return knexQuery.limit(items).offset((page - 1) * items);
+        return knexQuery;
     },
     getOne(glocalId) {
         return knex('case_monitoring')
