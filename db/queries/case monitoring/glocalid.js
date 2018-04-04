@@ -85,7 +85,7 @@ module.exports = {
         // PAGINATION
 
         const items = 5;
-        const page = 2;
+        const page = 3;
         return knexQuery.limit(items).offset((page - 1) * items);
     },
     getOne(glocalId) {
