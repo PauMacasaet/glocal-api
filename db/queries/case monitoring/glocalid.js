@@ -84,8 +84,10 @@ module.exports = {
 
         // PAGINATION
 
-        const items = 5;
-        const page = 3;
+        if (query.limit && query.offset) {
+            knexQuery.limit(query.limit).offset((query.offset - 1) * query.limit);
+        }
+        
         return knexQuery;
     },
     getOne(glocalId) {

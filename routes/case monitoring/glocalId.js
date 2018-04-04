@@ -47,7 +47,9 @@ router.get('/', (req, res, next) => {
         severity, 
         vendor, 
         productName, 
-        dateRaised } = req.query;
+        dateRaised,
+        limit,
+        offset } = req.query;
     queries.getAll({ 
         //SORT
         order_id,
@@ -67,7 +69,9 @@ router.get('/', (req, res, next) => {
         severity, 
         vendor, 
         productName, 
-        dateRaised }).then(cases => {
+        dateRaised,
+        limit,
+        offset }).then(cases => {
         if (cases) {
             res.json(cases);
             console.log('GETTING ALL CASES');
