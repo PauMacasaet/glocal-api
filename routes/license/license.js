@@ -46,7 +46,9 @@ router.get('/', (req, res, next) => {
         order_manager,
 
         //SEARCH
-        q // client, vendor, productName, particukars, accountManager
+        q, // client, vendor, productName, particukars, accountManager
+        limt,
+        offset
     } = req.query;
     queries
         .getAll({
@@ -61,7 +63,9 @@ router.get('/', (req, res, next) => {
             order_manager,
     
             //SEARCH
-            q
+            q,
+            limit,
+            offset
         })
         .then(licenses => {
             if (licenses) {

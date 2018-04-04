@@ -26,7 +26,9 @@ router.get('/', (req, res, next) => {
         order_manager,
 
         //SEARCH
-        q //accountName, accountManager
+        q, //accountName, accountManager
+        limit,
+        offset
     } = req.query;
     queries
         .getAll({
@@ -36,7 +38,9 @@ router.get('/', (req, res, next) => {
             order_manager,
     
             //SEARCH
-            q
+            q,
+            limit,
+            offset
         }).then(clients => {
             if (clients) {
                 res.json(clients);
