@@ -82,7 +82,13 @@ module.exports = {
             knexQuery.orderBy('case_monitoring.dateRaised', query.order_raised);
         }
 
-
+        // PAGINATION
+        if (query.limit) {
+            knexQuery.limit(query.limit);
+            if (query.page) {
+                knexQuery.offset((query.page - 1) * query.limit);
+            }
+        }
         return knexQuery;
     },
     getOne(glocalId) {
