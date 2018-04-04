@@ -83,13 +83,10 @@ module.exports = {
         }
 
         // PAGINATION
-        if (query.limit) {
-            knexQuery.limit(query.limit);
-            if (query.page) {
-                knexQuery.offset((query.page - 1) * query.limit);
-            }
-        }
-        return knexQuery;
+
+        const items = 5;
+        const page = 2;
+        return knexQuery.limit(items).offset((page - 1) * items);
     },
     getOne(glocalId) {
         return knex('case_monitoring')
