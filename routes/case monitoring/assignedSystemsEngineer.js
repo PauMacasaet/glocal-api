@@ -9,15 +9,6 @@ function isValidSE(req, res, next) {
     next(new Error('Invalid AssignedSystemsEngineer'));
 }
 
-router.get('/', (req, res) => {
-    queries
-        .getAll()
-        .then(cases => {
-            res.json(cases);
-            console.log('GETTING ALL CASES');
-    });
-});
-
 router.get('/:assignedSystemsEngineer', isValidSE, (req, res) => {
     queries
         .getOne(req.params.assignedSystemsEngineer)

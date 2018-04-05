@@ -41,6 +41,7 @@ const customerName = require('./routes/case monitoring/customerName');
 const seLead = require('./routes/case monitoring/systemsEngineerLead');
 const caseStatus = require('./routes/case monitoring/case_status');
 const nextId = require('./routes/case monitoring/nextId');
+const userSE = require('./routes/case monitoring/assignedSystemsEngineer');
 
 const activityNo = require('./routes/activities/activityNo');
 const timeIn = require('./routes/activities/timeIn');
@@ -180,6 +181,10 @@ app.use('/caseStatus',
 app.use('/nextId', 
   authMiddleWare.ensureLoggedIn,
   nextId);
+
+app.use('/userSE',
+  authMiddleWare.ensureLoggedIn,
+  userSE);
 
 //activities
 app.use('/activityNo', 
