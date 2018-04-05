@@ -41,7 +41,7 @@ const customerName = require('./routes/case monitoring/customerName');
 const seLead = require('./routes/case monitoring/systemsEngineerLead');
 const caseStatus = require('./routes/case monitoring/case_status');
 const nextId = require('./routes/case monitoring/nextId');
-const userSE = require('./routes/case monitoring/assignedSystemsEngineer');
+const userSE = require('./routes/case monitoring/userSE');
 
 const activityNo = require('./routes/activities/activityNo');
 const timeIn = require('./routes/activities/timeIn');
@@ -141,7 +141,7 @@ app.use('/clientLicense',
 app.use('/glocalId', 
   //authMiddleWare.ensureLoggedIn,  
   glocalid);
-// /search?q=BPI for example, /filter?[fieldname]=[fieldvalue], /glocalId
+// 
 app.use('/vendorCaseId', 
   authMiddleWare.ensureLoggedIn,
   vendorcaseid);
@@ -183,7 +183,6 @@ app.use('/nextId',
   nextId);
 
 app.use('/userSE',
-  authMiddleWare.ensureLoggedIn,
   userSE);
 
 //activities

@@ -32,13 +32,6 @@ module.exports = {
         );
         
         // SEARCH AND FILTER
-        if (query.q) {
-            knexQuery.where('case_monitoring.customer', 'like', `%${query.q}%`)
-                .orWhere('case_monitoring.caseTitle', 'like', `%${query.q}%`)
-                .orWhere('case_monitoring.caseDescription', 'like', `%${query.q}%`)
-                .orWhere('case_monitoring.productName', 'like', `%${query.q}%`)
-                .orWhere('case_monitoring.glocalId', query.q);
-        }
         if (query.customer) {
             knexQuery.where('case_monitoring.customer', query.customer);
         }
