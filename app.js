@@ -67,7 +67,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('secret'));
 app.use(cors({
-  origin: 'http://localhost:8000',
+  origin: 'https://carbon-app-kpnqizpvkm.now.sh/login', 
   credentials: true
 }));
 
