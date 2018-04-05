@@ -54,5 +54,23 @@ module.exports = [
         contactNumber: '09876543212',
         dateCreated: new Date(),
         position: 'System Engineer'
+    },
+    {
+        fullName: 'Isaiah Solomon',
+        username: 'ice',
+        email: 'ice@mail.com',
+        password: 'isaiah',
+        contactNumber: '09876543212',
+        dateCreated: new Date(),
+        position: 'System Engineer'
+    },
+    {
+        fullName: 'John Jenkins',
+        username: 'jjenkins',
+        email: 'jenkins@mail.com',
+        password: 'jenkins',
+        contactNumber: '09876543212',
+        dateCreated: new Date(),
+        position: 'System Engineer'
     }
 ];
