@@ -56,8 +56,11 @@ module.exports = {
 
         // PAGINATION
 
-        if (query.limit && query.offset) {
-            knexQuery.limit(query.limit).offset(query.offset);
+        if (query.limit) {
+            knexQuery.limit(query.limit);
+            if (query.offset) {
+                knexQuery.offset(query.offset);
+            }
         }
 
         return knexQuery;
