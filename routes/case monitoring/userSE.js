@@ -4,7 +4,12 @@ const knex = require('../../db/knex');
 
 const queries = require('../../db/queries/case monitoring/glocalid');
 
-router.get('/', (req, res, next) => {
+function isValidUser(req, res, next) {
+    if (req.query.user) return next();
+    next(new Error('Invalid Route'));
+}
+
+router.get('/', isValidUser, (req, res, next) => {
     const {
         order_id,
         order_customer, 
