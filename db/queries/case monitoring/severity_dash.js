@@ -22,7 +22,8 @@ module.exports = {
                 'activities.purposeOfVisit',
                 'activities.timeOuts AS date_last_updated'
             )
-            .where('case_monitoring.severity', query.severity);
+            .where('case_monitoring.severity', query.severity)
+            .whereNot('case_monitoring.case_status', 'Resolved');
 
             // SORT
             if (query.order_id) {
