@@ -42,6 +42,7 @@ const seLead = require('./routes/case monitoring/systemsEngineerLead');
 const caseStatus = require('./routes/case monitoring/case_status');
 const nextId = require('./routes/case monitoring/nextId');
 const userSE = require('./routes/case monitoring/userSE');
+const severity_dash = require('./routes/case monitoring/severity_dash');
 
 const activityNo = require('./routes/activities/activityNo');
 const timeIn = require('./routes/activities/timeIn');
@@ -185,6 +186,10 @@ app.use('/nextId',
 app.use('/userSE',
   authMiddleWare.ensureLoggedIn,
   userSE);
+
+app.use('/managerDashboard',
+  authMiddleWare.ensureLoggedIn,
+  severity_dash);
 
 //activities
 app.use('/activityNo', 
