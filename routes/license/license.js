@@ -47,7 +47,7 @@ router.get('/', (req, res, next) => {
 
         //SEARCH
         q, // client, vendor, productName, particukars, accountManager
-        limt,
+        limit,
         offset
     } = req.query;
     queries
