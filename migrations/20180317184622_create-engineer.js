@@ -17,6 +17,7 @@ exports.up = function(knex, Promise) {
         'System Engineer', 
         'Account Manager']
       ).notNull();
+      table.boolean('is_active').defaultTo(true).notNull();
     }),
 
     knex.schema.createTable('vendor', (table) => {
@@ -85,7 +86,7 @@ exports.up = function(knex, Promise) {
       table.varchar('activityPerformed', 2000).notNull();
       table.varchar('nextActivity', 2000).notNull();
       table.varchar('recommendations', 2000);
-      table.specificType('assignedSystemsEngineer', knex.raw('text[]')).notNull();
+      table.specificType('assignedSystemsEngineer', 'text[]').notNull();
     })
   ]);
 };
