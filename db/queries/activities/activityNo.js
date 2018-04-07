@@ -50,7 +50,7 @@ module.exports = {
             'activities.assignedSystemsEngineer'
         )
         .where('activityNo', activityNo)
-        .orderBy('activities.timeOuts', 'desc');
+        .orderBy('activities.timeOuts', 'asc');
     },
     create(activity) {
         return knex('activities').insert(activity, '*');
