@@ -30,8 +30,9 @@ function validUser(user) {
       && user.contactNumber.trim() != '';
   const hasPosition = typeof user.position == 'string'
       && user.position.trim() != '';
+  const hasActive = typeof user.is_active == 'boolean';
   
-  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition;
+  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition && hasActive;
 }
 
 router.get('/', (req, res) => {
