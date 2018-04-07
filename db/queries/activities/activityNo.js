@@ -24,7 +24,7 @@ module.exports = {
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer'
         )
-        .orderBy('activities.activityNo', 'asc');
+        .orderBy('activities.timeOuts', 'asc');
     },
     getOne(activityNo) {
         return knex('activities')
