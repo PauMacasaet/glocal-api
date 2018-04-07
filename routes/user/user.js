@@ -89,6 +89,7 @@ router.put('/:userid', isValidUserId, (req, res, next) => {
     
 });
 
+// prolly take out
 router.delete('/:userid', isValidUserId, (req, res, next) => {
   User
       .delete(req.params.userid)
