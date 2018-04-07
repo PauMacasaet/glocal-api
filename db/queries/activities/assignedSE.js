@@ -30,7 +30,7 @@ module.exports = {
             'contact_person.client',
             'contact_person.personName'
         )
-        .orderBy('activities.activityNo', 'desc');
+        .orderBy('activities.timeOuts', 'desc');
     },
     getOne(name) {
         return knex('activities')
@@ -62,6 +62,6 @@ module.exports = {
             'contact_person.personName'
         )
         .where('activities.assignedSystemsEngineer', '@>', name)
-        .orderBy('activities.activityNo', 'desc');
+        .orderBy('activities.timeOuts', 'desc');
     }
 }
