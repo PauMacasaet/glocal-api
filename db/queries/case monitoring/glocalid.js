@@ -29,7 +29,8 @@ module.exports = {
             'case_monitoring.systemsEngineerLead', 
             'case_monitoring.vendor', 
             'activities.timeOuts AS date_last_updated',
-        );
+        )
+        .orderBy('case_monitoring.glocalId', 'desc');
         
         // SEARCH AND FILTER
         if (query.q) {
@@ -122,7 +123,8 @@ module.exports = {
             'case_monitoring.vendor', 
             'activities.timeOuts AS date_last_updated',
         )
-        .where('activities.assignedSystemsEngineer', '@>', query.user);
+        .where('activities.assignedSystemsEngineer', '@>', query.user)
+        .orderBy('case_monitoring.glocalId', 'desc');
         
         // FILTER
         
