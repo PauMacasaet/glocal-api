@@ -77,6 +77,45 @@ router.get('/name/:fullName', isValidName, (req, res) => {
 
 router.put('/:userid', isValidUserId, (req, res, next) => {
   if(validUser(req.body)) {
+  
+    //   User
+  //     .getOneByEmail(req.body.email)
+  //     .then(user => {
+  //       console.log('user', user);
+
+  //       if(!user) {
+  //         //unique email
+  //         //hash password
+          
+  //         bcrypt.hash(req.body.password, 10, function(err, hash) {
+  //             const user = { 
+  //                 fullName: req.body.fullName,
+  //                 username: req.body.username,
+  //                 email: req.body.email,
+  //                 password: hash,
+  //                 contactNumber: req.body.contactNumber,
+  //                 dateCreated: new Date(),
+  //                 position: req.body.position,
+  //                 is_active: req.body.is_active
+  //             };
+  //             User
+  //               .update(req.params.userid, req.body)
+  //               .then(user => {
+  //                   res.json({
+  //                       user,
+  //                       message: 'Account Updated'
+  //                   });
+  //               });
+  //             });
+  //       } else {
+  //           // email in use
+  //           next(new Error('Email in use'));
+  //       }
+  //     });
+  // } else {
+  //   next(new Error('Invalid Update'));
+  // }
+  
     User
         .update(req.params.userid, req.body)
         .then(user => {
