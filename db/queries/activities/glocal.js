@@ -24,7 +24,7 @@ module.exports = {
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer'
         )
-        .orderBy('activities.activityNo', 'asc');
+        .orderBy('activities.activityNo', 'desc');
     },
     getOne(tracking) {
         return knex('activities')
@@ -50,6 +50,6 @@ module.exports = {
             'activities.assignedSystemsEngineer'
         )
         .where('activities.trackingNo', tracking)
-        .orderBy('activities.activityNo', 'asc');
+        .orderBy('activities.activityNo', 'desc');
     }
 }
