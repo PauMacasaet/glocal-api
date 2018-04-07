@@ -1,6 +1,7 @@
 
 const express = require('express');
-const bcrypt = require('bcrypt-nodejs');
+//const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcryptjs');
 const router = express.Router();
 
 const User = require('../db/queries/user/user');
@@ -65,7 +66,8 @@ router.post('/signup', (req, res, next) => {
                 if(!user) {
                     //unique email
                     //hash password
-                    bcrypt.hash(req.body.password, 10, null, function(hash) {
+                    
+                    bcrypt.hash(req.body.password, 10, function(err, hash) {
                         const user = { 
                             fullName: req.body.fullName,
                             username: req.body.username,
@@ -109,13 +111,13 @@ router.post('/login', (req, res, next) => {
                 console.log('user', user);
                 if(user) {
                     //conmpare password with hashed password
-                    bcrypt.compare(req.body.password, user.password, function(result, next) {
+                    bcrypt.compare(req.body.password, user.password).then((result) => {
                         if(result) {
                             //setting the set-cookie header
                             
                             setUserIdCookie(req, res, user.userid);
+                            
                             setPositionCookie(req, res, user.position);
-                            //setFullnameCookie(req, res, user.fullName);
                             
                             res.json({
                                 id: user.userid,
