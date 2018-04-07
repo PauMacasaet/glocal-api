@@ -2,6 +2,15 @@ const bcrypt = require('bcryptjs');
 
 module.exports = [
     {
+        fullName: 'Sonny Pascasio',
+        username: 'sonnyP',
+        email: 'sonny@mail.com',
+        password: bcrypt.hashSync('sonnyp', 10),
+        contactNumber: '09876543212',
+        dateCreated: new Date(),
+        position: 'Director'
+    },
+    {
         fullName: 'Aaron Hernandez',
         username: 'userA',
         email: 'a@mail.com',
