@@ -38,7 +38,7 @@ router.get('/', (req, res, next) => {
         // order_update,
         // order_raised,
         // search
-        q, //customer, productName, caseTitle, caseDescription
+        //q, //customer, productName, caseTitle, caseDescription
 
         //filters
         customer, 
