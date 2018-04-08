@@ -28,15 +28,15 @@ router.get('/', (req, res, next) => {
         //SORT  
         // /glocalId?order_id=(asc or desc)&q=text   OR 
         // /glocalId?order_id=(asc or desc)?customer=BPI
-        order_id,
-        order_customer, 
-        order_status,
-        order_se,
-        order_severity,
-        order_title,
-        order_product,
-        order_update,
-        order_raised,
+        // order_id,
+        // order_customer, 
+        // order_status,
+        // order_se,
+        // order_severity,
+        // order_title,
+        // order_product,
+        // order_update,
+        // order_raised,
         // search
         q, //customer, productName, caseTitle, caseDescription
 
