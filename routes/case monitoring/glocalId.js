@@ -49,7 +49,7 @@ router.get('/', (req, res, next) => {
         productName, 
         dateRaised,
         limit,
-        offset } = req.query;
+        offset } = req.query.values;
     queries.getAll({ 
         //SORT
         order_id,

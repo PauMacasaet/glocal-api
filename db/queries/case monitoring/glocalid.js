@@ -44,7 +44,7 @@ module.exports = {
             knexQuery.whereIn('case_monitoring.customer', query.customer);
         }
         if (query.case_status) {
-            knexQuery.whereIn('case_monitoring.case_status', query.case_status.values);
+            knexQuery.whereIn('case_monitoring.case_status', query.case_status);
         }
         if (query.assignedSystemsEngineer) {
             knexQuery.where('activities.assignedSystemsEngineer', '@>', query.assignedSystemsEngineer);
