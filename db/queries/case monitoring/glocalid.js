@@ -41,7 +41,7 @@ module.exports = {
                 .orWhere('case_monitoring.glocalId', query.q);
         }
         if (query.customer) {
-            knexQuery.where('case_monitoring.customer', query.customer);
+            knexQuery.whereIn('case_monitoring.customer', query.customer);
         }
         if (query.case_status) {
             knexQuery.whereIn('case_monitoring.case_status', query.case_status);
