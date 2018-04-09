@@ -15,6 +15,15 @@ module.exports = {
   },
   getOne (id) {
     return knex('user')
+      .select(
+        'userid',
+        'fullName',
+        'username',
+        'contactNumber',
+        'dateCreated',
+        'position',
+        'is_active'
+      )
       .where('userid', id)
       .first();
   },
