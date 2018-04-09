@@ -28,7 +28,9 @@ module.exports = {
                 'case_monitoring.severity', 
                 'case_monitoring.systemsEngineerLead', 
                 'case_monitoring.vendor', 
-                'activities.timeOuts AS date_last_updated',
+                'activities.typeOfActivity AS Activity',
+                'activities.purposeOfVisit',
+                'activities.timeOuts AS date_last_updated'
             )
             //.orderBy('case_monitoring.glocalId', 'desc');
         
