@@ -12,7 +12,8 @@ module.exports = {
         'dateCreated',
         'position',
         'is_active'
-      );
+      )
+      .orderBy('userid', 'asc');
   },
   getOne (id) {
     return knex('user')
