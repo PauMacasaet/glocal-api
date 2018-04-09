@@ -34,6 +34,13 @@ function validUser(user) {
   return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition && hasActive;
 }
 
+function validDirectorUpdate (user) {
+  const hasPosition = typeof user.position == 'string'
+    && user.position.trim() != '';
+  const hasActive = typeof user.is_active == 'boolean';
+  return hasPosition && hasActive;
+}
+
 router.get('/', (req, res) => {
     User
         .getAll()
@@ -72,41 +79,37 @@ router.get('/name/:fullName', isValidName, (req, res) => {
   });
 });
 
-router.put(':/userid', isValidUserId, (req, res, next) => {
-  if(validUser(req.body)) {
-    User  
-      .then(user => {
-        if(!user) {
-          bcrypt.hash(req.body.password, 10, function(err, hash) {
-            const user = { 
-              fullName: req.body.fullName,
-              username: req.body.username,
-              email: req.body.email,
-              password: hash,
-              contactNumber: req.body.contactNumber,
-              dateCreated: new Date(),
-              is_active: req.body.is_active
-            };
-            User
-              .update(req.params.userid, req.body)
-              .then(user => {
-                res.json({
-                  user,
-                  message: 'Account Updated'
-                });
-              });
-          });
-        } else {
-          next(new Error('Email in use'));
-        }
-      })
-  } else {
-    next(new Error('Invalid User'));
-  }
-});
+// router.put(':/userid', isValidUserId, (req, res, next) => {
+//   if(validDirectorUpdate(req.body)) {
+//     User  
+//       .getOneByEmail(req.body.email)
+//       .then(user => {
+//         if(!user) {
+//           bcrypt.hash(req.body.password, 10, function(err, hash) {
+//             const user = { 
+//               position: req.body.position,
+//               is_active: req.body.is_active
+//             };
+//             User
+//               .update(req.params.userid, req.body)
+//               .then(user => {
+//                 res.json({
+//                   user,
+//                   message: 'Account Updated'
+//                 });
+//               });
+//           });
+//         } else {
+//           next(new Error('Email in use'));
+//         }
+//       })
+//   } else {
+//     next(new Error('Invalid User'));
+//   }
+// });
 
-// router.put('/:userid', isValidUserId, (req, res, next) => {
-//   if(validUser(req.body)) {
+router.put('/:userid', isValidUserId, (req, res, next) => {
+  if(validDirectorUpdate(req.body)) {
   
 //     User
 //       .then(user => {
@@ -144,19 +147,19 @@ router.put(':/userid', isValidUserId, (req, res, next) => {
 //     next(new Error('Invalid Update'));
 //   }
   
-//     User
-//         .update(req.params.userid, req.body)
-//         .then(user => {
-//             res.json({
-//                 user,
-//                 message: 'Account Updated'
-//             });
-//     });
-//   } else {
-//     next(new Error('Invalid Update'));
-//   }
+    User
+        .update(req.params.userid, req.body)
+        .then(user => {
+            res.json({
+                user,
+                message: 'Account Updated'
+            });
+    });
+  } else {
+    next(new Error('Invalid Update'));
+  }
     
-// });
+});
 
 // prolly take out
 router.delete('/:userid', isValidUserId, (req, res, next) => {
