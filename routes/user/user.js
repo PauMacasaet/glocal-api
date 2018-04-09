@@ -110,7 +110,6 @@ router.put('/password/:userid', isValidUserId, authMiddleware.allowIDAccess, (re
           .then(account => {
             res.json({
               account,
-              hash,
               message: 'Password Updated'
             });
           });
