@@ -34,10 +34,10 @@ module.exports = {
         
         // SEARCH AND FILTER
         if (query.q) {
-            knexQuery.where('case_monitoring.customer', 'like', `%${query.q}%`.toLowerCase())
-                .orWhere('case_monitoring.caseTitle', 'like', `%${query.q}%`.toLowerCase())
-                .orWhere('case_monitoring.caseDescription', 'like', `%${query.q}%`.toLowerCase())
-                .orWhere('case_monitoring.productName', 'like', `%${query.q}%`.toLowerCase());
+            knexQuery.where('case_monitoring.customer'.toLowerCase(), 'like', `%${query.q}%`)
+                .orWhere('case_monitoring.caseTitle'.toLowerCase(), 'like', `%${query.q}%`)
+                .orWhere('case_monitoring.caseDescription'.toLowerCase(), 'like', `%${query.q}%`)
+                .orWhere('case_monitoring.productName'.toLowerCase(), 'like', `%${query.q}%`);
         }
         if (query.customer) {
             knexQuery.where('case_monitoring.customer', query.customer);
