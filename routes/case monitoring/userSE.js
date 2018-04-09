@@ -26,6 +26,7 @@ router.get('/', isValidUser, (req, res, next) => {
         //filters
         customer, 
         case_status, 
+        systemsEngineerLead,
         severity, 
         vendor, 
         productName, 
@@ -50,6 +51,7 @@ router.get('/', isValidUser, (req, res, next) => {
             //filters
             customer, 
             case_status, 
+            systemsEngineerLead,
             severity, 
             vendor, 
             productName, 
