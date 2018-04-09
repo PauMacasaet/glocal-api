@@ -29,16 +29,15 @@ function validUser(user) {
       && user.password.trim().length >= 6;
   const hasNumber = typeof user.contactNumber == 'string'
       && user.contactNumber.trim() != '';
-  const hasActive = typeof user.is_active == 'boolean';
   
-  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition && hasActive;
+  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition;
 }
 
 function validDirectorUpdate (user) {
-  const hasPosition = typeof user.position == 'string'
-    && user.position.trim() != '';
+  // const hasPosition = typeof user.position == 'string'
+  //   && user.position.trim() != '';
   const hasActive = typeof user.is_active == 'boolean';
-  return hasPosition && hasActive;
+  return hasActive;
 }
 
 router.get('/', (req, res) => {
@@ -110,43 +109,6 @@ router.get('/name/:fullName', isValidName, (req, res) => {
 
 router.put('/:userid', isValidUserId, (req, res, next) => {
   if(validDirectorUpdate(req.body)) {
-  
-//     User
-//       .then(user => {
-//         console.log('user', user);
-
-//         if(!user) {
-//           //unique email
-//           //hash password
-          
-//           bcrypt.hash(req.body.password, 10, function(err, hash) {
-//               const user = { 
-//                   fullName: req.body.fullName,
-//                   username: req.body.username,
-//                   email: req.body.email,
-//                   password: hash,
-//                   contactNumber: req.body.contactNumber,
-//                   dateCreated: new Date(),
-//                   is_active: req.body.is_active
-//               };
-//               User
-//                 .update(req.params.userid, req.body)
-//                 .then(user => {
-//                     res.json({
-//                         user,
-//                         message: 'Account Updated'
-//                     });
-//                 });
-//               });
-//         } else {
-//             // email in use
-//             next(new Error('Email in use'));
-//         }
-//       });
-//   } else {
-//     next(new Error('Invalid Update'));
-//   }
-  
     User
         .update(req.params.userid, req.body)
         .then(user => {
