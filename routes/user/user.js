@@ -30,6 +30,14 @@ function validUser(user) {
   return hasFullname && hasUserName && hasEmail && hasNumber;
 }
 
+function validPassword(user) {
+  const hasPassword = typeof user.password == 'string' 
+        && user.password.trim() != ''
+        && user.password.trim().length >= 6;
+  
+  return hasPassword;
+}
+
 function validDirectorUpdate (user) {
   // const hasPosition = typeof user.position == 'string'
   //   && user.position.trim() != '';
@@ -77,15 +85,38 @@ router.get('/name/:fullName', isValidName, (req, res) => {
 
 router.put('/employee/:userid', isValidUserId, authMiddleware.allowIDAccess, (req, res, next) => {
   if(validUser(req.body)) {
-    User.getOneByEmail(req.body.email).then(user => {
         User
-          .update(req.params.userid, user)
+          .update(req.params.userid, req.body)
           .then(account => {
             res.json({
               account,
               message: 'Account Updated'
             });
           });
+    
+  } else {
+    next(new Error('Invalid Update'));
+  }
+}); 
+
+router.put('/password/:userid', isValidUserId, authMiddleware.allowIDAccess, (req, res, next) => {
+  if(validPassword(req.body)) {
+    User.getOneByEmail(req.body.email).then(user => {
+      bcrypt.hash(req.body.password, 10, function(err, hash) {
+        const user = {
+          oldPassword: req.body.password,
+          newPassword: hash,
+          confirmPassword: newPassword
+        };
+        User
+          .update(req.params.userid, user)
+          .then(account => {
+            res.json({
+              account,
+              message: 'Password Updated'
+            });
+          });
+      });
     });
     
   } else {
