@@ -2,7 +2,16 @@ const knex = require('../../knex');
 
 module.exports = {
   getAll () {
-    return knex('user');
+    return knex('user')
+      .select(
+        'userid',
+        'fullName',
+        'username',
+        'contactNumber',
+        'dateCreated',
+        'position',
+        'is_active'
+      );
   },
   getOne (id) {
     return knex('user')
