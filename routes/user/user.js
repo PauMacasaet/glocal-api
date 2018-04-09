@@ -24,13 +24,10 @@ function validUser(user) {
       && user.username.trim() != '';
   const hasEmail = typeof user.email == 'string' 
       && user.email.trim() != '';
-  const hasPassword = typeof user.password == 'string' 
-      && user.password.trim() != ''
-      && user.password.trim().length >= 6;
   const hasNumber = typeof user.contactNumber == 'string'
       && user.contactNumber.trim() != '';
   
-  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber;
+  return hasFullname && hasUserName && hasEmail && hasNumber;
 }
 
 function validDirectorUpdate (user) {
@@ -81,14 +78,6 @@ router.get('/name/:fullName', isValidName, (req, res) => {
 router.put('/employee/:userid', isValidUserId, authMiddleware.allowIDAccess, (req, res, next) => {
   if(validUser(req.body)) {
     User.getOneByEmail(req.body.email).then(user => {
-      bcrypt.hash(req.body.password, 10, function(err, hash) {
-        const user = {
-          fullName: req.body.fullName,
-          username: req.body.username,
-          email: req.body.email,
-          password: hash,
-          contactNumber: req.body.contactNumber
-        };
         User
           .update(req.params.userid, user)
           .then(account => {
@@ -97,7 +86,6 @@ router.put('/employee/:userid', isValidUserId, authMiddleware.allowIDAccess, (re
               message: 'Account Updated'
             });
           });
-      });
     });
     
   } else {
