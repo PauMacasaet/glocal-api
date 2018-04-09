@@ -60,21 +60,21 @@ module.exports = {
         }
         if (query.customer) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.customer', 
                     query.customer
                 );
         }
         if (query.case_status) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.case_status', 
                     query.case_status
                 );
         }
         if (query.assignedSystemsEngineer) {
             knexQuery
-                .where(
+                .whereIn(
                     'activities.assignedSystemsEngineer', 
                     '@>', 
                     query.assignedSystemsEngineer
@@ -82,35 +82,35 @@ module.exports = {
         }
         if (query.systemsEngineerLead) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.systemsEngineerLead',
                     query.systemsEngineerLead
                 );
         }
         if (query.severity) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.severity', 
                     query.severity
                 );
         }
         if (query.vendor) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.vendor',
                      query.vendor
                     );
         }
         if (query.productName) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.productName', 
                     query.productName
                 );
         }
         if (query.dateRaised) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.dateRaised', 
                     query.dateRaised);
         }
@@ -220,49 +220,49 @@ module.exports = {
         
         if (query.customer) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.customer', 
                     query.customer
                 );
         }
         if (query.case_status) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.case_status', 
                     query.case_status
                 );
         }
         if (query.severity) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.severity', 
                     query.severity
                 );
         }
         if (query.systemsEngineerLead) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.systemsEngineerLead',
                     query.systemsEngineerLead
                 );
         }
         if (query.vendor) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.vendor', 
                     query.vendor
                 );
         }
         if (query.productName) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.productName', 
                     query.productName
                 );
         }
         if (query.dateRaised) {
             knexQuery
-                .where(
+                .whereIn(
                     'case_monitoring.dateRaised', 
                     query.dateRaised
                 );
