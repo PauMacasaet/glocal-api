@@ -213,6 +213,7 @@ module.exports = {
             'activities.timeOuts AS date_last_updated',
         )
         .where('activities.assignedSystemsEngineer', '@>', query.user)
+        //.where('case_monitoring.systemsEngineerLead', query.SELead)
         .orderBy('case_monitoring.glocalId', 'desc');
         
         // FILTER
