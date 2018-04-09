@@ -85,7 +85,6 @@ router.post('/signup', (req, res, next) => {
                                 //createCookie(req, res, account);
                                 res.json({
                                     account,
-                                    hash,
                                     message: 'User created'
                                 });
                             });

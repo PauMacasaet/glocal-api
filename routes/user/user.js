@@ -30,7 +30,7 @@ function validUser(user) {
   const hasNumber = typeof user.contactNumber == 'string'
       && user.contactNumber.trim() != '';
   
-  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition;
+  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber;
 }
 
 function validDirectorUpdate (user) {
@@ -78,44 +78,42 @@ router.get('/name/:fullName', isValidName, (req, res) => {
   });
 });
 
-// router.put(':/userid', isValidUserId, (req, res, next) => {
-//   if(validDirectorUpdate(req.body)) {
-//     User  
-//       .getOneByEmail(req.body.email)
-//       .then(user => {
-//         if(!user) {
-//           bcrypt.hash(req.body.password, 10, function(err, hash) {
-//             const user = { 
-//               position: req.body.position,
-//               is_active: req.body.is_active
-//             };
-//             User
-//               .update(req.params.userid, req.body)
-//               .then(user => {
-//                 res.json({
-//                   user,
-//                   message: 'Account Updated'
-//                 });
-//               });
-//           });
-//         } else {
-//           next(new Error('Email in use'));
-//         }
-//       })
-//   } else {
-//     next(new Error('Invalid User'));
-//   }
-// });
+router.put('/employee/:userid', isValidUserId, authMiddleware.allowIDAccess, (req, res, next) => {
+  if(validUser(req.body)) {
+    User.getOneByEmail(req.body.email).then(user => {
+      bcrypt.hash(req.body.password, 10, function(err, hash) {
+        const user = {
+          fullName: req.body.fullName,
+          username: req.body.username,
+          email: req.body.email,
+          password: hash,
+          contactNumber: req.body.contactNumber
+        };
+        User
+          .update(req.params.userid, user)
+          .then(account => {
+            res.json({
+              account,
+              message: 'Account Updated'
+            });
+          });
+      });
+    });
+    
+  } else {
+    next(new Error('Invalid Update'));
+  }
+}); 
 
 router.put('/:userid', isValidUserId, (req, res, next) => {
   if(validDirectorUpdate(req.body)) {
     User
-        .update(req.params.userid, req.body)
-        .then(user => {
-            res.json({
-                user,
-                message: 'Account Updated'
-            });
+      .update(req.params.userid, req.body)
+      .then(user => {
+        res.json({
+          user,
+          message: 'Account Updated'
+      });
     });
   } else {
     next(new Error('Invalid Update'));

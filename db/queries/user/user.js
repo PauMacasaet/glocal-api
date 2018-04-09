@@ -8,6 +8,7 @@ module.exports = {
         'fullName',
         'username',
         'email',
+        'password',
         'contactNumber',
         'dateCreated',
         'position',
@@ -52,9 +53,13 @@ module.exports = {
     });
   },
   update(userid, user) {
-    return knex('user')
+    const knexQuery = knex('user')
       .where('userid', userid)
-      .update(user, '*');
+      .update(user, 'userid');
+
+    return knexQuery.then(ids => {
+      return ids[0];
+    });
   },
   delete(userid) {
     return knex('user')

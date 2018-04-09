@@ -355,12 +355,16 @@ module.exports = {
         .where('glocalId', glocalId);
     },
     create(case_mon) {
-        return knex('case_monitoring').insert(case_mon, '*');
+        return knex('case_monitoring')
+            .insert(case_mon, '*');
     },
     update(glocalId, case_monitoring) {
-        return knex('case_monitoring').where('glocalId', glocalId).update(case_monitoring, '*');
+        return knex('case_monitoring')
+            .where('glocalId', glocalId)
+            .update(case_monitoring, '*');
     }, 
     delete(glocalId) {
-        return knex('case_monitoring').where('glocalId', glocalId).del();
+        return knex('case_monitoring')
+            .where('glocalId', glocalId).del();
     }
 }
