@@ -58,18 +58,18 @@ module.exports = {
                     `%${query.q}%`
                 );
         }
-        if (query.customer) {
+        if (query['customer']) {
             knexQuery
                 .whereIn(
                     'case_monitoring.customer', 
-                    query.customer
+                    query['customer']
                 );
         }
-        if (query.case_status) {
+        if (query['case_status']) {
             knexQuery
                 .whereIn(
                     'case_monitoring.case_status', 
-                    query.case_status
+                    query['case_status']
                 );
         }
         if (query.assignedSystemsEngineer) {
@@ -94,18 +94,18 @@ module.exports = {
                     query['severity']
                 );
         }
-        if (query.vendor) {
+        if (query['vendor']) {
             knexQuery
                 .whereIn(
                     'case_monitoring.vendor',
-                     query.vendor
+                     query['vendor']
                     );
         }
-        if (query.productName) {
+        if (query['productName']) {
             knexQuery
                 .whereIn(
                     'case_monitoring.productName', 
-                    query.productName
+                    query['productName']
                 );
         }
         if (query.dateRaised) {
