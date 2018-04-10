@@ -31,6 +31,30 @@ function validCase(case_mon) {
     return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
 }
 
+function validUpdate(case_mon) {
+    const hasDateCreated = typeof case_mon.dateIdCreated == 'string' 
+        && case_mon.dateIdCreated.trim() != '';
+    const hasDateRaised = typeof case_mon.dateRaised == 'string' 
+        && case_mon.dateRaised.trim() != '';
+    const hasTitle = typeof case_mon.caseTitle == 'string' 
+        && case_mon.caseTitle.trim() != '';
+    const hasDescription = typeof case_mon.caseDescription == 'string' 
+        && case_mon.caseDescription.trim() != '';
+    const hasSeverity = !isNaN(case_mon.severity);
+    const hasVendor = typeof case_mon.vendor == 'string' 
+        && case_mon.vendor.trim() != '';
+    const hasCustomer = typeof case_mon.customer == 'string' 
+        && case_mon.customer.trim() != '';
+    const hasProductName = typeof case_mon.productName == 'string' 
+        && case_mon.productName.trim() != '';
+    const hasSELead = typeof case_mon.systemsEngineerLead == 'string';
+    const hasStatus = typeof case_mon.case_status == 'string' 
+        && case_mon.case_status.trim() != '';
+    const hasResolved = typeof case_mon.date_resolved == 'string'
+        && case_mon.date_resolved.trim() != '';
+    return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
+}
+
 router.get('/', (req, res, next) => {
     const { 
         //SORT  
@@ -120,7 +144,7 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:glocalId', isValidId, (req, res, next) => {
-    if(validCase(req.body)) {
+    if(validUpdate(req.body)) {
         queries
             .update(req.params.glocalId, req.body)
             .then(case_mon => {
