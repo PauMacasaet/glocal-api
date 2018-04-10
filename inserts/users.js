@@ -72,5 +72,14 @@ module.exports = [
         contactNumber: '09876543212',
         dateCreated: new Date(),
         position: 'System Engineer'
+    },
+    {
+        fullName: 'Oliver de los Santos',
+        username: 'oliver',
+        email: 'oliver@mail.com',
+        password: bcrypt.hashSync('oliver', 10),
+        contactNumber: '09876543212',
+        dateCreated: new Date(),
+        position: 'System Engineer'
     }
 ];
