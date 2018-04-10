@@ -61,8 +61,8 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('case_monitoring', (table) => {
       table.increments('glocalId').primary().notNull();
       table.varchar('vendorCaseId', 50);
-      table.date('dateIdCreated').notNull();
-      table.date('dateRaised').notNull();
+      table.datetime('dateIdCreated').notNull();
+      table.datetime('dateRaised').notNull();
       table.varchar('caseTitle', 50).notNull();
       table.varchar('caseDescription', 100).notNull();
       table.integer('severity').notNull();
@@ -71,6 +71,7 @@ exports.up = function(knex, Promise) {
       table.varchar('productName', 50).references('productName').inTable('products').notNull().onUpdate('cascade');
       table.varchar('systemsEngineerLead', 50);
       table.varchar('case_status', 50).notNull();
+      table.datetime('date_resolved');
     }),
 
     knex.schema.createTable('activities', (table) => {

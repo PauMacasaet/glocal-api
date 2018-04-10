@@ -30,7 +30,8 @@ module.exports = {
                 'case_monitoring.vendor', 
                 'activities.typeOfActivity AS Activity',
                 'activities.purposeOfVisit',
-                'activities.timeOuts AS date_last_updated'
+                'activities.timeOuts AS date_last_activity',
+                'case_monitoring.date_resolved'
             )
             //.orderBy('case_monitoring.glocalId', 'desc');
         
@@ -72,12 +73,12 @@ module.exports = {
                     query['case_status']
                 );
         }
-        if (query.assignedSystemsEngineer) {
+        if (query['assignedSystemsEngineer']) {
             knexQuery
                 .where(
-                    'activities.assignedSystemsEngineer', 
+                    'activities.assignedSystemsEngineer',
                     '@>', 
-                    query.assignedSystemsEngineer
+                    query['assignedSystemsEngineer']
                 );
         }
         if (query['systemsEngineerLead']) {
@@ -210,7 +211,8 @@ module.exports = {
             'case_monitoring.severity', 
             'case_monitoring.systemsEngineerLead', 
             'case_monitoring.vendor', 
-            'activities.timeOuts AS date_last_updated',
+            'activities.timeOuts AS date_last_activity',
+            'case_monitoring.date_resolved'
         )
         .where('activities.assignedSystemsEngineer', '@>', query.user)
         //.where('case_monitoring.systemsEngineerLead', query.SELead)
@@ -349,7 +351,8 @@ module.exports = {
             'case_monitoring.severity', 
             'case_monitoring.systemsEngineerLead', 
             'case_monitoring.vendor', 
-            'activities.timeOuts AS date_last_updated'
+            'activities.timeOuts AS date_last_updated',
+            'case_monitoring.date_resolved'
         )
         //.groupBy('case_monitoring.glocalId', 'activities.assignedSystemsEngineer', 'client.accountManager')
         .where('glocalId', glocalId);
@@ -359,9 +362,11 @@ module.exports = {
             .insert(case_mon, '*');
     },
     update(glocalId, case_monitoring) {
-        return knex('case_monitoring')
+        const knexQuery = knex('case_monitoring')
             .where('glocalId', glocalId)
             .update(case_monitoring, '*');
+
+        return knexQuery;
     }, 
     delete(glocalId) {
         return knex('case_monitoring')

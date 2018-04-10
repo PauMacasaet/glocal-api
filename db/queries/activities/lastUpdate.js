@@ -6,11 +6,10 @@ module.exports = {
             .distinct('trackingNo')
             .select(
                 'trackingNo', 
-                'timeOuts AS date_last_updated', 
+                'timeOuts AS date_last_activity', 
                 'client', 
                 'productName'
             )
-            .orderBy('trackingNo')
             .orderBy('timeOuts', 'desc');
     }
 }

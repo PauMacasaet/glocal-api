@@ -23,7 +23,8 @@ module.exports = [
         customer: 'BPI',
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jeffrey Jonas',
-        case_status: 'Resolved'
+        case_status: 'Resolved',
+        date_resolved: new Date()
     },
     {
         vendorCaseId: 'JF3',
