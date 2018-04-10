@@ -87,11 +87,11 @@ module.exports = {
                     query.systemsEngineerLead
                 );
         }
-        if (query.severity) {
+        if (query['severity']) {
             knexQuery
                 .whereIn(
                     'case_monitoring.severity', 
-                    query.severity
+                    query['severity']
                 );
         }
         if (query.vendor) {
