@@ -80,11 +80,11 @@ module.exports = {
                     query.assignedSystemsEngineer
                 );
         }
-        if (query.systemsEngineerLead) {
+        if (query['systemsEngineerLead']) {
             knexQuery
                 .whereIn(
                     'case_monitoring.systemsEngineerLead',
-                    query.systemsEngineerLead
+                    query['systemsEngineerLead']
                 );
         }
         if (query['severity']) {
