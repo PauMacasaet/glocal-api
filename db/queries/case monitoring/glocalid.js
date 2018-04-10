@@ -366,7 +366,10 @@ module.exports = {
             .where('glocalId', glocalId)
             .update(case_monitoring, '*');
 
-        return knexQuery;
+        return knexQuery
+            .from('activities')
+            .where('case_monitoring.glocalId', '=', 'activities.trackingNo')
+            .update('activities.timeOuts', new Date());
     }, 
     delete(glocalId) {
         return knex('case_monitoring')
