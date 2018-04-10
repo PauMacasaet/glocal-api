@@ -83,7 +83,7 @@ router.get('/name/:fullName', isValidName, (req, res) => {
   });
 });
 
-router.put('/employee/:userid', isValidUserId, (req, res, next) => {
+router.put('/employee/:userid', isValidUserId, authMiddleware.allowIDAccess, (req, res, next) => {
   if(validUser(req.body)) {
         User
           .update(req.params.userid, req.body)
@@ -99,7 +99,7 @@ router.put('/employee/:userid', isValidUserId, (req, res, next) => {
   }
 }); 
 
-router.put('/password/:userid', isValidUserId, (req, res, next) => {
+router.put('/password/:userid', isValidUserId, authMiddleware.allowIDAccess, (req, res, next) => {
   if(validPassword(req.body)) {
       bcrypt.hash(req.body.password, 10, function(err, hash) {
         const user = {
