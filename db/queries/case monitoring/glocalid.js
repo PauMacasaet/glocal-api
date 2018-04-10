@@ -365,7 +365,7 @@ module.exports = {
         const knexQuery = knex('case_monitoring')
             .where('glocalId', glocalId)
             .update(case_monitoring, '*');
-
+        return knexQuery;
     }, 
     delete(glocalId) {
         return knex('case_monitoring')
