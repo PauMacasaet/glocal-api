@@ -32,6 +32,8 @@ function validCase(case_mon) {
 }
 
 function validUpdate(case_mon) {
+    const hasDateCreated = typeof case_mon.dateIdCreated == 'string' 
+        && case_mon.dateIdCreated.trim() != '';
     const hasDateRaised = typeof case_mon.dateRaised == 'string' 
         && case_mon.dateRaised.trim() != '';
     const hasTitle = typeof case_mon.caseTitle == 'string' 
@@ -52,9 +54,9 @@ function validUpdate(case_mon) {
         && case_mon.date_resolved.trim() != '';
 
     if (case_mon.case_status != 'Resolved') {
-        return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
+        return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
     } else {
-        return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus && hasResolved;
+        return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus && hasResolved;
     }
     //return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus && hasResolved;
 }
@@ -149,6 +151,9 @@ router.post('/', (req, res, next) => {
 
 router.put('/:glocalId', isValidId, (req, res, next) => {
     if(validUpdate(req.body)) {
+        const update = {
+
+        };
         queries
             .update(req.params.glocalId, req.body)
             .then(case_mon => {
