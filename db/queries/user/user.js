@@ -8,6 +8,7 @@ module.exports = {
         'fullName',
         'username',
         'email',
+        'password',
         'contactNumber',
         'dateCreated',
         'position',

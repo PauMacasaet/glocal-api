@@ -39,10 +39,22 @@ function validPassword(user) {
 }
 
 function validDirectorUpdate (user) {
-  // const hasPosition = typeof user.position == 'string'
-  //   && user.position.trim() != '';
+  const hasFullname = typeof user.fullName == 'string'
+      && user.fullName.trim() != '';
+  const hasUserName = typeof user.username == 'string' 
+      && user.username.trim() != '';
+  const hasEmail = typeof user.email == 'string' 
+      && user.email.trim() != '';
+  const hasPassword = typeof user.password == 'string' 
+      && user.password.trim() != ''
+      && user.password.trim().length >= 6;
+  const hasNumber = typeof user.contactNumber == 'string'
+      && user.contactNumber.trim() != '';
+  const hasPosition = typeof user.position == 'string'
+      && user.position.trim() != '';
   const hasActive = typeof user.is_active == 'boolean';
-  return hasActive;
+  
+  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition && hasActive;
 }
 
 router.get('/', (req, res) => {
@@ -121,12 +133,23 @@ router.put('/password/:userid', isValidUserId, authMiddleware.allowIDAccess, (re
 
 router.put('/:userid', isValidUserId, (req, res, next) => {
   if(validDirectorUpdate(req.body)) {
-    User
-      .update(req.params.userid, req.body)
-      .then(user => {
-        res.json({
-          user,
-          message: 'Account Updated'
+    bcrypt.hash(req.body.password, 10, function(err, hash) {
+      const user = {
+        fullName: req.body.fullName,
+        username: req.body.username,
+        email: req.body.email,
+        password: hash,
+        contactNumber: req.body.contactNumber,
+        position: req.body.position,
+        is_active: req.body.is_active
+      };
+      User
+        .update(req.params.userid, user)
+        .then(account => {
+          res.json({
+            account,
+            message: 'Account Updated'
+        });
       });
     });
   } else {
