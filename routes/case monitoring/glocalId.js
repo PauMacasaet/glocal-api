@@ -32,8 +32,6 @@ function validCase(case_mon) {
 }
 
 function validUpdate(case_mon) {
-    const hasDateCreated = typeof case_mon.dateIdCreated == 'string' 
-        && case_mon.dateIdCreated.trim() != '';
     const hasDateRaised = typeof case_mon.dateRaised == 'string' 
         && case_mon.dateRaised.trim() != '';
     const hasTitle = typeof case_mon.caseTitle == 'string' 
@@ -52,7 +50,7 @@ function validUpdate(case_mon) {
         && case_mon.case_status.trim() != '';
     const hasResolved = typeof case_mon.date_resolved == 'string'
         && case_mon.date_resolved.trim() != '';
-    return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
+    return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
 }
 
 router.get('/', (req, res, next) => {
@@ -144,7 +142,7 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:glocalId', isValidId, (req, res, next) => {
-    if(validUpdate(req.body)) {
+    if(validCase(req.body)) {
         queries
             .update(req.params.glocalId, req.body)
             .then(case_mon => {
