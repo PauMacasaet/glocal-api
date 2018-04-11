@@ -151,7 +151,7 @@ router.post('/', (req, res, next) => {
 router.put('/:glocalId', isValidId, (req, res, next) => {
     if(validUpdate(req.body)) {
         const update = {
-
+            
         };
         queries
             .update(req.params.glocalId, req.body)
