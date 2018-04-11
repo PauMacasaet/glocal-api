@@ -141,7 +141,7 @@ app.use('/clientLicense',
 
 //case_monitoring
 app.use('/glocalId', 
-  //authMiddleWare.ensureLoggedIn,  
+  authMiddleWare.ensureLoggedIn,  
   glocalid);
 // 
 app.use('/vendorCaseId', 
