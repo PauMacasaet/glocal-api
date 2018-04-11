@@ -67,7 +67,7 @@ router.get('/', (req, res) => {
 });
 //, authMiddleware.allowAccess
 //compare id of url to id of cookie
-router.get('/:userid', authMiddleware.allowIDAccess, (req, res) => {
+router.get('/:userid', (req, res) => {
   if (!isNaN(req.params.userid)) {
     User.getOne(req.params.userid).then(user => {
       if (user) {
