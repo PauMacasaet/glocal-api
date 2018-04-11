@@ -109,11 +109,11 @@ module.exports = {
                     query['productName']
                 );
         }
-        if (query.dateRaised) {
+        if (query['dateRaised']) {
             knexQuery
                 .whereIn(
                     'case_monitoring.dateRaised', 
-                    query.dateRaised);
+                    query['dateRaised']);
         }
 
         // SORT
