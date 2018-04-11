@@ -50,7 +50,13 @@ function validUpdate(case_mon) {
         && case_mon.case_status.trim() != '';
     const hasResolved = typeof case_mon.date_resolved == 'string'
         && case_mon.date_resolved.trim() != '';
-    return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus && hasResolved;
+
+    if (case_mon.case_status != 'Resolved') {
+        return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
+    } else {
+        return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus && hasResolved;
+    }
+    //return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus && hasResolved;
 }
 
 router.get('/', (req, res, next) => {
