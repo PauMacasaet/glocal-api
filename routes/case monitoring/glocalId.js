@@ -50,8 +50,7 @@ function validUpdate(case_mon) {
     const hasSELead = typeof case_mon.systemsEngineerLead == 'string';
     const hasStatus = typeof case_mon.case_status == 'string' 
         && case_mon.case_status.trim() != '';
-    const hasResolved = typeof case_mon.date_resolved == 'string'
-        && case_mon.date_resolved.trim() != '';
+    const hasResolved = new Date();
 
     if (case_mon.case_status != 'Resolved') {
         return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
