@@ -50,7 +50,7 @@ function validUpdate(case_mon) {
     const hasSELead = typeof case_mon.systemsEngineerLead == 'string';
     const hasStatus = typeof case_mon.case_status == 'string' 
         && case_mon.case_status.trim() != '';
-    const hasResolved = new Date();
+    const hasResolved = case_mon.date_resolved == new Date();
 
     if (case_mon.case_status != 'Resolved') {
         return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
@@ -150,11 +150,8 @@ router.post('/', (req, res, next) => {
 
 router.put('/:glocalId', isValidId, (req, res, next) => {
     if(validUpdate(req.body)) {
-        const update = {
-            
-        };
         queries
-            .update(req.params.glocalId, req.body)
+            .update(req.params.glocalId, [req.body, date_resolved])
             .then(case_mon => {
                 res.json({
                     case_mon,
