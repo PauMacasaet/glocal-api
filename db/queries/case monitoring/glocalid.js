@@ -30,7 +30,7 @@ module.exports = {
                 'case_monitoring.vendor', 
                 'activities.typeOfActivity AS Activity',
                 'activities.purposeOfVisit',
-                'activities.timeOuts AS date_last_activity',
+                'activities.timeOuts AS date_last_updated',
                 'case_monitoring.date_resolved'
             )
             .orderBy('case_monitoring.glocalId', 'desc');
@@ -211,7 +211,7 @@ module.exports = {
             'case_monitoring.severity', 
             'case_monitoring.systemsEngineerLead', 
             'case_monitoring.vendor', 
-            'activities.timeOuts AS date_last_activity',
+            'activities.timeOuts AS date_last_updated',
             'case_monitoring.date_resolved'
         )
         .where('activities.assignedSystemsEngineer', '@>', query.user)
