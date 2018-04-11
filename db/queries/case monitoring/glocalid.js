@@ -33,7 +33,7 @@ module.exports = {
                 'activities.timeOuts AS date_last_activity',
                 'case_monitoring.date_resolved'
             )
-            //.orderBy('case_monitoring.glocalId', 'desc');
+            .orderBy('case_monitoring.glocalId', 'desc');
         
         // SEARCH AND FILTER
         if (query.q) {
