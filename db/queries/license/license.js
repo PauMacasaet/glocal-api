@@ -90,7 +90,7 @@ module.exports = {
             'license.quarterly_hc',
             'license.remarks'
         )
-        .where('license.date_end', '<', Date.now())
+        .where('license.date_end', '<', new Date())
         .orderBy('license.date_end', 'asc');
 
         //SEARCH

@@ -127,7 +127,7 @@ app.use('/contactc',
 
 //license
 app.use('/license', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   license);
 // /:licenseId, /product/:productName
 app.use('/onSite', 
