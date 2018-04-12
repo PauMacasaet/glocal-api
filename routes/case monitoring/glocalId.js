@@ -50,14 +50,8 @@ function validUpdate(case_mon) {
     const hasSELead = typeof case_mon.systemsEngineerLead == 'string';
     const hasStatus = typeof case_mon.case_status == 'string' 
         && case_mon.case_status.trim() != '';
-    const hasResolved = case_mon.date_resolved == new Date();
 
-    if (case_mon.case_status != 'Resolved') {
-        return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
-    } else {
-        return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus && hasResolved;
-    }
-    //return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus && hasResolved;
+    return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
 }
 
 router.get('/', (req, res, next) => {
@@ -150,14 +144,39 @@ router.post('/', (req, res, next) => {
 
 router.put('/:glocalId', isValidId, (req, res, next) => {
     if(validUpdate(req.body)) {
-        queries
-            .update(req.params.glocalId, [req.body, date_resolved])
-            .then(case_mon => {
-                res.json({
-                    case_mon,
-                    message: 'Case Monitoring updated'
-                });
-        });
+        if (req.body.case_status != 'Resolved') {
+            queries
+                .update(req.params.glocalId, req.body)
+                .then(case_mon => {
+                    res.json({
+                        case_mon,
+                        message: 'Case Monitoring updated'
+                    });
+            });
+        } else {
+            const update = {
+                dateIdCreated: req.body.dateIdCreated,
+                dateRaised: req.body.dateRaised,
+                caseTitle: req.body.caseTitle,
+                caseDescription: req.body.caseDescription,
+                severity: req.body.severity,
+                vendor: req.body.vendor,
+                customer: req.body.customer,
+                productName: req.body.productName,
+                systemsEngineerLead: req.body.systemsEngineerLead,
+                case_status: req.body.case_status,
+                date_resolved: new Date()
+            };
+            queries
+                .update(req.params.glocalId, update)
+                .then(case_mon => {
+                    res.json({
+                        case_mon,
+                        message: 'Case Monitoring Resolved'
+                    });
+            });
+        }
+
     } else {
         next(new Error('Invalid Update'));
     }
