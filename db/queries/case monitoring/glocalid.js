@@ -30,7 +30,7 @@ module.exports = {
                 'case_monitoring.vendor', 
                 'activities.typeOfActivity AS Activity',
                 'activities.purposeOfVisit',
-                'max(activities.timeOuts) AS date_last_updated',
+                'activities.timeOuts AS date_last_updated',
                 'case_monitoring.date_resolved'
             )
             .orderBy('case_monitoring.glocalId', 'desc');
