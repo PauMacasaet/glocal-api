@@ -24,7 +24,8 @@ module.exports = {
             'license.support_date_end',
             'license.quarterly_hc',
             'license.remarks'
-        );
+        )
+        .orderBy('license.date_end', 'asc');
 
         //SEARCH
         if (query.q) {
