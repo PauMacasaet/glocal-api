@@ -77,7 +77,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/', (req, res, next) => {
+router.get('/expired', (req, res, next) => {
     const {
         //SORT  
         // /license?order_client=asc&q=text
