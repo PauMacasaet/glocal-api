@@ -37,3 +37,8 @@ adding DB
 
     heroku run knex migrate:latest
     heroku run knex seed:run
+
+#backup and restore db
+    heroku pg:backups:capture
+    heroku pg:backups:download
+    heroku pg:backups:restore
