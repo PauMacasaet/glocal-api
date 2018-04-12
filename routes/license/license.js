@@ -70,7 +70,52 @@ router.get('/', (req, res, next) => {
         .then(licenses => {
             if (licenses) {
                 res.json(licenses);
-                console.log('GETTING ALL LICENSES');
+                console.log('GETTING ALL ACTIVE LICENSES');
+            } else {
+                next();
+            }     
+    });
+});
+
+router.get('/', (req, res, next) => {
+    const {
+        //SORT  
+        // /license?order_client=asc&q=text
+        order_client,
+        order_id,
+        order_vendor,
+        order_product,
+        order_start,
+        order_end,
+        order_particulars,
+        order_manager,
+
+        //SEARCH
+        q, // client, vendor, productName, particukars, accountManager
+        limit,
+        offset
+    } = req.query;
+    queries
+        .getAllExpired({
+            //SORT
+            order_client,
+            order_id,
+            order_vendor,
+            order_product,
+            order_start,
+            order_end,
+            order_particulars,
+            order_manager,
+    
+            //SEARCH
+            q,
+            limit,
+            offset
+        })
+        .then(licenses => {
+            if (licenses) {
+                res.json(licenses);
+                console.log('GETTING ALL EXPIRED LICENSES');
             } else {
                 next();
             }     
