@@ -48,7 +48,7 @@ router.get('/:activityNo', isValidActivityNo, (req, res) => {
 
 router.post('/', (req, res, next) => {
     if(validActivity(req.body)) {
-        //if (req.body.typeOfActivity != 'Remote') {
+        if (req.body.typeOfActivity != 'Remote') {
             queries
                 .create(req.body)
                 .then(activity => {
@@ -57,7 +57,7 @@ router.post('/', (req, res, next) => {
                         message: 'Activity Created'
                     });
                 });
-        //}
+        }
     } else {
         next(new Error('Invalid Activity'));
     }
