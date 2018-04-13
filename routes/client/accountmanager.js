@@ -9,16 +9,21 @@ function isValidManager(req, res, next) {
     next(new Error('Invalid Manager'));
 }
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
     queries
         .getAll()
         .then(clients => {
-            res.json(clients);
-            console.log('GETTING ALL CLIENTS');
+            if (clients) {
+                res.json(clients);
+                console.log('GETTING ALL CLIENTS');
+            } else {
+                next();
+            }
+            
     });
 });
 
-router.get('/:accountManager', isValidManager, (req, res) => {
+router.get('/:accountManager', isValidManager, (req, res, next) => {
     queries
         .getOne(req.params.accountManager)
         .then(client => {

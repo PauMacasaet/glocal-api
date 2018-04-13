@@ -19,6 +19,7 @@ const isLead = require('./routes/user/isLead');
 const principal = require('./routes/vendor/vendor');
 
 const accountName = require('./routes/client/accountname');
+const accountManager = require('./routes/client/accountmanager');
 
 const productName = require('./routes/products/productName');
 const productVendor = require('./routes/products/productVendor');
@@ -120,6 +121,12 @@ app.use(
   accountName
 );
 // /:accountName
+app.use(
+  '/account-manager',
+  authMiddleWare.ensureLoggedIn,
+  accountManager
+);
+
 
 //products
 app.use(

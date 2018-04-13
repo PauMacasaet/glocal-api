@@ -52,7 +52,7 @@ router.get('/', (req, res, next) => {
 });
 
 
-router.get('/:accountName', isValidClient, (req, res) => {
+router.get('/:accountName', isValidClient, (req, res, next) => {
     queries
         .getOne(req.params.accountName)
         .then(client => {
