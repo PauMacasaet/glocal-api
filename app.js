@@ -71,8 +71,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('secret'));
 app.use(cors({
-  //origin: 'https://iris-glocal.now.sh', 
-  origin: 'http://localhost:8001',
+  origin: 'https://iris-glocal.now.sh', 
+  //origin: 'http://localhost:8001',
   credentials: true
 }));
 
