@@ -356,6 +356,7 @@ app.use(
 
 app.use(
   '/case-product-count',
+  authMiddleWare.ensureLoggedIn,
   caseProductCount
 );
 
