@@ -2,25 +2,21 @@ const express = require('express');
 
 const router = express.Router();
 
-const queries = require('../../db/queries/stats/severityCount');
+const queries = require('../../db/queries/stats/caseProductCount');
 
-function isValidSeverity(req, res, next) {
-    if (!isNaN(req.params.severity)) return next();
-    next(new Error('Invalid Case Status'));
-}
 
 router.get('/', (req, res, next) => {
     const {
-        severity
+        productName
     } = req.query
     queries
-        .getAllSeverity({
-            severity
+        .getAllCaseProduct({
+            productName
         })
         .then(stats => {
             if (stats) {
                 res.json(stats);
-                console.log('GETTING ALL SEVERITIES');
+                console.log('GETTING ALL CASE COUNT BY PRODUCT');
             } else {
                 next();
             }

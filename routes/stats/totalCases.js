@@ -9,24 +9,20 @@ function isValidStatus(req, res, next) {
     next(new Error('Invalid Case Status'));
 }
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
+    const {
+        case_status
+    } = req.query;
     queries
-        .getAll()
+        .getAllStatus({
+            case_status
+        })
         .then(stats => {
-            res.json(stats);
-            console.log('GETTING ALL STATUSES');
-    })
-});
-
-router.get('/:case_status', isValidStatus, (req, res) => {
-    queries
-        .getOne(req.params.case_status)
-        .then(status => {
-            if(status) {
-                res.json(status);
-                console.log('Getting Case Count by Case Status');
+            if (stats) {
+                res.json(stats);
+                console.log('GETTING ALL STATUSES');
             } else {
-                next(new Error(404));
+                next();
             }
     });
 });

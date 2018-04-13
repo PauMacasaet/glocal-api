@@ -2,20 +2,16 @@ const express = require('express');
 
 const router = express.Router();
 
-const queries = require('../../db/queries/stats/severityCount');
+const queries = require('../../db/queries/stats/engActivitiesCount');
 
-function isValidSeverity(req, res, next) {
-    if (!isNaN(req.params.severity)) return next();
-    next(new Error('Invalid Case Status'));
-}
 
 router.get('/', (req, res, next) => {
     const {
-        severity
+        engineer
     } = req.query
     queries
-        .getAllSeverity({
-            severity
+        .getAllEngActivities({
+            engineer
         })
         .then(stats => {
             if (stats) {

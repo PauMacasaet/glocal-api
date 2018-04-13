@@ -60,6 +60,9 @@ const assignedSystemsEngineer = require('./routes/activities/assignedSE');
 
 const totalCases = require('./routes/stats/totalCases');
 const severityCount = require('./routes/stats/severityCount');
+const engActivitiesCount = require('./routes/stats/engActivitiesCount');
+const caseClientCount = require('./routes/stats/caseClientCount');
+const caseProductCount = require('./routes/stats/caseProductCount');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -248,13 +251,27 @@ app.use('/assignedSystemsEngineer',
 // /:assignedSystemsEngineer
 
 //stats
-app.use('/totalCases', 
+app.use('/total-cases', 
   authMiddleWare.ensureLoggedIn,
   totalCases);
 // /:case_status
 
 app.use('/severity-count',
+  authMiddleWare.ensureLoggedIn,
   severityCount);
+
+app.use('/eng-activities-count',
+  authMiddleWare.ensureLoggedIn,
+  engActivitiesCount);
+
+app.use('/case-client-count',
+  authMiddleWare.ensureLoggedIn,
+  caseClientCount);
+
+app.use(
+  '/case-product-count',
+  caseProductCount
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
