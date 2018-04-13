@@ -79,194 +79,280 @@ app.use(cors({
 // USE THESE ROUTES
 
 //authentication
-app.use('/auth', 
-  auth);
+app.use(
+  '/auth', 
+  auth
+);
 // /signup, /login, /:userid for update
 
 //users
-app.use('/user', 
+app.use(
+  '/user', 
   authMiddleWare.ensureLoggedIn, 
-  user); 
+  user
+); 
 //authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName
-app.use('/position', 
+app.use(
+  '/position', 
   authMiddleWare.ensureLoggedIn,
-  position); 
+  position
+); 
 // /systemEngineer, /systemEngineer/:fullName, /manager, /manager/:fullName
-app.use('/isLead',
+app.use(
+  '/isLead',
   authMiddleWare.ensureLoggedIn,
-  isLead); 
+  isLead
+); 
 // /:fullName
 
 //vendor
-app.use('/vendor', 
+app.use(
+  '/vendor', 
   authMiddleWare.ensureLoggedIn,
-  principal);
+  principal
+);
 // /:principal
 
 //client
-app.use('/client', 
+app.use(
+  '/client', 
   authMiddleWare.ensureLoggedIn,
-  accountName);
+  accountName
+);
 // /:accountName
 
 //products
-app.use('/products', 
+app.use(
+  '/products', 
   authMiddleWare.ensureLoggedIn,
-  productName);
+  productName
+);
 // /:productName
-app.use('/productVendor', 
+app.use(
+  '/productVendor', 
   authMiddleWare.ensureLoggedIn,
-  productVendor);
+  productVendor
+);
 // /:vendor
 
 //contact_person
-app.use('/contactp', 
+app.use(
+  '/contactp', 
   authMiddleWare.ensureLoggedIn,
-  contactPerson);
+  contactPerson
+);
 // /:personName
-app.use('/contactc',
+app.use(
+  '/contactc',
   authMiddleWare.ensureLoggedIn, 
-  contactClient);
+  contactClient
+);
 // /:client
 
 //license
-app.use('/license', 
+app.use(
+  '/license', 
   authMiddleWare.ensureLoggedIn,
-  license);
+  license
+);
 // /:licenseId, /product/:productName
-app.use('/onSite', 
+app.use(
+  '/onSite', 
   authMiddleWare.ensureLoggedIn,
-  on_site);
+  on_site
+);
 // /:on_site
-app.use('/clientLicense', 
+app.use(
+  '/clientLicense', 
   authMiddleWare.ensureLoggedIn,
-  clientLicense);
+  clientLicense
+);
 // /:client
 
 //case_monitoring
-app.use('/glocalId', 
+app.use(
+  '/glocalId', 
   authMiddleWare.ensureLoggedIn,  
-  glocalid);
+  glocalid
+);
 // 
-app.use('/vendorCaseId', 
+app.use(
+  '/vendorCaseId', 
   authMiddleWare.ensureLoggedIn,
-  vendorcaseid);
+  vendorcaseid
+);
 // /:vendorCaseId
-app.use('/dateCreated', 
+app.use(
+  '/dateCreated', 
   authMiddleWare.ensureLoggedIn,
-  datecreated);
+  datecreated
+);
 // /:dateCreated
-app.use('/dateRaised', 
+app.use(
+  '/dateRaised', 
   authMiddleWare.ensureLoggedIn,
-  dateraised);
+  dateraised
+);
 // /:dateCreated
-app.use('/caseTitle', 
+app.use(
+  '/caseTitle', 
   authMiddleWare.ensureLoggedIn,
-  casetitle);
+  casetitle
+);
 // /:caseTitle
-app.use('/caseDesc', 
+app.use(
+  '/caseDesc', 
   authMiddleWare.ensureLoggedIn,
-  casedesc);
+  casedesc
+);
 // /:caseDescription
-app.use('/severity', 
+app.use(
+  '/severity', 
   authMiddleWare.ensureLoggedIn,
-  severity);
+  severity
+);
 // /:severity
-app.use('/customerName', 
+app.use(
+  '/customerName', 
   authMiddleWare.ensureLoggedIn,
-  customerName);
+  customerName
+);
 // /:customer
-app.use('/systemsEngineerLead', 
+app.use(
+  '/systemsEngineerLead', 
   authMiddleWare.ensureLoggedIn,
-  seLead);
+  seLead
+);
 // /:systemsEngineerLead
-app.use('/caseStatus', 
+app.use(
+  '/caseStatus', 
   authMiddleWare.ensureLoggedIn,
-  caseStatus);
+  caseStatus
+);
 // /:caseStatus
-app.use('/nextId', 
+app.use(
+  '/nextId', 
   authMiddleWare.ensureLoggedIn,
-  nextId);
+  nextId
+);
 
-app.use('/userSE',
+app.use(
+  '/userSE',
   authMiddleWare.ensureLoggedIn,
-  userSE);
+  userSE
+);
 
-app.use('/managerDashboard',
+app.use(
+  '/managerDashboard',
   authMiddleWare.ensureLoggedIn,
-  severity_dash);
+  severity_dash
+);
 
 //activities
-app.use('/activityNo', 
+app.use(
+  '/activityNo', 
   authMiddleWare.ensureLoggedIn,
-  activityNo);
+  activityNo
+);
 // /:activityNo
-app.use('/timeIn', 
+app.use(
+  '/timeIn', 
   authMiddleWare.ensureLoggedIn,
-  timeIn);
+  timeIn
+);
 // /:timeIn
-app.use('/timeOut', 
+app.use(
+  '/timeOut', 
   authMiddleWare.ensureLoggedIn,
-  timeOuts);
+  timeOuts
+);
 // /:timeOuts
-app.use('/activityClient', 
+app.use(
+  '/activityClient', 
   authMiddleWare.ensureLoggedIn,
-  activityClient);
+  activityClient
+);
 // /:client
-app.use('/address', 
+app.use(
+  '/address', 
   authMiddleWare.ensureLoggedIn,
-  addres);
+  addres
+);
 // /:addres
-app.use('/typeOfActivity', 
+app.use(
+  '/typeOfActivity', 
   authMiddleWare.ensureLoggedIn,
-  typeOfActivity);
+  typeOfActivity
+);
 // /:typeOfActivity
-app.use('/purposeOfVisit', 
+app.use(
+  '/purposeOfVisit', 
   authMiddleWare.ensureLoggedIn,
-  purpose);
+  purpose
+);
 // /:purposeOfVisit
-app.use('/activityPerformed', 
+app.use(
+  '/activityPerformed', 
   authMiddleWare.ensureLoggedIn,
-  activityPerformed);
+  activityPerformed
+);
 // /:activityPerformed
-app.use('/recommendations', 
+app.use(
+  '/recommendations', 
   authMiddleWare.ensureLoggedIn,
-  recommendations);
+  recommendations
+);
 // /:recommendations
-app.use('/lastUpdate', 
+app.use(
+  '/lastUpdate', 
   authMiddleWare.ensureLoggedIn,
-  lastUpdate);
+  lastUpdate
+);
 
-app.use('/engActivities', 
+app.use(
+  '/engActivities', 
   authMiddleWare.ensureLoggedIn,
-  engActivities);
+  engActivities
+);
 // /:assignedSystemsEngineer
-app.use('/tracking', 
+app.use(
+  '/tracking', 
   authMiddleWare.ensureLoggedIn,
-  tracking);
+  tracking
+);
 // /:trackingNo
-app.use('/assignedSystemsEngineer', 
+app.use(
+  '/assignedSystemsEngineer', 
   authMiddleWare.ensureLoggedIn,
-  assignedSystemsEngineer);
+  assignedSystemsEngineer
+);
 // /:assignedSystemsEngineer
 
 //stats
-app.use('/total-cases', 
+app.use(
+  '/total-cases', 
   authMiddleWare.ensureLoggedIn,
-  totalCases);
+  totalCases
+);
 // /:case_status
 
-app.use('/severity-count',
+app.use(
+  '/severity-count',
   authMiddleWare.ensureLoggedIn,
-  severityCount);
+  severityCount
+);
 
-app.use('/eng-activities-count',
+app.use(
+  '/eng-activities-count',
   authMiddleWare.ensureLoggedIn,
-  engActivitiesCount);
+  engActivitiesCount
+);
 
-app.use('/case-client-count',
+app.use(
+  '/case-client-count',
   authMiddleWare.ensureLoggedIn,
-  caseClientCount);
+  caseClientCount
+);
 
 app.use(
   '/case-product-count',

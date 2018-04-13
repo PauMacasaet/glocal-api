@@ -5,7 +5,8 @@ module.exports = {
         const knexQuery = knex('activities')
             .select('assignedSystemsEngineer')
             .count('* as number_of_activities')
-            .groupBy('assignedSystemsEngineer');
+            .groupBy('assignedSystemsEngineer')
+            .orderBy('number_of_activities', 'desc');
         if (query['engineer']) {
             knexQuery
                 .where(
