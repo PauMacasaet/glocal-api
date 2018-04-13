@@ -251,7 +251,7 @@ app.use(
 //activities
 app.use(
   '/activityNo', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   activityNo
 );
 // /:activityNo

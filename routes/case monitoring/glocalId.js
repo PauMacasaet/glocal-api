@@ -51,7 +51,7 @@ function validUpdate(case_mon) {
     const hasStatus = typeof case_mon.case_status == 'string' 
         && case_mon.case_status.trim() != '';
 
-    return hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
+    return hasDateCreated && hasDateRaised && hasTitle && hasDescription && hasSeverity && hasVendor && hasCustomer && hasProductName && hasSELead && hasStatus;
 }
 
 router.get('/', (req, res, next) => {
