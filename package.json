@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon",
-    "save": "knex-dump --file seeds/data.json save"
+    "dev": "nodemon"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

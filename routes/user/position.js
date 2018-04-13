@@ -54,7 +54,7 @@ router.get('/manager', (req, res, next) => {
 
 router.get('/manager/:fullName', (req, res, next) => {
     queries
-        .getOneAM('Account Manager', req.params.fullName)
+        .getOneAM('Account Manager', req.params.fullName)   
         .then(manager => {
             if(manager) {
                 res.json(manager);
