@@ -139,6 +139,35 @@ exports.up = function(knex, Promise) {
       table.varchar('recommendations', 2000).index('index_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_assignedengineer', 'hash').notNull();
+    }),
+
+    knex.schema.createTable('service_reports', (table) => {
+      table.increments('service_report_no').primary()
+        .index('index_sr_no', 'btree').notNull();
+      table.integer('trackingNo').references('glocalId').inTable('case_monitoring')
+        .index('index_sr_tracking', 'btree').notNull().onUpdate('cascade');
+      table.integer('activityNo').index('index_sr_activityNo', 'btree');
+      table.timestamp('timeIn')
+        .index('index_sr_timein', 'hash').notNull();
+      table.timestamp('timeOuts')
+        .index('index_sr_timeouts', 'hash').notNull();
+      table.varchar('productName', 50).references('productName').inTable('products')
+        .index('index_sr_activityproduct', 'hash').notNull().onUpdate('cascade');
+      table.varchar('client', 50)
+        .index('index_sr_activityclient', 'hash').notNull();
+      table.varchar('addres', 50)
+        .index('index_sr_activityaddress', 'hash').notNull();
+      table.enu('typeOfActivity', ['Onsite', 'Implementation', 'Remote', 'POC'])
+        .index('index_sr_typeactivity', 'hash').notNull();
+      table.varchar('purposeOfVisit', 50)
+        .index('index_sr_purpose', 'hash').notNull();
+      table.varchar('activityPerformed', 2000)
+        .index('index_sr_performed', 'hash').notNull();
+      table.varchar('nextActivity', 2000)
+        .index('index_sr_nextactivity', 'hash').notNull();
+      table.varchar('recommendations', 2000).index('index_sr_recommendations', 'hash');
+      table.specificType('assignedSystemsEngineer', 'text[]')
+        .index('index_sr_assignedengineer', 'hash').notNull();
     })
   ]);
 };
