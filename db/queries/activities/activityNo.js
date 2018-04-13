@@ -24,7 +24,7 @@ module.exports = {
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer',
             knex.raw(
-                `row_number() over (partition by ?? order by ?? asc) AS SR_NO`, 
+                `row_number() over (partition by ?? order by ?? asc) AS service_report_no`, 
                 ['typeOfActivity', 'activityNo']
             )
         )
