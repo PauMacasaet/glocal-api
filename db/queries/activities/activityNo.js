@@ -22,7 +22,11 @@ module.exports = {
             'activities.recommendations', 
             'activities.timeIn', 
             'activities.timeOuts', 
-            'activities.assignedSystemsEngineer'
+            'activities.assignedSystemsEngineer',
+            knex.raw(
+                `row_number() over (partition by ?? order by ?? asc) AS SR_NO`, 
+                ['typeOfActivity', 'activityNo']
+            )
         )
         .orderBy('activities.timeOuts', 'desc');
     },
@@ -50,7 +54,7 @@ module.exports = {
             'activities.assignedSystemsEngineer'
         )
         .where('activityNo', activityNo)
-        .orderBy('activities.timeOuts', 'desc');
+        .orderBy('activities.activityNo', 'asc');
     },
     create(activity) {
         return knex('activities').insert(activity, '*');

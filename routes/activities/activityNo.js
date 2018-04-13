@@ -24,16 +24,21 @@ function validActivity(activity) {
     return hasTrackingNo && hasTimeIn && hasTimeOut && hasProductName && hasClient && hasAddres && hasType && hasPurpose && hasPerformed && hasNextActivity && hasEngineer;
 }
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
     queries
         .getAll()
         .then(activities => {
-            res.json(activities);
-            console.log('GETTING ALL ACTIVITIES');
+            if(activities) {
+                res.json(activities);
+                console.log('GETTING ALL ACTIVITIES');
+            } else {
+                next();
+            }
+            
     });
 });
 
-router.get('/:activityNo', isValidActivityNo, (req, res) => {
+router.get('/:activityNo', isValidActivityNo, (req, res, next) => {
     queries
         .getOne(req.params.activityNo)
         .then(activity => {

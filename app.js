@@ -59,6 +59,7 @@ const engActivities = require('./routes/activities/engactivities');
 const tracking = require('./routes/activities/glocal');
 const assignedSystemsEngineer = require('./routes/activities/assignedSE');
 
+
 const totalCases = require('./routes/stats/totalCases');
 const severityCount = require('./routes/stats/severityCount');
 const engActivitiesCount = require('./routes/stats/engActivitiesCount');
@@ -179,7 +180,7 @@ app.use(
 //case_monitoring
 app.use(
   '/glocalId', 
-  authMiddleWare.ensureLoggedIn,  
+  //authMiddleWare.ensureLoggedIn,  
   glocalid
 );
 // 
