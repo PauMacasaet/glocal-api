@@ -45,16 +45,13 @@ function validDirectorUpdate (user) {
       && user.username.trim() != '';
   const hasEmail = typeof user.email == 'string' 
       && user.email.trim() != '';
-  const hasPassword = typeof user.password == 'string' 
-      && user.password.trim() != ''
-      && user.password.trim().length >= 6;
   const hasNumber = typeof user.contactNumber == 'string'
       && user.contactNumber.trim() != '';
   const hasPosition = typeof user.position == 'string'
       && user.position.trim() != '';
   const hasActive = typeof user.is_active == 'boolean';
   
-  return hasFullname && hasUserName && hasEmail && hasPassword && hasNumber && hasPosition && hasActive;
+  return hasFullname && hasUserName && hasEmail && hasNumber && hasPosition && hasActive;
 }
 
 router.get('/', (req, res) => {
@@ -131,32 +128,40 @@ router.put('/password/:userid', isValidUserId, authMiddleware.allowIDAccess, (re
   }
 }); 
 
-router.put('/:userid', isValidUserId, (req, res, next) => {
+router.put('/director/:userid', isValidUserId, (req, res, next) => {
   if(validDirectorUpdate(req.body)) {
-    bcrypt.hash(req.body.password, 10, function(err, hash) {
-      const user = {
-        fullName: req.body.fullName,
-        username: req.body.username,
-        email: req.body.email,
-        password: hash,
-        contactNumber: req.body.contactNumber,
-        position: req.body.position,
-        is_active: req.body.is_active
-      };
       User
-        .update(req.params.userid, user)
+        .update(req.params.userid, req.body)
         .then(account => {
           res.json({
             account,
             message: 'Account Updated'
         });
       });
-    });
   } else {
     next(new Error('Invalid Update'));
   }
-    
 });
+
+router.put('/director/password/:userid', isValidUserId, (req, res, next) => {
+  if(validPassword(req.body)) {
+      bcrypt.hash(req.body.password, 10, function(err, hash) {
+        const user = {
+          password: hash,
+        };
+        User
+          .update(req.params.userid, user)
+          .then(account => {
+            res.json({
+              account,
+              message: 'Password Updated'
+            });
+          });
+      });    
+  } else {
+    next(new Error('Invalid Update'));
+  }
+}); 
 
 // prolly take out
 router.delete('/:userid', isValidUserId, (req, res, next) => {
