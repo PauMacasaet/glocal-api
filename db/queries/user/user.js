@@ -54,7 +54,7 @@ module.exports = {
   update(userid, user) {
     const knexQuery = knex('user')
       .where('userid', userid)
-      .update(user, 'userid');
+      .update(user, '*');
 
     return knexQuery.then(ids => {
       return ids[0];

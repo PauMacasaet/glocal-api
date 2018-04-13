@@ -49,9 +49,13 @@ function validDirectorUpdate (user) {
       && user.contactNumber.trim() != '';
   const hasPosition = typeof user.position == 'string'
       && user.position.trim() != '';
-  const hasActive = typeof user.is_active == 'boolean';
   
-  return hasFullname && hasUserName && hasEmail && hasNumber && hasPosition && hasActive;
+  return hasFullname && hasUserName && hasEmail && hasNumber && hasPosition;
+}
+
+function validStatusUpdate (user) {
+  const hasActive = typeof user.is_active == 'boolean';
+  return hasActive;
 }
 
 router.get('/', (req, res) => {
@@ -138,6 +142,21 @@ router.put('/director/:userid', isValidUserId, (req, res, next) => {
             message: 'Account Updated'
         });
       });
+  } else {
+    next(new Error('Invalid Update'));
+  }
+});
+
+router.put('/director/status/:userid', isValidUserId, (req, res, next) => {
+  if (validStatusUpdate(req.body)) {
+    User
+      .update(req.params.userid, req.body)
+      .then(account => {
+        res.json({
+          account,
+          message: 'Status Updated'
+      });
+    });
   } else {
     next(new Error('Invalid Update'));
   }
