@@ -42,3 +42,7 @@ adding DB
     heroku pg:backups:capture
     heroku pg:backups:download
     heroku pg:backups:restore
+
+#db stuff
+    heroku pg:info
+    
