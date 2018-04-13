@@ -10,7 +10,7 @@ module.exports = {
     },
     update(sr_no, service_report) {
         return knex('service_report')
-            .where('activityNo', sr_no)
+            .where('service_report_no', sr_no)
             .update(service_report, '*');
     },
 }
