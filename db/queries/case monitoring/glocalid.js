@@ -111,7 +111,7 @@ module.exports = {
         }
         if (query['dateRaised']) {
             knexQuery
-                .whereIn(
+                .where(
                     'case_monitoring.dateRaised', 
                     query['dateRaised']);
         }
