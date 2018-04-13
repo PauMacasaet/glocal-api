@@ -174,6 +174,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
+    knex.schema.dropTable('service_reports'),
     knex.schema.dropTable('activities'),
     knex.schema.dropTable('case_monitoring'),
     knex.schema.dropTable('contact_person'),
