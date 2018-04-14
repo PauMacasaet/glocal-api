@@ -14,6 +14,13 @@ module.exports = {
                     query['productName']
                 );
         }
+        if(query['customer']) {
+            knexQuery
+                .where(
+                    'case_monitoring.customer',
+                    query['customer']
+                );
+        }
         if (query.from && query.to) { //cases and reports
             knexQuery
                 .whereBetween(
