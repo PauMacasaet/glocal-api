@@ -6,10 +6,9 @@ module.exports = {
             .select(
                 'case_status',
                 'customer',
-                'severity'
             )
             .count('* as number_of_cases')
-            .groupBy('case_status', 'customer', 'severity')
+            .groupBy('case_status', 'customer')
             .orderBy('number_of_cases', 'desc');
         if (query['case_status']) {
             knexQuery
@@ -23,14 +22,6 @@ module.exports = {
                 .whereIn(
                     'case_monitoring.customer',
                     query['customer']
-                );
-        }
-        
-        if (query['severity']) {
-            knexQuery
-                .whereIn(
-                    'case_monitoring.severity',
-                    query['severity']
                 );
         }
         if (query.from && query.to) { //cases and reports

@@ -13,14 +13,12 @@ router.get('/', (req, res, next) => {
     const {
         case_status,
         customer,
-        severity,
         from, to
     } = req.query;
     queries
         .getAllStatus({
             case_status,
             customer,
-            severity,
             from, to
         })
         .then(stats => {

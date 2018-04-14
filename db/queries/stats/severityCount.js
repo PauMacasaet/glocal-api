@@ -4,22 +4,13 @@ module.exports = {
     getAllSeverity(query) {
         const knexQuery = knex('case_monitoring')
             .select(
-                'case_status',
-                'customer',
                 'severity'
             )
             .count('* as number_of_cases_severity')
             .whereNot('case_status', 'Resolved')
-            .groupBy('case_status', 'customer', 'severity')
+            .groupBy('severity')
             .orderBy('number_of_cases_severity', 'desc');
-
-        if (query['case_status']) {
-            knexQuery
-                .whereIn(
-                    'case_monitoring.case_status',
-                    query['case_status']
-                );
-        }
+            
         if (query['customer']) {
             knexQuery
                 .whereIn(
