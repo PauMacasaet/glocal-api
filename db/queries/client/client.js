@@ -11,8 +11,8 @@ module.exports = {
             );
         //SEARCH CLIENT
         if (query.q) {
-            knexQuery.where('accountName', 'like', `%${query.q}%`)
-                .orWhere('accountManager', 'like', `%${query.q}%`);
+            knexQuery.where('accountName', 'ILIKE', `%${query.q}%`)
+                .orWhere('accountManager', 'ILIKE', `%${query.q}%`);
         }
 
         //SORT

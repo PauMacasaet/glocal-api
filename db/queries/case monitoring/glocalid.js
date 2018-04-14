@@ -40,22 +40,22 @@ module.exports = {
             knexQuery
                 .where(
                     'case_monitoring.customer', 
-                    'like', 
+                    'ILIKE', 
                     `%${query.q}%`
                 )
                 .orWhere(
                     'case_monitoring.caseTitle',
-                     'like', 
+                     'ILIKE', 
                      `%${query.q}%`
                 )
                 .orWhere(
                     'case_monitoring.caseDescription', 
-                    'like', 
+                    'ILIKE', 
                     `%${query.q}%`
                 )
                 .orWhere(
                     'case_monitoring.productName', 
-                    'like', 
+                    'ILIKE', 
                     `%${query.q}%`
                 );
         }
