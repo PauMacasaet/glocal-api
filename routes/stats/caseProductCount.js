@@ -7,11 +7,13 @@ const queries = require('../../db/queries/stats/caseProductCount');
 
 router.get('/', (req, res, next) => {
     const {
-        productName
+        productName,
+        from, to
     } = req.query
     queries
         .getAllCaseProduct({
-            productName
+            productName,
+            from, to
         })
         .then(stats => {
             if (stats) {

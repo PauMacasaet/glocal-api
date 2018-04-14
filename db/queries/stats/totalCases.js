@@ -6,11 +6,10 @@ module.exports = {
             .select(
                 'case_status',
                 'customer',
-                'productName',
                 'severity'
             )
             .count('* as number_of_cases')
-            .groupBy('case_status', 'customer', 'productName', 'severity')
+            .groupBy('case_status', 'customer', 'severity')
             .orderBy('number_of_cases', 'desc');
         if (query['case_status']) {
             knexQuery
@@ -26,18 +25,22 @@ module.exports = {
                     query['customer']
                 );
         }
-        if (query['productName']) {
-            knexQuery
-                .whereIn(
-                    'case_monitoring.productName',
-                    query['productName']
-                );
-        }
+        
         if (query['severity']) {
             knexQuery
                 .whereIn(
                     'case_monitoring.severity',
                     query['severity']
+                );
+        }
+        if (query.from && query.to) { //cases and reports
+            knexQuery
+                .whereBetween(
+                    'case_monitoring.dateRaised',
+                    [
+                        query.from,
+                        query.to
+                    ]
                 );
         }
 

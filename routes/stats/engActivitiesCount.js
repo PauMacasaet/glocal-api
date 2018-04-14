@@ -7,11 +7,13 @@ const queries = require('../../db/queries/stats/engActivitiesCount');
 
 router.get('/', (req, res, next) => {
     const {
-        engineer
+        engineer,
+        from, to
     } = req.query
     queries
         .getAllEngActivities({
-            engineer
+            engineer, 
+            from, to
         })
         .then(stats => {
             if (stats) {

@@ -14,6 +14,17 @@ module.exports = {
                     query['customer']
                 );
         }
+        if (query.from && query.to) { //cases and reports
+            knexQuery
+                .whereBetween(
+                    'case_monitoring.dateRaised',
+                    [
+                        query.from,
+                        query.to
+                    ]
+                );
+        }
+
         return knexQuery;
     }
 }

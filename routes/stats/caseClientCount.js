@@ -7,11 +7,13 @@ const queries = require('../../db/queries/stats/caseClientCount');
 
 router.get('/', (req, res, next) => {
     const {
-        customer
+        customer,
+        from, to
     } = req.query
     queries
         .getAllCaseClient({
-            customer
+            customer,
+            from, to
         })
         .then(stats => {
             if (stats) {
