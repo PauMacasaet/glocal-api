@@ -339,7 +339,7 @@ app.use(
 //stats
 app.use(
   '/total-cases', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   totalCases
 );
 // /:case_status
