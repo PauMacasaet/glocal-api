@@ -10,6 +10,7 @@ module.exports = {
                 'severity'
             )
             .count('* as number_of_cases_severity')
+            .whereNot('case_status', 'Resolved')
             .groupBy('case_status', 'customer', 'productName', 'severity')
             .orderBy('number_of_cases_severity', 'desc');
 

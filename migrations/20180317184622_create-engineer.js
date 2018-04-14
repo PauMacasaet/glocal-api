@@ -90,9 +90,9 @@ exports.up = function(knex, Promise) {
         .index('index_glocalid', 'btree').notNull();
       table.varchar('vendorCaseId', 50)
         .index('index_vendorid', 'hash');
-      table.datetime('dateIdCreated')
+      table.date('dateIdCreated')
         .index('index_casecreate', 'hash').notNull();
-      table.datetime('dateRaised')
+      table.date('dateRaised')
         .index('index_dateraised', 'hash').notNull();
       table.varchar('caseTitle', 50)
         .index('index_casetile', 'hash').notNull();

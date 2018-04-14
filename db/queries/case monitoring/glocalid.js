@@ -115,6 +115,16 @@ module.exports = {
                     'case_monitoring.dateRaised', 
                     query['dateRaised']);
         }
+        if (query.from && query.to) { //cases and reports
+            knexQuery
+                .whereBetween(
+                    'case_monitoring.dateRaised',
+                    [
+                        query.from,
+                        query.to
+                    ]
+                );
+        }
 
         // SORT
         if (query.order_id) {

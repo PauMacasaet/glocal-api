@@ -80,6 +80,7 @@ router.get('/', (req, res, next) => {
         vendor, 
         productName, 
         dateRaised,
+        from, to, // date range
         limit,
         offset } = req.query;
     queries.getAll({ 
@@ -103,6 +104,7 @@ router.get('/', (req, res, next) => {
         vendor, 
         productName, 
         dateRaised,
+        from, to,
         limit,
         offset }).then(cases => {
         if (cases) {

@@ -31,6 +31,7 @@ router.get('/', isValidUser, (req, res, next) => {
         vendor, 
         productName, 
         dateRaised,
+        from, to,
         limit,
         offset
     } = req.query
@@ -56,6 +57,7 @@ router.get('/', isValidUser, (req, res, next) => {
             vendor, 
             productName, 
             dateRaised,
+            from, to,
             limit,
             offset
          })
