@@ -181,6 +181,12 @@ module.exports = {
                     'case_monitoring.dateRaised', 
                     query.order_raised
                 );
+        } else if (query.order_vendor) {
+            knexQuery
+                .orderBy(
+                    'case_monitoring.vendor',
+                    query.order_vendor
+                )
         }
 
         // PAGINATION
@@ -339,6 +345,12 @@ module.exports = {
                     'case_monitoring.dateRaised', 
                     query.order_raised
                 );
+        } else if (query.order_vendor) {
+            knexQuery
+                .orderBy(
+                    'case_monitoring.vendor',
+                    query.order_vendor
+                )
         }
 
         // PAGINATION

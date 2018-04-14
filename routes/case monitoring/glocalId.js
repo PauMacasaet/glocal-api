@@ -68,6 +68,7 @@ router.get('/', (req, res, next) => {
         order_product,
         order_update,
         order_raised,
+        order_vendor,
         // search
         q, //customer, productName, caseTitle, caseDescription
 
@@ -94,6 +95,7 @@ router.get('/', (req, res, next) => {
         order_product,
         order_update,
         order_raised,
+        order_vendor,
         // search and filters
         q,
         customer, 

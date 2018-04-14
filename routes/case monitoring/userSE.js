@@ -19,6 +19,7 @@ router.get('/', isValidUser, (req, res, next) => {
         order_product,
         order_update,
         order_raised,
+        order_vendor,
 
         //required query
         user,
@@ -45,6 +46,7 @@ router.get('/', isValidUser, (req, res, next) => {
             order_product,
             order_update,
             order_raised,
+            order_vendor,
 
             //required query
             user,
