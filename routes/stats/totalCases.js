@@ -11,11 +11,17 @@ function isValidStatus(req, res, next) {
 
 router.get('/', (req, res, next) => {
     const {
-        case_status
+        case_status,
+        customer,
+        productName,
+        severity
     } = req.query;
     queries
         .getAllStatus({
-            case_status
+            case_status,
+            customer,
+            productName,
+            severity
         })
         .then(stats => {
             if (stats) {

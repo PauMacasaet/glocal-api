@@ -11,10 +11,16 @@ function isValidSeverity(req, res, next) {
 
 router.get('/', (req, res, next) => {
     const {
+        case_status,
+        customer,
+        productName,
         severity
     } = req.query
     queries
         .getAllSeverity({
+            case_status,
+            customer,
+            productName,
             severity
         })
         .then(stats => {

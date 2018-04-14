@@ -259,7 +259,7 @@ app.use(
 //activities
 app.use(
   '/activityNo', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   activityNo
 );
 // /:activityNo
@@ -339,7 +339,7 @@ app.use(
 //stats
 app.use(
   '/total-cases', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   totalCases
 );
 // /:case_status
