@@ -73,12 +73,13 @@ module.exports = {
                     query['case_status']
                 );
         }
-        if (query['assignedSystemsEngineer']) {
+        if (query.assignedSystemsEngineer) {
             knexQuery
                 .where(
                     'activities.assignedSystemsEngineer',
                     '@>',
-                    query['assignedSystemsEngineer']
+                    query.
+                    assignedSystemsEngineer
                 );
         }
         if (query['systemsEngineerLead']) {
