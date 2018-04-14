@@ -107,7 +107,7 @@ router.post('/login', (req, res, next) => {
             .getOneByEmail(req.body.email)
             .then(user => {
                 console.log('user', user);
-                if(user) {
+                if(user.is_active == true) {
                     //conmpare password with hashed password
                     bcrypt.compare(req.body.password, user.password).then((result) => {
                         if(result) {
