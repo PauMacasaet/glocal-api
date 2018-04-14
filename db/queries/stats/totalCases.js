@@ -5,10 +5,9 @@ module.exports = {
         const knexQuery = knex('case_monitoring')
             .select(
                 'case_status',
-                'customer',
             )
             .count('* as number_of_cases')
-            .groupBy('case_status', 'customer')
+            .groupBy('case_status')
             .orderBy('number_of_cases', 'desc');
         if (query['case_status']) {
             knexQuery
