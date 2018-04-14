@@ -78,7 +78,7 @@ module.exports = {
                 .whereIn(
                     'activities.assignedSystemsEngineer',
                     '@>',
-                    query[`{${assignedSystemsEngineer}}`]
+                    query[`${assignedSystemsEngineer}`]
                 );
         }
         if (query['systemsEngineerLead']) {
