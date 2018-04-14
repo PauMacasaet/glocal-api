@@ -65,6 +65,7 @@ const severityCount = require('./routes/stats/severityCount');
 const engActivitiesCount = require('./routes/stats/engActivitiesCount');
 const caseClientCount = require('./routes/stats/caseClientCount');
 const caseProductCount = require('./routes/stats/caseProductCount');
+const vendorLicenseCount = require('./routes/stats/vendorLicenseCount');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -366,6 +367,12 @@ app.use(
   '/case-product-count',
   authMiddleWare.ensureLoggedIn,
   caseProductCount
+);
+
+app.use(
+  '/vendor-license-count',
+  authMiddleWare.ensureLoggedIn,
+  vendorLicenseCount
 );
 
 // catch 404 and forward to error handler
