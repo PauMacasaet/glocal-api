@@ -51,9 +51,8 @@ module.exports = {
             'activities.recommendations', 
             'activities.timeIn', 
             'activities.timeOuts', 
-            'activities.assignedSystemsEngineer',
-            'service_report_no'
-        )
+            'activities.assignedSystemsEngineer'
+)
         .where('activities.trackingNo', tracking)
         .orderBy('activities.timeOuts', 'desc');
     }
