@@ -97,10 +97,10 @@ module.exports = {
         //SEARCH
         if (query.q) {
             knexQuery.where('license.client', 'ILIKE', `%${query.q}%`)
-                .where('license.vendor', 'ILIKE', `%${query.q}%`)
-                .where('license.productName', 'ILIKE', `%${query.q}%`)
-                .where('license.particulars', 'ILIKE', `%${query.q}%`)
-                .where('client.accountManager', 'ILIKE', `%${query.q}%`);
+                .orWhere('license.vendor', 'ILIKE', `%${query.q}%`)
+                .orWhere('license.productName', 'ILIKE', `%${query.q}%`)
+                .orWhere('license.particulars', 'ILIKE', `%${query.q}%`)
+                .orWhere('client.accountManager', 'ILIKE', `%${query.q}%`);
         }
 
         // SORT
