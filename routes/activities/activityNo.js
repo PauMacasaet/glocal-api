@@ -72,7 +72,7 @@ router.get('/:activityNo', isValidActivityNo, (req, res, next) => {
 
 router.get('/service-reports/:sr_number', isValidSRNo, (req, res, next) => {
     reports
-        .getOne(get.params.sr_number)
+        .getOne(req.params.sr_number)
         .then(report => {
             if(report) {
                 res.json(report);
