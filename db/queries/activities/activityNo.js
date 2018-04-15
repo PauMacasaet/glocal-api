@@ -15,18 +15,14 @@ module.exports = {
             'contact_person.client', 
             'activities.addres AS address',
             'contact_person.personName', 
-            'activities.typeOfActivity', 
+            'activities.typeOfActivity',
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
             'activities.nextActivity', 
             'activities.recommendations', 
             'activities.timeIn', 
             'activities.timeOuts', 
-            'activities.assignedSystemsEngineer',
-            knex.raw(
-                `row_number() over (partition by ?? order by ?? asc) AS service_report_no`, 
-                ['typeOfActivity', 'activityNo']
-            )
+            'activities.assignedSystemsEngineer'
         )
         .orderBy('activities.timeOuts', 'desc');
     },
@@ -44,7 +40,7 @@ module.exports = {
             'contact_person.client', 
             'activities.addres AS address',
             'contact_person.personName', 
-            'activities.typeOfActivity', 
+            'activities.typeOfActivity',
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
             'activities.nextActivity', 
@@ -57,7 +53,9 @@ module.exports = {
         .orderBy('activities.activityNo', 'asc');
     },
     create(activity) {
-        return knex('activities').insert(activity, '*');
+        const knexQuery = knex('activities')
+            .insert(activity, '*')
+        return knexQuery;
     },
     update(activityNo, activity) {
         return knex('activities').where('activityNo', activityNo).update(activity, '*');

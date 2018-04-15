@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const queries = require('../../db/queries/activities/activityNo');
+const reports = require('../../db/queries/service_reports/service_report_no');
 
 function isValidActivityNo(req, res, next) {
     if (!isNaN(req.params.activityNo)) return next();
@@ -38,6 +39,19 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/service-reports', (req, res, next) => {
+    reports
+        .getAll()
+        .then(reports => {
+            if(reports) {
+                res.json(reports);
+                console.log('GETTING ALL REPORTS');
+            } else {
+                next();
+            }
+        }); 
+});
+
 router.get('/:activityNo', isValidActivityNo, (req, res, next) => {
     queries
         .getOne(req.params.activityNo)
@@ -53,6 +67,13 @@ router.get('/:activityNo', isValidActivityNo, (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     if(validActivity(req.body)) {
+        if (req.body.typeOfActivity != 'Remote') {
+            reports
+                .create(req.body)
+                .then(reports => {
+                    res.json({reports});
+                });
+        };
         queries
             .create(req.body)
             .then(activity => {
@@ -60,7 +81,8 @@ router.post('/', (req, res, next) => {
                     activity,
                     message: 'Activity Created'
                 });
-            });
+            });      
+            
     } else {
         next(new Error('Invalid Activity'));
     }
