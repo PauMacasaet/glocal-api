@@ -22,7 +22,11 @@ module.exports = {
             'activities.recommendations', 
             'activities.timeIn', 
             'activities.timeOuts', 
-            'activities.assignedSystemsEngineer'
+            'activities.assignedSystemsEngineer',
+            knex.raw(
+                `row_number() over (partition by ?? order by ?? asc) AS service_report_no`, 
+                ['typeOfActivity', 'activityNo']
+            )
         )
         .orderBy('activities.timeOuts', 'desc');
     },
