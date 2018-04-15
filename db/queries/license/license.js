@@ -64,7 +64,7 @@ module.exports = {
         }
 
         return knexQuery
-            .where('license.date_end', '>', new Date())
+            .andWhere('license.date_end', '>', new Date())
             .orderBy('license.date_end', 'asc');
     },
     getAllExpired(query) {
