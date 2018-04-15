@@ -24,9 +24,7 @@ module.exports = {
             'license.support_date_end',
             'license.quarterly_hc',
             'license.remarks'
-        )
-        .where('license.date_end', '>', new Date())
-        .orderBy('license.date_end', 'asc');
+        );
 
         //SEARCH
         if (query.q) {
@@ -65,7 +63,9 @@ module.exports = {
             }
         }
 
-        return knexQuery;
+        return knexQuery
+            .where('license.date_end', '>', new Date())
+            .orderBy('license.date_end', 'asc');
     },
     getAllExpired(query) {
         const knexQuery = knex('license')
