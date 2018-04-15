@@ -10,6 +10,11 @@ function isValidActivityNo(req, res, next) {
     next(new Error('Invalid Activity No'));
 }
 
+function isValidSRNo(req, res, next) {
+    if (!isNaN(req.params.sr_number)) return next();
+    next(new Error('Invalid SR No'));
+}
+
 function validActivity(activity) {
     const hasTrackingNo = !isNaN(activity.trackingNo);
     const hasTimeIn = typeof activity.timeIn == 'string' && activity.timeIn.trim() != '';
@@ -63,6 +68,19 @@ router.get('/:activityNo', isValidActivityNo, (req, res, next) => {
                 next(new Error(404));
             }
     });
+});
+
+router.get('/service-reports/:sr_number', isValidSRNo, (req, res, next) => {
+    reports
+        .getOne(get.params.sr_number)
+        .then(report => {
+            if(report) {
+                res.json(report);
+                console.log('Getting by SR NO');
+            } else {
+                next(new Error(404));
+            }
+        });
 });
 
 router.post('/', (req, res, next) => {
