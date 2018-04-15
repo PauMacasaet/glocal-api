@@ -41,7 +41,6 @@ module.exports = {
             'service_reports.addres AS address',
             'contact_person.personName', 
             'service_reports.typeOfActivity',
-            'service_reports.service_report_no', 
             'service_reports.purposeOfVisit', 
             'service_reports.activityPerformed', 
             'service_reports.nextActivity', 
