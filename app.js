@@ -181,7 +181,7 @@ app.use(
 //case_monitoring
 app.use(
   '/glocalId', 
-  authMiddleWare.ensureLoggedIn,  
+  //authMiddleWare.ensureLoggedIn,  
   glocalid
 );
 // 
@@ -326,7 +326,7 @@ app.use(
 // /:assignedSystemsEngineer
 app.use(
   '/tracking', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   tracking
 );
 // /:trackingNo

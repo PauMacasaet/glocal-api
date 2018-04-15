@@ -21,7 +21,7 @@ module.exports = {
             knexQuery
                 .whereIn(
                     knex.raw(
-                        `SELECT UNNEST(??)`, 
+                        `UNNEST(??)`, 
                         ['assignedSystemsEngineer']
                     ),
                     query['engineer']

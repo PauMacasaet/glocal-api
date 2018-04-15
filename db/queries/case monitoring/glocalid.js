@@ -76,10 +76,10 @@ module.exports = {
         if (query['assignedSystemsEngineer']) {
             knexQuery
                 .where(
-                    'activities.assignedSystemsEngineer'.toString(),
+                    'activities.assignedSystemsEngineer',
                     '@>',
                     query['assignedSystemsEngineer']
-                );
+                )
         }
         if (query['systemsEngineerLead']) {
             knexQuery
