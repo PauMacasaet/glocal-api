@@ -103,7 +103,7 @@ module.exports = {
                 .orWhere('client.accountManager', 'ILIKE', `%${query.q}%`);
             
             knexQuery
-                .andWhere(subquery, query.q);
+                .andWhere('license.licenseId', 'in', subquery);
         }
 
         // SORT
