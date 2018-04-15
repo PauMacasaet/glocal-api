@@ -96,11 +96,11 @@ module.exports = {
 
         //SEARCH
         if (query.q) {
-            knexQuery.where('license.client', 'like', `%${query.q}%`)
-                .andWhere('license.vendor', 'like', `%${query.q}%`)
-                .andWhere('license.productName', 'like', `%${query.q}%`)
-                .andWhere('license.particulars', 'like', `%${query.q}%`)
-                .andWhere('client.accountManager', 'like', `%${query.q}%`);
+            knexQuery.where('license.client', 'ILIKE', `%${query.q}%`)
+                .where('license.vendor', 'ILIKE', `%${query.q}%`)
+                .where('license.productName', 'ILIKE', `%${query.q}%`)
+                .where('license.particulars', 'ILIKE', `%${query.q}%`)
+                .where('client.accountManager', 'ILIKE', `%${query.q}%`);
         }
 
         // SORT
