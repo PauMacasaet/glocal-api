@@ -96,12 +96,14 @@ module.exports = {
 
         //SEARCH
         if (query.q) {
-            knexQuery.where('license.client', 'ILIKE', `%${query.q}%`)
+            const subquery = knexQuery.where('license.client', 'ILIKE', `%${query.q}%`)
                 .orWhere('license.vendor', 'ILIKE', `%${query.q}%`)
                 .orWhere('license.productName', 'ILIKE', `%${query.q}%`)
                 .orWhere('license.particulars', 'ILIKE', `%${query.q}%`)
-                .orWhere('client.accountManager', 'ILIKE', `%${query.q}%`)
-                .andWhere('license.date_end', '<', new Date());
+                .orWhere('client.accountManager', 'ILIKE', `%${query.q}%`);
+            
+            knexQuery
+                .andWhere(subquery, query.q);
         }
 
         // SORT
