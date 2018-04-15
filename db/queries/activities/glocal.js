@@ -1,8 +1,8 @@
 const knex = require('../../knex'); // the connection
 
 module.exports = {
-    getAll() {
-        return knex('activities')
+    getAll(query) {
+        const knexQuery = knex('activities')
         .join(
             'contact_person', 
             'activities.client', 
@@ -29,6 +29,16 @@ module.exports = {
             )
         )
         .orderBy('activities.timeOuts', 'desc');
+
+        if (query.no) {
+            knexQuery
+                .where(
+                    'activities.trackingNo', 
+                    query.no
+                );
+        }
+
+        return knexQuery;
     },
     getOne(tracking) {
         return knex('activities')
