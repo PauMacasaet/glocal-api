@@ -93,18 +93,18 @@ module.exports = {
             'license.support_date_end',
             'license.quarterly_hc',
             'license.remarks'
-        )
-        .where('license.date_end', '<', new Date())
-        .orderBy('license.date_end', 'asc');
+        );
 
         //SEARCH
         if (query.q) {
-            knexQuery.where('license.date_end', '<', new Date())
-                .where('license.client', 'ILIKE', `%${query.q}%`)
-                .orWhere('license.vendor', 'ILIKE', `%${query.q}%`)
-                .orWhere('license.productName', 'ILIKE', `%${query.q}%`)
-                .orWhere('license.particulars', 'ILIKE', `%${query.q}%`)
-                .orWhere('client.accountManager', 'ILIKE', `%${query.q}%`);
+            knexQuery.where(function() {
+                this
+                    .where('license.client', 'ILIKE', `%${query.q}%`)
+                    .orWhere('license.vendor', 'ILIKE', `%${query.q}%`)
+                    .orWhere('license.productName', 'ILIKE', `%${query.q}%`)
+                    .orWhere('license.particulars', 'ILIKE', `%${query.q}%`)
+                    .orWhere('client.accountManager', 'ILIKE', `%${query.q}%`)
+            });
         }
 
         // SORT
@@ -135,7 +135,9 @@ module.exports = {
             }
         }
 
-        return knexQuery;
+        return knexQuery
+            .andWhere('license.date_end', '<', new Date())
+            .orderBy('license.date_end', 'asc');
     },
     getOne(licenseId) {
         return knex('license')
