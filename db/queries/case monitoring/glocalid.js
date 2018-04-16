@@ -180,7 +180,7 @@ module.exports = {
         } else if (query.order_title) {
             knexQuery
                 .orderBy(
-                    'case_monitoring.case_title', 
+                    'case_monitoring.caseTitle', 
                     query.order_title
                 );
         } else if (query.order_product) {
@@ -375,7 +375,7 @@ module.exports = {
         } else if (query.order_title) {
             knexQuery
                 .orderBy(
-                    'case_monitoring.case_title', 
+                    'case_monitoring.caseTitle', 
                     query.order_title
                 );
         } else if (query.order_product) {
