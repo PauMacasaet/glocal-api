@@ -110,7 +110,7 @@ exports.up = function(knex, Promise) {
         .index('index_lead', 'hash');
       table.varchar('case_status', 50)
         .index('index_status', 'hash').notNull();
-      table.datetime('date_resolved')
+      table.date('date_resolved')
         .index('index_resolved', 'hash');
     }),
 
