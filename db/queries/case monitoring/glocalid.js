@@ -19,6 +19,12 @@ module.exports = {
                     `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
                 ),
+
+                // knex.raw(
+                //     `ARRAY_TO_STRING(??, ',') as assigned_se`, 
+                //     ['activities.assignedSystemsEngineer']
+                // ),
+                
                 //'activities.assignedSystemsEngineer',
                 'case_monitoring.vendorCaseId', 
                 'case_monitoring.dateIdCreated', 
@@ -86,10 +92,14 @@ module.exports = {
         }
         if (query['assignedSystemsEngineer']) {
             knexQuery
-                .whereIn(
-                    knex.raw(`UNNEST(??)`, ['activities.assignedSystemsEngineer']),
+                .where(
+                    // knex.raw(`ARRAY_TO_STRING(??, ', ')`, ['activities.assignedSystemsEngineer']),
+                    // 'ILIKE',
+                    // `%${query['assignedSystemsEngineer']}%`
+                    'activities.assignedSystemsEngineer',
+                    '@>',
                     query['assignedSystemsEngineer']
-                )
+                );
         }
         if (query['systemsEngineerLead']) {
             knexQuery
