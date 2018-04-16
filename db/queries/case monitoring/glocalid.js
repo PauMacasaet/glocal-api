@@ -40,6 +40,7 @@ module.exports = {
             .groupBy(
                 'case_monitoring.glocalId', 
                 'client.accountManager', 
+                'activities.assignedSystemsEngineer'
                 //'activities.typeOfActivity',
                 //'activities.purposeOfVisit'
             )
