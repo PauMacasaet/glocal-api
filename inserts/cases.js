@@ -24,7 +24,7 @@ module.exports = [
         productName: 'Secure Web Gateway',
         systemsEngineerLead: 'Jeffrey Jonas',
         case_status: 'Resolved',
-        date_resolved: new Date()
+        date_resolved: '03/10/2018'
     },
     {
         vendorCaseId: 'JF3',
