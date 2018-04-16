@@ -5,7 +5,7 @@ const router = express.Router();
 const queries = require('../../db/queries/stats/caseProductCount');
 
 
-router.get('/resolved', (req, res, next) => {
+router.get('/', (req, res, next) => {
     const {
         productName,
         customer,
@@ -28,20 +28,20 @@ router.get('/resolved', (req, res, next) => {
     });
 });
 
-router.get('/open', (req, res, next) => { // summary page
+router.get('/most', (req, res, next) => { // summary page
     const {
         productName,
         from, to
     } = req.query
     queries
-        .getAllOpenProduct({
+        .getMostCaseProduct({
             productName,
             from, to
         })
         .then(stats => {
             if (stats) {
                 res.json(stats);
-                console.log('GETTING ALL OPEN CASE COUNT BY PRODUCT');
+                console.log('GETTING PRODUCT WITH MOST CASES');
             } else {
                 next();
             }

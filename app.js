@@ -359,13 +359,13 @@ app.use(
 );
 
 app.use(
-  '/case-client-count', // /open /resolved
+  '/case-client-count', // /most, /open, /resolved
   authMiddleWare.ensureLoggedIn,
   caseClientCount
 );
 
 app.use(
-  '/case-product-count',
+  '/case-product-count', // product utilization and /most 
   authMiddleWare.ensureLoggedIn,
   caseProductCount
 );
@@ -378,6 +378,7 @@ app.use(
 
 app.use(
   '/turnaround',
+  authMiddleWare.ensureLoggedIn,
   turnaround
 );
 

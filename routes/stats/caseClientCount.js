@@ -4,6 +4,24 @@ const router = express.Router();
 
 const queries = require('../../db/queries/stats/caseClientCount');
 
+router.get('/most', (req, res, next) => {
+    const {
+        from, to
+    } = req.query
+    queries
+        .getMostCasesClient({
+            from, to
+        })
+        .then(stats => {
+            if (stats) {
+                res.json(stats);
+                console.log('GETTING CUSTOMER WITH MOST CASES');
+            } else {
+                next();
+            }
+            
+    });
+});
 
 router.get('/open', (req, res, next) => {
     const {

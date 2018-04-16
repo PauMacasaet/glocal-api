@@ -6,7 +6,6 @@ module.exports = {
             .select('productName')
             .count('* as number_of_cases')
             .groupBy('productName')
-            .where('case_status', 'Resolved')
             .orderBy('number_of_cases', 'desc');
         if (query['productName']) {
             knexQuery
@@ -35,11 +34,10 @@ module.exports = {
 
         return knexQuery;
     },
-    getAllOpenProduct(query) { // open case products
+    getMostCaseProduct(query) { // most case products
         const knexQuery = knex('case_monitoring')
             .select('productName')
             .count('* as number_of_opencase_products')
-            .whereNot('case_status', 'Resolved')
             .groupBy('productName')
             .orderBy('number_of_opencase_products', 'desc')
             .first('productName');
