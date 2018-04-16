@@ -15,7 +15,10 @@ module.exports = {
             )
             .select( 
                 'case_monitoring.glocalId',
-                'activities.assignedSystemsEngineer',
+                knex.raw(
+                    `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
+                    ['activities.assignedSystemsEngineer']
+                ),
                 'case_monitoring.vendorCaseId', 
                 'case_monitoring.dateIdCreated', 
                 'client.accountManager', 
@@ -28,10 +31,16 @@ module.exports = {
                 'case_monitoring.severity', 
                 'case_monitoring.systemsEngineerLead', 
                 'case_monitoring.vendor', 
-                'activities.typeOfActivity AS Activity',
-                'activities.purposeOfVisit',
-                'activities.timeOuts AS date_last_updated',
+                //'activities.typeOfActivity AS Activity',
+                //'activities.purposeOfVisit',
                 'case_monitoring.date_resolved'
+            )
+            .max('activities.timeOuts AS date_last_updated')
+            .groupBy(
+                'case_monitoring.glocalId', 
+                'client.accountManager', 
+                //'activities.typeOfActivity',
+                //'activities.purposeOfVisit'
             )
             .orderBy('case_monitoring.glocalId', 'desc');
         

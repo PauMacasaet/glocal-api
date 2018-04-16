@@ -108,8 +108,6 @@ exports.up = function(knex, Promise) {
         .index('index_caseprod', 'hash').notNull().onUpdate('cascade');
       table.varchar('systemsEngineerLead', 50)
         .index('index_lead', 'hash');
-      table.specificType('assigned_se', 'text[]')
-        .index('index_case_se', 'hash');
       table.varchar('case_status', 50)
         .index('index_status', 'hash').notNull();
       table.datetime('date_resolved')
