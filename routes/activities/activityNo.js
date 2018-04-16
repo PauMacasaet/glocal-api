@@ -83,6 +83,8 @@ router.get('/service-reports/:sr_number', isValidSRNo, (req, res, next) => {
         });
 });
 
+
+
 router.post('/', (req, res, next) => {
     if(validActivity(req.body)) {
         if (req.body.typeOfActivity != 'Remote') {
@@ -105,6 +107,7 @@ router.post('/', (req, res, next) => {
         next(new Error('Invalid Activity'));
     }
 });
+
 
 router.put('/:activityNo', isValidActivityNo, (req, res, next) => {
     if(validActivity(req.body)) {
