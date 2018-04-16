@@ -10,7 +10,7 @@ module.exports = {
             )
             .select(
                 knex.raw(
-                    `UNNEST(??) as assignedSystemsEngineer`, 
+                    `UNNEST(??::text[]) as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
                 ),
                 'customer'

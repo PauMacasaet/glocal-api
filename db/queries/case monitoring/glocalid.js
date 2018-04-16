@@ -16,7 +16,7 @@ module.exports = {
             .select( 
                 'case_monitoring.glocalId',
                 knex.raw(
-                    `ARRAY_TO_STRING(ARRAY_AGG(??::text),',') as assignedSystemsEngineer`, 
+                    `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
                 ),
                 //'activities.assignedSystemsEngineer',
@@ -222,9 +222,31 @@ module.exports = {
             'activities.trackingNo', 
             '=', 'case_monitoring.glocalId'
         )
+        // .select( 
+        //     'case_monitoring.glocalId',
+        //     'activities.assignedSystemsEngineer',
+        //     'case_monitoring.vendorCaseId', 
+        //     'case_monitoring.dateIdCreated', 
+        //     'client.accountManager', 
+        //     'case_monitoring.case_status', 
+        //     'case_monitoring.caseDescription', 
+        //     'case_monitoring.caseTitle', 
+        //     'case_monitoring.customer', 
+        //     'case_monitoring.dateRaised', 
+        //     'case_monitoring.productName', 
+        //     'case_monitoring.severity', 
+        //     'case_monitoring.systemsEngineerLead', 
+        //     'case_monitoring.vendor', 
+        //     'activities.timeOuts AS date_last_updated',
+        //     'case_monitoring.date_resolved'
+        // )
         .select( 
             'case_monitoring.glocalId',
-            'activities.assignedSystemsEngineer',
+            knex.raw(
+                `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
+                ['activities.assignedSystemsEngineer']
+            ),
+            //'activities.assignedSystemsEngineer',
             'case_monitoring.vendorCaseId', 
             'case_monitoring.dateIdCreated', 
             'client.accountManager', 
@@ -237,8 +259,17 @@ module.exports = {
             'case_monitoring.severity', 
             'case_monitoring.systemsEngineerLead', 
             'case_monitoring.vendor', 
-            'activities.timeOuts AS date_last_updated',
+            //'activities.typeOfActivity AS Activity',
+            //'activities.purposeOfVisit',
             'case_monitoring.date_resolved'
+        )
+        .max('activities.timeOuts AS date_last_updated')
+        .groupBy(
+            'case_monitoring.glocalId', 
+            'client.accountManager', 
+            //'activities.assignedSystemsEngineer'
+            //'activities.typeOfActivity',
+            //'activities.purposeOfVisit'
         )
         .where('activities.assignedSystemsEngineer', '@>', query.user)
         //.where('case_monitoring.systemsEngineerLead', query.SELead)
@@ -378,10 +409,31 @@ module.exports = {
         return knex('case_monitoring')
         .join('client', 'client.accountName', '=', 'case_monitoring.customer')
         .leftJoin('activities', 'activities.trackingNo', '=', 'case_monitoring.glocalId')
-        .distinct('case_monitoring.glocalId')
-        .select(
+        // .select(
+        //     'case_monitoring.glocalId',
+        //     'activities.assignedSystemsEngineer', 
+        //     'case_monitoring.vendorCaseId', 
+        //     'case_monitoring.dateIdCreated', 
+        //     'client.accountManager', 
+        //     'case_monitoring.case_status', 
+        //     'case_monitoring.caseDescription', 
+        //     'case_monitoring.caseTitle', 
+        //     'case_monitoring.customer', 
+        //     'case_monitoring.dateRaised', 
+        //     'case_monitoring.productName', 
+        //     'case_monitoring.severity', 
+        //     'case_monitoring.systemsEngineerLead', 
+        //     'case_monitoring.vendor', 
+        //     'activities.timeOuts AS date_last_updated',
+        //     'case_monitoring.date_resolved'
+        // )
+        .select( 
             'case_monitoring.glocalId',
-            'activities.assignedSystemsEngineer', 
+            knex.raw(
+                `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
+                ['activities.assignedSystemsEngineer']
+            ),
+            //'activities.assignedSystemsEngineer',
             'case_monitoring.vendorCaseId', 
             'case_monitoring.dateIdCreated', 
             'client.accountManager', 
@@ -394,10 +446,18 @@ module.exports = {
             'case_monitoring.severity', 
             'case_monitoring.systemsEngineerLead', 
             'case_monitoring.vendor', 
-            'activities.timeOuts AS date_last_updated',
+            //'activities.typeOfActivity AS Activity',
+            //'activities.purposeOfVisit',
             'case_monitoring.date_resolved'
         )
-        //.groupBy('case_monitoring.glocalId', 'activities.assignedSystemsEngineer', 'client.accountManager')
+        .max('activities.timeOuts AS date_last_updated')
+        .groupBy(
+            'case_monitoring.glocalId', 
+            'client.accountManager', 
+            //'activities.assignedSystemsEngineer'
+            //'activities.typeOfActivity',
+            //'activities.purposeOfVisit'
+        )
         .where('glocalId', glocalId);
     },
     create(case_mon) {
