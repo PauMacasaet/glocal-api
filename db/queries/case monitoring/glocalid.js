@@ -16,10 +16,10 @@ module.exports = {
             .select( 
                 'case_monitoring.glocalId',
                 knex.raw(
-                    `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
+                    `ARRAY_TO_STRING(ARRAY_AGG(??::text),',') as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
                 ),
-                'activities.assignedSystemsEngineer',
+                //'activities.assignedSystemsEngineer',
                 'case_monitoring.vendorCaseId', 
                 'case_monitoring.dateIdCreated', 
                 'client.accountManager', 
@@ -40,7 +40,7 @@ module.exports = {
             .groupBy(
                 'case_monitoring.glocalId', 
                 'client.accountManager', 
-                'activities.assignedSystemsEngineer'
+                //'activities.assignedSystemsEngineer'
                 //'activities.typeOfActivity',
                 //'activities.purposeOfVisit'
             )
