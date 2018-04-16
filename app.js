@@ -339,7 +339,7 @@ app.use(
 
 //stats
 app.use(
-  '/total-cases', 
+  '/total-cases',  // summary pie chart
   authMiddleWare.ensureLoggedIn,
   totalCases
 );
@@ -358,7 +358,7 @@ app.use(
 );
 
 app.use(
-  '/case-client-count',
+  '/case-client-count', // /open /resolved
   authMiddleWare.ensureLoggedIn,
   caseClientCount
 );

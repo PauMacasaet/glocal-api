@@ -12,18 +12,17 @@ module.exports = {
                 knex.raw(
                     `UNNEST(??) as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
-                )
+                ),
+                'customer'
             )
             .count('* as number_of_activities')
             .groupBy('case_monitoring.glocalId', 'activities.assignedSystemsEngineer')
             .orderBy('number_of_activities', 'desc');
         if (query['engineer']) {
             knexQuery
-                .whereIn(
-                    knex.raw(
-                        `UNNEST(??)`, 
-                        ['assignedSystemsEngineer']
-                    ),
+                .where(
+                    'activities.assignedSystemsEngineer',
+                    '@>',
                     query['engineer']
                 );
         }
