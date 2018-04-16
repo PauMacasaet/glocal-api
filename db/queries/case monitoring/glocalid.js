@@ -19,6 +19,7 @@ module.exports = {
                     `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
                 ),
+                'activities.assignedSystemsEngineer',
                 'case_monitoring.vendorCaseId', 
                 'case_monitoring.dateIdCreated', 
                 'client.accountManager', 
