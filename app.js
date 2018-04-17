@@ -252,7 +252,7 @@ app.use(
 
 app.use(
   '/userSE',
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   userSE
 );
 

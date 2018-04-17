@@ -16,7 +16,7 @@ module.exports = {
             .select( 
                 'case_monitoring.glocalId',
                 knex.raw(
-                    `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
+                    `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',') as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
                 ),
 
@@ -253,7 +253,7 @@ module.exports = {
         .select( 
             'case_monitoring.glocalId',
             knex.raw(
-                `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
+                `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',') as assignedSystemsEngineer`, 
                 ['activities.assignedSystemsEngineer']
             ),
             //'activities.assignedSystemsEngineer',
@@ -440,7 +440,7 @@ module.exports = {
         .select( 
             'case_monitoring.glocalId',
             knex.raw(
-                `(ARRAY_AGG(??::text)) as assignedSystemsEngineer`, 
+                `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',') as assignedSystemsEngineer`, 
                 ['activities.assignedSystemsEngineer']
             ),
             //'activities.assignedSystemsEngineer',
