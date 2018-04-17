@@ -45,6 +45,9 @@ const nextId = require('./routes/case monitoring/nextId');
 const userSE = require('./routes/case monitoring/userSE');
 const severity_dash = require('./routes/case monitoring/severity_dash');
 
+const sr_no = require('./routes/service-reports/service_report_no');
+const sr_tracking = require('./routes/service-reports/trackingNo');
+
 const activityNo = require('./routes/activities/activityNo');
 const timeIn = require('./routes/activities/timeIn');
 const timeOuts = require('./routes/activities/timeOuts');
@@ -380,6 +383,16 @@ app.use(
   '/turnaround',
   authMiddleWare.ensureLoggedIn,
   turnaround
+);
+
+app.use(
+  '/service-reports',
+  sr_no
+);
+
+app.use(
+  '/sr-tracking',
+  sr_tracking
 );
 
 // catch 404 and forward to error handler
