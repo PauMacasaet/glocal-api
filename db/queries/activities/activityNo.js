@@ -54,8 +54,30 @@ module.exports = {
         .orderBy('activities.activityNo', 'asc');
     },
     create(activity) {
-        const knexQuery = knex('activities')
-            .insert(activity, '*')
+        const knexQuery = knex.insert(activity, '*').into('activities')
+        // if('activities.typeOfActivity' == 'Remote') {
+        //     knexQuery.insert(activity, '*')
+        // } else {
+        //     knexQuery.insert(
+        //         knexQuery.select(
+        //             'service_reports.sr_number',
+        //             'service_report.trackingNo',
+        //             'service_report.timeIn',
+        //             'service_report.timeOuts',
+        //             'service_reports.productName',
+        //             'service_reports.client',
+        //             'service_reports.addres',
+        //             'service_reports.typeOfActivity',
+        //             'service_reports.purposeOfVisit',
+        //             'service_reports.activityPerformed',
+        //             'service_reports.nextActivity',
+        //             'service_reports.recommendation',
+        //             'service_reports.assignedSystemsEngineer'
+        //         ).from('service_reports').where('service_reports.sr_number', sr_number),
+        //         '*'
+        //     )
+        // }
+            
             
         return knexQuery;
     },
