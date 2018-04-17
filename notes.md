@@ -1,18 +1,18 @@
-create directory
+#create directory
 	express
 
-createdb
+#createdb
 
-npm install --save knex pg
+#npm install --save knex pg
 
-npm install --save-dev nodemon
+#npm install --save-dev nodemon
 
-npm run dev
+#npm run dev
 
-knex init
+#knex init
 	fix knexfile
 
-knex migrate:make create-[tablename]
+#knex migrate:make create-[tablename]
 	(migrations folder)
 	table.increments().primary().notNull; for ID
 
@@ -22,7 +22,7 @@ knex migrate:make create-[tablename]
 knex seed:make 01_[tablename]
 knex seed:run
 
-setting up heroku app
+#setting up heroku app
     heroku login
 
     heroku create stickers-api-pau
@@ -31,7 +31,7 @@ setting up heroku app
 
     heroku open
 
-adding DB
+#adding DB
     heroku addons:create heroku-postgresql
     cloud db = heroku pg:psql
 
