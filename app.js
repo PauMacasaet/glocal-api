@@ -69,6 +69,7 @@ const engActivitiesCount = require('./routes/stats/engActivitiesCount');
 const caseClientCount = require('./routes/stats/caseClientCount');
 const caseProductCount = require('./routes/stats/caseProductCount');
 const vendorLicenseCount = require('./routes/stats/vendorLicenseCount');
+const vendorCaseCount = require('./routes/stats/vendorCaseCount');
 const turnaround = require('./routes/stats/turnaroundTime');
 
 // uncomment after placing your favicon in /public
@@ -380,6 +381,12 @@ app.use(
 );
 
 app.use(
+  '/vendor-case-count',
+  authMiddleWare.ensureLoggedIn,
+  vendorCaseCount
+)
+
+app.use(
   '/turnaround',
   authMiddleWare.ensureLoggedIn,
   turnaround
@@ -387,11 +394,13 @@ app.use(
 
 app.use(
   '/service-reports',
+  authMiddleWare.ensureLoggedIn,
   sr_no
 );
 
 app.use(
   '/sr-tracking',
+  authMiddleWare.ensureLoggedIn,
   sr_tracking
 );
 
