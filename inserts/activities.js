@@ -1,6 +1,5 @@
 module.exports = [
     {
-        sr_number: 1,
         trackingNo: 001,
         timeIn: '2018-01-08 12:24:00', 
         timeOuts: '2018-01-08 15:05:00', 

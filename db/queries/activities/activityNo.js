@@ -3,6 +3,11 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getAll() {
         return knex('activities')
+        .leftJoin(
+            'service_reports',
+            'activities.timeOuts',
+            '=', 'service_reports.timeOuts'
+        )
         .join(
             'contact_person',
             'activities.client',
@@ -11,7 +16,7 @@ module.exports = {
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
-            'activities.sr_number',
+            'service_reports.sr_number',
             'activities.productName', 
             'contact_person.client', 
             'activities.addres AS address',
@@ -29,6 +34,11 @@ module.exports = {
     },
     getOne(activityNo) {
         return knex('activities')
+        .leftJoin(
+            'service_reports',
+            'activities.timeOuts',
+            '=', 'service_reports.timeOuts'
+        )
         .join(
             'contact_person', 
             'activities.client', 
@@ -37,6 +47,7 @@ module.exports = {
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
+            'service_reports.sr_number',
             'activities.productName', 
             'contact_person.client', 
             'activities.addres AS address',
@@ -55,52 +66,7 @@ module.exports = {
     },
     create(activity) {
         const knexQuery = knex.insert(activity, '*').into('activities')
-        // if('activities.typeOfActivity' == 'Remote') {
-        //     knexQuery.insert(activity, '*')
-        // } else {
-        //     knexQuery.insert(
-        //         knexQuery.select(
-        //             'service_reports.sr_number',
-        //             'service_report.trackingNo',
-        //             'service_report.timeIn',
-        //             'service_report.timeOuts',
-        //             'service_reports.productName',
-        //             'service_reports.client',
-        //             'service_reports.addres',
-        //             'service_reports.typeOfActivity',
-        //             'service_reports.purposeOfVisit',
-        //             'service_reports.activityPerformed',
-        //             'service_reports.nextActivity',
-        //             'service_reports.recommendation',
-        //             'service_reports.assignedSystemsEngineer'
-        //         ).from('service_reports').where('service_reports.sr_number', sr_number),
-        //         '*'
-        //     )
-        // }
             
-            
-        return knexQuery;
-    },
-    createSR(activity){
-        const knexQuery = knex.insert(
-            knex.select(
-                //'service_reports.sr_number',
-                // 'service_reports.trackingNo',
-                // 'service_reports.timeIn',
-                // 'service_reports.timeOuts',
-                // 'service_reports.productName',
-                // 'service_reports.client',
-                // 'service_reports.addres',
-                // 'service_reports.typeOfActivity',
-                // 'service_reports.purposeOfVisit',
-                // 'service_reports.activityPerformed',
-                // 'service_reports.nextActivity',
-                // 'service_reports.recommendations',
-                // 'service_reports.assignedSystemsEngineer'
-                '*'
-            ).from('service_reports')
-        ).into('activities');
-
         return knexQuery;
     },
     update(activityNo, activity) {

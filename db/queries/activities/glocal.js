@@ -3,6 +3,11 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getAll(query) {
         const knexQuery = knex('activities')
+        .leftJoin(
+            'service_reports',
+            'activities.timeOuts',
+            '=', 'service_reports.timeOuts'
+        )
         .join(
             'contact_person', 
             'activities.client', 
@@ -11,7 +16,7 @@ module.exports = {
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
-            'activities.sr_no',
+            'service_reports.sr_number',
             'activities.productName', 
             'contact_person.client', 
             'activities.addres AS address',
@@ -41,8 +46,8 @@ module.exports = {
         return knex('activities')
         .leftJoin(
             'service_reports',
-            'activities.sr_no',
-            '=', 'service_reports.sr_number'
+            'activities.timeOuts',
+            '=', 'service_reports.timeOuts'
         )
         .join(
             'contact_person', 
@@ -52,7 +57,7 @@ module.exports = {
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
-            'activities.sr_no',
+            'service_reports.sr_number',
             'activities.productName', 
             'contact_person.client', 
             'activities.addres AS address',
