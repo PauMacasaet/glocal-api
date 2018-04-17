@@ -81,6 +81,28 @@ module.exports = {
             
         return knexQuery;
     },
+    createSR(activity){
+        const knexQuery = knex.insert(
+            knex.select(
+                //'service_reports.sr_number',
+                // 'service_reports.trackingNo',
+                // 'service_reports.timeIn',
+                // 'service_reports.timeOuts',
+                // 'service_reports.productName',
+                // 'service_reports.client',
+                // 'service_reports.addres',
+                // 'service_reports.typeOfActivity',
+                // 'service_reports.purposeOfVisit',
+                // 'service_reports.activityPerformed',
+                // 'service_reports.nextActivity',
+                // 'service_reports.recommendations',
+                // 'service_reports.assignedSystemsEngineer'
+                '*'
+            ).from('service_reports')
+        ).into('activities');
+
+        return knexQuery;
+    },
     update(activityNo, activity) {
         return knex('activities').where('activityNo', activityNo).update(activity, '*');
     }, 
