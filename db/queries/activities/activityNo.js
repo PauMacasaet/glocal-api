@@ -56,7 +56,6 @@ module.exports = {
     create(activity) {
         const knexQuery = knex('activities')
             .insert(activity, '*')
-        
             
         return knexQuery;
     },

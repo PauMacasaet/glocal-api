@@ -143,11 +143,11 @@ exports.up = function(knex, Promise) {
     }),
 
     knex.schema.createTable('activities', (table) => {
-      table.integer('trackingNo').references('glocalId').inTable('case_monitoring')
-        .index('index_tracking', 'btree').notNull().onUpdate('cascade');
       table.increments('activityNo').index('index_activityNo', 'btree');
       table.integer('sr_number').references('sr_number').inTable('service_reports')
         .index('index_sr_activty', 'btree').onUpdate('cascade');
+      table.integer('trackingNo').references('glocalId').inTable('case_monitoring')
+        .index('index_tracking', 'btree').notNull().onUpdate('cascade');
       table.timestamp('timeIn')
         .index('index_timein', 'hash').notNull();
       table.timestamp('timeOuts')
