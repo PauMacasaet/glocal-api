@@ -11,6 +11,7 @@ module.exports = {
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
+            'activities.sr_no',
             'activities.productName', 
             'contact_person.client', 
             'activities.addres AS address',
@@ -38,6 +39,11 @@ module.exports = {
     },
     getOne(tracking) {
         return knex('activities')
+        .leftJoin(
+            'service_reports',
+            'activities.sr_no',
+            '=', 'service_reports.sr_number'
+        )
         .join(
             'contact_person', 
             'activities.client', 
@@ -46,6 +52,7 @@ module.exports = {
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
+            'activities.sr_no',
             'activities.productName', 
             'contact_person.client', 
             'activities.addres AS address',

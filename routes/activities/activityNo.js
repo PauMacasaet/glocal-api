@@ -88,21 +88,28 @@ router.get('/:activityNo', isValidActivityNo, (req, res, next) => {
 router.post('/', (req, res, next) => {
     if(validActivity(req.body)) {
         if (req.body.typeOfActivity != 'Remote') {
-            reports
-                .create(req.body)
-                .then(reports => {
-                    res.json({reports});
+            reports.create(req.body).then(() => {
+                queries
+                .create(req.body) // CREATING AN ACTIVTY AND SERVICE REPORT
+                .then(report => {
+                    res.json({
+                        report,
+                        message: 'Report Created'
+                    });
                 });
-        };
-        queries
-            .create(req.body)
+            })
+        } else {
+            queries
+            .create(req.body) // CREATING ACTIVITY ONLY WHEN REMOTE
             .then(activity => {
                 res.json({
                     activity,
                     message: 'Activity Created'
                 });
-            });      
-            
+            });    
+        }
+          
+                 
     } else {
         next(new Error('Invalid Activity'));
     }

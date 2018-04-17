@@ -11,6 +11,7 @@ module.exports = {
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
+            'activities.sr_no',
             'activities.productName', 
             'contact_person.client', 
             'activities.addres AS address',
@@ -24,7 +25,7 @@ module.exports = {
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer'
         )
-        .orderBy('activities.timeOuts', 'desc');
+        .orderBy('activities.activityNo', 'desc');
     },
     getOne(activityNo) {
         return knex('activities')
@@ -55,6 +56,8 @@ module.exports = {
     create(activity) {
         const knexQuery = knex('activities')
             .insert(activity, '*')
+        
+            
         return knexQuery;
     },
     update(activityNo, activity) {

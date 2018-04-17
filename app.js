@@ -394,13 +394,13 @@ app.use(
 
 app.use(
   '/service-reports',
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   sr_no
 );
 
 app.use(
   '/sr-tracking',
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   sr_tracking
 );
 
