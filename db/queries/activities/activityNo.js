@@ -11,7 +11,7 @@ module.exports = {
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
-            'activities.sr_no',
+            'activities.sr_number',
             'activities.productName', 
             'contact_person.client', 
             'activities.addres AS address',
