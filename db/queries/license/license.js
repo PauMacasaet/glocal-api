@@ -169,6 +169,6 @@ module.exports = {
         return knex('license').where('licenseId', licenseId).update(license, '*');
     }, 
     delete(license) {
-        return knex('license').where('licenseId', licenseId).del();
+        return knex('license').where('licenseId', license).del();
     }
 }
