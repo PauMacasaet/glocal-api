@@ -52,7 +52,7 @@ knex seed:run
 
     /activityNo post and update
     /tracking & /activityNo get for activities (regardless type) and sr_number
-
+    removed sr_number from activities table cos its useless 
 #ADDITIONS 
 
     glocal_id item for getting 'yyyy - glocalId' format : DISPLAY AND SEARCH PURPOSES ONLY

@@ -35,4 +35,15 @@ router.get('/:sr_number', isValidSRNo, (req, res, next) => {
         });
 });
 
+router.delete('/:sr_number', isValidSRNo, (req, res, next) => {
+    reports
+        .delete(req.params.sr_number)
+        .then(() => {
+            res.json({
+                deleted: true,
+                message: 'Report Deleted'
+            });
+    });
+});
+
 module.exports = router;
