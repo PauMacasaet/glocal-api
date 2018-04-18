@@ -166,7 +166,7 @@ app.use(
 //license
 app.use(
   '/license', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   license
 );
 // /:licenseId, /product/:productName
