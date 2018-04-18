@@ -53,9 +53,20 @@ knex seed:run
 
 #FIXES AS OF APRIL 17
 
-    /activityNo post and update
-    /tracking & /activityNo get for activities (regardless type) and sr_number
-    removed sr_number from activities table cos its useless 
+    - use /activityNo endpoint for GET CREATE UPDATE DELETE activities
+    - use /tracking endpoint for GET activities by trackingNo
+    - removed sr_number from activities table cos its useless 
+    - use /glocalId for GET cases. Additional Field is glocal_id showing "yyyy - glocalId" format in glocalId column
+    - use /userSE? for GET cases. Additional Field is glocal_id showing "yyyy - glocalId" format in glocalId column
+    - use /activityNo for GET cases. Additional Field is glocal_id SHOWING "yyyy - glocalId" format
+    - use /tracking for GET cases. Additional Field is glocal_id showing "yyyy - glocalId" format
+    - DONT CHANGE glocalId fetch for CREATE UPDATE DELETE GET BY ID
+    - DELETE buttons for License, Account, Case, Activity
+    - SE page where you can view each SE's activity log
+
+    - Reports page (to follow)
+
+    NOTE: when adding an activity in the payload make sure the times are different, preferably one after another
 
 #ADDITIONS 
 
