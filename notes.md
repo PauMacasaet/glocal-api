@@ -46,3 +46,15 @@ knex seed:run
 #db stuff
     heroku pg:info
     
+
+
+#FIXES AS OF APRIL 17
+
+    /activityNo post and update
+    /tracking & /activityNo get for activities (regardless type) and sr_number
+
+#ADDITIONS 
+
+    glocal_id item for getting 'yyyy - glocalId' format : DISPLAY AND SEARCH PURPOSES ONLY
+        FETCH from /glocalId, /activityNo, /tracking
+    glocalId item from /glocalId: still the same sort, post, update, delete
