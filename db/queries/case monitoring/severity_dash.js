@@ -15,7 +15,15 @@ module.exports = {
             )
             .select(
                 'case_monitoring.severity',
+                knex.raw(
+                    `concat_ws(' - ', date_part('year', ??)::text, ??::text) as glocal_id`,
+                    ['case_monitoring.dateRaised', 'case_monitoring.glocalId']
+                ),
                 'case_monitoring.glocalId',
+                knex.raw(
+                    `date_part('year',??) as year`, 
+                    ['case_monitoring.dateRaised']
+                ),
                 'case_monitoring.customer AS Company',
                 'case_monitoring.case_status AS Status',
                 'activities.typeOfActivity AS Activity',

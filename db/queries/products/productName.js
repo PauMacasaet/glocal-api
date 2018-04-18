@@ -2,7 +2,7 @@ const knex = require('../../knex'); // the connection
 
 module.exports = {
     getAll() {
-        return knex('products');
+        return knex('products').orderBy('productName', 'asc');
     },
     getOne(productName) {
         return knex('products').where('productName', productName);

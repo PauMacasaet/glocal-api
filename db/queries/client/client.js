@@ -8,7 +8,8 @@ module.exports = {
                 knex.raw('contact_details[0:2][5] AS Customer_Name, contact_details[2:2][5] AS Email, contact_details[3:3][5] AS Contact_Number'), 
                 'company_address', 
                 'accountManager'
-            );
+            )
+            .orderBy('accountName', 'asc');
         //SEARCH CLIENT
         if (query.q) {
             knexQuery.where('accountName', 'ILIKE', `%${query.q}%`)

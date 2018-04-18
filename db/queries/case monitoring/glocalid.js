@@ -14,16 +14,19 @@ module.exports = {
                 '=', 'case_monitoring.glocalId'
             )
             .select( 
+                knex.raw(
+                    `concat_ws(' - ', date_part('year', ??)::text, ??::text) as glocal_id`,
+                    ['case_monitoring.dateRaised', 'case_monitoring.glocalId']
+                ),
                 'case_monitoring.glocalId',
+                knex.raw(
+                    `date_part('year',??) as year_raised`, 
+                    ['case_monitoring.dateRaised']
+                ),
                 knex.raw(
                     `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',') as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
                 ),
-
-                // knex.raw(
-                //     `ARRAY_TO_STRING(??, ',') as assigned_se`, 
-                //     ['activities.assignedSystemsEngineer']
-                // ),
                 
                 //'activities.assignedSystemsEngineer',
                 'case_monitoring.vendorCaseId', 
@@ -73,6 +76,14 @@ module.exports = {
                 .orWhere(
                     'case_monitoring.productName', 
                     'ILIKE', 
+                    `%${query.q}%`
+                )
+                .orWhere(
+                    knex.raw(
+                        `concat_ws(' - ', date_part('year', ??)::text, ??::text)`,
+                        ['case_monitoring.dateRaised', 'case_monitoring.glocalId']
+                    ),
+                    'ILIKE',
                     `%${query.q}%`
                 );
         }
@@ -251,7 +262,15 @@ module.exports = {
         //     'case_monitoring.date_resolved'
         // )
         .select( 
+            knex.raw(
+                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as glocal_id`,
+                ['case_monitoring.dateRaised', 'case_monitoring.glocalId']
+            ),
             'case_monitoring.glocalId',
+            knex.raw(
+                `date_part('year',??) as year_raised`, 
+                ['case_monitoring.dateRaised']
+            ),
             knex.raw(
                 `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',') as assignedSystemsEngineer`, 
                 ['activities.assignedSystemsEngineer']
@@ -438,7 +457,15 @@ module.exports = {
         //     'case_monitoring.date_resolved'
         // )
         .select( 
+            knex.raw(
+                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as glocal_id`,
+                ['case_monitoring.dateRaised', 'case_monitoring.glocalId']
+            ),
             'case_monitoring.glocalId',
+            knex.raw(
+                `date_part('year',??) as year_raised`, 
+                ['case_monitoring.dateRaised']
+            ),
             knex.raw(
                 `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',') as assignedSystemsEngineer`, 
                 ['activities.assignedSystemsEngineer']
