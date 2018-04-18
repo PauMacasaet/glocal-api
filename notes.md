@@ -39,9 +39,12 @@ knex seed:run
     heroku run knex seed:run
 
 #backup and restore db
-    heroku pg:backups:capture
-    heroku pg:backups:download
-    heroku pg:backups:restore
+    install postgres psql
+
+    heroku pg:psql --app iris-carbon-api
+    heroku pg:backups:capture --app iris-carbon-api
+    heroku pg:backups:download --app iris-carbon-api
+    heroku pg:backups:restore --app iris-carbon-api
 
 #db stuff
     heroku pg:info
@@ -53,6 +56,7 @@ knex seed:run
     /activityNo post and update
     /tracking & /activityNo get for activities (regardless type) and sr_number
     removed sr_number from activities table cos its useless 
+
 #ADDITIONS 
 
     glocal_id item for getting 'yyyy - glocalId' format : DISPLAY AND SEARCH PURPOSES ONLY
