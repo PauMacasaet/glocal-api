@@ -96,7 +96,7 @@ app.use(
 //users
 app.use(
   '/user', 
-  //authMiddleWare.ensureLoggedIn, 
+  authMiddleWare.ensureLoggedIn, 
   user
 ); 
 //authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName
@@ -166,7 +166,7 @@ app.use(
 //license
 app.use(
   '/license', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   license
 );
 // /:licenseId, /product/:productName
@@ -186,7 +186,7 @@ app.use(
 //case_monitoring
 app.use(
   '/glocalId', 
-  //authMiddleWare.ensureLoggedIn,  
+  authMiddleWare.ensureLoggedIn,  
   glocalid
 );
 // 
@@ -252,7 +252,7 @@ app.use(
 
 app.use(
   '/userSE',
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   userSE
 );
 
@@ -265,7 +265,7 @@ app.use(
 //activities
 app.use(
   '/activityNo', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   activityNo
 );
 // /:activityNo
@@ -331,7 +331,7 @@ app.use(
 // /:assignedSystemsEngineer
 app.use(
   '/tracking', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   tracking
 );
 // /:trackingNo
@@ -394,13 +394,13 @@ app.use(
 
 app.use(
   '/service-reports',
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   sr_no
 );
 
 app.use(
   '/sr-tracking',
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   sr_tracking
 );
 
