@@ -96,7 +96,7 @@ app.use(
 //users
 app.use(
   '/user', 
-  //authMiddleWare.ensureLoggedIn, 
+  authMiddleWare.ensureLoggedIn, 
   user
 ); 
 //authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName
