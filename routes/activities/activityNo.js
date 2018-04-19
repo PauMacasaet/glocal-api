@@ -27,7 +27,8 @@ function validActivity(activity) {
     const hasPerformed = typeof activity.activityPerformed == 'string' && activity.activityPerformed.trim() != '';
     const hasNextActivity = typeof activity.nextActivity == 'string' && activity.nextActivity.trim() != '';
     const hasEngineer = Array.isArray(activity.assignedSystemsEngineer);
-    return hasTrackingNo && hasTimeIn && hasTimeOut && hasProductName && hasClient && hasAddres && hasType && hasPurpose && hasPerformed && hasNextActivity && hasEngineer;
+    const hasPointP = typeof activity.point_person == 'string' && activity.point_person.trim() != '';
+    return hasTrackingNo && hasTimeIn && hasTimeOut && hasProductName && hasClient && hasAddres && hasType && hasPurpose && hasPerformed && hasNextActivity && hasEngineer && hasPointP;
 }
 
 router.get('/', (req, res, next) => {
@@ -44,19 +45,6 @@ router.get('/', (req, res, next) => {
     });
 });
 
-// router.get('/service-reports', (req, res, next) => {
-//     reports
-//         .getAll()
-//         .then(reports => {
-//             if(reports) {
-//                 res.json(reports);
-//                 console.log('GETTING ALL REPORTS');
-//             } else {
-//                 next();
-//             }
-//         }); 
-// });
-
 router.get('/:activityNo', isValidActivityNo, (req, res, next) => {
     queries
         .getOne(req.params.activityNo)
@@ -69,21 +57,6 @@ router.get('/:activityNo', isValidActivityNo, (req, res, next) => {
             }
     });
 });
-
-// router.get('/service-reports/:sr_number', isValidSRNo, (req, res, next) => {
-//     reports
-//         .getOne(req.params.sr_number)
-//         .then(report => {
-//             if(report) {
-//                 res.json(report);
-//                 console.log('Getting by SR NO');
-//             } else {
-//                 next(new Error(404));
-//             }
-//         });
-// });
-
-
 
 router.post('/', (req, res, next) => {
     if(validActivity(req.body)) {
@@ -108,8 +81,6 @@ router.post('/', (req, res, next) => {
                 });
             });    
         }
-          
-                 
     } else {
         next(new Error('Invalid Activity'));
     }
@@ -117,28 +88,15 @@ router.post('/', (req, res, next) => {
 
 
 router.put('/:activityNo', isValidActivityNo, (req, res, next) => {
-    if(validActivity(req.body)) {
-        if (req.body.typeOfActivity != 'Remote') {
-            reports.update(req.params.sr_number, req.body).then(() => {
-                queries
-                    .update(req.params.activityNo, req.body)
-                    .then(report => {
-                        res.json({
-                            report,
-                            message: 'Report Updated'
-                        });
-                    });
+    if(validActivity(req.body)) {  
+        queries
+        .update(req.params.activityNo, req.body)
+        .then(report => {
+            res.json({
+                report,
+                message: 'Activity Updated'
             });
-        } else {
-            queries
-            .update(req.params.activityNo, req.body)
-            .then(activity => {
-                res.json({
-                    activity,
-                    message: 'Activity Updated'
-                });
         });
-        }
     } else {
         next(new Error('Invalid Update'));
     }

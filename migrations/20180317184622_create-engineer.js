@@ -17,12 +17,24 @@ exports.up = function(knex, Promise) {
         .index('index_created', 'hash').notNull();
       table.enu('position', 
         [
-        'Director', 
+        'Managing Director', 
+        'Sales Director',
         'Sales Manager', 
-        'Technical Manager', 
-        'System Engineer', 
-        'Account Manager']
-      ).notNull();
+        'Senior Sales Consultant',
+        'Sales Consultant',
+        'Senior Account Manager',
+        'Technical Manager',
+        'Senior Systems Engineer', 
+        'Systems Engineer',
+        'Business Development Manager', 
+        'Account Manager',
+        'Product Specialist',
+        'Corporate Affairs Director',
+        'Project Manager',
+        'Team Lead'
+      ]
+      )
+        .index('index_position', 'hash').notNull();
       table.boolean('is_active').defaultTo(true)
         .index('index_active', 'hash').notNull();
     }),
@@ -140,6 +152,8 @@ exports.up = function(knex, Promise) {
       table.varchar('recommendations', 2000).index('index_sr_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_sr_assignedengineer', 'hash').notNull();
+      table.varchar('point_person', 50)
+        .index('index_sr_point', 'hash').notNull();
     }),
 
     knex.schema.createTable('activities', (table) => {
@@ -167,6 +181,8 @@ exports.up = function(knex, Promise) {
       table.varchar('recommendations', 2000).index('index_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_assignedengineer', 'hash').notNull();
+      table.varchar('point_person', 50)
+        .index('index_activity_point', 'hash').notNull();
     })
   ]);
 };

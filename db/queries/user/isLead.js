@@ -1,7 +1,7 @@
 const knex = require('../../knex'); // the connection
 
 module.exports = {
-    getAll(position) {
+    getAll(query) {
         return knex('user')
             .join(
                 'case_monitoring', 
@@ -17,9 +17,16 @@ module.exports = {
                 'case_monitoring.caseDescription',
                 'case_monitoring.case_status'
             )
-            .where('user.position', position);
+            .whereIn('user.position', [
+                'Systems Engineer',
+                'Senior Systems Engineer',
+                'Team Lead', 
+                'Technical Manager'
+            ])
+            .andWhere('user.is_active', true)
+            //.orWhere('user.position', 'Technical Manager');
     },
-    getOne(position, name) {
+    getOne(name) {
         return knex('user')
             .join(
                 'case_monitoring', 
@@ -35,7 +42,13 @@ module.exports = {
                 'case_monitoring.caseDescription',
                 'case_monitoring.case_status'
             )
-            .where('user.position', position)
+            .whereIn('user.position', [
+                'Systems Engineer',
+                'Senior Systems Engineer',
+                'Team Lead', 
+                'Technical Manager'
+            ])
+            .andWhere('user.is_active', true)
             .andWhere('user.fullName', name);
     }
 }

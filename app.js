@@ -96,19 +96,19 @@ app.use(
 //users
 app.use(
   '/user', 
-  authMiddleWare.ensureLoggedIn, 
+  //authMiddleWare.ensureLoggedIn, 
   user
 ); 
 //authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName
 app.use(
   '/position', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   position
 ); 
 // /systemEngineer, /systemEngineer/:fullName, /manager, /manager/:fullName
 app.use(
   '/isLead',
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   isLead
 ); 
 // /:fullName
@@ -186,7 +186,7 @@ app.use(
 //case_monitoring
 app.use(
   '/glocalId', 
-  authMiddleWare.ensureLoggedIn,  
+  //authMiddleWare.ensureLoggedIn,  
   glocalid
 );
 // 
@@ -258,14 +258,14 @@ app.use(
 
 app.use(
   '/managerDashboard',
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   severity_dash
 );
 
 //activities
 app.use(
   '/activityNo', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   activityNo
 );
 // /:activityNo

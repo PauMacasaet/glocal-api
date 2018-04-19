@@ -11,7 +11,7 @@ function isValidLead(req, res, next) {
 
 router.get('/', (req, res) => {
     queries
-        .getAll('System Engineer')
+        .getAll()
         .then(engineers => {
             res.json(engineers);
             console.log('GETTING ALL SE Leads');
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 
 router.get('/:fullName', isValidLead, (req, res) => {
     queries
-      .getOne('System Engineer', req.params.fullName)
+      .getOne(req.params.fullName)
       .then(user => {
           if(user) {
               res.json(user);

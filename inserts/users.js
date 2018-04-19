@@ -2,84 +2,156 @@ const bcrypt = require('bcryptjs');
 
 module.exports = [
     {
-        fullName: 'Sonny Pascasio',
-        username: 'sonnyP',
-        email: 'sonny@mail.com',
-        password: bcrypt.hashSync('sonnyp', 10),
-        contactNumber: '09876543212',
+        fullName: 'Sonny D. Pascasio',
+        username: 'spascasio',
+        email: 'spascasio@glo-cal.com',
+        password: bcrypt.hashSync('spascasio', 10),
+        contactNumber: '09999999999',
         dateCreated: new Date(),
-        position: 'Director'
+        position: 'Managing Director'
     },
     {
-        fullName: 'Aaron Hernandez',
-        username: 'userA',
-        email: 'a@mail.com',
-        password: bcrypt.hashSync('ahumanbeing', 10),
-        contactNumber: '09876543212',
+        fullName: 'Jennelyn F. Bailon',
+        username: 'jbailon',
+        email: 'jbailon@glo-cal.com',
+        password: bcrypt.hashSync('jbailon', 10),
+        contactNumber: '09999999999',
         dateCreated: new Date(),
-        position: 'System Engineer'
+        position: 'Systems Engineer'
     },
     {
-        fullName: 'Mei Wang',
-        username: 'mei',
-        email: 'mei@mail.com',
-        password: bcrypt.hashSync('meiwang', 10),
-        contactNumber: '09876543212',
+        fullName: 'Ginalyn A. Baldo',
+        username: 'gbaldo',
+        email: 'gbaldo@glo-cal.com',
+        password: bcrypt.hashSync('gbaldo', 10),
+        contactNumber: '09999999999',
         dateCreated: new Date(),
-        position: 'Account Manager'
+        position: 'Systems Engineer'
     },
     {
-        fullName: 'Mara Mondragon',
-        username: 'mara',
-        email: 'mara@mail.com',
-        password: bcrypt.hashSync('mondragon', 10),
-        contactNumber: '09876543212',
+        fullName: 'Jumar T. Castor',
+        username: 'jcastor',
+        email: 'jcastor@glo-cal.com',
+        password: bcrypt.hashSync('jcastor', 10),
+        contactNumber: '09999999999',
         dateCreated: new Date(),
-        position: 'Account Manager'
+        position: 'Systems Engineer'
     },
     {
-        fullName: 'Jefferson Ong',
-        username: 'JOng',
-        email: 'jong@mail.com',
-        password: bcrypt.hashSync('jefferson', 10),
-        contactNumber: '09876543212',
+        fullName: 'Jarib Micah E. Cruz',
+        username: 'jmcruz',
+        email: 'jcruz@glo-cal.com',
+        password: bcrypt.hashSync('jmcruz', 10),
+        contactNumber: '09999999999',
         dateCreated: new Date(),
-        position: 'System Engineer'
+        position: 'Systems Engineer'
     },
     {
-        fullName: 'Jeffrey Jonas',
-        username: 'jjonas',
-        email: 'jonas@mail.com',
-        password: bcrypt.hashSync('jjonas', 10),
-        contactNumber: '09876543212',
+        fullName: 'Dung R. Concil',
+        username: 'dconcil',
+        email: 'dconcil@glo-cal.com',
+        password: bcrypt.hashSync('dconcil', 10),
+        contactNumber: '09999999999',
         dateCreated: new Date(),
-        position: 'System Engineer'
+        position: 'Systems Engineer'
     },
     {
-        fullName: 'Isaiah Solomon',
-        username: 'ice',
-        email: 'ice@mail.com',
-        password: bcrypt.hashSync('isaiah', 10),
-        contactNumber: '09876543212',
+        fullName: 'Jonas Mervin F. De Leon',
+        username: 'jdeleon',
+        email: 'jdeleon@glo-cal.com',
+        password: bcrypt.hashSync('jdeleon', 10),
+        contactNumber: '09999999999',
         dateCreated: new Date(),
-        position: 'System Engineer'
-    },
-    {
-        fullName: 'John Jenkins',
-        username: 'jjenkins',
-        email: 'jenkins@mail.com',
-        password: bcrypt.hashSync('jenkins', 10),
-        contactNumber: '09876543212',
-        dateCreated: new Date(),
-        position: 'System Engineer'
+        position: 'Systems Engineer'
     },
     {
         fullName: 'Oliver de los Santos',
-        username: 'oliver',
-        email: 'oliver@mail.com',
-        password: bcrypt.hashSync('oliver', 10),
-        contactNumber: '09876543212',
+        username: 'odelossantos',
+        email: 'odelossantos@glo-cal.com',
+        password: bcrypt.hashSync('odelossantos', 10),
+        contactNumber: '09999999999',
         dateCreated: new Date(),
-        position: 'System Engineer'
+        position: 'Systems Engineer'
+    },
+    {
+        fullName: 'Elmar Joseph P. Escueta',
+        username: 'eescueta',
+        email: 'eescueta@glo-cal.com',
+        password: bcrypt.hashSync('eescueta', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Systems Engineer'
+    },
+    {
+        fullName: 'Ma. Alice Gonzales',
+        username: 'mgonzales',
+        email: 'mgonzales@glo-cal.com',
+        password: bcrypt.hashSync('mgonzales', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Systems Engineer'
+    },
+    {
+        fullName: 'Leo Angelo C. Magtibay',
+        username: 'lmagtibay',
+        email: 'lmagtibay@glo-cal.com',
+        password: bcrypt.hashSync('lmagtibay', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Systems Engineer'
+    },
+    {
+        fullName: 'Jeffrey C. Mendoza',
+        username: 'jmendoza',
+        email: 'jmendoza@glo-cal.com',
+        password: bcrypt.hashSync('jmendoza', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Technical Manager'
+    },
+    {
+        fullName: 'Rchard R. Namoro',
+        username: 'rnamoro',
+        email: 'rnamoro@glo-cal.com',
+        password: bcrypt.hashSync('rnamoro', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Systems Engineer'
+    },
+    {
+        fullName: 'Emmanuel Renz M. Santos',
+        username: 'esantos',
+        email: 'esantos@glo-cal.com',
+        password: bcrypt.hashSync('esantos', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Systems Engineer'
+    },
+    {
+        fullName: 'Richard F. Santos',
+        username: 'rsantos',
+        email: 'rsantos@glo-cal.com',
+        password: bcrypt.hashSync('rsantos', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Systems Engineer'
+    },
+    {
+        fullName: 'Vanessa Ordonez',
+        username: 'vordonez',
+        email: 'vordonez@glo-cal.com',
+        password: bcrypt.hashSync('vordonez', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Business Development Manager'
+    },
+    {
+        fullName: 'Marilyn Mondragon',
+        username: 'mmondragon',
+        email: 'mmondragon@glo-cal.com',
+        password: bcrypt.hashSync('mmondragon', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Sales Manager'
     }
 ];

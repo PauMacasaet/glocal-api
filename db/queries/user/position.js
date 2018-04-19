@@ -2,9 +2,20 @@ const knex = require('../../knex'); // the connection
 
 module.exports = {
     getAll() {
-        return knex('user').orderBy('userid', 'asc');
+        return knex('user')
+        .select(
+            'userid',
+            'fullName',
+            'username',
+            'email',
+            'contactNumber',
+            'dateCreated',
+            'position',
+            'is_active'
+        )
+        .orderBy('userid', 'asc');
     },
-    getEngineer(engineer) {
+    getEngineer() {
         return knex('user')
             .select(
                 'userid',
@@ -16,9 +27,15 @@ module.exports = {
                 'position',
                 'is_active'
             )
-            .where('position', engineer);
+            .whereIn('position', [
+                'Systems Engineer', 
+                'Senior Systems Engineer',
+                'Team Lead',
+                'Technical Manager'
+            ])
+            .andWhere('is_active', true);
     },
-    getOneEngineer(engineer, name) {
+    getOneEngineer(name) {
         return knex('user')
             .select(
                 'userid',
@@ -30,10 +47,16 @@ module.exports = {
                 'position',
                 'is_active'
             )
-            .where('position', engineer)
+            .whereIn('position', [
+                'Systems Engineer', 
+                'Senior Systems Engineer',
+                'Team Lead',
+                'Technical Manager'
+            ])
+            .andWhere('is_active', true)
             .andWhere('fullName', name);
     },
-    getAM(manager) {
+    getAM() {
         return knex('user')
         //.join('client', 'client.accountManager', '=', 'user.fullName')
         .select(
@@ -47,9 +70,17 @@ module.exports = {
             //'client.accountName',
             'is_active'
         )
-        .where('user.position', manager);
+        .whereIn('user.position', [
+            'Account Manager', 
+            'Sales Manager',
+            'Sales Director',
+            'Senior Sales Consultant',
+            'Sales Consultant',
+            'Senior Account Manager'
+        ])
+        .andWhere('user.is_active', true);
     },
-    getOneAM(manager, name) {
+    getOneAM(name) {
         return knex('user')
         //.join('client', 'client.accountManager', '=', 'user.fullName')
         .select(
@@ -63,7 +94,14 @@ module.exports = {
             //'client.accountName',
             'is_active'
         )
-        .where('user.position', manager)
+        .whereIn('user.position', [
+            'Account Manager', 
+            'Sales Manager',
+            'Sales Director',
+            'Senior Sales Consultant',
+            'Sales Consultant',
+            'Senior Account Manager'
+        ])
         .andWhere('user.fullName', name);
     } 
 }

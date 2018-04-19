@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 router.get('/systemEngineer', (req, res, next) => {
     queries
-        .getEngineer('System Engineer')
+        .getEngineer()
         .then(engineer => {
             if(engineer) {
                 res.json(engineer);
@@ -28,7 +28,7 @@ router.get('/systemEngineer', (req, res, next) => {
 
 router.get('/systemEngineer/:fullName', (req, res, next) => {
     queries
-        .getOneEngineer('System Engineer', req.params.fullName)
+        .getOneEngineer(req.params.fullName)
         .then(engineer => {
             if(engineer) {
                 res.json(engineer);
@@ -41,7 +41,7 @@ router.get('/systemEngineer/:fullName', (req, res, next) => {
 
 router.get('/manager', (req, res, next) => {
     queries
-        .getAM('Account Manager')
+        .getAM()
         .then(manager => {
             if(manager) {
                 res.json(manager);
@@ -54,7 +54,7 @@ router.get('/manager', (req, res, next) => {
 
 router.get('/manager/:fullName', (req, res, next) => {
     queries
-        .getOneAM('Account Manager', req.params.fullName)   
+        .getOneAM(req.params.fullName)   
         .then(manager => {
             if(manager) {
                 res.json(manager);

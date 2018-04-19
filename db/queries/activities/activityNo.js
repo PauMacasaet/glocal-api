@@ -20,6 +20,10 @@ module.exports = {
                 ['activities.timeIn', 'activities.trackingNo']
             ),
             'activities.trackingNo AS glocalId', 
+            knex.raw(
+                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as sr_number_year`,
+                ['activities.timeIn', 'service_reports.sr_number']
+            ),
             'service_reports.sr_number',
             'activities.productName', 
             'contact_person.client', 
@@ -31,8 +35,9 @@ module.exports = {
             'activities.nextActivity', 
             'activities.recommendations', 
             'activities.timeIn', 
-            'activities.timeOuts', 
-            'activities.assignedSystemsEngineer'
+            'service_reports.timeOuts', 
+            'activities.assignedSystemsEngineer',
+            'activities.point_person'
         )
         .orderBy('activities.activityNo', 'desc');
     },
@@ -55,6 +60,10 @@ module.exports = {
                 ['activities.timeIn', 'activities.trackingNo']
             ),
             'activities.trackingNo AS glocalId', 
+            knex.raw(
+                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as sr_number_year`,
+                ['activities.timeIn', 'service_reports.sr_number']
+            ),
             'service_reports.sr_number',
             'activities.productName', 
             'contact_person.client', 
@@ -67,7 +76,8 @@ module.exports = {
             'activities.recommendations', 
             'activities.timeIn', 
             'activities.timeOuts', 
-            'activities.assignedSystemsEngineer'
+            'activities.assignedSystemsEngineer',
+            'activities.point_person'
         )
         .where('activityNo', activityNo)
         .orderBy('activities.activityNo', 'asc');

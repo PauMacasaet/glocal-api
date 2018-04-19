@@ -8,8 +8,8 @@ module.exports = [
         severity: 1,
         vendor: 'Veritas',
         customer: 'Unionbank',
-        productName: 'Multi-Cloud',
-        systemsEngineerLead: 'Jefferson Ong',
+        productName: 'Access',
+        systemsEngineerLead: 'Ma. Alice Gonzales',
         case_status: 'Ongoing'
     },
     {
@@ -21,61 +21,9 @@ module.exports = [
         severity: 1,
         vendor: 'Symantec',
         customer: 'BPI',
-        productName: 'Secure Web Gateway',
-        systemsEngineerLead: 'Jeffrey Jonas',
+        productName: 'CacheFlow',
+        systemsEngineerLead: 'Jeffrey C. Mendoza',
         case_status: 'Resolved',
         date_resolved: '03/10/2018'
-    },
-    {
-        vendorCaseId: 'JF3',
-        dateIdCreated: '01/04/2018',
-        dateRaised: '01/01/2018',
-        caseTitle: 'Error 404',
-        caseDescription: 'fix error',
-        severity: 2,
-        vendor: 'Veritas',
-        customer: 'BPI',
-        productName: 'Secure Web Gateway',
-        systemsEngineerLead: 'Jefferson Ong',
-        case_status: 'Ongoing'
-    },
-    {
-        vendorCaseId: 'JF4',
-        dateIdCreated: '02/07/2018',
-        dateRaised: '02/06/2018',
-        caseTitle: 'Fix server for backup',
-        caseDescription: 'install updates',
-        severity: 2,
-        vendor: 'Symantec',
-        customer: 'Unionbank',
-        productName: 'Multi-Cloud',
-        systemsEngineerLead: 'Oliver de los Santos',
-        case_status: 'Pending (Glo-cal)'
-    },
-    {
-        vendorCaseId: 'JF5',
-        dateIdCreated: '02/11/2018',
-        dateRaised: '02/09/2018',
-        caseTitle: 'Attend to failure of backup',
-        caseDescription: 'troubleshoot',
-        severity: 2,
-        vendor: 'Veritas',
-        customer: 'BPI',
-        productName: 'Secure Web Gateway',
-        systemsEngineerLead: 'Jeffrey Jonas',
-        case_status: 'Pending (Client)'
-    },
-    {
-        vendorCaseId: 'JF6',
-        dateIdCreated: '03/11/2018',
-        dateRaised: '03/09/2018',
-        caseTitle: 'Attend to failure of backup',
-        caseDescription: 'troubleshoot',
-        severity: 2,
-        vendor: 'Veritas',
-        customer: 'BPI',
-        productName: 'Secure Web Gateway',
-        systemsEngineerLead: 'Jeffrey Jonas',
-        case_status: 'Pending (Client)'
-    },
+    }
 ];

@@ -9,6 +9,10 @@ module.exports = {
              '=', 'contact_person.client'
         )
         .select(
+            knex.raw(
+                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as sr_number_year`,
+                ['service_reports.timeIn', 'service_reports.sr_number']
+            ),
             'service_reports.sr_number',
             'service_reports.trackingNo AS glocalId', 
             'service_reports.productName', 
@@ -22,7 +26,8 @@ module.exports = {
             'service_reports.recommendations', 
             'service_reports.timeIn', 
             'service_reports.timeOuts', 
-            'service_reports.assignedSystemsEngineer'
+            'service_reports.assignedSystemsEngineer',
+            'service_reports.point_person'
         )
         .orderBy('service_reports.timeOuts', 'desc');
     },
@@ -34,6 +39,10 @@ module.exports = {
             '=', 'contact_person.client'
         )
         .select(
+            knex.raw(
+                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as sr_number_year`,
+                ['service_reports.timeIn', 'service_reports.sr_number']
+            ),
             'service_reports.sr_number',
             'service_reports.trackingNo AS glocalId', 
             'service_reports.productName', 
@@ -47,7 +56,8 @@ module.exports = {
             'service_reports.recommendations', 
             'service_reports.timeIn', 
             'service_reports.timeOuts', 
-            'service_reports.assignedSystemsEngineer'
+            'service_reports.assignedSystemsEngineer',
+            'service_reports.point_person'
         )
         .where('sr_number', sr_number)
         .orderBy('service_reports.sr_number', 'asc');
@@ -65,6 +75,10 @@ module.exports = {
             '=', 'contact_person.client'
         )
         .select(
+            knex.raw(
+                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as sr_number_year`,
+                ['service_reports.timeIn', 'service_reports.sr_number']
+            ),
             'service_reports.sr_number',
             'service_reports.trackingNo AS glocalId', 
             'service_reports.productName', 
@@ -78,7 +92,8 @@ module.exports = {
             'service_reports.recommendations', 
             'service_reports.timeIn', 
             'service_reports.timeOuts', 
-            'service_reports.assignedSystemsEngineer'
+            'service_reports.assignedSystemsEngineer',
+            'service_reports.point_person'
         )
         .where('trackingNo', tracking)
         .orderBy('service_reports.sr_number', 'asc');
