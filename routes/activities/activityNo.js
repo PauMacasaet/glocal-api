@@ -118,7 +118,19 @@ router.post('/', (req, res, next) => {
 
 router.put('/:activityNo', isValidActivityNo, (req, res, next) => {
     if(validActivity(req.body)) {
-        queries
+        if (req.body.typeOfActivity != 'Remote') {
+            reports.update(req.params.sr_number, req.body).then(() => {
+                queries
+                    .update(req.params.activityNo, req.body)
+                    .then(report => {
+                        res.json({
+                            report,
+                            message: 'Report Updated'
+                        });
+                    });
+            });
+        } else {
+            queries
             .update(req.params.activityNo, req.body)
             .then(activity => {
                 res.json({
@@ -126,6 +138,7 @@ router.put('/:activityNo', isValidActivityNo, (req, res, next) => {
                     message: 'Activity Updated'
                 });
         });
+        }
     } else {
         next(new Error('Invalid Update'));
     }

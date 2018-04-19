@@ -79,8 +79,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('secret'));
 app.use(cors({
-  origin: 'https://iris-glocal.now.sh', 
-  //origin: 'http://localhost:8000',
+  //origin: 'https://iris-glocal.now.sh', 
+  origin: 'http://localhost:8000',
   credentials: true
 }));
 
@@ -382,7 +382,7 @@ app.use(
 
 app.use(
   '/vendor-case-count',
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   vendorCaseCount
 )
 
