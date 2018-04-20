@@ -28,5 +28,5 @@ module.exports = [
         remaining_man_days: 12,
         quarterly_hc: true,
         remarks: 'remarks'
-    },
+    }
 ];
