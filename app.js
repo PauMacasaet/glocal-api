@@ -325,7 +325,7 @@ app.use(
 
 app.use(
   '/engActivities', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   engActivities
 );
 // /:assignedSystemsEngineer
