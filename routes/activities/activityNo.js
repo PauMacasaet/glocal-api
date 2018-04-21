@@ -65,20 +65,28 @@ router.post('/', (req, res, next) => {
                 queries
                 .create(req.body) // CREATING AN ACTIVTY AND SERVICE REPORT
                 .then(report => {
-                    res.json({
-                        report,
-                        message: 'Report Created'
-                    });
+                    if (report) {
+                        res.json({
+                            report,
+                            message: 'Report Created'
+                        });
+                    } else {
+                        next( new Error(404));
+                    }
                 });
             })
         } else {
             queries
             .create(req.body) // CREATING ACTIVITY ONLY WHEN REMOTE
             .then(activity => {
-                res.json({
-                    activity,
-                    message: 'Activity Created'
-                });
+                if (activity) {
+                    res.json({
+                        activity,
+                        message: 'Activity Created'
+                    });
+                } else {
+                    next(new Error(404));
+                }
             });    
         }
     } else {
