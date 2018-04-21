@@ -14,7 +14,6 @@ module.exports = {
             'activities.productName', 
             'client.accountName', 
             'activities.addres AS address',
-            //'contact_person.personName', 
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
@@ -28,8 +27,6 @@ module.exports = {
             'activities.assignedSystemsEngineer', 
             'activities.activityNo',
             'client.accountName'
-            // 'contact_person.client',
-            // 'contact_person.personName'
         )
         .orderBy('activities.timeOuts', 'desc');
     },
@@ -46,7 +43,6 @@ module.exports = {
             'activities.productName', 
             'client.accountName', 
             'activities.addres AS address',
-            //'contact_person.personName', 
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
@@ -60,8 +56,6 @@ module.exports = {
             'activities.assignedSystemsEngineer', 
             'activities.activityNo',
             'client.accountName'
-            // 'contact_person.client',
-            // 'contact_person.personName'
         )
         .where('activities.assignedSystemsEngineer', '@>', name)
         .orderBy('activities.timeOuts', 'desc');

@@ -94,26 +94,6 @@ router.post('/', (req, res, next) => {
     }
 });
 
-// router.post('/', (req, res, next) => { //activityNo route
-//     if(validActivity(req.body)) {
-//             queries
-//             .create(req.body) // CREATING ACTIVITY ONLY WHEN REMOTE
-//             .then(activity => {
-//                 if (activity) {
-//                     res.json({
-//                         activity,
-//                         message: 'Activity Created'
-//                     });
-//                 } else {
-//                     next(new Error(404));
-//                 }
-//             });    
-        
-//     } else {
-//         next(new Error('Invalid Activity'));
-//     }
-// });
-
 
 router.put('/:activityNo', isValidActivityNo, (req, res, next) => {
     if(validActivity(req.body)) {  
