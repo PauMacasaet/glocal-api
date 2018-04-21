@@ -1,7 +1,7 @@
 const knex = require('../../knex'); // the connection
 
 module.exports = {
-    getAll(query) {
+    getAll() {
         return knex('user')
             .join(
                 'case_monitoring', 
