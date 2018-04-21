@@ -10,7 +10,7 @@ module.exports = {
             )
             .select(
                 'case_monitoring.glocalId',
-                'user.fullName',
+                'case_monitoring.systemsEngineerLead',
                 'user.email',
                 'user.contactNumber',
                 'case_monitoring.caseTitle',
@@ -35,7 +35,7 @@ module.exports = {
             )
             .select(
                 'case_monitoring.glocalId',
-                'user.fullName',
+                'case_monitoring.systemsEngineerLead',
                 'user.email',
                 'user.contactNumber',
                 'case_monitoring.caseTitle',
