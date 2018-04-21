@@ -15,7 +15,7 @@ module.exports = [
         username: 'jbailon',
         email: 'jbailon@glo-cal.com',
         password: bcrypt.hashSync('jbailon', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999998',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -24,7 +24,7 @@ module.exports = [
         username: 'gbaldo',
         email: 'gbaldo@glo-cal.com',
         password: bcrypt.hashSync('gbaldo', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999997',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -33,7 +33,7 @@ module.exports = [
         username: 'jcastor',
         email: 'jcastor@glo-cal.com',
         password: bcrypt.hashSync('jcastor', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999996',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -42,7 +42,7 @@ module.exports = [
         username: 'jmcruz',
         email: 'jcruz@glo-cal.com',
         password: bcrypt.hashSync('jmcruz', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999995',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -51,7 +51,7 @@ module.exports = [
         username: 'dconcil',
         email: 'dconcil@glo-cal.com',
         password: bcrypt.hashSync('dconcil', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999994',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -60,7 +60,7 @@ module.exports = [
         username: 'jdeleon',
         email: 'jdeleon@glo-cal.com',
         password: bcrypt.hashSync('jdeleon', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999993',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -69,7 +69,7 @@ module.exports = [
         username: 'odelossantos',
         email: 'odelossantos@glo-cal.com',
         password: bcrypt.hashSync('odelossantos', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999992',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -78,7 +78,7 @@ module.exports = [
         username: 'eescueta',
         email: 'eescueta@glo-cal.com',
         password: bcrypt.hashSync('eescueta', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999991',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -87,7 +87,7 @@ module.exports = [
         username: 'mgonzales',
         email: 'mgonzales@glo-cal.com',
         password: bcrypt.hashSync('mgonzales', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999990',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -96,7 +96,7 @@ module.exports = [
         username: 'lmagtibay',
         email: 'lmagtibay@glo-cal.com',
         password: bcrypt.hashSync('lmagtibay', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999989',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -105,7 +105,7 @@ module.exports = [
         username: 'jmendoza',
         email: 'jmendoza@glo-cal.com',
         password: bcrypt.hashSync('jmendoza', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999979',
         dateCreated: new Date(),
         position: 'Technical Manager'
     },
@@ -114,7 +114,7 @@ module.exports = [
         username: 'rnamoro',
         email: 'rnamoro@glo-cal.com',
         password: bcrypt.hashSync('rnamoro', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999969',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -123,7 +123,7 @@ module.exports = [
         username: 'esantos',
         email: 'esantos@glo-cal.com',
         password: bcrypt.hashSync('esantos', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999959',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -132,7 +132,7 @@ module.exports = [
         username: 'rsantos',
         email: 'rsantos@glo-cal.com',
         password: bcrypt.hashSync('rsantos', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999949',
         dateCreated: new Date(),
         position: 'Systems Engineer'
     },
@@ -141,7 +141,7 @@ module.exports = [
         username: 'vordonez',
         email: 'vordonez@glo-cal.com',
         password: bcrypt.hashSync('vordonez', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999939',
         dateCreated: new Date(),
         position: 'Business Development Manager'
     },
@@ -150,7 +150,7 @@ module.exports = [
         username: 'mmondragon',
         email: 'mmondragon@glo-cal.com',
         password: bcrypt.hashSync('mmondragon', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999929',
         dateCreated: new Date(),
         position: 'Sales Manager'
     },
@@ -159,7 +159,7 @@ module.exports = [
         username: '1amanager',
         email: '1amanager@glo-cal.com',
         password: bcrypt.hashSync('1amanager', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999919',
         dateCreated: new Date(),
         position: 'Account Manager'
     },
@@ -168,7 +168,7 @@ module.exports = [
         username: '2amanager',
         email: '2amanager@glo-cal.com',
         password: bcrypt.hashSync('2amanager', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999909',
         dateCreated: new Date(),
         position: 'Account Manager'
     },
@@ -177,7 +177,7 @@ module.exports = [
         username: '3amanager',
         email: '3amanager@glo-cal.com',
         password: bcrypt.hashSync('3amanager', 10),
-        contactNumber: '09999999999',
+        contactNumber: '09999999900',
         dateCreated: new Date(),
         position: 'Account Manager'
     },

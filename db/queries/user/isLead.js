@@ -9,13 +9,8 @@ module.exports = {
                 '=', 'case_monitoring.systemsEngineerLead'
             )
             .select(
-                //'case_monitoring.glocalId',
                 'case_monitoring.systemsEngineerLead',
                 'user.email',
-                'user.contactNumber',
-                // 'case_monitoring.caseTitle',
-                // 'case_monitoring.caseDescription',
-                // 'case_monitoring.case_status'
             )
             .whereIn('user.position', [
                 'Systems Engineer',
@@ -26,11 +21,8 @@ module.exports = {
             .andWhere('user.is_active', true)
             .groupBy(
                 'case_monitoring.systemsEngineerLead', 
-                //'case_monitoring.glocalId',
                 'user.email',
-                'user.contactNumber'
             )
-            //.orWhere('user.position', 'Technical Manager');
     },
     getOne(name) {
         return knex('user')
@@ -40,13 +32,8 @@ module.exports = {
                 '=', 'case_monitoring.systemsEngineerLead'
             )
             .select(
-                //'case_monitoring.glocalId',
                 'case_monitoring.systemsEngineerLead',
                 'user.email',
-                'user.contactNumber',
-                // 'case_monitoring.caseTitle',
-                // 'case_monitoring.caseDescription',
-                // 'case_monitoring.case_status'
             )
             .whereIn('user.position', [
                 'Systems Engineer',

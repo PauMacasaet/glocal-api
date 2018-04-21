@@ -13,6 +13,7 @@ module.exports = {
             'position',
             'is_active'
         )
+        .groupBy('userid')
         .orderBy('userid', 'asc');
     },
     getEngineer() {
@@ -33,6 +34,7 @@ module.exports = {
                 'Team Lead',
                 'Technical Manager'
             ])
+            .groupBy('userid')
             .andWhere('is_active', true);
     },
     getOneEngineer(name) {
@@ -78,7 +80,10 @@ module.exports = {
             'Sales Consultant',
             'Senior Account Manager'
         ])
-        .andWhere('user.is_active', true);
+        .andWhere('user.is_active', true)
+        .groupBy(
+            'user.userid'
+        );
     },
     getOneAM(name) {
         return knex('user')
