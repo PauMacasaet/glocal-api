@@ -57,6 +57,29 @@ router.get('/:sr_number', isValidSRNo, (req, res, next) => {
         });
 });
 
+router.post('/', (req, res, next) => { //service-reports route
+    if (validServiceReport(req.body)) {
+        if (req.body.typeOfActivity != 'Remote') {
+            reports.create(req.body).then(() => {
+                queries
+                .create(req.body) // CREATING AN ACTIVTY AND SERVICE REPORT
+                .then(report => {
+                    if (report) {
+                        res.json({
+                            report,
+                            message: 'Report Created'
+                        });
+                    } else {
+                        next( new Error(404));
+                    }
+                });
+            })
+        }
+    } else {
+        next(new Error('Invalid SR'));
+    }
+});
+
 router.put('/:activityNo/:sr_number', isValidSRNo, isValidActivityNo, (req, res, next) => {
     if(validServiceReport(req.body)) {
         if (req.body.typeOfActivity != 'Remote') {

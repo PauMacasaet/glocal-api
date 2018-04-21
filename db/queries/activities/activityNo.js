@@ -83,9 +83,7 @@ module.exports = {
         .orderBy('activities.activityNo', 'asc');
     },
     create(activity) {
-        const knexQuery = knex.insert(activity, '*').into('activities')
-            
-        return knexQuery;
+        return knex('activities').insert(activity, '*');
     },
     update(activityNo, activity) {
         return knex('activities').where('activityNo', activityNo).update(activity, '*');
