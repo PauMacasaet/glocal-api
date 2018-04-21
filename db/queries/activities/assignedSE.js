@@ -26,7 +26,8 @@ module.exports = {
         )
         .groupBy(
             'activities.assignedSystemsEngineer', 
-            'activities.activityNo'
+            'activities.activityNo',
+            'client.accountName'
             // 'contact_person.client',
             // 'contact_person.personName'
         )
@@ -58,6 +59,7 @@ module.exports = {
         .groupBy(
             'activities.assignedSystemsEngineer', 
             'activities.activityNo',
+            'client.accountName'
             // 'contact_person.client',
             // 'contact_person.personName'
         )

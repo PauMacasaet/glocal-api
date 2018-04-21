@@ -337,7 +337,7 @@ app.use(
 // /:trackingNo
 app.use(
   '/assignedSystemsEngineer', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   assignedSystemsEngineer
 );
 // /:assignedSystemsEngineer
