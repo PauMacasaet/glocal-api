@@ -63,9 +63,8 @@ module.exports = {
         .orderBy('service_reports.sr_number', 'asc');
     },
     create(service_report) {
-        const knexQuery = knex('service_reports')
-            .insert(service_report, '*')
-        return knexQuery;
+        return knex('service_reports')
+            .insert(service_report, '*');
     },
     getTracking(tracking){
         return knex('service_reports')

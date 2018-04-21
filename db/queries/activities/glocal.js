@@ -9,9 +9,9 @@ module.exports = {
             '=', 'service_reports.timeOuts'
         )
         .join(
-            'contact_person', 
+            'client', 
             'activities.client', 
-            '=', 'contact_person.client'
+            '=', 'client.accountName'
         )
         .select(
             'activities.activityNo', 
@@ -26,9 +26,9 @@ module.exports = {
             ),
             'service_reports.sr_number',
             'activities.productName', 
-            'contact_person.client', 
+            'client.accountName', 
             'activities.addres AS address',
-            'contact_person.personName', 
+            //'contact_person.personName', 
             'activities.typeOfActivity',
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
@@ -51,9 +51,9 @@ module.exports = {
             '=', 'service_reports.timeOuts'
         )
         .join(
-            'contact_person', 
+            'client', 
             'activities.client', 
-            '=', 'contact_person.client'
+            '=', 'client.accountName'
         )
         .select(
             'activities.activityNo', 
@@ -68,9 +68,9 @@ module.exports = {
             ),
             'service_reports.sr_number',
             'activities.productName', 
-            'contact_person.client', 
+            'client.accountName', 
             'activities.addres AS address',
-            'contact_person.personName', 
+            //'contact_person.personName', 
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 

@@ -4,17 +4,17 @@ module.exports = {
     getAll() {
         return knex('activities')
         .join(
-            'contact_person',
+            'client',
             'activities.client',
-             '=', 'contact_person.client'
+             '=', 'client.accountName'
         )
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
             'activities.productName', 
-            'contact_person.client', 
+            'client.accountName', 
             'activities.addres AS address',
-            'contact_person.personName', 
+            //'contact_person.personName', 
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
@@ -26,26 +26,26 @@ module.exports = {
         )
         .groupBy(
             'activities.assignedSystemsEngineer', 
-            'activities.activityNo',
-            'contact_person.client',
-            'contact_person.personName'
+            'activities.activityNo'
+            // 'contact_person.client',
+            // 'contact_person.personName'
         )
         .orderBy('activities.timeOuts', 'desc');
     },
     getOne(name) {
         return knex('activities')
         .join(
-            'contact_person', 
+            'client', 
             'activities.client', 
-            '=', 'contact_person.client'
+            '=', 'client.accountName'
         )
         .select(
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
             'activities.productName', 
-            'contact_person.client', 
+            'client.accountName', 
             'activities.addres AS address',
-            'contact_person.personName', 
+            //'contact_person.personName', 
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
@@ -58,8 +58,8 @@ module.exports = {
         .groupBy(
             'activities.assignedSystemsEngineer', 
             'activities.activityNo',
-            'contact_person.client',
-            'contact_person.personName'
+            // 'contact_person.client',
+            // 'contact_person.personName'
         )
         .where('activities.assignedSystemsEngineer', '@>', name)
         .orderBy('activities.timeOuts', 'desc');
