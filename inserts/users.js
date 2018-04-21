@@ -153,5 +153,32 @@ module.exports = [
         contactNumber: '09999999999',
         dateCreated: new Date(),
         position: 'Sales Manager'
-    }
+    },
+    {
+        fullName: '1Account Manager',
+        username: '1amanager',
+        email: '1amanager@glo-cal.com',
+        password: bcrypt.hashSync('1amanager', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Account Manager'
+    },
+    {
+        fullName: '2Account Manager',
+        username: '2amanager',
+        email: '2amanager@glo-cal.com',
+        password: bcrypt.hashSync('2amanager', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Account Manager'
+    },
+    {
+        fullName: '3Account Manager',
+        username: '3amanager',
+        email: '3amanager@glo-cal.com',
+        password: bcrypt.hashSync('3amanager', 10),
+        contactNumber: '09999999999',
+        dateCreated: new Date(),
+        position: 'Account Manager'
+    },
 ];
