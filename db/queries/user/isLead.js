@@ -24,6 +24,12 @@ module.exports = {
                 'Technical Manager'
             ])
             .andWhere('user.is_active', true)
+            .groupBy(
+                'case_monitoring.systemsEngineerLead', 
+                'case_monitoring.glocalId',
+                'user.email',
+                'user.contactNumber'
+            )
             //.orWhere('user.position', 'Technical Manager');
     },
     getOne(name) {

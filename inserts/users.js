@@ -110,7 +110,7 @@ module.exports = [
         position: 'Technical Manager'
     },
     {
-        fullName: 'Rchard R. Namoro',
+        fullName: 'Richard R. Namoro',
         username: 'rnamoro',
         email: 'rnamoro@glo-cal.com',
         password: bcrypt.hashSync('rnamoro', 10),
