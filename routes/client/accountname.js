@@ -70,10 +70,14 @@ router.post('/', (req, res, next) => {
         queries
             .create(req.body)
             .then(client => {
-                res.json({
-                    client,
-                    message: 'client created'
-                }); //malabo error
+                if (client) {
+                    res.json({
+                        client,
+                        message: 'client created'
+                    }); 
+                } else {
+                    next(new Error(404));
+                }
         });
     } else {
         next(new Error('Invalid Client'));
@@ -85,10 +89,14 @@ router.put('/:accountName', isValidClient, (req, res, next) => {
         queries
             .update(req.params.accountName, req.body)
             .then(client => {
-                res.json({
-                    client,
-                    message: 'client updated'
-                });
+                if (client) {
+                    res.json({
+                        client,
+                        message: 'client updated'
+                    }); 
+                } else {
+                    next(new Error(404));
+                }
         });
     } else {
         next(new Error('Invalid Update'));
