@@ -136,10 +136,14 @@ router.post('/', (req, res, next) => {
         queries
             .create(req.body)
             .then(case_mon => {
-            res.json({
-                case_mon,
-                message: 'case_monitoring created'
-            }); //malabo error
+                if (case_mon) {
+                    res.json({
+                        case_mon,
+                        message: 'case_monitoring created'
+                    }); 
+                } else {
+                    next(new Error(404));
+                }
         });
     } else {
         next(new Error('Invalid Case'));
@@ -151,11 +155,15 @@ router.put('/:glocalId', isValidId, (req, res, next) => {
         if (req.body.case_status != 'Resolved') {
             queries
                 .update(req.params.glocalId, req.body)
-                .then(case_mon => {
-                    res.json({
-                        case_mon,
-                        message: 'Case Monitoring updated'
-                    });
+                .then(case_mon => { 
+                    if (case_mon) {
+                        res.json({
+                            case_mon,
+                            message: 'Case Monitoring updated'
+                        }); 
+                    } else {
+                        next(new Error(404));
+                    }
             });
         } else {
             const update = {
@@ -173,11 +181,15 @@ router.put('/:glocalId', isValidId, (req, res, next) => {
             };
             queries
                 .update(req.params.glocalId, update)
-                .then(case_mon => {
-                    res.json({
-                        case_mon,
-                        message: 'Case Monitoring Resolved'
-                    });
+                .then(case_mon => { 
+                    if (case_mon) {
+                        res.json({
+                            case_mon,
+                            message: 'Case Monitoring Resolved'
+                        });
+                    } else {
+                        next(new Error(404));
+                    }
             });
         }
 

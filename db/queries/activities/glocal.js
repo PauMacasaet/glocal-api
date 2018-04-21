@@ -1,7 +1,7 @@
 const knex = require('../../knex'); // the connection
 
 module.exports = {
-    getAll(query) {
+    getAll() {
         const knexQuery = knex('activities')
         .leftJoin(
             'service_reports',
@@ -40,14 +40,6 @@ module.exports = {
             'activities.point_person'
         )
         .orderBy('activities.timeOuts', 'desc');
-
-        if (query.no) {
-            knexQuery
-                .where(
-                    'activities.trackingNo', 
-                    query.no
-                );
-        }
 
         return knexQuery;
     },

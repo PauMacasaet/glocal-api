@@ -10,12 +10,15 @@ function isValidTrackingNo(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    const {no} = req.query;
     queries
-        .getAll({no})
+        .getAll()
         .then(activities => {
-            res.json(activities);
-            console.log('GETTING ALL ACTIVITIES');
+            if (activities) {
+                res.json(activities);
+                console.log('GETTING ALL ACTIVITIES'); 
+            } else {
+                next(new Error(404));
+            }
     });
 });
 
