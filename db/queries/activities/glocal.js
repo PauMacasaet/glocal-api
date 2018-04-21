@@ -36,7 +36,8 @@ module.exports = {
             'activities.recommendations', 
             'activities.timeIn', 
             'activities.timeOuts', 
-            'activities.assignedSystemsEngineer'
+            'activities.assignedSystemsEngineer',
+            'activities.point_person'
         )
         .orderBy('activities.timeOuts', 'desc');
 
@@ -85,7 +86,8 @@ module.exports = {
             'activities.recommendations', 
             'activities.timeIn', 
             'activities.timeOuts', 
-            'activities.assignedSystemsEngineer'
+            'activities.assignedSystemsEngineer',
+            'activities.point_person'
 )
         .where('activities.trackingNo', tracking)
         .orderBy('activities.timeOuts', 'desc');
