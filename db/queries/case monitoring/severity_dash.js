@@ -28,7 +28,8 @@ module.exports = {
                 'case_monitoring.case_status AS Status',
                 'activities.typeOfActivity AS Activity',
                 'activities.purposeOfVisit',
-                'activities.timeOuts AS date_last_updated'
+                'activities.timeOuts AS date_last_updated',
+                'case_monitoring.contact_person'
             )
             .where('case_monitoring.severity', query.severity)
             .whereNot('case_monitoring.case_status', 'Resolved');
