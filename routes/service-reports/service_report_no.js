@@ -77,13 +77,15 @@ router.put('/:activityNo/:sr_number', isValidSRNo, isValidActivityNo, (req, res,
     }
 });
 
-router.delete('/:sr_number', isValidSRNo, (req, res, next) => {
+router.delete('/:activityNo/:sr_number', isValidSRNo, (req, res, next) => {
     reports
         .delete(req.params.sr_number)
         .then(() => {
-            res.json({
-                deleted: true,
-                message: 'Report Deleted'
+            queries.delete(req.params.activityNo).then(() => {
+                res.json({
+                    deleted: true,
+                    message: 'Report Deleted'
+                });
             });
     });
 });
