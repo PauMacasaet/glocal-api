@@ -84,7 +84,8 @@ module.exports = {
         .andWhere('user.is_active', true)
         .groupBy(
             'user.userid'
-        );
+        )
+        .orderBy('user.fullName');
     },
     getOneAM(name) {
         return knex('user')

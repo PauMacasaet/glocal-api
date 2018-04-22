@@ -23,6 +23,7 @@ module.exports = {
                 'case_monitoring.systemsEngineerLead', 
                 'user.email',
             )
+            .orderBy('case_monitoring.systemsEngineerLead');
     },
     getOne(name) {
         return knex('user')
