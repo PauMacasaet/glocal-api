@@ -12,8 +12,7 @@ module.exports = {
                 knex.raw(
                     `UNNEST(??::text[]) as assignedSystemsEngineer`, 
                     ['activities.assignedSystemsEngineer']
-                ),
-                'customer'
+                )
             )
             .count('* as number_of_activities')
             .groupBy('case_monitoring.glocalId', 'activities.assignedSystemsEngineer')
