@@ -39,6 +39,7 @@ module.exports = {
                 'case_monitoring.severity', 
                 'case_monitoring.systemsEngineerLead', 
                 'case_monitoring.vendor', 
+                'case_monitoring.contact_person',
                 'case_monitoring.date_resolved'
             )
             .max('activities.timeOuts AS date_last_updated')
@@ -261,7 +262,8 @@ module.exports = {
             'case_monitoring.productName', 
             'case_monitoring.severity', 
             'case_monitoring.systemsEngineerLead', 
-            'case_monitoring.vendor', 
+            'case_monitoring.vendor',
+            'case_monitoring.contact_person', 
             'case_monitoring.date_resolved'
         )
         .max('activities.timeOuts AS date_last_updated')
@@ -432,6 +434,7 @@ module.exports = {
             'case_monitoring.severity', 
             'case_monitoring.systemsEngineerLead', 
             'case_monitoring.vendor', 
+            'case_monitoring.contact_person',
             'case_monitoring.date_resolved'
         )
         .max('activities.timeOuts AS date_last_updated')
