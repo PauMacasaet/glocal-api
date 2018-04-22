@@ -125,7 +125,7 @@ app.use(
 //client
 app.use(
   '/client', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   accountName
 );
 // /:accountName

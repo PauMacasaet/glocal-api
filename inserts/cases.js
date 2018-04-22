@@ -9,6 +9,7 @@ module.exports = [
         vendor: 'Veritas',
         customer: 'Unionbank',
         productName: 'Access',
+        contact_person: 'Mareeah Koochenera',
         systemsEngineerLead: 'Ma. Alice Gonzales',
         case_status: 'Ongoing'
     },
@@ -22,6 +23,7 @@ module.exports = [
         vendor: 'Symantec',
         customer: 'BPI',
         productName: 'CacheFlow',
+        contact_person: 'Garrosh',
         systemsEngineerLead: 'Jeffrey C. Mendoza',
         case_status: 'Resolved',
         date_resolved: '03/10/2018'

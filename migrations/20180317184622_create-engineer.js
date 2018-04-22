@@ -118,6 +118,8 @@ exports.up = function(knex, Promise) {
         .index('index_casecus', 'hash').notNull().onUpdate('cascade');
       table.varchar('productName', 50).references('productName').inTable('products')
         .index('index_caseprod', 'hash').notNull().onUpdate('cascade');
+      table.varchar('contact_person', 50).references('contact_details').inTable('client')
+        .index('index_case_contact', 'hash').notNull().onUpdate('cascade');
       table.varchar('systemsEngineerLead', 50)
         .index('index_lead', 'hash');
       table.varchar('case_status', 50)
