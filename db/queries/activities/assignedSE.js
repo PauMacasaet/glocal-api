@@ -12,7 +12,7 @@ module.exports = {
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
             'activities.productName', 
-            'client.accountName', 
+            'activities.client', 
             'activities.addres AS address',
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
@@ -26,7 +26,7 @@ module.exports = {
         .groupBy(
             'activities.assignedSystemsEngineer', 
             'activities.activityNo',
-            'client.accountName'
+            'activities.client'
         )
         .orderBy('activities.timeOuts', 'desc');
     },
@@ -41,7 +41,7 @@ module.exports = {
             'activities.activityNo', 
             'activities.trackingNo AS glocalId', 
             'activities.productName', 
-            'client.accountName', 
+            'activities.client', 
             'activities.addres AS address',
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
@@ -55,7 +55,7 @@ module.exports = {
         .groupBy(
             'activities.assignedSystemsEngineer', 
             'activities.activityNo',
-            'client.accountName'
+            'activities.client'
         )
         .where('activities.assignedSystemsEngineer', '@>', name)
         .orderBy('activities.timeOuts', 'desc');
