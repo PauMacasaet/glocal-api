@@ -13,7 +13,7 @@ module.exports = {
         'position',
         'is_active'
       )
-      .orderBy('userid', 'asc');
+      .orderBy('fullName', 'asc');
   },
   getOne (id) {
     return knex('user')

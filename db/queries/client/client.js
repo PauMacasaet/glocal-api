@@ -49,13 +49,15 @@ module.exports = {
     getAllContacts() {
         return knex('client')
             .select(
-                knex.raw('contact_details[0:1][30] AS Customer_Name')
+                knex.raw('contact_details[0:1][30] AS Customer_Name'),
+                'accountName'
             );
     },
     getContact(accountName) {
         return knex('client')
             .select(
-                knex.raw('contact_details[0:1][30] AS Customer_Name')
+                knex.raw('contact_details[0:1][30] AS Customer_Name'),
+                'accountName'
             )
             .where('accountName', accountName);
     },
