@@ -5,7 +5,7 @@ module.exports = {
         const knexQuery = knex('client')
             .select(
                 'accountName', 
-                knex.raw('contact_details[0:2][20] AS Customer_Name, contact_details[2:2][20] AS Email, contact_details[3:3][20] AS Contact_Number'), 
+                knex.raw('contact_details[0:2][30] AS Customer_Name, contact_details[2:2][30] AS Email, contact_details[3:3][30] AS Contact_Number'), 
                 'company_address', 
                 'accountManager'
             )
@@ -40,7 +40,7 @@ module.exports = {
         return knex('client')
             .select(
                 'accountName', 
-                knex.raw('contact_details[0:2][20] AS Customer_Name, contact_details[2:2][20] AS Email, contact_details[3:3][20] AS Contact_Number'), 
+                knex.raw('contact_details[0:2][30] AS Customer_Name, contact_details[2:2][30] AS Email, contact_details[3:3][30] AS Contact_Number'), 
                 'company_address', 
                 'accountManager'
             )
@@ -49,13 +49,13 @@ module.exports = {
     getAllContacts() {
         return knex('client')
             .select(
-                knex.raw('contact_details[0:1][20] AS Customer_Name')
+                knex.raw('contact_details[0:1][30] AS Customer_Name')
             );
     },
     getContact(accountName) {
         return knex('client')
             .select(
-                knex.raw('contact_details[0:1][20] AS Customer_Name')
+                knex.raw('contact_details[0:1][30] AS Customer_Name')
             )
             .where('accountName', accountName);
     },
