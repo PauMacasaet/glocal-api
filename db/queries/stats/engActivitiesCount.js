@@ -15,7 +15,12 @@ module.exports = {
                 )
             )
             .count('* as number_of_activities')
-            .groupBy('activities.assignedSystemsEngineer')
+            .groupBy(
+                knex.raw(
+                    `UNNEST(??::text[]) as assignedSystemsEngineer`, 
+                    ['activities.assignedSystemsEngineer']
+                )
+            )
             .orderBy('number_of_activities', 'desc');
         if (query['engineer']) {
             knexQuery
