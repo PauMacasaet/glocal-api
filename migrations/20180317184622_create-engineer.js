@@ -172,7 +172,7 @@ exports.up = function(knex, Promise) {
         .index('index_activityaddress', 'hash').notNull();
       table.enu('typeOfActivity', ['Onsite', 'Implementation', 'Remote', 'POC'])
         .index('index_typeactivity', 'hash').notNull();
-      table.varchar('purposeOfVisit', 50)
+      table.varchar('purposeOfVisit', 200)
         .index('index_purpose', 'hash').notNull();
       table.varchar('activityPerformed', 3000)
         .index('index_performed', 'hash').notNull();
