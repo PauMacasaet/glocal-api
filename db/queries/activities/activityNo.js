@@ -26,7 +26,7 @@ module.exports = {
             ),
             'service_reports.sr_number',
             'activities.productName', 
-            'client.accountName', 
+            'activities.client', 
             'activities.addres AS address',
             'contact_person.personName', 
             'activities.typeOfActivity',
