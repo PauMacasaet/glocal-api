@@ -181,4 +181,103 @@ module.exports = [
         dateCreated: new Date(),
         position: 'Account Manager'
     },
+    {
+        fullName: '1Sales Director',
+        username: '1sdirector',
+        email: '1sdirector@glo-cal.com',
+        password: bcrypt.hashSync('1sdirector', 10),
+        contactNumber: '09999999901',
+        dateCreated: new Date(),
+        position: 'Sales Director'
+    },
+    {
+        fullName: 'Seniorsales Consultant',
+        username: 'ssconsultant',
+        email: 'ssconsultant@glo-cal.com',
+        password: bcrypt.hashSync('ssconsultant', 10),
+        contactNumber: '09999999902',
+        dateCreated: new Date(),
+        position: 'Senior Sales Consultant'
+    },
+    {
+        fullName: '1Sales Consultant',
+        username: '1sconsultant',
+        email: '1sconsultant@glo-cal.com',
+        password: bcrypt.hashSync('1sconsultant', 10),
+        contactNumber: '09999999903',
+        dateCreated: new Date(),
+        position: 'Sales Consultant'
+    },
+    {
+        fullName: '2Sales Consultant',
+        username: '2sconsultant',
+        email: '2sconsultant@glo-cal.com',
+        password: bcrypt.hashSync('2sconsultant', 10),
+        contactNumber: '09999999904',
+        dateCreated: new Date(),
+        position: 'Sales Consultant'
+    },
+    {
+        fullName: 'Senioraccount Manager',
+        username: 'samanager',
+        email: 'samanager@glo-cal.com',
+        password: bcrypt.hashSync('samanager', 10),
+        contactNumber: '09999999905',
+        dateCreated: new Date(),
+        position: 'Senior Account Manager'
+    },
+    {
+        fullName: 'Seniorsystems Engineer',
+        username: 'ssengineer',
+        email: 'ssengineer@glo-cal.com',
+        password: bcrypt.hashSync('ssengineer', 10),
+        contactNumber: '09999999906',
+        dateCreated: new Date(),
+        position: 'Senior Systems Engineer'
+    },
+    {
+        fullName: '1Product Specialist',
+        username: '1pspecialist',
+        email: '1pspecialist@glo-cal.com',
+        password: bcrypt.hashSync('1pspecialist', 10),
+        contactNumber: '09999999907',
+        dateCreated: new Date(),
+        position: 'Product Specialist'
+    },
+    {
+        fullName: '2Product Specialist',
+        username: '2pspecialist',
+        email: '2pspecialist@glo-cal.com',
+        password: bcrypt.hashSync('2pspecialist', 10),
+        contactNumber: '09999999908',
+        dateCreated: new Date(),
+        position: 'Product Specialist'
+    },
+    {
+        fullName: 'Corporateaffairs Director',
+        username: 'cadirector',
+        email: 'cadirector@glo-cal.com',
+        password: bcrypt.hashSync('cadirector', 10),
+        contactNumber: '09999999909',
+        dateCreated: new Date(),
+        position: 'Corporate Affairs Director'
+    },
+    {
+        fullName: '1Project Manager',
+        username: '1pmanager',
+        email: '1pmanager@glo-cal.com',
+        password: bcrypt.hashSync('1pmanager', 10),
+        contactNumber: '09999999910',
+        dateCreated: new Date(),
+        position: 'Project Manager'
+    },
+    {
+        fullName: 'Team Lead',
+        username: 'teamlead',
+        email: 'teamlead@glo-cal.com',
+        password: bcrypt.hashSync('teamlead', 10),
+        contactNumber: '09999999911',
+        dateCreated: new Date(),
+        position: 'Team Lead'
+    }
 ];
