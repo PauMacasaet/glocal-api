@@ -3,11 +3,11 @@ const knex = require('../../knex'); // the connection
 module.exports = {
     getAllEngActivities(query) {
         const knexQuery = knex('activities')
-            // .leftJoin(
-            //     'activities',
-            //     'activities.trackingNo',
-            //     '=', 'case_monitoring.glocalId'
-            // )
+            .leftJoin(
+                'activities',
+                'activities.trackingNo',
+                '=', 'case_monitoring.glocalId'
+            )
             .select(
                 knex.raw(
                     `UNNEST(??::text[]) as assignedSystemsEngineer`, 
