@@ -37,5 +37,9 @@ module.exports = {
                 );
         }
         return knexQuery;
+    },
+    getAllCases() {
+        return knex('case_monitoring')
+            .count('* as total_cases');
     }
 }

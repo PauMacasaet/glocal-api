@@ -32,4 +32,15 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/all', (req, res, next) => {
+    queries.getAllCases().then(stats => {
+        if (stats) {
+            res.json(stats);
+            console.log('GETTING COUNT ALL');
+        } else {
+            next();
+        }
+    })
+})
+
 module.exports = router;
