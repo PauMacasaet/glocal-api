@@ -28,7 +28,6 @@ module.exports = {
             'activities.productName', 
             'activities.client', 
             'activities.addres AS address',
-            //'contact_person.personName', 
             'activities.typeOfActivity',
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 

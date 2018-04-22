@@ -279,5 +279,14 @@ module.exports = [
         contactNumber: '09999999911',
         dateCreated: new Date(),
         position: 'Team Lead'
+    },
+    {
+        fullName: 'Team Carbon',
+        username: 'teamcarbon',
+        email: 'teamcarbon@glo-cal.com',
+        password: bcrypt.hashSync('teamcarbon', 10),
+        contactNumber: '09999999911',
+        dateCreated: new Date(),
+        position: 'Managing Director'
     }
 ];
