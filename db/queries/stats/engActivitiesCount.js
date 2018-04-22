@@ -2,7 +2,7 @@ const knex = require('../../knex'); // the connection
 
 module.exports = {
     getAllEngActivities(query) {
-        const knexQuery = knex('activities')
+        const knexQuery = knex('case_monitoring')
             .leftJoin(
                 'activities',
                 'activities.trackingNo',
