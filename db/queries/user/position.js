@@ -35,7 +35,8 @@ module.exports = {
                 'Technical Manager'
             ])
             .groupBy('userid')
-            .andWhere('is_active', true);
+            .andWhere('is_active', true)
+            .orderBy('fullName');
     },
     getOneEngineer(name) {
         return knex('user')
