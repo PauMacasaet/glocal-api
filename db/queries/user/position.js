@@ -1,6 +1,38 @@
 const knex = require('../../knex'); // the connection
 
 module.exports = {
+    getAdmins() {
+        return knex('user')
+            .select(
+                'userid',
+                'fullName',
+                'username',
+                'email',
+                'contactNumber',
+                'dateCreated',
+                'position',
+                'is_active'
+            )
+            .where('position', 'Managing Director')
+            .groupBy('userid')
+            .orderBy('fullName');
+    },
+    getOthers() {
+        return knex('user')
+            .select(
+                'userid',
+                'fullName',
+                'username',
+                'email',
+                'contactNumber',
+                'dateCreated',
+                'position',
+                'is_active'
+            )
+            .whereNot('position', 'Managing Director')
+            .groupBy('userid')
+            .orderBy('fullName');
+    },
     getAll() {
         return knex('user')
         .select(

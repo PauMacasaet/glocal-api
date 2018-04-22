@@ -13,6 +13,32 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/admin', (req, res, next) => {
+    queries
+        .getAdmins()
+        .then(users => {
+            if (users) {
+                res.json(users);
+                console.log('GETTING ADMINS');
+            } else {
+                next(new Error(404));
+            }
+        });
+});
+
+router.get('/others', (req, res, next) => {
+    queries
+        .getOthers()
+        .then(users => {
+            if (users) {
+                res.json(users);
+                console.log('GETTING EMPLOYEES');
+            } else {
+                next(new Error(404));
+            }
+        });
+});
+
 router.get('/systemEngineer', (req, res, next) => {
     queries
         .getEngineer()
