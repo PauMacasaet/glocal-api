@@ -174,11 +174,11 @@ exports.up = function(knex, Promise) {
         .index('index_typeactivity', 'hash').notNull();
       table.varchar('purposeOfVisit', 50)
         .index('index_purpose', 'hash').notNull();
-      table.varchar('activityPerformed', 2000)
+      table.varchar('activityPerformed', 3000)
         .index('index_performed', 'hash').notNull();
-      table.varchar('nextActivity', 2000)
+      table.varchar('nextActivity', 3000)
         .index('index_nextactivity', 'hash').notNull();
-      table.varchar('recommendations', 2000).index('index_recommendations', 'hash');
+      table.varchar('recommendations', 3000).index('index_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_assignedengineer', 'hash').notNull();
       table.varchar('point_person', 50)
