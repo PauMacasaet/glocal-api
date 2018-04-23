@@ -90,13 +90,6 @@ exports.up = function(knex, Promise) {
       table.varchar('remarks', 2000).index('index_remarks', 'hash');
     }),
 
-    knex.schema.createTable('contact_person', (table) => {
-      table.varchar('client', 50).references('accountName').inTable('client')
-        .index('index_contactclient', 'hash').notNull().onUpdate('cascade');
-      table.varchar('personName', 50).unique()
-        .index('index_personname', 'hash').notNull();
-    }),
-
     knex.schema.createTable('case_monitoring', (table) => {
       table.increments('glocalId').primary()
         .index('index_glocalid', 'btree').notNull();
@@ -194,7 +187,6 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('activities'),
     knex.schema.dropTable('service_reports'),
     knex.schema.dropTable('case_monitoring'),
-    knex.schema.dropTable('contact_person'),
     knex.schema.dropTable('license'),
     knex.schema.dropTable('client'),
     knex.schema.dropTable('products'),
