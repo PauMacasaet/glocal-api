@@ -167,7 +167,7 @@ router.put('/:glocalId', isValidId, (req, res, next) => {
                 date_resolved: null
             };
             queries
-                .update(req.params.glocalId, req.body)
+                .update(req.params.glocalId, update)
                 .then(case_mon => { 
                     if (case_mon) {
                         res.json({
