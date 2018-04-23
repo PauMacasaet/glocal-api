@@ -179,7 +179,7 @@ app.use(
 //case_monitoring
 app.use(
   '/glocalId', 
-  //authMiddleWare.ensureLoggedIn,  
+  authMiddleWare.ensureLoggedIn,  
   glocalid
 );
 // 
