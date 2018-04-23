@@ -158,13 +158,13 @@ app.use(
 //contact_person
 app.use(
   '/contactp', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   contactPerson
 );
 // /:personName
 app.use(
   '/contactc',
-  authMiddleWare.ensureLoggedIn, 
+  //authMiddleWare.ensureLoggedIn, 
   contactClient
 );
 // /:client
