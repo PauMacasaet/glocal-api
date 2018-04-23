@@ -168,8 +168,8 @@ exports.up = function(knex, Promise) {
         .index('index_timeouts', 'hash').notNull();
       table.varchar('productName', 50).references('productName').inTable('products')
         .index('index_activityproduct', 'hash').notNull().onUpdate('cascade');
-      table.varchar('client', 50)
-        .index('index_activityclient', 'hash').notNull();
+      table.varchar('client', 50).references('accountName').inTable('client')
+        .index('index_activityclient', 'hash').notNull().onUpdate('cascade');
       table.varchar('addres', 50)
         .index('index_activityaddress', 'hash').notNull();
       table.enu('typeOfActivity', ['Onsite', 'Implementation', 'Remote', 'POC'])
