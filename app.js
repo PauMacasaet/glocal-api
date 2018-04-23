@@ -97,19 +97,19 @@ app.use(
 //users
 app.use(
   '/user', 
-  //authMiddleWare.ensureLoggedIn, 
+  authMiddleWare.ensureLoggedIn, 
   user
 ); 
 //authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName
 app.use(
   '/position', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   position
 ); 
 // /systemEngineer, /systemEngineer/:fullName, /manager, /manager/:fullName
 app.use(
   '/isLead',
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   isLead
 ); 
 // /:fullName
@@ -125,7 +125,7 @@ app.use(
 //client
 app.use(
   '/client', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   accountName
 );
 // /:accountName
@@ -192,7 +192,7 @@ app.use(
 //case_monitoring
 app.use(
   '/glocalId', 
-  //authMiddleWare.ensureLoggedIn,  
+  authMiddleWare.ensureLoggedIn,  
   glocalid
 );
 // 
@@ -264,14 +264,14 @@ app.use(
 
 app.use(
   '/managerDashboard',
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   severity_dash
 );
 
 //activities
 app.use(
   '/activityNo', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   activityNo
 );
 // /:activityNo
@@ -331,7 +331,7 @@ app.use(
 
 app.use(
   '/engActivities', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   engActivities
 );
 // /:assignedSystemsEngineer
@@ -343,7 +343,7 @@ app.use(
 // /:trackingNo
 app.use(
   '/assignedSystemsEngineer', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   assignedSystemsEngineer
 );
 // /:assignedSystemsEngineer
@@ -388,7 +388,7 @@ app.use(
 
 app.use(
   '/vendor-case-count',
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   vendorCaseCount
 )
 
