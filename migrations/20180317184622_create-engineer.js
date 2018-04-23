@@ -139,7 +139,7 @@ exports.up = function(knex, Promise) {
         .index('index_sr_timeouts', 'hash').notNull();
       table.varchar('productName', 50).references('productName').inTable('products')
         .index('index_sr_activityproduct', 'hash').notNull().onUpdate('cascade');
-      table.varchar('client', 50).references('customer').inTable('case_monitoring')
+      table.varchar('client', 50).references('accountName').inTable('client')
         .index('index_sr_activityclient', 'hash').notNull().onUpdate('cascade');
       table.varchar('addres', 50).references('company_address').inTable('client')
         .index('index_sr_activityaddress', 'hash').notNull().onUpdate('cascade');
@@ -168,7 +168,7 @@ exports.up = function(knex, Promise) {
         .index('index_timeouts', 'hash').notNull();
       table.varchar('productName', 50).references('productName').inTable('products')
         .index('index_activityproduct', 'hash').notNull().onUpdate('cascade');
-      table.varchar('client', 50).references('client').inTable('case_monitoring')
+      table.varchar('client', 50).references('accountName').inTable('client')
         .index('index_activityclient', 'hash').notNull().onUpdate('cascade');
       table.varchar('addres', 50).references('company_address').inTable('client')
         .index('index_activityaddress', 'hash').notNull().onUpdate('cascade');
