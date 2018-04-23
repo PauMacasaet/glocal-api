@@ -271,7 +271,7 @@ app.use(
 //activities
 app.use(
   '/activityNo', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   activityNo
 );
 // /:activityNo
@@ -337,7 +337,7 @@ app.use(
 // /:assignedSystemsEngineer
 app.use(
   '/tracking', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   tracking
 );
 // /:trackingNo
