@@ -26,19 +26,69 @@ module.exports = [
         accountName: 'BPI',
         contact_details: [
             [
-                'Garrosh'
+                'Garrosh',
+                'Lich King'
             ],
             [
-                'garrosh@gmail.com'
+                'garrosh@gmail.com',
+                'lich@bpi.com'
             ],
             [
-                '09176230789'
+                '09176230789',
+                '010101101'
             ], 
             [
-                'Secretary'
+                'Secretary',
+                'N/A'
             ]
         ],
         company_address: '15 Jupiter',
+        accountManager: 'Marilyn Mondragon'
+    },
+    {
+        accountName: 'Meralco',
+        contact_details: [
+            [
+                'Bryan Boy',
+                'Hans Yim'
+            ],
+            [
+                'bryan@meralco.com',
+                'hans@meralco.com'
+            ],
+            [
+                '0909090909',
+                '0989898989'
+            ], 
+            [
+                'Electrician',
+                'Janitor'
+            ]
+        ],
+        company_address: 'Pasig City',
+        accountManager: 'Marilyn Mondragon'
+    },
+    {
+        accountName: 'Ocean Park',
+        contact_details: [
+            [
+                'Dolphin Fish',
+                'Seal King'
+            ],
+            [
+                'dolphin@gmail.com',
+                'seal@bpi.com'
+            ],
+            [
+                '0707070707',
+                '0404040404'
+            ], 
+            [
+                'Fish',
+                'Mammal'
+            ]
+        ],
+        company_address: 'Manila Bay',
         accountManager: 'Marilyn Mondragon'
     }
 ];
