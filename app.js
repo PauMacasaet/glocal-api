@@ -25,9 +25,6 @@ const accountContact = require('./routes/client/contact_name');
 const productName = require('./routes/products/productName');
 const productVendor = require('./routes/products/productVendor');
 
-const contactPerson = require('./routes/contact person/contactp');
-const contactClient = require('./routes/contact person/contactc');
-
 const license = require('./routes/license/license');
 const on_site = require('./routes/license/onsite');
 const clientLicense = require('./routes/license/vendor');
@@ -155,18 +152,7 @@ app.use(
 );
 // /:vendor
 
-//contact_person
-app.use(
-  '/contactp', 
-  authMiddleWare.ensureLoggedIn,
-  contactPerson
-);
-// /:personName
-app.use(
-  '/contactc',
-  authMiddleWare.ensureLoggedIn, 
-  contactClient
-);
+
 // /:client
 
 //license
