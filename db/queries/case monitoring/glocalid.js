@@ -406,7 +406,11 @@ module.exports = {
     },
     getOne(glocalId) {
         return knex('case_monitoring')
-        .join('client', 'client.accountName', '=', 'case_monitoring.customer')
+        .join(
+            'client', 
+            'client.accountName', 
+            '=', 'case_monitoring.customer'
+        )
         .leftJoin('activities', 'activities.trackingNo', '=', 'case_monitoring.glocalId')
         .select( 
             knex.raw(
