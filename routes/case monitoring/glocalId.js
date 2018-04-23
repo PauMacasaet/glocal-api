@@ -153,6 +153,19 @@ router.post('/', (req, res, next) => {
 router.put('/:glocalId', isValidId, (req, res, next) => {
     if(validUpdate(req.body)) {
         if (req.body.case_status != 'Resolved') {
+            const update = {
+                dateIdCreated: req.body.dateIdCreated,
+                dateRaised: req.body.dateRaised,
+                caseTitle: req.body.caseTitle,
+                caseDescription: req.body.caseDescription,
+                severity: req.body.severity,
+                vendor: req.body.vendor,
+                customer: req.body.customer,
+                productName: req.body.productName,
+                systemsEngineerLead: req.body.systemsEngineerLead,
+                case_status: req.body.case_status,
+                date_resolved: null
+            };
             queries
                 .update(req.params.glocalId, req.body)
                 .then(case_mon => { 
