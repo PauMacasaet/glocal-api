@@ -45,7 +45,7 @@ exports.up = function(knex, Promise) {
     }), 
 
     knex.schema.createTable('client', (table) => {
-      table.varchar('accountName', 50).unique().primary()
+      table.varchar('accountName', 200).unique().primary()
         .index('index_accountname', 'hash').notNull();
       table.specificType('contact_details', 'text[]')
         .index('index_contactdetails', 'hash').notNull();
@@ -56,9 +56,9 @@ exports.up = function(knex, Promise) {
     }),
 
     knex.schema.createTable('products', (table) => {
-      table.varchar('productName', 50).unique().primary()
+      table.varchar('productName', 200).unique().primary()
         .index('index_productname', 'hash').notNull();
-      table.varchar('vendor', 50).references('principal').inTable('vendor')
+      table.varchar('vendor', 200).references('principal').inTable('vendor')
         .index('index_vendor', 'hash').notNull().onUpdate('cascade');
     }),
 
@@ -68,11 +68,11 @@ exports.up = function(knex, Promise) {
         .index('index_datestart', 'hash').notNull();
       table.date('date_end')
         .index('index_dateend', 'hash').notNull();
-      table.varchar('vendor', 50).references('principal').inTable('vendor')
+      table.varchar('vendor', 200).references('principal').inTable('vendor')
         .index('index_licensevendor', 'hash').notNull().onUpdate('cascade');
-      table.varchar('productName', 50).references('productName').inTable('products')
+      table.varchar('productName', 200).references('productName').inTable('products')
         .index('index_licenseproduct', 'hash').notNull().onUpdate('cascade');
-      table.varchar('client', 50).references('accountName').inTable('client')
+      table.varchar('client', 200).references('accountName').inTable('client')
         .index('index_licenseclient', 'hash').notNull().onUpdate('cascade');
       table.varchar('particulars', 200)
         .index('index_particulars', 'hash').notNull();
@@ -108,15 +108,15 @@ exports.up = function(knex, Promise) {
         .index('index_dateraised', 'hash').notNull();
       table.varchar('caseTitle', 50)
         .index('index_casetile', 'hash').notNull();
-      table.varchar('caseDescription', 100)
+      table.varchar('caseDescription', 300)
         .index('index_desc', 'hash').notNull();
       table.integer('severity')
         .index('index_severity', 'btree').notNull();
-      table.varchar('vendor', 50)
-        .index('index_casevendor', 'hash').notNull();
-      table.varchar('customer', 50).references('accountName').inTable('client')
+      table.varchar('vendor', 200).references('principal').inTable('vendor')
+        .index('index_casevendor', 'hash').notNull().onUpdate('cascade');
+      table.varchar('customer', 200).references('accountName').inTable('client')
         .index('index_casecus', 'hash').notNull().onUpdate('cascade');
-      table.varchar('productName', 50).references('productName').inTable('products')
+      table.varchar('productName', 200).references('productName').inTable('products')
         .index('index_caseprod', 'hash').notNull().onUpdate('cascade');
       table.varchar('contact_person', 50)
         .index('index_case_contact', 'hash').notNull();
@@ -137,21 +137,21 @@ exports.up = function(knex, Promise) {
         .index('index_sr_timein', 'hash').notNull();
       table.timestamp('timeOuts')
         .index('index_sr_timeouts', 'hash').notNull();
-      table.varchar('productName', 50).references('productName').inTable('products')
+      table.varchar('productName', 200).references('productName').inTable('products')
         .index('index_sr_activityproduct', 'hash').notNull().onUpdate('cascade');
-      table.varchar('client', 50).references('accountName').inTable('client')
+      table.varchar('client', 200).references('accountName').inTable('client')
         .index('index_sr_activityclient', 'hash').notNull().onUpdate('cascade');
-      table.varchar('addres', 50)
+      table.varchar('addres', 255)
         .index('index_sr_activityaddress', 'hash').notNull();
       table.enu('typeOfActivity', ['Onsite', 'Implementation', 'Remote', 'POC'])
         .index('index_sr_typeactivity', 'hash').notNull();
       table.varchar('purposeOfVisit', 50)
         .index('index_sr_purpose', 'hash').notNull();
-      table.varchar('activityPerformed', 2000)
+      table.varchar('activityPerformed', 3000)
         .index('index_sr_performed', 'hash').notNull();
-      table.varchar('nextActivity', 2000)
+      table.varchar('nextActivity', 3000)
         .index('index_sr_nextactivity', 'hash').notNull();
-      table.varchar('recommendations', 2000).index('index_sr_recommendations', 'hash');
+      table.varchar('recommendations', 3000).index('index_sr_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_sr_assignedengineer', 'hash').notNull();
       table.varchar('point_person', 50)
@@ -166,11 +166,11 @@ exports.up = function(knex, Promise) {
         .index('index_timein', 'hash').notNull();
       table.timestamp('timeOuts')
         .index('index_timeouts', 'hash').notNull();
-      table.varchar('productName', 50).references('productName').inTable('products')
+      table.varchar('productName', 200).references('productName').inTable('products')
         .index('index_activityproduct', 'hash').notNull().onUpdate('cascade');
-      table.varchar('client', 50).references('accountName').inTable('client')
+      table.varchar('client', 200).references('accountName').inTable('client')
         .index('index_activityclient', 'hash').notNull().onUpdate('cascade');
-      table.varchar('addres', 50)
+      table.varchar('addres', 255)
         .index('index_activityaddress', 'hash').notNull();
       table.enu('typeOfActivity', ['Onsite', 'Implementation', 'Remote', 'POC'])
         .index('index_typeactivity', 'hash').notNull();
