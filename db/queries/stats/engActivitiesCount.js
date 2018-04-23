@@ -21,6 +21,7 @@ module.exports = {
                     ['activities.assignedSystemsEngineer']
                 )
             )
+            .limit(5)
             .orderBy('number_of_activities', 'desc');
         if (query['engineer']) {
             knexQuery
