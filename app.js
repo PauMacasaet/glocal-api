@@ -122,7 +122,7 @@ app.use(
 //client
 app.use(
   '/client', 
-  //authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   accountName
 );
 // /:accountName
@@ -134,6 +134,7 @@ app.use(
 
 app.use(
   '/client-contact',
+  authMiddleWare.ensureLoggedIn,
   accountContact
 );
 
