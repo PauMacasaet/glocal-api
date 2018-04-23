@@ -120,8 +120,8 @@ exports.up = function(knex, Promise) {
         .index('index_caseprod', 'hash').notNull().onUpdate('cascade');
       table.varchar('contact_person', 50)
         .index('index_case_contact', 'hash').notNull();
-      table.varchar('systemsEngineerLead', 50)
-        .index('index_lead', 'hash');
+      table.varchar('systemsEngineerLead', 50).references('fullName').inTable('user')
+        .index('index_lead', 'hash').onUpdate('cascade');
       table.varchar('case_status', 50)
         .index('index_status', 'hash').notNull();
       table.datetime('date_resolved')
