@@ -188,9 +188,9 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('service_reports'),
     knex.schema.dropTable('case_monitoring'),
     knex.schema.dropTable('license'),
+    knex.schema.dropTable('client'),
     knex.schema.dropTable('products'),
     knex.schema.dropTable('vendor'),
-    knex.schema.dropTable('client'),
     knex.schema.dropTable('user')
   ]);
 };
