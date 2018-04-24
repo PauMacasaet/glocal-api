@@ -140,11 +140,11 @@ exports.up = function(knex, Promise) {
         .index('index_sr_typeactivity', 'hash').notNull();
       table.varchar('purposeOfVisit', 200)
         .index('index_sr_purpose', 'hash').notNull();
-      table.varchar('activityPerformed', 10000)
+      table.varchar('activityPerformed', 9999)
         .index('index_sr_performed', 'hash').notNull();
-      table.varchar('nextActivity', 10000)
+      table.varchar('nextActivity', 9999)
         .index('index_sr_nextactivity', 'hash').notNull();
-      table.varchar('recommendations', 10000).index('index_sr_recommendations', 'hash');
+      table.varchar('recommendations', 9999).index('index_sr_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_sr_assignedengineer', 'hash').notNull();
       table.varchar('point_person', 50)
@@ -169,11 +169,11 @@ exports.up = function(knex, Promise) {
         .index('index_typeactivity', 'hash').notNull();
       table.varchar('purposeOfVisit', 200)
         .index('index_purpose', 'hash').notNull();
-      table.varchar('activityPerformed', 10000)
+      table.varchar('activityPerformed', 9999)
         .index('index_performed', 'hash').notNull();
-      table.varchar('nextActivity', 10000)
+      table.varchar('nextActivity', 9999)
         .index('index_nextactivity', 'hash').notNull();
-      table.varchar('recommendations', 10000).index('index_recommendations', 'hash');
+      table.varchar('recommendations', 9999).index('index_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_assignedengineer', 'hash').notNull();
       table.varchar('point_person', 50)
@@ -188,6 +188,7 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('service_reports'),
     knex.schema.dropTable('case_monitoring'),
     knex.schema.dropTable('license'),
+    knex.schema.dropTable('contact_person'),
     knex.schema.dropTable('client'),
     knex.schema.dropTable('products'),
     knex.schema.dropTable('vendor'),
