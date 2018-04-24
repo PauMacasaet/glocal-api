@@ -8,11 +8,11 @@ module.exports = {
             'activities.timeOuts',
             '=', 'service_reports.timeOuts'
         )
-        .join(
-            'client', 
-            'activities.client', 
-            '=', 'client.accountName'
-        )
+        // .join(
+        //     'client', 
+        //     'activities.client', 
+        //     '=', 'client.accountName'
+        // )
         .select(
             'activities.activityNo', 
             knex.raw(
@@ -51,11 +51,11 @@ module.exports = {
             'activities.timeOuts',
             '=', 'service_reports.timeOuts'
         )
-        .join(
-            'client', 
-            'activities.client', 
-            '=', 'client.accountName'
-        )
+        // .join(
+        //     'client', 
+        //     'activities.client', 
+        //     '=', 'client.accountName'
+        // )
         .select(
             'activities.activityNo', 
             knex.raw(
