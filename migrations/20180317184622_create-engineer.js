@@ -140,11 +140,11 @@ exports.up = function(knex, Promise) {
         .index('index_sr_typeactivity', 'hash').notNull();
       table.varchar('purposeOfVisit', 200)
         .index('index_sr_purpose', 'hash').notNull();
-      table.text('activityPerformed')
+      table.specificType('activityPerformed', 'text')
         .index('index_sr_performed', 'hash').notNull();
-      table.text('nextActivity')
+      table.specificType('nextActivity', 'text')
         .index('index_sr_nextactivity', 'hash').notNull();
-      table.text('recommendations').index('index_sr_recommendations', 'hash');
+      table.specificType('recommendations', 'text').index('index_sr_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_sr_assignedengineer', 'hash').notNull();
       table.varchar('point_person', 50)
@@ -169,11 +169,11 @@ exports.up = function(knex, Promise) {
         .index('index_typeactivity', 'hash').notNull();
       table.varchar('purposeOfVisit', 200)
         .index('index_purpose', 'hash').notNull();
-      table.text('activityPerformed')
+      table.specificType('activityPerformed', 'text')
         .index('index_performed', 'hash').notNull();
-      table.text('nextActivity')
+      table.specificType('nextActivity', 'text')
         .index('index_nextactivity', 'hash').notNull();
-      table.text('recommendations').index('index_recommendations', 'hash');
+      table.specificType('recommendations', 'text').index('index_recommendations', 'hash');
       table.specificType('assignedSystemsEngineer', 'text[]')
         .index('index_assignedengineer', 'hash').notNull();
       table.varchar('point_person', 50)
