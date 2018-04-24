@@ -27,7 +27,7 @@ module.exports = {
             ),
             'service_reports.sr_number',
             'activities.productName', 
-            //'activities.client',
+            'activities.client',
             //'activities.addres AS address',
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
@@ -72,7 +72,7 @@ module.exports = {
             ),
             'service_reports.sr_number',
             'activities.productName', 
-            //'activities.client',
+            'activities.client',
             //'activities.addres AS address',
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
@@ -87,7 +87,7 @@ module.exports = {
         .groupBy(
             'activities.assignedSystemsEngineer', 
             'activities.activityNo',
-            //'activities.client',
+            'activities.client',
             'service_reports.sr_number'
         )
         .where('activities.assignedSystemsEngineer', '@>', name)
