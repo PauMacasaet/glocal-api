@@ -132,8 +132,8 @@ exports.up = function(knex, Promise) {
         .index('index_sr_timeouts', 'hash').notNull();
       table.varchar('productName', 300).references('productName').inTable('products')
         .index('index_sr_activityproduct', 'hash').notNull().onUpdate('cascade');
-      table.varchar('client', 400).references('accountName').inTable('client')
-        .index('index_sr_activityclient', 'hash').notNull().onUpdate('cascade');
+      table.varchar('client', 400)
+        .index('index_sr_activityclient', 'hash').notNull();
       table.varchar('addres', 400)
         .index('index_sr_activityaddress', 'hash').notNull();
       table.enu('typeOfActivity', ['Onsite', 'Implementation', 'Remote', 'POC'])
@@ -161,8 +161,8 @@ exports.up = function(knex, Promise) {
         .index('index_timeouts', 'hash').notNull();
       table.varchar('productName', 300).references('productName').inTable('products')
         .index('index_activityproduct', 'hash').notNull().onUpdate('cascade');
-      table.varchar('client', 400).references('accountName').inTable('client')
-        .index('index_activityclient', 'hash').notNull().onUpdate('cascade');
+      table.varchar('client', 400)
+        .index('index_activityclient', 'hash').notNull();
       table.varchar('addres', 400)
         .index('index_activityaddress', 'hash').notNull();
       table.enu('typeOfActivity', ['Onsite', 'Implementation', 'Remote', 'POC'])
