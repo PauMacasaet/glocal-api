@@ -27,8 +27,8 @@ module.exports = {
             ),
             'service_reports.sr_number',
             'activities.productName', 
-            'activities.client',
-            'activities.addres AS address',
+            //'activities.client',
+            //'activities.addres AS address',
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
@@ -42,7 +42,7 @@ module.exports = {
         .groupBy(
             'activities.assignedSystemsEngineer', 
             'activities.activityNo', 
-            'activities.client',
+            //'activities.client',
             'service_reports.sr_number'
         )
         .orderBy('activities.timeOuts', 'desc');
@@ -72,8 +72,8 @@ module.exports = {
             ),
             'service_reports.sr_number',
             'activities.productName', 
-            'activities.client',
-            'activities.addres AS address',
+            //'activities.client',
+            //'activities.addres AS address',
             'activities.typeOfActivity', 
             'activities.purposeOfVisit', 
             'activities.activityPerformed', 
@@ -87,7 +87,7 @@ module.exports = {
         .groupBy(
             'activities.assignedSystemsEngineer', 
             'activities.activityNo',
-            'activities.client',
+            //'activities.client',
             'service_reports.sr_number'
         )
         .where('activities.assignedSystemsEngineer', '@>', name)
