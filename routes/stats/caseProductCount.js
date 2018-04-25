@@ -18,12 +18,12 @@ router.get('/', (req, res, next) => {
             from, to
         })
         .then(stats => {
-            if (stats) {
+           // if (stats) {
                 res.json(stats);
                 console.log('GETTING ALL CASE COUNT BY PRODUCT');
-            } else {
-                next();
-            }
+           // } else {
+           //     next(new Error('Not Existing'));
+           // }
             
     });
 });
@@ -39,12 +39,12 @@ router.get('/most', (req, res, next) => { // summary page
             from, to
         })
         .then(stats => {
-            if (stats) {
+          //  if (stats) {
                 res.json(stats);
                 console.log('GETTING PRODUCT WITH MOST CASES');
-            } else {
-                next();
-            }
+          //  } else {
+           //     next(new Error('Not Existing'));
+          //  }
             
     });
 });

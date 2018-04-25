@@ -22,12 +22,12 @@ router.get('/', (req, res, next) => {
             from, to
         })
         .then(stats => {
-            if (stats) {
+            //if (stats) {
                 res.json(stats);
                 console.log('GETTING ALL SEVERITIES');
-            } else {
-                next();
-            }
+            //} else {
+              //  next(new Error('Not Existing'));
+           // }
             
     });
 });
@@ -38,7 +38,7 @@ router.get('/all', (req, res, next) => {
             res.json(stats);
             console.log('GETTING COUNT ALL');
         } else {
-            next();
+            next(new Error('Not Existing'));
         }
     })
 })

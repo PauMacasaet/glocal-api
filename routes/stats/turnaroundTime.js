@@ -16,12 +16,12 @@ router.get('/', (req, res, next) => {
             from, to
         })
         .then(time => {
-            if (time) {
+           // if (time) {
                 res.json(time);
                 console.log('Getting Turnaround Time');
-            } else {
-                next();
-            }
+          //  } else {
+          //      next(new Error('Not Existing'));
+          //  }
         });
 });
 

@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
                 res.json(stats);
                 console.log('GETTING ALL VENDOR LICENSE COUNT');
             } else {
-                next();
+                next(new Error('Not Existing'));
             }
             
     });

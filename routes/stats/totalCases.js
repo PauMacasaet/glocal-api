@@ -22,12 +22,12 @@ router.get('/', (req, res, next) => {
             from, to
         })
         .then(stats => {
-            if (stats) {
+            //if (stats) {
                 res.json(stats);
                 console.log('GETTING ALL STATUSES');
-            } else {
-                next();
-            }
+           // } else {
+           //     next(new Error('Not Existing'));
+           // }
     });
 });
 

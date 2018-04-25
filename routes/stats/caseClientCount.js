@@ -13,12 +13,13 @@ router.get('/most', (req, res, next) => {
             from, to
         })
         .then(stats => {
-            if (stats) {
+            //if (stats) {
                 res.json(stats);
                 console.log('GETTING CUSTOMER WITH MOST CASES');
-            } else {
-                next();
-            }
+            //} 
+            // else {
+            //     next([]);
+            // }
             
     });
 });
@@ -34,12 +35,12 @@ router.get('/open', (req, res, next) => {
             from, to
         })
         .then(stats => {
-            if (stats) {
+            //if (stats) {
                 res.json(stats);
                 console.log('GETTING ALL CASE COUNT BY CUSTOMER');
-            } else {
-                next();
-            }
+            //} else {
+              //  next(new Error('Not Existing'));
+            //}
             
     });
 });
@@ -55,12 +56,12 @@ router.get('/resolved', (req, res, next) => {
             from, to
         })
         .then(stats => {
-            if (stats) {
+           // if (stats) {
                 res.json(stats);
                 console.log('GETTING ALL CASE COUNT BY CUSTOMER');
-            } else {
-                next();
-            }
+           // } else {
+            //    next(new Error('Not Existing'));
+            //}
             
     });
 });
