@@ -6,6 +6,7 @@ module.exports = {
             .select('productName')
             .count('* as number_of_cases')
             .groupBy('productName')
+            .limit(3)
             .orderBy('number_of_cases', 'desc');
         if (query['productName']) {
             knexQuery

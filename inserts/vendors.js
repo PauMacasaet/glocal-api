@@ -1,20 +1,14 @@
 module.exports = [
     {
-        principal: 'Symantec'
+        principal: 'Apple'
     },
     {
-        principal: 'Veritas'
+        principal: 'Samsung'
     },
     {
-        principal: 'ASG'
+        principal: 'Nike'
     },
     {
         principal: 'Microsoft'
-    },
-    {
-        principal: 'Vertiv'
-    },
-    {
-        principal: 'Nuance'
     }
 ];

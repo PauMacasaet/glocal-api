@@ -20,7 +20,7 @@ module.exports = [
             ]
         ],
         company_address: '157 HV Dela Costa',
-        accountManager: 'Eden G. Burgess'
+        accountManager: 'Marilyn Mondragon'
     },
     {
         accountName: 'BPI',
@@ -43,7 +43,7 @@ module.exports = [
             ]
         ],
         company_address: '15 Jupiter',
-        accountManager: 'Eden G. Burgess'
+        accountManager: 'Marilyn Mondragon'
     },
     {
         accountName: 'Meralco',
@@ -66,7 +66,7 @@ module.exports = [
             ]
         ],
         company_address: 'Pasig City',
-        accountManager: 'Eden G. Burgess'
+        accountManager: 'Marilyn Mondragon'
     },
     {
         accountName: 'Ocean Park',
@@ -89,6 +89,6 @@ module.exports = [
             ]
         ],
         company_address: 'Manila Bay',
-        accountManager: 'Eden G. Burgess'
+        accountManager: 'Marilyn Mondragon'
     }
 ];

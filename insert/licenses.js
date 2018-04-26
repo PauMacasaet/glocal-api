@@ -2,8 +2,8 @@ module.exports = [
     {
         date_start: '05/01/2018',
         date_end: '05/01/2019',
-        vendor: 'Apple',
-        productName: 'Iphone 8',
+        vendor: 'Symantec',
+        productName: 'CacheFlow',
         client: 'BPI',
         particulars: 'particular 1',
         on_site: '8x5',
@@ -17,8 +17,8 @@ module.exports = [
     {
         date_start: '11/28/2018',
         date_end: '05/01/2019',
-        vendor: 'Samsung',
-        productName: 'Galaxy S9',
+        vendor: 'Veritas',
+        productName: 'Access',
         client: 'Unionbank',
         particulars: 'particular 2',
         on_site: '24x7',

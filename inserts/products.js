@@ -1,336 +1,113 @@
 module.exports = [
     {
-        productName: '360DM Suite Bronze',
-        vendor: 'Veritas'
+        productName: 'Iphone 5s',
+        vendor: 'Apple'
     },
     {
-        productName: '360DM Suite Gold',
-        vendor: 'Veritas'
+        productName: 'Iphone 6',
+        vendor: 'Apple'
     },
     {
-        productName: '360DM Suite Silver',
-        vendor: 'Veritas'
+        productName: 'Iphone 6 Plus',
+        vendor: 'Apple'
     },
     {
-        productName: 'Access',
-        vendor: 'Veritas'
+        productName: 'Iphone 6s',
+        vendor: 'Apple'
     },
     {
-        productName: 'Access Appliance',
-        vendor: 'Veritas'
+        productName: 'Iphone 7',
+        vendor: 'Apple'
     },
     {
-        productName: 'ApplicationHA',
-        vendor: 'Veritas'
+        productName: 'Iphone 7 Plus',
+        vendor: 'Apple'
     },
     {
-        productName: 'Backup Exec',
-        vendor: 'Veritas'
+        productName: 'Iphone 8',
+        vendor: 'Apple'
     },
     {
-        productName: 'Backup Exec Appliance',
-        vendor: 'Veritas'
+        productName: 'Iphone X',
+        vendor: 'Apple'
     },
     {
-        productName: 'Clearwell Appliance',
-        vendor: 'Veritas'
+        productName: 'Macbook Pro 2016',
+        vendor: 'Apple'
     },
     {
-        productName: 'Cloud Storage',
-        vendor: 'Veritas'
+        productName: 'Macbook Pro 2017',
+        vendor: 'Apple'
     },
     {
-        productName: 'CloudPoint',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Consulting',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Data Insight',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'DLO',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'eDiscovery',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Education - Veritas',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Enterprise Vault',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Enterprise Vault Cloud',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Flex Appliance',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Flex Software',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'HPE Helion and Veritas Community',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Information Map',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Infoscale Availability',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Infoscale Enterprise',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Infoscale Foundation',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Infoscale Storage',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'NetBackup',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'NetBackup Appliance',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'NetBackup Deduplication',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'NetBackup Platform',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'NetBackup Virtual Appliance',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Opscenter Analytics',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Resiliency Platform',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Risk Advisor',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'SAAS Backup',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'Service Units',
-        vendor: 'Veritas'
-    },
-    {
-        productName: 'System Recovery',
-        vendor: 'Veritas'
+        productName: 'Apple TV',
+        vendor: 'Apple'
     },
 
 
 
     {
-        productName: '3rd Party Web Filter and AV',
-        vendor: 'Symantec'
+        productName: 'Galaxy S9',
+        vendor: 'Samsung'
     },
     {
-        productName: 'Advance Secure Gateway',
-        vendor: 'Symantec'
+        productName: 'Galaxy Note8',
+        vendor: 'Samsung'
     },
     {
-        productName: 'Advanced Threat Protection (ATP)',
-        vendor: 'Symantec'
+        productName: 'Galaxy J7 Pro',
+        vendor: 'Samsung'
     },
     {
-        productName: 'BCWF',
-        vendor: 'Symantec'
+        productName: 'QLED TV',
+        vendor: 'Samsung'
     },
     {
-        productName: 'Business Critical Services (BCS)',
-        vendor: 'Symantec'
+        productName: 'Premium UHD TV',
+        vendor: 'Samsung'
     },
     {
-        productName: 'CacheFlow',
-        vendor: 'Symantec'
+        productName: 'Full UHD TV',
+        vendor: 'Samsung'
     },
     {
-        productName: 'CASB',
-        vendor: 'Symantec'
+        productName: 'French Door',
+        vendor: 'Samsung'
     },
     {
-        productName:'Cloud Services',
-        vendor:'Symantec'
+        productName:'Top Mount Freezer',
+        vendor:'Samsung'
     },
-    {
-        productName: 'Content Analysis System',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Control Compliance Suite (CCS)',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Data Loss Prevention (DLP)',
-        vendor: 'Symantec'
-    }, 
-    {
-        productName: 'Deepsight Intelligence',
-        vendor: 'Symantec'
-    }, 
-    {
-        productName: 'Education - Symantec',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Encryption Products',
-        vendor: 'Symantec'
-    }, 
-    {
-        productName: 'Endpoint Management (EPM)',
-        vendor: 'Symantec'
-    }, 
-    {
-        productName: 'Endpoint Security',
-        vendor: 'Symantec'
-    }, 
-    {
-        productName: 'Internet of Things (IOT)',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Isolation',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'MAA',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'MACHS',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Mail Applicance Security',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Malware Analysis',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Managed Security Services',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Management and Reporting',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Norman Shark',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Other',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Other Cyber Security Services',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Other Packeteer',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'PacketShaper',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Proactive Services',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Proxy AV',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Proxy SG',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Reverse Proxy',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Security Analytics',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Security Suites',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Server Protection',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'SSLV',
-        vendor: 'Symantec'
-    },
-    {
-        productName: 'Storage Protection',
-        vendor: 'Symantec'
-    },
+    
 
 
     {
-        productName: 'Workspaces',
-        vendor: 'ASG'
+        productName: 'Kyrie 4',
+        vendor: 'Nike'
     },
     {
-        productName: 'Enterprise Data Intelligence',
-        vendor: 'ASG'
+        productName: 'Lebron 15',
+        vendor: 'Nike'
     },
     {
-        productName: 'Content Solutions',
-        vendor: 'ASG'
+        productName: 'Nike Zoom KDX',
+        vendor: 'Nike'
     },
     {
-        productName: 'Applications Management',
-        vendor: 'ASG'
+        productName: 'PG 2',
+        vendor: 'Nike'
     },
     {
-        productName: 'Performance Management',
-        vendor: 'ASG'
+        productName: 'Kobe A.D.',
+        vendor: 'Nike'
     },
     {
-        productName: 'Operations Management',
-        vendor: 'ASG'
+        productName: 'Nike Epic React Flyknit',
+        vendor: 'Nike'
     },
     {
-        productName: 'AppDynamics',
-        vendor: 'ASG'
+        productName: 'Nike Zoom Fly',
+        vendor: 'Nike'
     },
 
 
@@ -339,67 +116,27 @@ module.exports = [
         vendor: 'Microsoft'
     },
     {
-        productName: 'Operating System Licenses',
+        productName: 'Visual Studio Community',
         vendor: 'Microsoft'
     },
     {
-        productName: 'SQL & Exchange Licenses',
+        productName: 'Visual Studio Enterprise',
         vendor: 'Microsoft'
     },
     {
-        productName: 'Developer Tools',
+        productName: 'Visual Studio Code',
         vendor: 'Microsoft'
     },
     {
-        productName: 'Project & Visio',
+        productName: 'Word 2016',
         vendor: 'Microsoft'
     },
     {
-        productName: 'Azure',
+        productName: 'Excel 2016',
         vendor: 'Microsoft'
     },
     {
         productName: 'Cloud Service Solution',
         vendor: 'Microsoft'
-    },
-
-
-    {
-        productName: 'Uninterruptible Power Supply',
-        vendor: 'Vertiv'
-    },
-    {
-        productName: 'Precision Cooling Systems',
-        vendor: 'Vertiv'
-    },
-    {
-        productName: 'Integrated Racks and Enclosures',
-        vendor: 'Vertiv'
-    },
-    {
-        productName: 'Power Conditioning Solutions',
-        vendor: 'Vertiv'
-    },
-    {
-        productName: 'Power systems, Switches, and Controls',
-        vendor: 'Vertiv'
-    },
-
-
-    {
-        productName: 'Power PDF',
-        vendor: 'Nuance'
-    },
-    {
-        productName: 'Omnipage',
-        vendor: 'Nuance'
-    },
-    {
-        productName: 'PaperPort',
-        vendor: 'Nuance'
-    },
-    {
-        productName: 'Dragon',
-        vendor: 'Nuance'
     }
 ];
