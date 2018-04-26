@@ -11,7 +11,8 @@ module.exports = [
         productName: 'Iphone 6',
         contact_person: 'Mareeah Koochenera',
         systemsEngineerLead: 'Lia E. Shelton',
-        case_status: 'Ongoing'
+        case_status: 'Resolved',
+        date_resolved: '01/12/2018'
     },
     {
         vendorCaseId: 'JF2',
@@ -25,7 +26,8 @@ module.exports = [
         productName: 'Iphone 5s',
         contact_person: 'Garrosh',
         systemsEngineerLead: 'Michael B. Jordan',
-        case_status: 'Ongoing'
+        case_status: 'Resolved',
+        date_resolved: '01/13/2018'
     },
     {
         vendorCaseId: 'JF3',
@@ -39,7 +41,8 @@ module.exports = [
         productName: 'Iphone 6s',
         contact_person: 'Garrosh',
         systemsEngineerLead: 'Lia E. Shelton',
-        case_status: 'Pending (Client)'
+        case_status: 'Resolved',
+        date_resolved: '01/18/2018'
     },
     {
         vendorCaseId: 'JF4',
@@ -53,7 +56,8 @@ module.exports = [
         productName: 'Iphone X',
         contact_person: 'Lich King',
         systemsEngineerLead: 'Justine B. Henderson',
-        case_status: 'Ongoing'
+        case_status: 'Resolved',
+        date_resolved: '01/22/2018'
     },
     {
         vendorCaseId: 'JF5',
@@ -67,7 +71,8 @@ module.exports = [
         productName: 'Iphone 5s',
         contact_person: 'Hans Yim',
         systemsEngineerLead: 'Michael B. Jordan',
-        case_status: 'Pending (Glo-cal)'
+        case_status: 'Resolved',
+        date_resolved: '01/22/2018'
     },
     {
         vendorCaseId: 'JF6',
@@ -81,7 +86,8 @@ module.exports = [
         productName: 'Macbook Pro 2016',
         contact_person: 'Garrosh',
         systemsEngineerLead: 'Abdullah C. Langston',
-        case_status: 'Pending (Client)'
+        case_status: 'Resolved',
+        date_resolved: '01/24/2018'
     },
     {
         vendorCaseId: 'JF7',
@@ -95,7 +101,8 @@ module.exports = [
         productName: 'Galaxy Note8',
         contact_person: 'Seal King',
         systemsEngineerLead: 'Michael B. Jordan',
-        case_status: 'Ongoing'
+        case_status: 'Resolved',
+        date_resolved: '01/26/2018'
     },
     {
         vendorCaseId: 'JF8',
@@ -109,7 +116,8 @@ module.exports = [
         productName: 'French Door',
         contact_person: 'Garrosh',
         systemsEngineerLead: 'Ricardo L. Kaufman',
-        case_status: 'Ongoing'
+        case_status: 'Resolved',
+        date_resolved: '01/26/2018'
     },
     {
         vendorCaseId: 'JF9',
@@ -123,7 +131,8 @@ module.exports = [
         productName: 'Iphone 5s',
         contact_person: 'Garrosh',
         systemsEngineerLead: 'Michael B. Jordan',
-        case_status: 'Ongoing'
+        case_status: 'Resolved',
+        date_resolved: '02/01/2018'
     },
     {
         vendorCaseId: 'JF10',
@@ -137,7 +146,8 @@ module.exports = [
         productName: 'Top Mount Freezer',
         contact_person: 'Banker Dude',
         systemsEngineerLead: 'Ruth I. Foster',
-        case_status: 'Pending (Glo-cal)'
+        case_status: 'Resolved',
+        date_resolved: '02/02/2018'
     },
     {
         vendorCaseId: 'JF11',
@@ -151,7 +161,8 @@ module.exports = [
         productName: 'Nike Epic React Flyknit',
         contact_person: 'Garrosh',
         systemsEngineerLead: 'Ruth I. Foster',
-        case_status: 'Ongoing'
+        case_status: 'Resolved',
+        date_resolved: '01/30/2018'
     },
     {
         vendorCaseId: 'JF12',
@@ -234,7 +245,7 @@ module.exports = [
         customer: 'Meralco',
         productName: 'Premium UHD TV',
         contact_person: 'Hans Yim',
-        systemsEngineerLead: 'Ruth I. Foster',
+        systemsEngineerLead: 'Dean J. Dillon',
         case_status: 'Ongoing'
     }
 ];

@@ -36,7 +36,7 @@ module.exports = {
             'activities.nextActivity', 
             'activities.recommendations', 
             'activities.timeIn', 
-            'service_reports.timeOuts', 
+            'activities.timeOuts', 
             'activities.assignedSystemsEngineer',
             'activities.point_person'
         )
