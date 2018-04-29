@@ -49,3 +49,6 @@ knex seed:run
     heroku pg:backups:restore --app iris-carbon-api
 
 #db stuff
+
+    pg_dump -U postgres -h localhost -p 5432 --data-only irisdb > backup
+    psql -U postgres -h localhost -p 5432 irisdb < backup.dump

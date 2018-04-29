@@ -98,9 +98,6 @@ module.exports = {
         if (query['assignedSystemsEngineer']) {
             knexQuery
                 .where(
-                    // knex.raw(`ARRAY_TO_STRING(??, ', ')`, ['activities.assignedSystemsEngineer']),
-                    // 'ILIKE',
-                    // `%${query['assignedSystemsEngineer']}%`
                     'activities.assignedSystemsEngineer',
                     '@>',
                     query['assignedSystemsEngineer']

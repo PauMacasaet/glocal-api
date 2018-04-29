@@ -42,10 +42,15 @@ router.post('/', (req, res, next) => {
         queries
             .create(req.body)
             .then(product => {
-                res.json({
-                    product,
-                    message: 'product created'
-                }); //malabo error
+                if (product) {
+                    res.json({
+                        product,
+                        message: 'product created'
+                    }); //malabo error
+                } else {
+                    next('invalid');
+                }
+                
         });
     } else {
         next(new Error('Invalid Product'));

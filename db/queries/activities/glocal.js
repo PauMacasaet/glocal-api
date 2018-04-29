@@ -21,7 +21,7 @@ module.exports = {
             ),
             'activities.trackingNo AS glocalId', 
             knex.raw(
-                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as sr_number_year`,
+                `concat_ws(' - ', to_char(??, 'YY'), ??::text) as sr_number_year`,
                 ['activities.timeIn', 'service_reports.sr_number']
             ),
             'service_reports.sr_number',
@@ -64,7 +64,7 @@ module.exports = {
             ),
             'activities.trackingNo AS glocalId', 
             knex.raw(
-                `concat_ws(' - ', date_part('year', ??)::text, ??::text) as sr_number_year`,
+                `concat_ws(' - ', to_char(??, 'YY'), ??::text) as sr_number_year`,
                 ['activities.timeIn', 'service_reports.sr_number']
             ),
             'service_reports.sr_number',

@@ -122,7 +122,7 @@ app.use(
 //client
 app.use(
   '/client', 
-//authMiddleWare.ensureLoggedIn,
+  authMiddleWare.ensureLoggedIn,
   accountName
 );
 // /:accountName
@@ -258,7 +258,7 @@ app.use(
 //activities
 app.use(
   '/activityNo', 
-  authMiddleWare.ensureLoggedIn,
+  //authMiddleWare.ensureLoggedIn,
   activityNo
 );
 // /:activityNo
