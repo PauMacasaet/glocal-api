@@ -82,7 +82,7 @@ module.exports = {
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer',
             'activities.point_person'
-)
+        )
         .where('activities.trackingNo', tracking)
         .orderBy('activities.timeOuts', 'desc');
     }

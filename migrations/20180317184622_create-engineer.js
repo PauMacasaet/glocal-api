@@ -99,9 +99,9 @@ exports.up = function(knex, Promise) {
         .index('index_casecreate', 'hash').notNull();
       table.date('dateRaised')
         .index('index_dateraised', 'hash').notNull();
-      table.varchar('caseTitle', 100)
+      table.varchar('caseTitle', 300)
         .index('index_casetile', 'hash').notNull();
-      table.varchar('caseDescription', 300)
+      table.varchar('caseDescription', 500)
         .index('index_desc', 'hash').notNull();
       table.integer('severity')
         .index('index_severity', 'btree').notNull();
