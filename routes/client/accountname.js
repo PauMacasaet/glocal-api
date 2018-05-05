@@ -27,6 +27,7 @@ router.get('/', (req, res, next) => {
 
         //SEARCH
         q, //accountName, accountManager
+        accountManager,
         limit,
         offset
     } = req.query;
@@ -39,6 +40,7 @@ router.get('/', (req, res, next) => {
     
             //SEARCH
             q,
+            accountManager,
             limit,
             offset
         }).then(clients => {
@@ -51,6 +53,41 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/AM', (req, res, next) => {
+    const {
+        //SORT  
+        // /client?order_client=asc&q=text
+        order_client,
+        order_address,
+        order_manager,
+
+        //SEARCH
+        q, //accountName, accountManager
+        accountManager,
+        limit,
+        offset
+    } = req.query;
+    queries
+        .getAMClients({
+            //SORT
+            order_client,
+            order_address,
+            order_manager,
+    
+            //SEARCH
+            q,
+            accountManager,
+            limit,
+            offset
+        }).then(clients => {
+            if (clients) {
+                res.json(clients);
+                console.log('GETTING ALL CLIENTS');
+            } else {
+                next();
+            }        
+    });
+});
 
 router.get('/:accountName', isValidClient, (req, res, next) => {
     queries
