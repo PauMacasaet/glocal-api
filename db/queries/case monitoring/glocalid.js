@@ -171,7 +171,7 @@ module.exports = {
             knexQuery
                 .orderBy(
                     knex.raw(
-                        `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',') as assignedSystemsEngineer`, 
+                        `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',')`, 
                         ['activities.assignedSystemsEngineer']
                     ),
                     //'activities.assignedSystemsEngineer', 
