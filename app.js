@@ -77,7 +77,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('secret'));
 app.use(cors({
-  origin: 'https://iris-glocal.now.sh', 
+  origin: 'https://iris-glocal.now.sh',  
   //origin: 'http://localhost:8000',
   credentials: true
 }));
@@ -94,7 +94,7 @@ app.use(
 //users
 app.use(
   '/user', 
-  authMiddleWare.ensureLoggedIn, 
+  //authMiddleWare.ensureLoggedIn, 
   user
 ); 
 //authMiddleWare.ensureLoggedIn, /:userid, /name/:fullName

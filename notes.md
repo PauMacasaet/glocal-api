@@ -52,3 +52,28 @@ knex seed:run
 
     pg_dump -U postgres -h localhost -p 5432 --data-only irisdb > backup
     psql -U postgres -h localhost -p 5432 irisdb < backup.dump
+
+
+#Clients Page Revised
+    - for Account and Sales Managers
+        - use /client/AM?accountManager=name for viewing clients where you (as user) are the account manager
+    - Product Specialist should be able to add client
+    - for Managing Director, Sales Director, Business Development Manager, Technical Manager, Project Manager, Team Lead
+        - use /clients sees all clients (no change)
+    - for Systems Engineer
+        - no access to view clients page
+
+#Case Page Revised
+    - for Account and Sales Managers
+        - use /glocalId/AM?accountManager=name to only see cases where you are Account/Sales Manager
+
+#Reports Page Revised
+    - for Managing Director, Sales Director, Business Development Manager, Technical Manager, Project Manager, Team Lead access only
+    - others dont have access to reports
+
+#Case Status Revised
+    - anyone from Sales team should not be able to edit status
+
+#Add/Edit Account and Login
+    - add input validation 
+        ex. Password is too short (minimum 6 characters)
