@@ -170,7 +170,11 @@ module.exports = {
         } else if (query.order_se) {
             knexQuery
                 .orderBy(
-                    'activities.assignedSystemsEngineer', 
+                    knex.raw(
+                        `ARRAY_TO_STRING(ARRAY_AGG(??::text), ',') as assignedSystemsEngineer`, 
+                        ['activities.assignedSystemsEngineer']
+                    ),
+                    //'activities.assignedSystemsEngineer', 
                     query.order_se
                 );
         } else if (query.order_severity) {
