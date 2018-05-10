@@ -111,7 +111,9 @@ module.exports = {
             'Sales Director',
             'Senior Sales Consultant',
             'Sales Consultant',
-            'Senior Account Manager'
+            'Senior Account Manager',
+            'Product Specialist',
+            'Business Development Manager'
         ])
         .andWhere('user.is_active', true)
         .groupBy(
@@ -139,7 +141,9 @@ module.exports = {
             'Sales Director',
             'Senior Sales Consultant',
             'Sales Consultant',
-            'Senior Account Manager'
+            'Senior Account Manager',
+            'Product Specialist',
+            'Business Development Manager'
         ])
         .andWhere('user.fullName', name);
     } 
