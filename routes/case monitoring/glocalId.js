@@ -73,70 +73,6 @@ router.get('/', (req, res, next) => {
         q, //customer, productName, caseTitle, caseDescription
 
         //filters
-        customer, 
-        case_status, 
-        assignedSystemsEngineer, 
-        systemsEngineerLead,
-        severity, 
-        vendor, 
-        productName, 
-        dateRaised,
-        from, to, // date range
-        limit,
-        offset } = req.query;
-    queries.getAll({ 
-        //SORT
-        order_id,
-        order_customer, 
-        order_status,
-        order_se,
-        order_severity,
-        order_title,
-        order_product,
-        order_update,
-        order_raised,
-        order_vendor,
-        // search and filters
-        q,
-        customer, 
-        case_status, 
-        assignedSystemsEngineer, 
-        systemsEngineerLead,
-        severity, 
-        vendor, 
-        productName, 
-        dateRaised,
-        from, to,
-        limit,
-        offset }).then(cases => {
-        if (cases) {
-            res.json(cases);
-            console.log('GETTING ALL CASES');
-        } else {
-            next();
-        }
-    });
-});
-
-router.get('/AM', (req, res, next) => {
-    const { 
-        //SORT  
-        // /glocalId?order_id=(asc or desc)&q=text   OR 
-        // /glocalId?order_id=(asc or desc)?customer=BPI
-        order_id,
-        order_customer, 
-        order_status,
-        order_se,
-        order_severity,
-        order_title,
-        order_product,
-        order_update,
-        order_raised,
-        order_vendor,
-        // search
-        q, //customer, productName, caseTitle, caseDescription
-
-        //filters
         accountManager,
         customer, 
         case_status, 
@@ -149,7 +85,7 @@ router.get('/AM', (req, res, next) => {
         from, to, // date range
         limit,
         offset } = req.query;
-    queries.getAllAM({ 
+    queries.getAll({ 
         //SORT
         order_id,
         order_customer, 

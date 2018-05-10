@@ -56,16 +56,16 @@ knex seed:run
 
 #Clients Page Revised
     - for Account and Sales Managers
-        - use /client/AM?accountManager=name for viewing clients where you (as user) are the account manager
+        - use /client?accountManager=name for viewing clients where you (as user) are the account manager
     - Product Specialist should be able to add client
     - for Managing Director, Sales Director, Business Development Manager, Technical Manager, Project Manager, Team Lead
-        - use /clients sees all clients (no change)
+        - use /client sees all clients (no change)
     - for Systems Engineer
         - no access to view clients page
 
 #Case Page Revised
     - for Account and Sales Managers
-        - use /glocalId/AM?accountManager=name to only see cases where you are Account/Sales Manager
+        - use /glocalId?accountManager=name to only see cases where you are Account/Sales Manager
 
 #Reports Page Revised
     - for Managing Director, Sales Director, Business Development Manager, Technical Manager, Project Manager, Team Lead access only
