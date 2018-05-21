@@ -38,7 +38,11 @@ module.exports = {
             'activities.timeIn', 
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer',
-            'activities.point_person'
+            'activities.point_person',
+            knex.raw(
+                `(date_part('hour', ??::timestamp - ??::timestamp) * 60 + date_part('minute', ??::timestamp - ??::timestamp))/60 as time_elapsed`,
+                ['activities.timeOuts', 'activities.timeIn', 'activities.timeOuts', 'activities.timeIn']
+            )
         )
         .orderBy('activities.activityNo', 'desc');
     },
@@ -79,7 +83,11 @@ module.exports = {
             'activities.timeIn', 
             'activities.timeOuts', 
             'activities.assignedSystemsEngineer',
-            'activities.point_person'
+            'activities.point_person',
+            knex.raw(
+                `(date_part('hour', ??::timestamp - ??::timestamp) * 60 + date_part('minute', ??::timestamp - ??::timestamp))/60 as time_elapsed`,
+                ['activities.timeOuts', 'activities.timeIn', 'activities.timeOuts', 'activities.timeIn']
+            )
         )
         .where('activityNo', activityNo)
         .orderBy('activities.activityNo', 'asc');
