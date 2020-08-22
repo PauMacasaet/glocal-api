@@ -38,7 +38,8 @@ function setUserIdCookie (req, res, id) {
     res.cookie('user_id', id, {
         httpOnly: true,
         secure: isSecure,
-        signed: true
+        signed: true,
+        sameSite: 'none'
     });
 }
 
@@ -51,7 +52,8 @@ function setPositionCookie (req, res, pos) {
     res.cookie('user_pos', jsonValue, {
         httpOnly: true,
         secure: isSecure,
-        signed: true
+        signed: true,
+        sameSite: 'none'
     });
 }
 

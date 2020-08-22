@@ -4,7 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/irisdb'
+    connection: 'postgres://username:password@localhost:port/irisdb'
   },
   production: {
     client: 'pg',

@@ -77,8 +77,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('secret'));
 app.use(cors({
-  origin: 'https://iris-glocal.netlify.app',  
-  //origin: 'http://localhost:8000',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  //origin: 'https://iris-glocal.netlify.app',  
+  origin: 'http://localhost:8000',
   credentials: true
 }));
 
